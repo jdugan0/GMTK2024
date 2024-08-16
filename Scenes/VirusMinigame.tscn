@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://2850ln454g3q"]
+[gd_scene load_steps=4 format=3 uid="uid://2850ln454g3q"]
 
 [ext_resource type="Script" path="res://Scripts/VirusGenerator.cs" id="1_6w8dc"]
 [ext_resource type="PackedScene" uid="uid://dowptv22ct3hh" path="res://Prefabs/Virus.tscn" id="2_8jn3w"]
+[ext_resource type="Texture2D" uid="uid://cy51q8bxkmyhb" path="res://Art/PLANT STORE 1255 x 1021.png" id="3_felgd"]
 
 [node name="VirusMinigame" type="Node2D"]
 script = ExtResource("1_6w8dc")
@@ -11,7 +12,7 @@ coherence = 0.01
 seperation = 1.0
 seperationDistance = 1000.0
 alignment = 0.05
-mouseForce = 0.1
+mouseForce = 0.3
 velocityRange = 5.0
 maxVelocity = 150.0
 viewRange = 1500.0
@@ -19,3 +20,10 @@ maxAccel = 600.0
 size = 400.0
 
 [node name="Camera2D" type="Camera2D" parent="."]
+position_smoothing_enabled = true
+position_smoothing_speed = 30.0
+
+[node name="PlantStore1255X1021" type="Sprite2D" parent="."]
+position = Vector2(-589, -163)
+scale = Vector2(13.302, 6.6523)
+texture = ExtResource("3_felgd")

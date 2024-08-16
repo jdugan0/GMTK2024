@@ -45,13 +45,16 @@ public partial class VirusGenerator : Node
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
-	{ 
+	{
+
 		if (Input.IsActionPressed("Click")){
 			mousePos = GetViewport().GetCamera2D().GetGlobalMousePosition();
 		}
+		Vector2 comCamera = new Vector2();
 		foreach (VirusBoid boid in boids){
 			Vector2 accel = new Vector2();
 			Vector2 com = new Vector2();
+			comCamera += boid.Position;
 			Vector2 com_v = new Vector2();
 			Vector2 sep = new Vector2();
 			int c = 0;
@@ -93,11 +96,18 @@ public partial class VirusGenerator : Node
 			if (Math.Abs(boid.velocity.Length()) > maxVelocity){
 				boid.velocity = boid.velocity.Normalized() * maxVelocity;
 			}
+
+			if (boid.Position.DistanceSquaredTo(mousePos) < 500){
+				boid.velocity = new Vector2();
+			}
 			
 			
 			// boid.LookAt(boid.GlobalPosition + boid.velocity, Vector3.Up);
 
 			boid.Position += boid.velocity * (float)delta;
 		}
+
+		comCamera = comCamera / boids.Count;
+		GetViewport().GetCamera2D().Position = comCamera;
 	}
 }
