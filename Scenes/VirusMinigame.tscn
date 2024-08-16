@@ -5,13 +5,13 @@
 
 [node name="VirusMinigame" type="Node2D"]
 script = ExtResource("1_6w8dc")
-virusAmount = 50
+virusAmount = 12
 virusScene = ExtResource("2_8jn3w")
 coherence = 0.01
 seperation = 1.0
 seperationDistance = 1000.0
 alignment = 0.05
-mouseForce = 0.02
+mouseForce = 0.1
 velocityRange = 5.0
 maxVelocity = 150.0
 viewRange = 1500.0

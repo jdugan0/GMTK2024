@@ -24,3 +24,11 @@ VirusDataTransfer="*res://Prefabs/VirusDataTransfer.tscn"
 [dotnet]
 
 project/assembly_name="GMTK2024"
+
+[input]
+
+Click={
+"deadzone": 0.5,
+"events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":1,"position":Vector2(180, 15),"global_position":Vector2(184, 56),"factor":1.0,"button_index":1,"canceled":false,"pressed":true,"double_click":false,"script":null)
+]
+}

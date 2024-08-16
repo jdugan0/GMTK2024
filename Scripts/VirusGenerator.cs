@@ -22,6 +22,8 @@ public partial class VirusGenerator : Node
 
 	[Export] float size;
 
+	private Vector2 mousePos;
+
 	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -43,7 +45,10 @@ public partial class VirusGenerator : Node
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
-	{
+	{ 
+		if (Input.IsActionPressed("Click")){
+			mousePos = GetViewport().GetCamera2D().GetGlobalMousePosition();
+		}
 		foreach (VirusBoid boid in boids){
 			Vector2 accel = new Vector2();
 			Vector2 com = new Vector2();
@@ -74,7 +79,7 @@ public partial class VirusGenerator : Node
 			accel += (com_v - boid.velocity) * alignment;
 
 			//calc mouse force
-			accel += (GetViewport().GetCamera2D().GetGlobalMousePosition() - boid.Position) * mouseForce;
+			accel += (mousePos - boid.Position) * mouseForce;
 
 			// clamp acceleration
 			if (Math.Abs(accel.Length()) > maxAccel){
