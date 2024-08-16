@@ -1,3 +1,21 @@
-[gd_scene format=3 uid="uid://2850ln454g3q"]
+[gd_scene load_steps=3 format=3 uid="uid://2850ln454g3q"]
 
-[node name="Virus" type="Node2D"]
+[ext_resource type="Script" path="res://Scripts/VirusGenerator.cs" id="1_6w8dc"]
+[ext_resource type="PackedScene" uid="uid://dowptv22ct3hh" path="res://Prefabs/Virus.tscn" id="2_8jn3w"]
+
+[node name="VirusMinigame" type="Node2D"]
+script = ExtResource("1_6w8dc")
+virusAmount = 50
+virusScene = ExtResource("2_8jn3w")
+coherence = 0.01
+seperation = 1.0
+seperationDistance = 1000.0
+alignment = 0.05
+mouseForce = 0.02
+velocityRange = 5.0
+maxVelocity = 150.0
+viewRange = 1500.0
+maxAccel = 600.0
+size = 400.0
+
+[node name="Camera2D" type="Camera2D" parent="."]
