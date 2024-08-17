@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/VirusBoid.cs" id="1_vnh10"]
 [ext_resource type="Script" path="res://Scripts/VirusParameter.cs" id="2_0jp88"]
-[ext_resource type="Texture2D" uid="uid://ca5k5tqg6tesn" path="res://Art/cells 302 x 290.png" id="3_l7r3l"]
+[ext_resource type="Texture2D" uid="uid://bhaiofs5yoxtb" path="res://Art/cells 302 x 290.png" id="3_l7r3l"]
 
 [sub_resource type="Resource" id="Resource_0vvou"]
 script = ExtResource("2_0jp88")

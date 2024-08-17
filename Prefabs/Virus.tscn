@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://dowptv22ct3hh"]
+[gd_scene load_steps=13 format=3 uid="uid://dowptv22ct3hh"]
 
 [ext_resource type="Script" path="res://Scripts/VirusBoid.cs" id="1_rin27"]
 [ext_resource type="Script" path="res://Scripts/VirusParameter.cs" id="2_wlc2m"]
-[ext_resource type="Texture2D" uid="uid://ca5k5tqg6tesn" path="res://Art/cells 302 x 290.png" id="3_p2ftv"]
+[ext_resource type="Texture2D" uid="uid://dw184d6giktsd" path="res://Art/new_atlas_texture.tres" id="3_37rxj"]
+[ext_resource type="Texture2D" uid="uid://bhaiofs5yoxtb" path="res://Art/cells 302 x 290.png" id="3_p2ftv"]
 
 [sub_resource type="Resource" id="Resource_0vvou"]
 script = ExtResource("2_wlc2m")
@@ -43,7 +44,7 @@ name = "V2"
 radius = 23.0
 height = 52.0
 
-[node name="Virus" type="RigidBody2D"]
+[node name="Virus" type="RigidBody2D" node_paths=PackedStringArray("sprite2D")]
 collision_layer = 2
 collision_mask = 3
 input_pickable = true
@@ -66,6 +67,8 @@ health = 5.0
 damage = 1.0
 name = "V1"
 player = true
+sprite2D = NodePath("Sprite2D")
+rootedTexture = ExtResource("3_37rxj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 z_index = 60

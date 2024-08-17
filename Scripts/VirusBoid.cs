@@ -34,6 +34,8 @@ public partial class VirusBoid : RigidBody2D
 	[Export] public bool player;
 	[Export] public bool selected;
 	bool justEntered = false;
+	[Export] Sprite2D sprite2D;
+	[Export] Texture2D rootedTexture;
 	bool rooted = false;
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -72,9 +74,10 @@ public partial class VirusBoid : RigidBody2D
 					rooted = true;
 					selected = false;
 					generator.locationQualities[l] += health;
+					sprite2D.Texture = rootedTexture;
 					Modulate = Colors.White;
 					Freeze = true;
-					ZIndex = -1;
+					// ZIndex = -1;
 				}
 			}
 
