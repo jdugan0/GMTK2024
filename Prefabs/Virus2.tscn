@@ -1,41 +1,41 @@
-[gd_scene load_steps=12 format=3 uid="uid://dowptv22ct3hh"]
+[gd_scene load_steps=12 format=3 uid="uid://dgh1c3xap7xt2"]
 
-[ext_resource type="Script" path="res://Scripts/VirusBoid.cs" id="1_rin27"]
-[ext_resource type="Script" path="res://Scripts/VirusParameter.cs" id="2_wlc2m"]
+[ext_resource type="Script" path="res://Scripts/VirusBoid.cs" id="1_vnh10"]
+[ext_resource type="Script" path="res://Scripts/VirusParameter.cs" id="2_0jp88"]
 
 [sub_resource type="Resource" id="Resource_0vvou"]
-script = ExtResource("2_wlc2m")
-value = 0.01
+script = ExtResource("2_0jp88")
+value = 0.4
 name = "V1"
 
 [sub_resource type="Resource" id="Resource_fn70y"]
-script = ExtResource("2_wlc2m")
-value = 0.0
+script = ExtResource("2_0jp88")
+value = 0.05
 name = "V2"
 
 [sub_resource type="Resource" id="Resource_y6ds6"]
-script = ExtResource("2_wlc2m")
-value = 0.5
+script = ExtResource("2_0jp88")
+value = 0.0
 name = "V1"
 
 [sub_resource type="Resource" id="Resource_eehjr"]
-script = ExtResource("2_wlc2m")
-value = 3.0
+script = ExtResource("2_0jp88")
+value = 0.2
 name = "V2"
 
 [sub_resource type="Resource" id="Resource_sk2to"]
-script = ExtResource("2_wlc2m")
+script = ExtResource("2_0jp88")
 value = 1000.0
-name = "V1"
+name = "V2"
 
 [sub_resource type="Resource" id="Resource_g82rl"]
-script = ExtResource("2_wlc2m")
+script = ExtResource("2_0jp88")
 value = 0.05
 name = "V1"
 
 [sub_resource type="Resource" id="Resource_03tjy"]
-script = ExtResource("2_wlc2m")
-value = -0.2
+script = ExtResource("2_0jp88")
+value = 0.05
 name = "V2"
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_8m7h3"]
@@ -45,27 +45,28 @@ size = Vector2(25, 25)
 size = Vector2(25, 25)
 
 [node name="Virus" type="RigidBody2D"]
+scale = Vector2(0.994961, 1.01226)
 collision_layer = 2
 collision_mask = 3
 gravity_scale = 0.0
 max_contacts_reported = 10
 contact_monitor = true
-script = ExtResource("1_rin27")
+script = ExtResource("1_vnh10")
 coherence = Array[Object]([SubResource("Resource_0vvou"), SubResource("Resource_fn70y")])
 seperation = Array[Object]([SubResource("Resource_y6ds6"), SubResource("Resource_eehjr")])
 seperationDistance = Array[Object]([SubResource("Resource_sk2to")])
 alignment = Array[Object]([SubResource("Resource_g82rl"), SubResource("Resource_03tjy")])
-validDamageTypes = PackedStringArray("V2")
-mouseForce = 0.3
+validDamageTypes = PackedStringArray("V1")
 velocityRange = 5.0
 maxVelocity = 150.0
 viewRange = 1500.0
 maxAccel = 600.0
-health = 5.0
-damage = 2.0
-name = "V1"
+health = 3.0
+damage = 1.0
+name = "V2"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1.15514e-06, 0.659113, 0.389066, 1)
 texture = SubResource("PlaceholderTexture2D_8m7h3")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

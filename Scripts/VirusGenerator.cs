@@ -6,20 +6,8 @@ public partial class VirusGenerator : Node
 {
 	[Export] private int virusAmount;
 	[Export] private PackedScene virusScene;
-	List<VirusBoid> boids = new List<VirusBoid>();
-	[Export] float coherence;
-	[Export] float seperation;
-	[Export] float seperationDistance;
-	[Export] float alignment;
-	[Export] float mouseForce;
-	[Export] float velocityRange;
-
-	[Export] float maxVelocity;
-
-	[Export] float viewRange;
-
-	[Export] float maxAccel;
-
+	[Export] private PackedScene virusScene2;
+	public List<VirusBoid> boids = new List<VirusBoid>();
 	[Export] float size;
 
 	private Vector2 mousePos;
@@ -28,19 +16,8 @@ public partial class VirusGenerator : Node
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		for (int i = 0; i < virusAmount; i++){
-			//generate virus
-			VirusBoid virus = (VirusBoid)virusScene.Instantiate();
-			virus.Position = new Vector2((float)GD.RandRange(-size/2, size/2),(float)GD.RandRange(-size/2, size/2));
-			boids.Add(virus);
-			virus.velocity = new Vector2();
-			
-			Vector2 velocity = new Vector2((float)GD.RandRange(-1f,1f),(float)GD.RandRange(-1f,1f));
-			velocity = velocity.Normalized();
-			velocity = velocity * (float)GD.RandRange(-velocityRange/2, velocityRange/2);
-			virus.velocity = velocity;
-			AddChild(virus);
-		}
+		CreateBoid(virusScene, new Vector2(), virusAmount/2);
+		CreateBoid(virusScene2, new Vector2(), virusAmount/2);
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -53,48 +30,73 @@ public partial class VirusGenerator : Node
 		Vector2 comCamera = new Vector2();
 		foreach (VirusBoid boid in boids){
 			Vector2 accel = new Vector2();
-			Vector2 com = new Vector2();
+			Dictionary<String, Vector2> com = new Dictionary<String, Vector2>();
 			comCamera += boid.Position;
-			Vector2 com_v = new Vector2();
-			Vector2 sep = new Vector2();
-			int c = 0;
+			Dictionary<String, Vector2> com_v = new Dictionary<String, Vector2>();
+			Dictionary<String, Vector2> sep = new Dictionary<String, Vector2>();
+			Dictionary<String, int> count = new Dictionary<String, int>();
 			foreach (VirusBoid b in boids){
-				if (b != boid && b.Position.DistanceSquaredTo(boid.Position) <= viewRange){
-					com += b.Position;
-					com_v += b.velocity;
-					c++;
+				if (b != boid && b.Position.DistanceSquaredTo(boid.Position) <= boid.viewRange){
+					if (!com.ContainsKey(b.name)){
+						com.Add(b.name, b.Position);
+					}
+					else{
+						com[b.name] += b.Position;
+					}
+					if (!com_v.ContainsKey(b.name)){
+						com_v.Add(b.name, b.velocity);
+					}
+					else{
+						com_v[b.name] += b.velocity;
+					}
+					
+					if (!count.ContainsKey(b.name)){
+						count.Add(b.name, 1);
+					}
+					else{
+						count[b.name]++;
+					}
 				}
-				if (b != boid && b.Position.DistanceSquaredTo(boid.Position) <= seperationDistance){
-					sep += (b.Position - boid.Position);
+				if (b != boid && b.Position.DistanceSquaredTo(boid.Position) <= getValueFromParam(boid.seperationDistanceDict, b.name, boid.name)){
+					if (!sep.ContainsKey(b.name)){
+						sep.Add(b.name, b.velocity* getValueFromParam(boid.seperationDict, b.name, boid.name));
+					}
+					else{
+						sep[b.name] += (b.Position - boid.Position)* getValueFromParam(boid.seperationDict, b.name, boid.name);
+					}
 				}
 			}	
-			if (c > 0){
-				com /= c;
-				com_v /= c;
+			foreach (String v in com.Keys){
+				accel += getValueFromParam(boid.coherenceDict, v, boid.name) * (com[v] - boid.Position) / count[v];
 			}
+			
 			//calc coherence
-			accel += (com - boid.Position) * coherence;
-
+			
 			// calc seperation
-			accel -= sep * seperation;
+			foreach (String v in sep.Keys){
+				accel -= sep[v];
+			}
 
 			//calc alignment
-			accel += (com_v - boid.velocity) * alignment;
+			foreach (String v in com_v.Keys){
+				accel += getValueFromParam(boid.alignmentDict, v, boid.name) * (com_v[v] - boid.velocity) / count[v];
+			}
+			
 
 			//calc mouse force
-			accel += (mousePos - boid.Position) * mouseForce;
+			accel += (mousePos - boid.Position) * boid.mouseForce;
 
 			// clamp acceleration
-			if (Math.Abs(accel.Length()) > maxAccel){
-				accel = accel.Normalized() * maxAccel;
+			if (Math.Abs(accel.Length()) > boid.maxAccel){
+				accel = accel.Normalized() * boid.maxAccel;
 			}
 
 			// set velocity
 			boid.velocity += accel;
 
 			// clamp velocity
-			if (Math.Abs(boid.velocity.Length()) > maxVelocity){
-				boid.velocity = boid.velocity.Normalized() * maxVelocity;
+			if (Math.Abs(boid.velocity.Length()) > boid.maxVelocity){
+				boid.velocity = boid.velocity.Normalized() * boid.maxVelocity;
 			}
 
 			if (boid.Position.DistanceSquaredTo(mousePos) < 500){
@@ -104,10 +106,33 @@ public partial class VirusGenerator : Node
 			
 			// boid.LookAt(boid.GlobalPosition + boid.velocity, Vector3.Up);
 
-			boid.Position += boid.velocity * (float)delta;
-		}
+			// boid.Position += boid.velocity * (float)delta;
 
+
+		}
 		comCamera = comCamera / boids.Count;
 		GetViewport().GetCamera2D().Position = comCamera;
+	}
+	public void CreateBoid(PackedScene boidType, Vector2 pos, int amount){
+		for (int i = 0; i < amount; i++){
+			//generate virus
+			VirusBoid virus = (VirusBoid)boidType.Instantiate();
+			virus.Position = new Vector2((float)GD.RandRange(-size/2, size/2),(float)GD.RandRange(-size/2, size/2)) + pos;
+			boids.Add(virus);
+			virus.velocity = new Vector2();
+			
+			Vector2 velocity = new Vector2((float)GD.RandRange(-1f,1f),(float)GD.RandRange(-1f,1f));
+			velocity = velocity.Normalized();
+			velocity = velocity * (float)GD.RandRange(-virus.velocityRange/2, virus.velocityRange/2);
+			virus.velocity = velocity;
+			virus.generator = this;
+			AddChild(virus);
+		}
+	}
+	public float getValueFromParam(Dictionary<String, float> dict, String key, String def){
+		if (dict.ContainsKey(key)){
+			return dict[key];
+		}
+		return dict[def];
 	}
 }
