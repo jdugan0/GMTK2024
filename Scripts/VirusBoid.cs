@@ -30,6 +30,8 @@ public partial class VirusBoid : RigidBody2D
 	[Export] public float damage;
 	public VirusGenerator generator;
 	[Export] public String name;
+	VirusBoid col;
+	[Export] public bool player;
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -50,23 +52,32 @@ public partial class VirusBoid : RigidBody2D
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-		damageTime -= (float)delta;
+		if (time > 0){
+			time -= (float)delta;
+		}
 		LinearVelocity = velocity;
 		if (health <= 0){
+			
 			generator.boids.Remove(this);
 			QueueFree();
+		}
+		if (col != null && time <= 0){
+			if (validDamageTypes.Contains(col.name)){
+				time = damageTime;
+				col.health -= damage;
+			}
 		}
 	}
 
 	public void DealDamage(Node node){
-		// GD.Print("col");
 		var n = node as VirusBoid;
-		if (n != null && time <= 0){
-			if (validDamageTypes.Contains(((VirusBoid)node).name)){
-				time = damageTime;
-				((VirusBoid)node).health -= damage;
-				GD.Print(((VirusBoid)node).health);
-			}
+		if (n != null){
+			col = n;
+		}
+	}
+	public void Exited(Node node){
+		if (node as VirusBoid == col){
+			col = null;
 		}
 	}
 	

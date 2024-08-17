@@ -20,12 +20,12 @@ name = "V1"
 
 [sub_resource type="Resource" id="Resource_eehjr"]
 script = ExtResource("2_wlc2m")
-value = 3.0
+value = 0.0
 name = "V2"
 
 [sub_resource type="Resource" id="Resource_sk2to"]
 script = ExtResource("2_wlc2m")
-value = 1000.0
+value = 32.0
 name = "V1"
 
 [sub_resource type="Resource" id="Resource_g82rl"]
@@ -35,7 +35,7 @@ name = "V1"
 
 [sub_resource type="Resource" id="Resource_03tjy"]
 script = ExtResource("2_wlc2m")
-value = -0.2
+value = 0.0
 name = "V2"
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_8m7h3"]
@@ -48,6 +48,7 @@ size = Vector2(25, 25)
 collision_layer = 2
 collision_mask = 3
 gravity_scale = 0.0
+can_sleep = false
 max_contacts_reported = 10
 contact_monitor = true
 script = ExtResource("1_rin27")
@@ -56,14 +57,15 @@ seperation = Array[Object]([SubResource("Resource_y6ds6"), SubResource("Resource
 seperationDistance = Array[Object]([SubResource("Resource_sk2to")])
 alignment = Array[Object]([SubResource("Resource_g82rl"), SubResource("Resource_03tjy")])
 validDamageTypes = PackedStringArray("V2")
-mouseForce = 0.3
+mouseForce = 5.0
 velocityRange = 5.0
 maxVelocity = 150.0
 viewRange = 1500.0
-maxAccel = 600.0
+maxAccel = 10000.0
 health = 5.0
-damage = 2.0
+damage = 1.0
 name = "V1"
+player = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = SubResource("PlaceholderTexture2D_8m7h3")
@@ -72,3 +74,4 @@ texture = SubResource("PlaceholderTexture2D_8m7h3")
 shape = SubResource("RectangleShape2D_2rq32")
 
 [connection signal="body_entered" from="." to="." method="DealDamage"]
+[connection signal="body_exited" from="." to="." method="Exited"]
