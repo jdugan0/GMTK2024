@@ -6,7 +6,7 @@
 
 [sub_resource type="Resource" id="Resource_0vvou"]
 script = ExtResource("2_0jp88")
-value = 100.0
+value = 60.0
 name = "V1"
 
 [sub_resource type="Resource" id="Resource_fn70y"]

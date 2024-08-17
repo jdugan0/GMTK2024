@@ -70,7 +70,7 @@ public partial class VirusBoid : RigidBody2D
 		if (Input.IsActionJustPressed("Root") && selected && !rooted){
 			
 			foreach (Location l in VirusGenerator.instance.locations){
-				if (l.Position.DistanceTo(Position) < 1000){
+				if (l.Position.DistanceTo(Position) < 280.7){
 					rooted = true;
 					selected = false;
 					generator.locationQualities[l] += health;
@@ -78,6 +78,7 @@ public partial class VirusBoid : RigidBody2D
 					Modulate = Colors.White;
 					Freeze = true;
 					// ZIndex = -1;
+					generator.boids.Remove(this);
 				}
 			}
 

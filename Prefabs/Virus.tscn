@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/VirusBoid.cs" id="1_rin27"]
 [ext_resource type="Script" path="res://Scripts/VirusParameter.cs" id="2_wlc2m"]
-[ext_resource type="Texture2D" uid="uid://dw184d6giktsd" path="res://Art/new_atlas_texture.tres" id="3_37rxj"]
+[ext_resource type="Texture2D" uid="uid://dw8iv1255eqon" path="res://Art/rooted virus.png" id="3_aagdk"]
 [ext_resource type="Texture2D" uid="uid://bhaiofs5yoxtb" path="res://Art/cells 302 x 290.png" id="3_p2ftv"]
 
 [sub_resource type="Resource" id="Resource_0vvou"]
@@ -68,7 +68,7 @@ damage = 1.0
 name = "V1"
 player = true
 sprite2D = NodePath("Sprite2D")
-rootedTexture = ExtResource("3_37rxj")
+rootedTexture = ExtResource("3_aagdk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 z_index = 60
