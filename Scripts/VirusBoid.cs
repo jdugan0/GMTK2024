@@ -32,6 +32,9 @@ public partial class VirusBoid : RigidBody2D
 	[Export] public String name;
 	VirusBoid col;
 	[Export] public bool player;
+	[Export] public bool selected;
+	bool justEntered = false;
+	bool rooted = false;
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -52,10 +55,38 @@ public partial class VirusBoid : RigidBody2D
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
+		if (Input.IsActionPressed("RightClick") && justEntered && !rooted){
+			selected = !selected;
+			justEntered = false;
+			if (selected){
+				Modulate = Colors.Blue;
+			}
+			else{
+				Modulate = Colors.White;
+			}
+		}
+		if (Input.IsActionJustPressed("Root") && selected && !rooted){
+			
+			foreach (Location l in VirusGenerator.instance.locations){
+				if (l.Position.DistanceTo(Position) < 1000){
+					rooted = true;
+					selected = false;
+					generator.locationQualities[l] += health;
+					Modulate = Colors.White;
+					
+				}
+			}
+
+		}
 		if (time > 0){
 			time -= (float)delta;
 		}
-		LinearVelocity = velocity;
+		if (!rooted){
+			LinearVelocity = velocity;
+		}
+		else{
+			LinearVelocity = new Vector2();
+		}
 		if (health <= 0){
 			
 			generator.boids.Remove(this);
@@ -78,6 +109,27 @@ public partial class VirusBoid : RigidBody2D
 	public void Exited(Node node){
 		if (node as VirusBoid == col){
 			col = null;
+		}
+	}
+
+	public void MouseEnteredLogic(){
+		// GD.Print("qwefd");
+		if (player && !justEntered && !rooted){
+			justEntered = true;
+			Modulate = new Color(Colors.Blue.R, Colors.Blue.G, Colors.Blue.B, 0.5f);
+			GD.Print(selected);
+			// selected = !selected;
+		}
+	}
+	public void MouseExitedLogic(){
+		if (player){
+			justEntered = false;
+			if (selected){
+				Modulate = Colors.Blue;
+			}
+			else{
+				Modulate = Colors.White;
+			}
 		}
 	}
 	

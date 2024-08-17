@@ -1,0 +1,34 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://bn0t23qd1jq8j"
+path="res://.godot/imported/tiles 460 x 460.png-08be76c3c9557722a4faf720330ad2e7.ctex"
+metadata={
+"vram_texture": false
+}
+
+[deps]
+
+source_file="res://Art/tiles 460 x 460.png"
+dest_files=["res://.godot/imported/tiles 460 x 460.png-08be76c3c9557722a4faf720330ad2e7.ctex"]
+
+[params]
+
+compress/mode=0
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/normal_map=0
+compress/channel_pack=0
+mipmaps/generate=false
+mipmaps/limit=-1
+roughness/mode=0
+roughness/src_normal=""
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=1

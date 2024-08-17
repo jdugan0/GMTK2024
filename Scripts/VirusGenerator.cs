@@ -13,6 +13,9 @@ public partial class VirusGenerator : Node
 	public static VirusGenerator instance;
 
 	private Vector2 mousePos;
+	public List<Location> locations = new List<Location>();
+
+	public Dictionary<Location, float> locationQualities = new Dictionary<Location, float>();
 
 	
 	// Called when the node enters the scene tree for the first time.
@@ -109,7 +112,7 @@ public partial class VirusGenerator : Node
 				boid.velocity = boid.velocity.Normalized() * boid.maxVelocity;
 			}
 
-			if (boid.Position.DistanceTo(mousePos) < 22 && boid.mouseForce > 0){
+			if ((boid.Position.DistanceTo(mousePos) < 22 || Input.IsActionPressed("RightClick")) && boid.mouseForce > 0){
 				boid.velocity = new Vector2();
 			}
 			
