@@ -24,7 +24,7 @@ public partial class EnemySource : Node2D
         if (time > 0){
 			time -= (float)delta;
 		}
-		else if (GetViewport().GetCamera2D().Position.DistanceTo(Position) < (1000 + totalTime * difScaleDist)){
+		else if (GetViewport().GetCamera2D().Position.DistanceTo(Position) < (1500 + totalTime * difScaleDist)){
 			VirusGenerator.instance.CreateBoid(virusType, Position, amount + (int)(totalTime*difScaleAmount));
 			time = sourceTime + (float)GD.RandRange(-range/2, range/2) - totalTime * difScaleTime;
 		}

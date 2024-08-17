@@ -77,9 +77,8 @@ public partial class VirusGenerator : Node
 				}
 			}	
 			foreach (String v in com.Keys){
-				accel += getValueFromParam(boid.coherenceDict, v, boid.name) * (com[v] - boid.Position) / count[v];
-				if (boid.name == "V2" && getValueFromParam(boid.coherenceDict, v, boid.name) == 0){
-					GD.Print(accel);
+				if (count[v] > 0){
+					accel += getValueFromParam(boid.coherenceDict, v, boid.name) * (com[v] - boid.Position) / count[v];
 				}
 			}
 			
@@ -92,7 +91,9 @@ public partial class VirusGenerator : Node
 
 			//calc alignment
 			foreach (String v in com_v.Keys){
-				accel += getValueFromParam(boid.alignmentDict, v, boid.name) * (com_v[v] - boid.velocity) / count[v];
+				if (count[v] > 0){
+					accel += getValueFromParam(boid.alignmentDict, v, boid.name) * (com_v[v] - boid.velocity) / count[v];
+				}
 			}
 			
 
