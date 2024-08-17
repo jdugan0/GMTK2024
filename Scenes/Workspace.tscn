@@ -1,3 +1,92 @@
-[gd_scene format=3 uid="uid://btbbbehoaknia"]
+[gd_scene load_steps=12 format=3 uid="uid://bn30kdu7s07l5"]
 
-[node name="Node2D" type="Node2D"]
+[ext_resource type="Texture2D" uid="uid://dnobjr7cssrwn" path="res://Art/greenhouse no pot.png" id="1_n5eej"]
+[ext_resource type="Texture2D" uid="uid://c7vun7uok4t45" path="res://Art/injections icon.png" id="2_l7cwa"]
+[ext_resource type="Script" path="res://Managers/Scene/ButtonSceneSwitcher.cs" id="2_mlrbl"]
+[ext_resource type="Script" path="res://Scripts/ViewVirusButton.cs" id="3_7cee1"]
+[ext_resource type="Script" path="res://Scripts/VirusDropdown.cs" id="4_dxgb8"]
+[ext_resource type="Script" path="res://Scripts/SyringeContainer.cs" id="5_d72nf"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ju7te"]
+atlas = ExtResource("2_l7cwa")
+region = Rect2(0, 648, 560, 115)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ccgl6"]
+atlas = ExtResource("2_l7cwa")
+region = Rect2(0, 648, 560, 115)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tjhnx"]
+atlas = ExtResource("2_l7cwa")
+region = Rect2(0, 648, 560, 115)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wwgoc"]
+atlas = ExtResource("2_l7cwa")
+region = Rect2(0, 648, 560, 115)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mguhy"]
+atlas = ExtResource("2_l7cwa")
+region = Rect2(0, 648, 560, 115)
+
+[node name="Root" type="Node2D"]
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+
+[node name="Background" type="TextureRect" parent="UI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource("1_n5eej")
+expand_mode = 1
+
+[node name="Viruses" type="VBoxContainer" parent="UI"]
+layout_mode = 2
+offset_left = 48.0
+offset_top = 19.0
+offset_right = 328.0
+offset_bottom = 84.0
+alignment = 2
+
+[node name="Syringe View" type="TextureButton" parent="UI/Viruses" node_paths=PackedStringArray("menu")]
+custom_minimum_size = Vector2(280, 65)
+layout_mode = 2
+texture_normal = SubResource("AtlasTexture_ju7te")
+texture_pressed = SubResource("AtlasTexture_ccgl6")
+texture_hover = SubResource("AtlasTexture_tjhnx")
+texture_disabled = SubResource("AtlasTexture_wwgoc")
+texture_focused = SubResource("AtlasTexture_mguhy")
+ignore_texture_size = true
+stretch_mode = 0
+script = ExtResource("3_7cee1")
+menu = NodePath("../Syringe Layer")
+
+[node name="Syringe Layer" type="CanvasLayer" parent="UI/Viruses"]
+script = ExtResource("4_dxgb8")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="UI/Viruses/Syringe Layer"]
+offset_left = 48.0
+offset_top = 88.0
+offset_right = 328.0
+offset_bottom = 88.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Syringes" type="VBoxContainer" parent="UI/Viruses/Syringe Layer/ScrollContainer"]
+layout_mode = 2
+script = ExtResource("5_d72nf")
+
+[node name="TextureButton" type="Button" parent="UI"]
+layout_mode = 2
+offset_left = 25.0
+offset_top = 971.0
+offset_right = 280.0
+offset_bottom = 1054.0
+size_flags_horizontal = 0
+script = ExtResource("2_mlrbl")
+
+[connection signal="button_down" from="UI/Viruses/Syringe View" to="UI/Viruses/Syringe View" method="ToggleMenu"]
+[connection signal="button_down" from="UI/TextureButton" to="UI/TextureButton" method="Switch" binds= [1]]

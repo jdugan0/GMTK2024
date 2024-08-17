@@ -1,3 +1,6 @@
-[gd_scene format=3 uid="uid://crvfib87ppvju"]
+[gd_scene load_steps=2 format=3 uid="uid://crvfib87ppvju"]
+
+[ext_resource type="Script" path="res://Scripts/VirusDataTransfer.cs" id="1_nf7mm"]
 
 [node name="VirusDataTransfer" type="Node"]
+script = ExtResource("1_nf7mm")
