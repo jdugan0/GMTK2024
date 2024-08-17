@@ -47,6 +47,7 @@ public partial class VirusGenerator : Node
 			}
 			Dictionary<String, Vector2> com_v = new Dictionary<String, Vector2>();
 			Dictionary<String, Vector2> sep = new Dictionary<String, Vector2>();
+			Dictionary<String, Vector2> targeting = new Dictionary<String, Vector2>();
 			Dictionary<String, int> count = new Dictionary<String, int>();
 			foreach (VirusBoid b in boids){
 				if (b != boid && b.Position.DistanceTo(boid.Position) <= boid.viewRange){
@@ -69,6 +70,14 @@ public partial class VirusGenerator : Node
 					else{
 						count[b.name]++;
 					}
+					if (!targeting.ContainsKey(b.name)){
+						targeting.Add(b.name, b.Position);
+					}
+					else{
+						if (targeting[b.name].DistanceSquaredTo(boid.Position) <= b.Position.DistanceSquaredTo(boid.Position)){
+							targeting[b.name] = b.Position;
+						}
+					}
 				}
 				if (b != boid && b.Position.DistanceTo(boid.Position) <= getValueFromParam(boid.seperationDistanceDict, b.name, boid.name)){
 					if (!sep.ContainsKey(b.name)){
@@ -90,6 +99,10 @@ public partial class VirusGenerator : Node
 			// calc seperation
 			foreach (String v in sep.Keys){
 				accel -= sep[v];
+			}
+
+			foreach(String v in targeting.Keys){
+				accel += getValueFromParam(boid.targetingDict, v, boid.name) * (targeting[v] - boid.Position);
 			}
 
 			//calc alignment

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dowptv22ct3hh"]
+[gd_scene load_steps=14 format=3 uid="uid://dowptv22ct3hh"]
 
 [ext_resource type="Script" path="res://Scripts/VirusBoid.cs" id="1_rin27"]
 [ext_resource type="Script" path="res://Scripts/VirusParameter.cs" id="2_wlc2m"]
@@ -40,6 +40,11 @@ script = ExtResource("2_wlc2m")
 value = 0.0
 name = "V2"
 
+[sub_resource type="Resource" id="Resource_5yi7f"]
+script = ExtResource("2_wlc2m")
+value = 0.0
+name = "V1"
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_n4yvc"]
 radius = 23.0
 height = 52.0
@@ -57,6 +62,7 @@ coherence = Array[Object]([SubResource("Resource_0vvou"), SubResource("Resource_
 seperation = Array[Object]([SubResource("Resource_y6ds6"), SubResource("Resource_eehjr")])
 seperationDistance = Array[Object]([SubResource("Resource_sk2to")])
 alignment = Array[Object]([SubResource("Resource_g82rl"), SubResource("Resource_03tjy")])
+targeting = Array[Object]([SubResource("Resource_5yi7f")])
 validDamageTypes = PackedStringArray("V2")
 mouseForce = 8.0
 velocityRange = 5.0
@@ -68,7 +74,10 @@ damage = 1.0
 name = "V1"
 player = true
 sprite2D = NodePath("Sprite2D")
+abilityTime = 5.0
 rootedTexture = ExtResource("3_aagdk")
+abilityCooldown = 10.0
+ability = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 z_index = 60
