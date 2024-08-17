@@ -73,7 +73,8 @@ public partial class VirusBoid : RigidBody2D
 					selected = false;
 					generator.locationQualities[l] += health;
 					Modulate = Colors.White;
-					
+					Freeze = true;
+					ZIndex = -1;
 				}
 			}
 
