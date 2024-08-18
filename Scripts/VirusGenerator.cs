@@ -1,6 +1,7 @@
 using Godot;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 public partial class VirusGenerator : Node
 {
@@ -32,7 +33,14 @@ public partial class VirusGenerator : Node
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-		if (boids.Count <=0){
+		// GD.Print(boids.Count);
+		int boidCount = 0;
+		foreach(VirusBoid b in boids){
+			if (b.name == "V1"){
+				boidCount++;
+			}
+		}
+		if (boidCount <= 0){
 			SceneSwitcher.instance.SwitchScene(0);
 		}
 
@@ -143,8 +151,10 @@ public partial class VirusGenerator : Node
 
 
 		}
-		comCamera = comCamera / cCam;
-		GetViewport().GetCamera2D().Position = comCamera;
+		if (cCam > 0){
+			comCamera = comCamera / cCam;
+			GetViewport().GetCamera2D().Position = comCamera;
+		}
 	}
 	public void CreateBoid(PackedScene boidType, Vector2 pos, int amount){
 		for (int i = 0; i < amount; i++){

@@ -130,6 +130,7 @@ public partial class VirusBoid : RigidBody2D
 					Freeze = true;
 					// ZIndex = -1;
 					generator.boids.Remove(this);
+					
 					break;
 				}
 			}
@@ -175,7 +176,7 @@ public partial class VirusBoid : RigidBody2D
 		if (player && !justEntered && !rooted){
 			justEntered = true;
 			Modulate = new Color(Colors.Blue.R, Colors.Blue.G, Colors.Blue.B, 0.5f);
-			GD.Print(selected);
+			// GD.Print(selected);
 			// selected = !selected;
 		}
 	}

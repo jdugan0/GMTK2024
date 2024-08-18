@@ -28,7 +28,16 @@ public partial class Inventory : Node
 		if (plantInfos.Count < 15)
 		{
 			plantInfos.Add(plantInfo);
-			from.AddPlant(plantInfo);
+		}
+	}
+
+	public void RefreshVisuals(PlantLayer from){
+		foreach (PlantInfo info in plantInfos){
+			from.AddPlant(info);
+			GD.Print(info.plant);
+			if (info.onTable){
+				PlantLayer.SetTableOccupied(info.plant);
+			}
 		}
 	}
 

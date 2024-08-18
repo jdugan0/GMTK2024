@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://n767njjh7i0v"]
 
 [ext_resource type="Script" path="res://Scripts/SyringeDragging.cs" id="1_t0q2v"]
-[ext_resource type="Texture2D" uid="uid://0htg3irnm5x0" path="res://Art/Syringe.tres" id="2_fpinp"]
+[ext_resource type="Texture2D" path="res://Art/Syringe.tres" id="2_fpinp"]
 
 [node name="Syringe" type="Control"]
 custom_minimum_size = Vector2(560, 126)

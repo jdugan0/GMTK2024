@@ -25,12 +25,13 @@ public partial class PlantLayer : CanvasLayer
 				break;
 			}
 		}
+		info.plant = plant;
 		AddChild(plant);
 	}
 
     public override void _Process(double delta)
     {
-        GD.Print("Table occuplant is " + GetTableOccuplant());
+        // GD.Print("Table occuplant is " + GetTableOccuplant());
     }
 
     public static Vector2 GetTablePosition()

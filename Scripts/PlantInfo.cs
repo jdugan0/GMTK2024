@@ -9,4 +9,5 @@ public partial class PlantInfo : Resource
     public List<VirusItem> viruses = new List<VirusItem>();
     public Vector2 posSlot = new Vector2(0, 0);
     public bool onTable = false;
+    public Plant plant;
 }

@@ -3,10 +3,10 @@
 [ext_resource type="Script" path="res://Scripts/VirusGenerator.cs" id="1_6w8dc"]
 [ext_resource type="PackedScene" uid="uid://dowptv22ct3hh" path="res://Prefabs/Virus.tscn" id="2_8jn3w"]
 [ext_resource type="PackedScene" uid="uid://dgh1c3xap7xt2" path="res://Prefabs/Virus2.tscn" id="3_schds"]
-[ext_resource type="Texture2D" uid="uid://vscqonnd5jrh" path="res://Art/tiles rev b BACKGROUND 460 x 460.png" id="6_f6dbi"]
+[ext_resource type="Texture2D" path="res://Art/tiles rev b BACKGROUND 460 x 460.png" id="6_f6dbi"]
 [ext_resource type="PackedScene" uid="uid://ckucsv36pa8ch" path="res://Prefabs/location_4.tscn" id="6_xwnd0"]
 [ext_resource type="PackedScene" uid="uid://s184nc7dtjrr" path="res://Prefabs/source.tscn" id="6_xxyr4"]
-[ext_resource type="Texture2D" uid="uid://d2o63i8utd5hp" path="res://Art/tiles rev c 460 x 460.png" id="7_wb2ir"]
+[ext_resource type="Texture2D" path="res://Art/tiles rev c 460 x 460.png" id="7_wb2ir"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lyq1q"]
 texture = ExtResource("6_f6dbi")
@@ -296,24 +296,21 @@ position = Vector2(-11729, 7205)
 
 [node name="Location5" parent="." instance=ExtResource("6_xwnd0")]
 position = Vector2(-7133, -4649)
+type = 1
 
 [node name="Location6" parent="." instance=ExtResource("6_xwnd0")]
 position = Vector2(6656, -1625)
+type = 2
 
 [node name="Location7" parent="." instance=ExtResource("6_xwnd0")]
 position = Vector2(8470, 5028)
-
-[node name="Location8" parent="." instance=ExtResource("6_xwnd0")]
-position = Vector2(11211, 5068)
+type = 3
 
 [node name="Source" parent="." instance=ExtResource("6_xxyr4")]
 position = Vector2(11183, 421)
 
 [node name="Source2" parent="." instance=ExtResource("6_xxyr4")]
 position = Vector2(-2654, 10180)
-
-[node name="Location9" parent="." instance=ExtResource("6_xwnd0")]
-position = Vector2(-22, 5593)
 
 [node name="Source3" parent="." instance=ExtResource("6_xxyr4")]
 position = Vector2(-4320, 1711)
