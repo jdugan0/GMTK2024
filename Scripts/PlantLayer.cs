@@ -9,10 +9,11 @@ public partial class PlantLayer : CanvasLayer
 	private static bool tableOccupied = false;
 	private static Plant tableOccupant;
 
-	public void AddPlant()
+    public void AddPlant(PlantInfo info)
 	{
 		// TODO different plants
 		Plant plant = (Plant) plantScene.Instantiate();
+		plant.SetInfo(info);
 		for (int i = 0; i < 15; i++)
 		{
 			if (positions[i].GetParent().GetType().ToString() != "Plant")
@@ -26,6 +27,11 @@ public partial class PlantLayer : CanvasLayer
 		}
 		AddChild(plant);
 	}
+
+    public override void _Process(double delta)
+    {
+        GD.Print("Table occuplant is " + GetTableOccuplant());
+    }
 
     public static Vector2 GetTablePosition()
 	{

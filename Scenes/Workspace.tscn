@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://btbbbehoaknia"]
+[gd_scene load_steps=21 format=3 uid="uid://btbbbehoaknia"]
 
 [ext_resource type="Script" path="res://Scripts/WorkspaceTest.cs" id="1_3crt5"]
 [ext_resource type="Texture2D" uid="uid://dnobjr7cssrwn" path="res://Art/greenhouse no pot.png" id="1_n5eej"]
@@ -8,10 +8,9 @@
 [ext_resource type="Script" path="res://Managers/Scene/ButtonSceneSwitcher.cs" id="2_mlrbl"]
 [ext_resource type="Script" path="res://Scripts/PlantLayer.cs" id="3_1b3g6"]
 [ext_resource type="Script" path="res://Scripts/ViewVirusButton.cs" id="3_7cee1"]
-[ext_resource type="PackedScene" path="res://Prefabs/Plant.tscn" id="4_kigpy"]
+[ext_resource type="PackedScene" uid="uid://ccxvr07fwlf4r" path="res://Prefabs/Plant.tscn" id="4_kigpy"]
 [ext_resource type="PackedScene" uid="uid://n767njjh7i0v" path="res://Prefabs/Syringe.tscn" id="7_wch7j"]
 [ext_resource type="Texture2D" uid="uid://bu23v3t5kq6fq" path="res://Art/BEGIN BUTTON 507 x 134.png" id="9_otpgb"]
-[ext_resource type="Script" path="res://Scripts/Inventory.cs" id="9_td2eh"]
 
 [sub_resource type="Resource" id="Resource_hy3bf"]
 script = ExtResource("2_dp2aa")
@@ -55,8 +54,8 @@ region = Rect2(0, 134, 507, 134)
 
 [node name="Root" type="Node2D" node_paths=PackedStringArray("inventory")]
 script = ExtResource("1_3crt5")
-testNumberPlants = 9
-inventory = NodePath("Inventory")
+testNumberPlants = 15
+inventory = NodePath("")
 testItems = Array[Object]([SubResource("Resource_hy3bf"), SubResource("Resource_40ro3")])
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -101,7 +100,7 @@ ignore_texture_size = true
 stretch_mode = 0
 script = ExtResource("3_7cee1")
 container = NodePath("../Viruses")
-inventory = NodePath("../../../Inventory")
+inventory = NodePath("")
 syringeScene = ExtResource("7_wch7j")
 
 [node name="Viruses" type="VBoxContainer" parent="UI Render/UI"]
@@ -188,10 +187,6 @@ scale = Vector2(0.5, 0.5)
 [node name="Spot14" type="Node2D" parent="Plant Spots"]
 position = Vector2(1776, 969)
 scale = Vector2(0.5, 0.5)
-
-[node name="Inventory" type="Node" parent="." node_paths=PackedStringArray("layer")]
-script = ExtResource("9_td2eh")
-layer = NodePath("../UI Render/UI/Plant Layer")
 
 [connection signal="pressed" from="UI Render/UI/View Virus Button" to="UI Render/UI/View Virus Button" method="ToggleMenu"]
 [connection signal="button_down" from="UI Render/UI/TextureButton" to="UI Render/UI/TextureButton" method="BeginMinigame"]

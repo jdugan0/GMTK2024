@@ -3,41 +3,51 @@ using System.Collections.Generic;
 
 public partial class Plant : TextureButton
 {
-	private List<VirusItem> viruses = new List<VirusItem>();
-	private Vector2 posSlot;
-	private bool onTable;
-	[Export] private Species species;
+	[Export] private PlantInfo info;
 
-	public Plant()
+    public override void _Ready()
+    {
+		if (!info.onTable)
+		{
+			ToShelf();
+		}
+		else
+		{
+			ToTable();
+		}
+    }
+
+	public void SetInfo(PlantInfo info)
 	{
-		posSlot = new Vector2(0, 0);
-		Position = posSlot;
+		this.info = info;
 	}
 
     public void SetPositionPreset(Vector2 position)
 	{
-		posSlot = position;
-		Position = posSlot;
+		info.posSlot = position;
+		if (!info.onTable)
+		{
+			Position = info.posSlot;
+		}
 	}
 
     public void AddVirus(VirusItem item)
 	{
-		viruses.Add(item);
+		info.viruses.Add(item);
 	}
+
 	public void RemoveVirus(VirusItem item)
 	{
-		viruses.Remove(item);
+		info.viruses.Remove(item);
 	}
-
-
 
 	private void ToTable()
 	{
-		if (!PlantLayer.GetTableOccupied())
+		if (!PlantLayer.GetTableOccupied() && PlantLayer.GetTableOccuplant() != this)
 		{
 			Position = PlantLayer.GetTablePosition();
-			onTable = true;
-			Scale = new Vector2(1.5f, 1.5f);
+			info.onTable = true;
+			SetScale(new Vector2(1.5f, 1.5f));
 			ZIndex = 10;
 			PlantLayer.SetTableOccupied(this);
 		}
@@ -45,16 +55,16 @@ public partial class Plant : TextureButton
 
 	private void ToShelf()
 	{
-		Position = posSlot;
-		onTable = false;
-		Scale = new Vector2(0.5f, 0.5f);
+		Position = info.posSlot;
+		info.onTable = false;
+		SetScale(new Vector2(0.5f, 0.5f));
 		ZIndex = -1;
 		PlantLayer.SetTableFree();
 	}
 
 	public void OnClick()
 	{
-		if (onTable)
+		if (info.onTable)
 		{
 			ToShelf();
 		}
@@ -66,6 +76,11 @@ public partial class Plant : TextureButton
 
 	public List<VirusItem> GetViruses()
 	{
-		return viruses;
+		return info.viruses;
+	}
+
+	private void SetScale(Vector2 scale)
+	{
+		Scale = scale;
 	}
 }

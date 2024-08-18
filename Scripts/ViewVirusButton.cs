@@ -5,7 +5,6 @@ using System.Collections.Generic;
 public partial class ViewVirusButton : TextureButton
 {
 	[Export] private Control container;
-	[Export] public Inventory inventory;
 	[Export] PackedScene syringeScene;
 	public List<Control> syringes = new List<Control>();
 	public void ToggleMenu()
@@ -13,7 +12,7 @@ public partial class ViewVirusButton : TextureButton
 		container.Visible = !container.Visible;
 		if (container.Visible)
 		{
-			foreach (VirusItem item in inventory.GetViruses())
+			foreach (VirusItem item in Inventory.instance.GetViruses())
 			{
 				SyringeDragging syringeDragging = (SyringeDragging)syringeScene.Instantiate();
 				syringeDragging.virus = item;
