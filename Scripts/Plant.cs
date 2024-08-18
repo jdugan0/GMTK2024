@@ -24,11 +24,12 @@ public partial class Plant : TextureButton
 	{
 		viruses.Add(item);
 	}
-
-	public void RemoveLatestVirus()
+	public void RemoveVirus(VirusItem item)
 	{
-		viruses.Remove(viruses[viruses.Count - 1]);
+		viruses.Remove(item);
 	}
+
+
 
 	private void ToTable()
 	{

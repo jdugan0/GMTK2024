@@ -143,7 +143,9 @@ public partial class VirusBoid : RigidBody2D
 			LinearVelocity = new Vector2();
 		}
 		if (health <= 0){
-			
+			if (generator.boids.Count == 1){
+				SceneSwitcher.instance.SwitchScene(0);
+			}
 			generator.boids.Remove(this);
 			QueueFree();
 		}

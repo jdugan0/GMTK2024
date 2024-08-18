@@ -22,7 +22,10 @@ public partial class VirusGenerator : Node
 	public override void _Ready()
 	{
 		instance = this;
-		CreateBoid(virusScene, new Vector2(), virusAmount);
+		foreach (VirusItem item in VirusDataTransfer.GetViruses()){
+			CreateBoid(item.scene, new Vector2(), 1);
+		}
+		
 		// CreateBoid(virusScene2, new Vector2(), virusAmount/2);
 	}
 

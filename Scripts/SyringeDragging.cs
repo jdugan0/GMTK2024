@@ -24,9 +24,17 @@ public partial class SyringeDragging : Control
 	public void Select(){
 		if (PlantLayer.GetTableOccuplant() != null){
 			selected = !selected;
-			PlantLayer.GetTableOccuplant().AddVirus(virus);
+			if (selected){
+				PlantLayer.GetTableOccuplant().AddVirus(virus);
+			}
+			else{
+				PlantLayer.GetTableOccuplant().RemoveVirus(virus);
+			}
 		}
 		else{
+			if (selected){
+				PlantLayer.GetTableOccuplant().RemoveVirus(virus);
+			}
 			selected = false;
 		}
 	}
