@@ -1,7 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://n767njjh7i0v"]
+[gd_scene load_steps=6 format=3 uid="uid://n767njjh7i0v"]
 
 [ext_resource type="Script" path="res://Scripts/SyringeDragging.cs" id="1_t0q2v"]
-[ext_resource type="Texture2D" uid="uid://0htg3irnm5x0" path="res://Art/Syringe.tres" id="2_fpinp"]
+[ext_resource type="Texture2D" path="res://Art/Syringe.tres" id="2_fpinp"]
+[ext_resource type="PackedScene" uid="uid://dowptv22ct3hh" path="res://Prefabs/Virus.tscn" id="2_mr2cj"]
+[ext_resource type="Script" path="res://Scripts/VirusItem.cs" id="3_vg56m"]
+
+[sub_resource type="Resource" id="Resource_8plm5"]
+script = ExtResource("3_vg56m")
+name = "TestVirus"
+ability = 1
+scene = ExtResource("2_mr2cj")
 
 [node name="Syringe" type="Control"]
 custom_minimum_size = Vector2(560, 126)
@@ -12,6 +20,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_t0q2v")
+virus = SubResource("Resource_8plm5")
 
 [node name="TextureRect" type="TextureButton" parent="."]
 layout_mode = 0

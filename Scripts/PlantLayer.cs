@@ -36,7 +36,7 @@ public partial class PlantLayer : CanvasLayer
 
     public static Vector2 GetTablePosition()
 	{
-		return new Vector2(670, 310);
+		return new Vector2(800, 310);
 	}
 
 	public static void SetTableOccupied(Plant occuplant)

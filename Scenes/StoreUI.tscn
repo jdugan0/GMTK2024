@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://8mobqpmpiiuu"]
+[gd_scene load_steps=9 format=3 uid="uid://lyqc1fccxola"]
 
 [ext_resource type="Texture2D" uid="uid://dy2iq7vlikglo" path="res://Art/SHOP BG OPEN 3840 x 2160.png" id="1_igjtu"]
 [ext_resource type="Texture2D" uid="uid://dwfo3807hpik" path="res://Art/shopkeeper 1334 x 1161.png" id="2_i83tn"]
@@ -55,7 +55,7 @@ grow_vertical = 2
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel/ScrollContainer"]
 layout_mode = 2
 
-[node name="Panel2" type="Panel" parent="Panel"]
+[node name="Shopkeeper" type="Panel" parent="Panel"]
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
@@ -70,7 +70,7 @@ grow_horizontal = 0
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_o3iru")
 
-[node name="Panel3" type="Panel" parent="Panel"]
+[node name="Quip" type="Panel" parent="Panel"]
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
@@ -85,7 +85,7 @@ grow_horizontal = 0
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_krrw7")
 
-[node name="Label" type="Label" parent="Panel/Panel3"]
+[node name="Label" type="Label" parent="Panel/Quip"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
