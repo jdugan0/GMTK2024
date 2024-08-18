@@ -63,6 +63,7 @@ public partial class Plant : TextureButton
 		info.onTable = true;
 		SetScale(new Vector2(1.5f, 1.5f));
 		ZIndex = 10;
+		info.value += VirusDataTransfer.score;
 	}
 
 	private void ToShelf()

@@ -20,10 +20,12 @@ public partial class SceneSwitcher : Node
 		if (loadOrder == 0){
 			float t = AudioManager.instance.CancelSFX("VirusMusic");
 			AudioManager.instance.PlaySFX(this, "WorkspaceMusic", t);
+			AudioManager.instance.CancelSFX("Ambient");
 		}
 		if (loadOrder == 1){
 			float t = AudioManager.instance.CancelSFX("WorkspaceMusic");
 			AudioManager.instance.PlaySFX(this, "VirusMusic", t);
+			AudioManager.instance.PlaySFX(this, "Ambient");
 		}
 	}
 

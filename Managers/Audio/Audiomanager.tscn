@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://d3df3pqxnto64"]
+[gd_scene load_steps=23 format=3 uid="uid://d3df3pqxnto64"]
 
 [ext_resource type="Script" path="res://Managers/Audio/AudioManager.cs" id="1_5pvfo"]
 [ext_resource type="Script" path="res://Managers/Audio/Sound.cs" id="2_cds50"]
@@ -14,6 +14,7 @@
 [ext_resource type="AudioStream" uid="uid://b07gbfshbly6d" path="res://SFX/Damage 3.wav" id="12_d0g5t"]
 [ext_resource type="AudioStream" uid="uid://by6lj8ymgwcl0" path="res://SFX/Damage 4.wav" id="13_jfs0g"]
 [ext_resource type="AudioStream" uid="uid://uml12pkehbvq" path="res://SFX/Damage 5.wav" id="14_a18su"]
+[ext_resource type="AudioStream" uid="uid://145qhyls6cn8" path="res://SFX/Virus Ambience.wav" id="15_tv3m3"]
 
 [sub_resource type="Resource" id="Resource_uigmi"]
 script = ExtResource("2_cds50")
@@ -65,6 +66,12 @@ stream = SubResource("AudioStreamRandomizer_5qecd")
 volume = 0.0
 name = "Damage"
 
+[sub_resource type="Resource" id="Resource_mgw0d"]
+script = ExtResource("2_cds50")
+stream = ExtResource("15_tv3m3")
+volume = 0.0
+name = "Ambient"
+
 [node name="Audiomanager" type="Node"]
 script = ExtResource("1_5pvfo")
-sounds = Array[Object]([SubResource("Resource_uigmi"), SubResource("Resource_me2ls"), SubResource("Resource_girw2"), SubResource("Resource_yoh11")])
+sounds = Array[Object]([SubResource("Resource_uigmi"), SubResource("Resource_me2ls"), SubResource("Resource_girw2"), SubResource("Resource_yoh11"), SubResource("Resource_mgw0d")])

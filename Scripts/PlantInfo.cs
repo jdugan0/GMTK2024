@@ -10,4 +10,5 @@ public partial class PlantInfo : Resource
     public Vector2 posSlot = new Vector2(0, 0);
     public bool onTable = false;
     public Plant plant;
+    [Export] public float value;
 }
