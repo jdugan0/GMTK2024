@@ -4,9 +4,9 @@ using System.Collections;
 
 public partial class StoreUI : Control
 {
-    [Export] private VirusItem[] virusPresets;
+	[Export] private VirusItem[] virusPresets;
     [Export] private PlantInfo[] plantPresets;
-    [Export] private VBoxContainer buttons;
+	[Export] private VBoxContainer buttons;
     [Export] private Texture2D[] textures;
     [Export] private PackedScene purchaseVirusButton;
     [Export] private PackedScene purchasePlantButton;
@@ -15,38 +15,38 @@ public partial class StoreUI : Control
     {
         StoreConfiguration config = RandomizeStore(5, 3);
         int amount = 0;
-        foreach (VirusItem virus in config.GetVirusItems())
-        {
-            PurchaseVirusButton button = (PurchaseVirusButton)(purchaseVirusButton.Instantiate());
+		foreach (VirusItem virus in config.GetVirusItems())
+		{
+			PurchaseVirusButton button = (PurchaseVirusButton)(purchaseVirusButton.Instantiate());
             button.TextureNormal = textures[amount % 2];
             button.TextureDisabled = textures[amount % 2];
             button.TextureHover = textures[amount % 2];
             button.TextureFocused = textures[amount % 2];
             button.TexturePressed = textures[amount % 2];
-            button.SetVirusItem(virus);
-            buttons.AddChild(button);
+			button.SetVirusItem(virus);
+			buttons.AddChild(button);
             amount++;
-        }
-        foreach (PlantInfo plant in config.GetPlantInfos())
-        {
-            PurchasePlantButton button = (PurchasePlantButton)(purchasePlantButton.Instantiate());
+		}
+		foreach (PlantInfo plant in config.GetPlantInfos())
+		{
+			PurchasePlantButton button = (PurchasePlantButton)(purchasePlantButton.Instantiate());
             button.TextureNormal = textures[amount % 2];
             button.TextureDisabled = textures[amount % 2];
             button.TextureHover = textures[amount % 2];
             button.TextureFocused = textures[amount % 2];
             button.TexturePressed = textures[amount % 2];
-            button.SetPlantInfo(plant);
-            buttons.AddChild(button);
+			button.SetPlantInfo(plant);
+			buttons.AddChild(button);
             amount++;
-        }
+		}
     }
 
-    public void Toggle()
-    {
-        Visible = !Visible;
-    }
+	public void Toggle()
+	{
+		Visible = !Visible;
+	}
 
-    private StoreConfiguration RandomizeStore(int numViruses, int numPlants)
+	private StoreConfiguration RandomizeStore(int numViruses, int numPlants)
     {
         VirusItem[] viruses = new VirusItem[numViruses];
         PlantInfo[] plants = new PlantInfo[numPlants];
