@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bm47j3p5nynd0"
-path="res://.godot/imported/buy and sell buttons 906x460.png-0ec49b1303c94a93482685a76ff4d5d2.ctex"
+uid="uid://smrbafgukudu"
+path="res://.godot/imported/SHOP buttons 1666 x 298.png-a5cc7afe18c5e36cdd3b9f34169485dc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Prefabs/buy and sell buttons 906x460.png"
-dest_files=["res://.godot/imported/buy and sell buttons 906x460.png-0ec49b1303c94a93482685a76ff4d5d2.ctex"]
+source_file="res://Art/SHOP buttons 1666 x 298.png"
+dest_files=["res://.godot/imported/SHOP buttons 1666 x 298.png-a5cc7afe18c5e36cdd3b9f34169485dc.ctex"]
 
 [params]
 
