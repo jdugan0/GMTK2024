@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://2850ln454g3q"]
+[gd_scene load_steps=13 format=3 uid="uid://2850ln454g3q"]
 
 [ext_resource type="Script" path="res://Scripts/VirusGenerator.cs" id="1_6w8dc"]
 [ext_resource type="PackedScene" uid="uid://dowptv22ct3hh" path="res://Prefabs/Virus.tscn" id="2_8jn3w"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://ckucsv36pa8ch" path="res://Prefabs/location_4.tscn" id="6_xwnd0"]
 [ext_resource type="PackedScene" uid="uid://s184nc7dtjrr" path="res://Prefabs/source.tscn" id="6_xxyr4"]
 [ext_resource type="Texture2D" uid="uid://d2o63i8utd5hp" path="res://Art/tiles rev c 460 x 460.png" id="7_wb2ir"]
+[ext_resource type="FontFile" uid="uid://dklw1r3w4l27s" path="res://Art/PoorRichardOpti.otf" id="8_loiu0"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lyq1q"]
 texture = ExtResource("6_f6dbi")
@@ -269,12 +270,17 @@ terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
 sources/0 = SubResource("TileSetAtlasSource_lyq1q")
 sources/1 = SubResource("TileSetAtlasSource_g1dx3")
 
-[node name="VirusMinigame" type="Node2D"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lunp5"]
+bg_color = Color(0, 0, 0, 1)
+
+[node name="VirusMinigame" type="Node2D" node_paths=PackedStringArray("rootLabel", "rightClickLabel")]
 script = ExtResource("1_6w8dc")
 virusAmount = 25
 virusScene = ExtResource("2_8jn3w")
 virusScene2 = ExtResource("3_schds")
 size = 400.0
+rootLabel = NodePath("UI/Control/Label")
+rightClickLabel = NodePath("UI/Control/Label2")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(0.5, 0.5)
@@ -332,3 +338,54 @@ position = Vector2(6123, 2033)
 
 [node name="Source9" parent="." instance=ExtResource("6_xxyr4")]
 position = Vector2(-4336, 5726)
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="UI"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Label" type="Label" parent="UI/Control"]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -872.5
+offset_top = -95.0
+offset_right = 872.5
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("8_loiu0")
+theme_override_font_sizes/font_size = 66
+theme_override_styles/normal = SubResource("StyleBoxFlat_lunp5")
+text = "PRESS R TO ROOT SELECTED GENOME AND MUTATE PLANT"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="UI/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -179.0
+offset_top = -219.5
+offset_right = 179.0
+offset_bottom = -170.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("8_loiu0")
+theme_override_font_sizes/font_size = 26
+theme_override_styles/normal = SubResource("StyleBoxFlat_lunp5")
+text = "RIGHT CLICK TO SELECT"
+horizontal_alignment = 1
+vertical_alignment = 1

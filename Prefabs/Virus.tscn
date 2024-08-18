@@ -7,7 +7,7 @@
 
 [sub_resource type="Resource" id="Resource_0vvou"]
 script = ExtResource("2_wlc2m")
-value = 0.01
+value = 1.0
 name = "V1"
 
 [sub_resource type="Resource" id="Resource_fn70y"]
@@ -17,7 +17,7 @@ name = "V2"
 
 [sub_resource type="Resource" id="Resource_y6ds6"]
 script = ExtResource("2_wlc2m")
-value = 10.0
+value = 4.0
 name = "V1"
 
 [sub_resource type="Resource" id="Resource_eehjr"]
@@ -32,7 +32,7 @@ name = "V1"
 
 [sub_resource type="Resource" id="Resource_g82rl"]
 script = ExtResource("2_wlc2m")
-value = 0.05
+value = 4.0
 name = "V1"
 
 [sub_resource type="Resource" id="Resource_03tjy"]
@@ -64,13 +64,14 @@ seperationDistance = Array[Object]([SubResource("Resource_sk2to")])
 alignment = Array[Object]([SubResource("Resource_g82rl"), SubResource("Resource_03tjy")])
 targeting = Array[Object]([SubResource("Resource_5yi7f")])
 validDamageTypes = PackedStringArray("V2")
-mouseForce = 8.0
+mouseForce = 16.0
 velocityRange = 5.0
-maxVelocity = 300.0
+maxVelocity = 600.0
 viewRange = 1500.0
 maxAccel = 10000.0
-health = 5.0
-damage = 1.0
+damageTime = 0.5
+health = 12.0
+damage = 2.0
 name = "V1"
 player = true
 sprite2D = NodePath("Sprite2D")

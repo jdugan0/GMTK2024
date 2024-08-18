@@ -10,11 +10,12 @@ public partial class VirusGenerator : Node
 	[Export] private PackedScene virusScene2;
 	public List<VirusBoid> boids = new List<VirusBoid>();
 	[Export] float size;
-
+	[Export] public Label rootLabel;
 	public static VirusGenerator instance;
 
 	private Vector2 mousePos;
 	public List<Location> locations = new List<Location>();
+	[Export] public Label rightClickLabel;
 
 	public Dictionary<Location.LocationType, float> locationQualities = new Dictionary<Location.LocationType, float>();
 
@@ -34,6 +35,15 @@ public partial class VirusGenerator : Node
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
+		rootLabel.Visible = false;
+		rightClickLabel.Visible = false;
+		foreach (VirusBoid b in boids){
+			if (b.rootable != null){
+				rootLabel.Visible = true;
+				rightClickLabel.Visible = true;
+				break;
+			}
+		}
 		// GD.Print(boids.Count);
 		int boidCount = 0;
 		foreach(VirusBoid b in boids){
