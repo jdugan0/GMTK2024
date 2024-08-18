@@ -40,16 +40,21 @@ region = Rect2(0, 134, 507, 134)
 
 [node name="Root" type="Node2D" node_paths=PackedStringArray("layer")]
 script = ExtResource("1_3crt5")
-layer = NodePath("UI/Plant Layer")
+layer = NodePath("UI Render/UI/Plant Layer")
 testNumberPlants = 9
 
-[node name="UI" type="Control" parent="."]
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(960, 540)
+
+[node name="UI Render" type="CanvasLayer" parent="."]
+
+[node name="UI" type="Control" parent="UI Render"]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 1920.0
 offset_bottom = 1080.0
 
-[node name="Background" type="TextureRect" parent="UI"]
+[node name="Background" type="TextureRect" parent="UI Render/UI"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -59,12 +64,12 @@ grow_vertical = 2
 texture = ExtResource("1_n5eej")
 expand_mode = 1
 
-[node name="Plant Layer" type="CanvasLayer" parent="UI" node_paths=PackedStringArray("positions")]
+[node name="Plant Layer" type="CanvasLayer" parent="UI Render/UI" node_paths=PackedStringArray("positions")]
 script = ExtResource("3_1b3g6")
-positions = [NodePath("../../Spot"), NodePath("../../Spot1"), NodePath("../../Spot2"), NodePath("../../Spot3"), NodePath("../../Spot4"), NodePath("../../Spot5"), NodePath("../../Spot6"), NodePath("../../Spot7"), NodePath("../../Spot8"), NodePath("../../Spot9"), NodePath("../../Spot10"), NodePath("../../Spot11"), NodePath("../../Spot12"), NodePath("../../Spot13"), NodePath("../../Spot14")]
+positions = [NodePath("../../../Plant Spots/Spot"), NodePath("../../../Plant Spots/Spot1"), NodePath("../../../Plant Spots/Spot2"), NodePath("../../../Plant Spots/Spot3"), NodePath("../../../Plant Spots/Spot4"), NodePath("../../../Plant Spots/Spot5"), NodePath("../../../Plant Spots/Spot6"), NodePath("../../../Plant Spots/Spot7"), NodePath("../../../Plant Spots/Spot8"), NodePath("../../../Plant Spots/Spot9"), NodePath("../../../Plant Spots/Spot10"), NodePath("../../../Plant Spots/Spot11"), NodePath("../../../Plant Spots/Spot12"), NodePath("../../../Plant Spots/Spot13"), NodePath("../../../Plant Spots/Spot14")]
 plantScene = ExtResource("4_kigpy")
 
-[node name="View Virus Button" type="TextureButton" parent="UI" node_paths=PackedStringArray("container")]
+[node name="View Virus Button" type="TextureButton" parent="UI Render/UI" node_paths=PackedStringArray("container")]
 custom_minimum_size = Vector2(280, 65)
 layout_mode = 2
 offset_left = 48.0
@@ -81,7 +86,7 @@ stretch_mode = 0
 script = ExtResource("3_7cee1")
 container = NodePath("../Viruses")
 
-[node name="Viruses" type="VBoxContainer" parent="UI"]
+[node name="Viruses" type="VBoxContainer" parent="UI Render/UI"]
 visible = false
 layout_mode = 1
 offset_left = 50.0
@@ -91,19 +96,27 @@ offset_bottom = 615.0
 scale = Vector2(0.5, 0.5)
 alignment = 2
 
-[node name="Syringe" parent="UI/Viruses" instance=ExtResource("7_wch7j")]
+[node name="Syringe" parent="UI Render/UI/Viruses" node_paths=PackedStringArray("parent", "parent1") instance=ExtResource("7_wch7j")]
 layout_mode = 2
+parent = NodePath("../../../..")
+parent1 = NodePath("..")
 
-[node name="Syringe2" parent="UI/Viruses" instance=ExtResource("7_wch7j")]
+[node name="Syringe2" parent="UI Render/UI/Viruses" node_paths=PackedStringArray("parent", "parent1") instance=ExtResource("7_wch7j")]
 layout_mode = 2
+parent = NodePath("../../../..")
+parent1 = NodePath("..")
 
-[node name="Syringe3" parent="UI/Viruses" instance=ExtResource("7_wch7j")]
+[node name="Syringe3" parent="UI Render/UI/Viruses" node_paths=PackedStringArray("parent", "parent1") instance=ExtResource("7_wch7j")]
 layout_mode = 2
+parent = NodePath("../../../..")
+parent1 = NodePath("..")
 
-[node name="Syringe4" parent="UI/Viruses" instance=ExtResource("7_wch7j")]
+[node name="Syringe4" parent="UI Render/UI/Viruses" node_paths=PackedStringArray("parent", "parent1") instance=ExtResource("7_wch7j")]
 layout_mode = 2
+parent = NodePath("../../../..")
+parent1 = NodePath("..")
 
-[node name="TextureButton" type="TextureButton" parent="UI"]
+[node name="TextureButton" type="TextureButton" parent="UI Render/UI"]
 layout_mode = 2
 offset_left = 30.0
 offset_top = 918.0
@@ -117,65 +130,67 @@ texture_disabled = SubResource("AtlasTexture_g1h57")
 texture_focused = SubResource("AtlasTexture_g1h57")
 script = ExtResource("2_mlrbl")
 
-[node name="Spot" type="Node2D" parent="."]
+[node name="Plant Spots" type="Node" parent="."]
+
+[node name="Spot" type="Node2D" parent="Plant Spots"]
 position = Vector2(871, 160)
 scale = Vector2(0.5, 0.5)
 
-[node name="Spot1" type="Node2D" parent="."]
+[node name="Spot1" type="Node2D" parent="Plant Spots"]
 position = Vector2(1054, 159)
 scale = Vector2(0.5, 0.5)
 
-[node name="Spot2" type="Node2D" parent="."]
+[node name="Spot2" type="Node2D" parent="Plant Spots"]
 position = Vector2(1235, 154)
 scale = Vector2(0.5, 0.5)
 
-[node name="Spot3" type="Node2D" parent="."]
+[node name="Spot3" type="Node2D" parent="Plant Spots"]
 position = Vector2(1418, 154)
 scale = Vector2(0.5, 0.5)
 
-[node name="Spot4" type="Node2D" parent="."]
+[node name="Spot4" type="Node2D" parent="Plant Spots"]
 position = Vector2(1600, 160)
 scale = Vector2(0.5, 0.5)
 
-[node name="Spot5" type="Node2D" parent="."]
+[node name="Spot5" type="Node2D" parent="Plant Spots"]
 position = Vector2(1782, 159)
 scale = Vector2(0.5, 0.5)
 
-[node name="Spot6" type="Node2D" parent="."]
+[node name="Spot6" type="Node2D" parent="Plant Spots"]
 position = Vector2(872, 428)
 scale = Vector2(0.5, 0.5)
 
-[node name="Spot7" type="Node2D" parent="."]
+[node name="Spot7" type="Node2D" parent="Plant Spots"]
 position = Vector2(1054, 428)
 scale = Vector2(0.5, 0.5)
 
-[node name="Spot8" type="Node2D" parent="."]
+[node name="Spot8" type="Node2D" parent="Plant Spots"]
 position = Vector2(1236, 423)
 scale = Vector2(0.5, 0.5)
 
-[node name="Spot9" type="Node2D" parent="."]
+[node name="Spot9" type="Node2D" parent="Plant Spots"]
 position = Vector2(1418, 423)
 scale = Vector2(0.5, 0.5)
 
-[node name="Spot10" type="Node2D" parent="."]
+[node name="Spot10" type="Node2D" parent="Plant Spots"]
 position = Vector2(1600, 428)
 scale = Vector2(0.5, 0.5)
 
-[node name="Spot11" type="Node2D" parent="."]
+[node name="Spot11" type="Node2D" parent="Plant Spots"]
 position = Vector2(1782, 428)
 scale = Vector2(0.5, 0.5)
 
-[node name="Spot12" type="Node2D" parent="."]
+[node name="Spot12" type="Node2D" parent="Plant Spots"]
 position = Vector2(1599, 712)
 scale = Vector2(0.5, 0.5)
 
-[node name="Spot13" type="Node2D" parent="."]
+[node name="Spot13" type="Node2D" parent="Plant Spots"]
 position = Vector2(1782, 711)
 scale = Vector2(0.5, 0.5)
 
-[node name="Spot14" type="Node2D" parent="."]
+[node name="Spot14" type="Node2D" parent="Plant Spots"]
 position = Vector2(1776, 969)
 scale = Vector2(0.5, 0.5)
 
-[connection signal="pressed" from="UI/View Virus Button" to="UI/View Virus Button" method="ToggleMenu"]
-[connection signal="button_down" from="UI/TextureButton" to="UI/TextureButton" method="BeginMinigame"]
+[connection signal="pressed" from="UI Render/UI/View Virus Button" to="UI Render/UI/View Virus Button" method="ToggleMenu"]
+[connection signal="button_down" from="UI Render/UI/TextureButton" to="UI Render/UI/TextureButton" method="BeginMinigame"]
