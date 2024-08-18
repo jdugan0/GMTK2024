@@ -1,9 +1,7 @@
-[gd_scene load_steps=23 format=3 uid="uid://btbbbehoaknia"]
+[gd_scene load_steps=19 format=3 uid="uid://btbbbehoaknia"]
 
 [ext_resource type="Script" path="res://Scripts/WorkspaceTest.cs" id="1_3crt5"]
 [ext_resource type="Texture2D" uid="uid://dnobjr7cssrwn" path="res://Art/greenhouse no pot.png" id="1_n5eej"]
-[ext_resource type="Script" path="res://Scripts/VirusItem.cs" id="2_dp2aa"]
-[ext_resource type="PackedScene" uid="uid://dowptv22ct3hh" path="res://Prefabs/Virus.tscn" id="2_iuoa4"]
 [ext_resource type="Texture2D" uid="uid://c7vun7uok4t45" path="res://Art/injections icon.png" id="2_l7cwa"]
 [ext_resource type="Script" path="res://Managers/Scene/ButtonSceneSwitcher.cs" id="2_mlrbl"]
 [ext_resource type="Script" path="res://Scripts/PlantLayer.cs" id="3_1b3g6"]
@@ -11,20 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://ccxvr07fwlf4r" path="res://Prefabs/Plant.tscn" id="4_kigpy"]
 [ext_resource type="PackedScene" uid="uid://n767njjh7i0v" path="res://Prefabs/Syringe.tscn" id="7_wch7j"]
 [ext_resource type="Texture2D" uid="uid://bu23v3t5kq6fq" path="res://Art/BEGIN BUTTON 507 x 134.png" id="9_otpgb"]
-[ext_resource type="Script" path="res://Scripts/Inventory.cs" id="9_td2eh"]
 [ext_resource type="Texture2D" uid="uid://cy51q8bxkmyhb" path="res://Art/PLANT STORE 1255 x 1021.png" id="12_gny0d"]
-
-[sub_resource type="Resource" id="Resource_hy3bf"]
-script = ExtResource("2_dp2aa")
-name = "Hello"
-ability = 1
-scene = ExtResource("2_iuoa4")
-
-[sub_resource type="Resource" id="Resource_40ro3"]
-script = ExtResource("2_dp2aa")
-name = "adad"
-ability = 0
-scene = ExtResource("2_iuoa4")
+[ext_resource type="PackedScene" uid="uid://8mobqpmpiiuu" path="res://Scenes/StoreUI.tscn" id="13_0m0l7"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ju7te"]
 atlas = ExtResource("2_l7cwa")
@@ -57,7 +43,6 @@ region = Rect2(0, 134, 507, 134)
 [node name="Root" type="Node2D" node_paths=PackedStringArray("layer")]
 script = ExtResource("1_3crt5")
 testNumberPlants = 9
-testItems = Array[Object]([SubResource("Resource_hy3bf"), SubResource("Resource_40ro3")])
 layer = NodePath("UI Render/UI/Plant Layer")
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -140,6 +125,9 @@ texture_hover = ExtResource("12_gny0d")
 texture_disabled = ExtResource("12_gny0d")
 texture_focused = ExtResource("12_gny0d")
 
+[node name="Control" parent="UI Render" instance=ExtResource("13_0m0l7")]
+visible = false
+
 [node name="Plant Spots" type="Node" parent="."]
 
 [node name="Spot" type="Node2D" parent="Plant Spots"]
@@ -201,9 +189,6 @@ scale = Vector2(0.5, 0.5)
 [node name="Spot14" type="Node2D" parent="Plant Spots"]
 position = Vector2(1776, 969)
 scale = Vector2(0.5, 0.5)
-
-[node name="Inventory" type="Node" parent="."]
-script = ExtResource("9_td2eh")
 
 [connection signal="pressed" from="UI Render/UI/View Virus Button" to="UI Render/UI/View Virus Button" method="ToggleMenu"]
 [connection signal="button_down" from="UI Render/UI/TextureButton" to="UI Render/UI/TextureButton" method="BeginMinigame"]

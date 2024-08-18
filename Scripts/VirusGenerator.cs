@@ -24,7 +24,8 @@ public partial class VirusGenerator : Node
 	{
 		instance = this;
 		foreach (VirusItem item in VirusDataTransfer.GetViruses()){
-			CreateBoid(item.scene, new Vector2(), 1);
+			VirusBoid b = CreateBoid(item.scene, new Vector2());
+			b.ability = item.ability;
 		}
 		
 		// CreateBoid(virusScene2, new Vector2(), virusAmount/2);
@@ -41,6 +42,11 @@ public partial class VirusGenerator : Node
 			}
 		}
 		if (boidCount <= 0){
+			float totalVal = 0;
+			foreach (Location.LocationType f in locationQualities.Keys){
+				totalVal += locationQualities[f] * ((int)f);
+			}
+			VirusDataTransfer.score = totalVal;
 			SceneSwitcher.instance.SwitchScene(0);
 		}
 
@@ -171,6 +177,20 @@ public partial class VirusGenerator : Node
 			virus.generator = this;
 			AddChild(virus);
 		}
+	}
+	public VirusBoid CreateBoid(PackedScene boidType, Vector2 pos){
+		VirusBoid virus = (VirusBoid)boidType.Instantiate();
+		virus.Position = new Vector2((float)GD.RandRange(-size/2, size/2),(float)GD.RandRange(-size/2, size/2)) + pos;
+		boids.Add(virus);
+		virus.velocity = new Vector2();
+		
+		Vector2 velocity = new Vector2((float)GD.RandRange(-1f,1f),(float)GD.RandRange(-1f,1f));
+		velocity = velocity.Normalized();
+		velocity = velocity * (float)GD.RandRange(-virus.velocityRange/2, virus.velocityRange/2);
+		virus.velocity = velocity;
+		virus.generator = this;
+		AddChild(virus);
+		return virus;
 	}
 	public float getValueFromParam(Dictionary<String, float> dict, String key, String def){
 		if (dict.ContainsKey(key)){

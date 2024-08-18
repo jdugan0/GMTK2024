@@ -6,10 +6,10 @@ public partial class Location : Node2D
 	// Called when the node enters the scene tree for the first time.
 	bool updated = false;
 	public enum LocationType{
-		Leaf,
-		Stem,
-		Root,
-		Flower
+		Leaf = 1,
+		Stem = 2,
+		Root = 4,
+		Flower = 8
 	}
 	[Export] public LocationType type;
 	public override void _Ready()

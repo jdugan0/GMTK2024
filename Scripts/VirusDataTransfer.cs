@@ -7,6 +7,7 @@ public partial class VirusDataTransfer : Node
 {
 	public static VirusDataTransfer instance;
 	private static List<VirusItem> viruses;
+	public static float score;
 
 	public VirusDataTransfer()
 	{

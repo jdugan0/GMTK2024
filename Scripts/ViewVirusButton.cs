@@ -6,7 +6,7 @@ public partial class ViewVirusButton : TextureButton
 {
 	[Export] private Control container;
 	[Export] PackedScene syringeScene;
-	public List<Control> syringes = new List<Control>();
+	public List<SyringeDragging> syringes = new List<SyringeDragging>();
 	public void ToggleMenu()
 	{
 		container.Visible = !container.Visible;
@@ -28,6 +28,10 @@ public partial class ViewVirusButton : TextureButton
 				syringes.RemoveAt(i);
 			}
 		}
+	}
+
+	public void RemoveViruses(List<VirusItem> toRemove){
+		
 	}
 
 }

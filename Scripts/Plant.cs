@@ -4,6 +4,7 @@ using System.Collections.Generic;
 public partial class Plant : TextureButton
 {
 	[Export] private PlantInfo info;
+	public List<SyringeDragging> syringe = new List<SyringeDragging>();
 
     public override void _Ready()
     {
