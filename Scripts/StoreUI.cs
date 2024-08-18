@@ -4,10 +4,23 @@ using System;
 public partial class StoreUI : Control
 {
 	[Export] private VirusItem[] virusPresets;
+	[Export] private VBoxContainer buttons;
 
     public override void _Ready()
     {
-        
+        StoreConfiguration config = RandomizeStore(2, 2);
+		foreach (VirusItem virus in config.GetVirusItems())
+		{
+			PurchaseVirusButton button = new PurchaseVirusButton();
+			button.SetVirusItem(virus);
+			buttons.AddChild(button);
+		}
+		foreach (PlantInfo plant in config.GetPlantInfos())
+		{
+			PurchasePlantButton button = new PurchasePlantButton();
+			button.SetPlantInfo(plant);
+			buttons.AddChild(button);
+		}
     }
 
 	public void Toggle()
