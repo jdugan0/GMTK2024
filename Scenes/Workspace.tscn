@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://btbbbehoaknia"]
+[gd_scene load_steps=21 format=3 uid="uid://btbbbehoaknia"]
 
 [ext_resource type="Script" path="res://Scripts/WorkspaceTest.cs" id="1_3crt5"]
 [ext_resource type="Texture2D" uid="uid://dnobjr7cssrwn" path="res://Art/greenhouse no pot.png" id="1_n5eej"]
@@ -9,8 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://ccxvr07fwlf4r" path="res://Prefabs/Plant.tscn" id="4_kigpy"]
 [ext_resource type="PackedScene" uid="uid://n767njjh7i0v" path="res://Prefabs/Syringe.tscn" id="7_wch7j"]
 [ext_resource type="Texture2D" uid="uid://bu23v3t5kq6fq" path="res://Art/BEGIN BUTTON 507 x 134.png" id="9_otpgb"]
-[ext_resource type="Texture2D" uid="uid://cy51q8bxkmyhb" path="res://Art/PLANT STORE 1255 x 1021.png" id="12_gny0d"]
-[ext_resource type="PackedScene" uid="uid://8mobqpmpiiuu" path="res://Scenes/StoreUI.tscn" id="13_0m0l7"]
+[ext_resource type="Texture2D" uid="uid://cy51q8bxkmyhb" path="res://Art/PLANT STORE 1255 x 1021.png" id="12_a7d6u"]
+[ext_resource type="PackedScene" uid="uid://lyqc1fccxola" path="res://Scenes/StoreUI.tscn" id="12_fg8qg"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ju7te"]
 atlas = ExtResource("2_l7cwa")
@@ -40,9 +40,16 @@ region = Rect2(0, 0, 507, 134)
 atlas = ExtResource("9_otpgb")
 region = Rect2(0, 134, 507, 134)
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_fsyba"]
+texture = ExtResource("12_a7d6u")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cjjjp"]
+atlas = ExtResource("12_a7d6u")
+region = Rect2(591, 263, 580, 540)
+
 [node name="Root" type="Node2D" node_paths=PackedStringArray("layer")]
 script = ExtResource("1_3crt5")
-testNumberPlants = 9
+testNumberPlants = 15
 layer = NodePath("UI Render/UI/Plant Layer")
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -100,10 +107,10 @@ alignment = 2
 
 [node name="TextureButton" type="TextureButton" parent="UI Render/UI"]
 layout_mode = 2
-offset_left = 1026.0
-offset_top = 938.0
-offset_right = 1533.0
-offset_bottom = 1072.0
+offset_left = 30.0
+offset_top = 918.0
+offset_right = 537.0
+offset_bottom = 1052.0
 size_flags_horizontal = 0
 texture_normal = SubResource("AtlasTexture_g1h57")
 texture_pressed = SubResource("AtlasTexture_g1h57")
@@ -112,21 +119,41 @@ texture_disabled = SubResource("AtlasTexture_g1h57")
 texture_focused = SubResource("AtlasTexture_g1h57")
 script = ExtResource("2_mlrbl")
 
-[node name="StoreButton" type="TextureButton" parent="UI Render/UI"]
-layout_mode = 0
-offset_left = 14.0
-offset_top = 436.0
-offset_right = 1269.0
-offset_bottom = 1457.0
-scale = Vector2(0.63, 0.63)
-texture_normal = ExtResource("12_gny0d")
-texture_pressed = ExtResource("12_gny0d")
-texture_hover = ExtResource("12_gny0d")
-texture_disabled = ExtResource("12_gny0d")
-texture_focused = ExtResource("12_gny0d")
+[node name="Desktop" type="Panel" parent="UI Render/UI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 105.0
+offset_top = 380.0
+offset_right = -560.0
+offset_bottom = 321.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+theme_override_styles/panel = SubResource("StyleBoxTexture_fsyba")
 
-[node name="Control" parent="UI Render" instance=ExtResource("13_0m0l7")]
+[node name="Plant Store" type="TextureButton" parent="UI Render/UI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 401.0
+offset_top = 511.0
+offset_right = -939.0
+offset_bottom = -29.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+texture_normal = SubResource("AtlasTexture_cjjjp")
+texture_pressed = SubResource("AtlasTexture_cjjjp")
+texture_hover = SubResource("AtlasTexture_cjjjp")
+texture_disabled = SubResource("AtlasTexture_cjjjp")
+texture_focused = SubResource("AtlasTexture_cjjjp")
+
+[node name="StoreUI" parent="UI Render/UI" instance=ExtResource("12_fg8qg")]
 visible = false
+layout_mode = 1
 
 [node name="Plant Spots" type="Node" parent="."]
 
@@ -192,3 +219,4 @@ scale = Vector2(0.5, 0.5)
 
 [connection signal="pressed" from="UI Render/UI/View Virus Button" to="UI Render/UI/View Virus Button" method="ToggleMenu"]
 [connection signal="button_down" from="UI Render/UI/TextureButton" to="UI Render/UI/TextureButton" method="BeginMinigame"]
+[connection signal="pressed" from="UI Render/UI/Plant Store" to="UI Render/UI/StoreUI" method="Toggle"]
