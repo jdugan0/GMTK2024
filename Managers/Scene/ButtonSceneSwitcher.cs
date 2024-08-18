@@ -3,16 +3,20 @@ using System;
 
 public partial class ButtonSceneSwitcher : Node
 {
-	public override void _Ready()
-    {
-        if (!AudioManager.instance.isPlaying("TitleMusic")){
-			AudioManager.instance.PlaySFX(AudioManager.instance, "TitleMusic");
-		}
-    }
 	public void Switch(int id){
 		SceneSwitcher.instance.SwitchScene(id);
-		if (id == 0){
-			AudioManager.instance.CancelSFX("TitleMusic");
+	}
+
+	public void BeginMinigame()
+	{
+		VirusDataTransfer.ClearViruses();
+		if (PlantLayer.GetTableOccuplant() != null)
+		{
+			foreach (VirusItem virus in PlantLayer.GetTableOccuplant().GetViruses())
+			{
+				VirusDataTransfer.AddViruses(virus);
+			}
+			SceneSwitcher.instance.SwitchScene(1);
 		}
 	}
 }

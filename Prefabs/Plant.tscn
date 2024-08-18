@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=3 uid="uid://ccxvr07fwlf4r"]
+
+[ext_resource type="Texture2D" uid="uid://c84bnfq0rtlot" path="res://Art/juniper berries.png" id="1_yk0cn"]
+[ext_resource type="Script" path="res://Scripts/Plant.cs" id="2_g440g"]
+[ext_resource type="Script" path="res://Scripts/Species.cs" id="3_huk36"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iqy70"]
+atlas = ExtResource("1_yk0cn")
+region = Rect2(363, 0, 363, 454)
+
+[sub_resource type="Resource" id="Resource_y4phx"]
+script = ExtResource("3_huk36")
+species = 1
+texture = SubResource("AtlasTexture_iqy70")
+
+[node name="Plant" type="TextureButton"]
+z_index = -1
+offset_left = -90.75
+offset_top = -113.5
+offset_right = 272.25
+offset_bottom = 340.5
+scale = Vector2(0.5, 0.5)
+texture_normal = SubResource("AtlasTexture_iqy70")
+texture_pressed = SubResource("AtlasTexture_iqy70")
+texture_hover = SubResource("AtlasTexture_iqy70")
+texture_disabled = SubResource("AtlasTexture_iqy70")
+texture_focused = SubResource("AtlasTexture_iqy70")
+script = ExtResource("2_g440g")
+species = SubResource("Resource_y4phx")
+
+[connection signal="pressed" from="." to="." method="OnClick"]

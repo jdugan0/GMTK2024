@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="GMTK2024"
-run/main_scene="res://Scenes/VirusMinigame.tscn"
+run/main_scene="res://Scenes/Workspace.tscn"
 config/features=PackedStringArray("4.2", "C#", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 Audiomanager="*res://Managers/Audio/Audiomanager.tscn"
 Sceneswitcher="*res://Managers/Scene/Sceneswitcher.tscn"
 VirusDataTransfer="*res://Prefabs/VirusDataTransfer.tscn"
+Inventory="*res://Prefabs/Inventory.tscn"
 
 [display]
 
