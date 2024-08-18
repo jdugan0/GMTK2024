@@ -1,24 +1,35 @@
-[gd_scene load_steps=14 format=3 uid="uid://lyqc1fccxola"]
+[gd_scene load_steps=17 format=3 uid="uid://8mobqpmpiiuu"]
 
-[ext_resource type="Script" path="res://Scripts/StoreUI.cs" id="1_c44en"]
+[ext_resource type="Script" path="res://Scripts/StoreUI.cs" id="1_7euqv"]
 [ext_resource type="Texture2D" uid="uid://dy2iq7vlikglo" path="res://Art/SHOP BG OPEN 3840 x 2160.png" id="1_igjtu"]
-[ext_resource type="PackedScene" uid="uid://dowptv22ct3hh" path="res://Prefabs/Virus.tscn" id="2_h1xfd"]
+[ext_resource type="Script" path="res://Scripts/VirusItem.cs" id="2_605yr"]
 [ext_resource type="Texture2D" uid="uid://dwfo3807hpik" path="res://Art/shopkeeper 1334 x 1161.png" id="2_i83tn"]
-[ext_resource type="Script" path="res://Scripts/VirusItem.cs" id="3_0dkkd"]
+[ext_resource type="PackedScene" uid="uid://dowptv22ct3hh" path="res://Prefabs/Virus.tscn" id="3_grkbb"]
 [ext_resource type="Texture2D" uid="uid://dqwf7kp5fongh" path="res://Art/Shopkeeper quip bubble 1284 x 448.png" id="3_wymjs"]
 [ext_resource type="FontFile" uid="uid://dklw1r3w4l27s" path="res://Art/PoorRichardOpti.otf" id="4_e47b2"]
+[ext_resource type="Texture2D" uid="uid://smrbafgukudu" path="res://Art/SHOP buttons 1666 x 298.png" id="4_hcoge"]
 
-[sub_resource type="Resource" id="Resource_cy58o"]
-script = ExtResource("3_0dkkd")
-name = "Basic Genome"
+[sub_resource type="Resource" id="Resource_iw1dg"]
+script = ExtResource("2_605yr")
+name = "Normal Virus"
 ability = 0
-scene = ExtResource("2_h1xfd")
+scene = ExtResource("3_grkbb")
+price = 5.0
 
-[sub_resource type="Resource" id="Resource_gycc8"]
-script = ExtResource("3_0dkkd")
-name = "Circulation-Enhanced Genome"
+[sub_resource type="Resource" id="Resource_uw5r2"]
+script = ExtResource("2_605yr")
+name = "Dash Virus"
 ability = 1
-scene = ExtResource("2_h1xfd")
+scene = ExtResource("3_grkbb")
+price = 20.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_es8uq"]
+atlas = ExtResource("4_hcoge")
+region = Rect2(0, 0, 1666, 298)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8wvst"]
+atlas = ExtResource("4_hcoge")
+region = Rect2(1666, 0, 1666, 298)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pfnsc"]
 texture = ExtResource("1_igjtu")
@@ -33,31 +44,23 @@ texture = SubResource("AtlasTexture_thsqy")
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_krrw7"]
 texture = ExtResource("3_wymjs")
 
-[node name="Control" type="Control" node_paths=PackedStringArray("buttons")]
+[node name="Store UI" type="Control" node_paths=PackedStringArray("buttons")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = -960.0
-offset_bottom = -540.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(2, 2)
-script = ExtResource("1_c44en")
-virusPresets = Array[Object]([SubResource("Resource_cy58o"), SubResource("Resource_gycc8")])
+script = ExtResource("1_7euqv")
+virusPresets = Array[Object]([SubResource("Resource_iw1dg"), SubResource("Resource_uw5r2")])
 buttons = NodePath("Panel/ScrollContainer/VBoxContainer")
+textures = Array[Texture2D]([SubResource("AtlasTexture_es8uq"), SubResource("AtlasTexture_8wvst")])
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -480.0
-offset_top = -270.0
-offset_right = 480.0
-offset_bottom = 270.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_pfnsc")
@@ -67,55 +70,59 @@ layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_left = 107.0
-offset_top = -238.0
-offset_right = 507.0
-offset_bottom = 255.0
+offset_left = 181.0
+offset_top = -503.0
+offset_right = 1059.0
+offset_bottom = 520.0
 grow_vertical = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel/ScrollContainer"]
 layout_mode = 2
+theme_override_constants/separation = 0
 
-[node name="Shopkeeper" type="Panel" parent="Panel"]
+[node name="Panel2" type="Panel" parent="Panel"]
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -411.0
-offset_top = -212.0
-offset_right = -78.0
-offset_bottom = 78.0
+offset_left = -828.0
+offset_top = -490.0
+offset_right = -162.0
+offset_bottom = 90.0
 grow_horizontal = 0
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_o3iru")
 
-[node name="Quip" type="Panel" parent="Panel"]
+[node name="Panel3" type="Panel" parent="Panel"]
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -404.0
-offset_top = 89.0
-offset_right = -83.0
-offset_bottom = 201.0
+offset_left = -818.0
+offset_top = 126.0
+offset_right = -176.0
+offset_bottom = 350.0
 grow_horizontal = 0
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_krrw7")
 
-[node name="Label" type="Label" parent="Panel/Quip"]
+[node name="Label" type="Label" parent="Panel/Panel3"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = 29.0
-offset_bottom = -28.0
+offset_left = 3.0
+offset_top = 48.0
+offset_right = 3.0
+offset_bottom = -9.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("4_e47b2")
+theme_override_font_sizes/font_size = 41
 text = "Plants, genomes, we've got it all!"
 horizontal_alignment = 1
 vertical_alignment = 1

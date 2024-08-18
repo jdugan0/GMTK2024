@@ -3,10 +3,14 @@ using System;
 
 public partial class PurchasePlantButton : TextureButton
 {
-    [Export] private PlantInfo plant;
+    [Export] private PlantInfo plantInfo;
+    [Export] Label name;
+    [Export] Label price;
 
-    public void SetPlantInfo(PlantInfo plant)
+    public void SetPlantInfo(PlantInfo plantInfo)
     {
-        this.plant = plant;
+        this.plantInfo= plantInfo;
+        name.Text = plantInfo.species.species.ToString();
+        price.Text = "$" + plantInfo.price;
     }
 }
