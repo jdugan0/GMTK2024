@@ -17,7 +17,7 @@ name = "V2"
 
 [sub_resource type="Resource" id="Resource_y6ds6"]
 script = ExtResource("2_wlc2m")
-value = 0.5
+value = 10.0
 name = "V1"
 
 [sub_resource type="Resource" id="Resource_eehjr"]

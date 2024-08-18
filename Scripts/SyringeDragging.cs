@@ -3,9 +3,8 @@ using System;
 
 public partial class SyringeDragging : Control
 {
-	private bool hover;
-	[Export] public Node parent;
-	[Export] public Node parent1;
+	public bool selected = false;
+	[Export] public VirusItem virus;
 
 	public override void _Ready()
 	{
@@ -14,27 +13,22 @@ public partial class SyringeDragging : Control
 
 	public override void _Process(double delta)
 	{
-		if (hover && Input.IsActionJustPressed("Click"))
-		{
-			Reparent(parent);
+		if (selected){
+			Modulate = Colors.White;
 		}
-		if (Input.IsActionJustReleased("Click"))
-		{
-			Reparent(parent1);
-		}
-		if (Input.IsActionPressed("Click"))
-		{
-			Position = GetViewport().GetCamera2D().GetGlobalMousePosition();
+		else{
+			Modulate = Colors.Gray;
 		}
 	}
 
-	public void MouseEnteredLogic()
-	{
-		hover = true;
+	public void Select(){
+		if (PlantLayer.GetTableOccuplant() != null){
+			selected = !selected;
+			PlantLayer.GetTableOccuplant().AddVirus(virus);
+		}
+		else{
+			selected = false;
+		}
 	}
 
-	public void MouseExitedLogic()
-	{
-		hover = false;
-	}
 }

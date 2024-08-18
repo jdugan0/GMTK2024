@@ -1,14 +1,26 @@
-[gd_scene load_steps=17 format=3 uid="uid://bn30kdu7s07l5"]
+[gd_scene load_steps=21 format=3 uid="uid://btbbbehoaknia"]
 
 [ext_resource type="Script" path="res://Scripts/WorkspaceTest.cs" id="1_3crt5"]
 [ext_resource type="Texture2D" uid="uid://dnobjr7cssrwn" path="res://Art/greenhouse no pot.png" id="1_n5eej"]
+[ext_resource type="Script" path="res://Scripts/VirusItem.cs" id="2_dp2aa"]
 [ext_resource type="Texture2D" uid="uid://c7vun7uok4t45" path="res://Art/injections icon.png" id="2_l7cwa"]
 [ext_resource type="Script" path="res://Managers/Scene/ButtonSceneSwitcher.cs" id="2_mlrbl"]
 [ext_resource type="Script" path="res://Scripts/PlantLayer.cs" id="3_1b3g6"]
 [ext_resource type="Script" path="res://Scripts/ViewVirusButton.cs" id="3_7cee1"]
-[ext_resource type="PackedScene" uid="uid://ccxvr07fwlf4r" path="res://Prefabs/Plant.tscn" id="4_kigpy"]
-[ext_resource type="PackedScene" uid="uid://bd5rsdavfktmu" path="res://Prefabs/Syringe.tscn" id="7_wch7j"]
+[ext_resource type="PackedScene" path="res://Prefabs/Plant.tscn" id="4_kigpy"]
+[ext_resource type="PackedScene" uid="uid://n767njjh7i0v" path="res://Prefabs/Syringe.tscn" id="7_wch7j"]
 [ext_resource type="Texture2D" uid="uid://bu23v3t5kq6fq" path="res://Art/BEGIN BUTTON 507 x 134.png" id="9_otpgb"]
+[ext_resource type="Script" path="res://Scripts/Inventory.cs" id="9_td2eh"]
+
+[sub_resource type="Resource" id="Resource_hy3bf"]
+script = ExtResource("2_dp2aa")
+name = "Hello"
+ability = 1
+
+[sub_resource type="Resource" id="Resource_40ro3"]
+script = ExtResource("2_dp2aa")
+name = "adad"
+ability = 0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ju7te"]
 atlas = ExtResource("2_l7cwa")
@@ -38,10 +50,11 @@ region = Rect2(0, 0, 507, 134)
 atlas = ExtResource("9_otpgb")
 region = Rect2(0, 134, 507, 134)
 
-[node name="Root" type="Node2D" node_paths=PackedStringArray("layer")]
+[node name="Root" type="Node2D" node_paths=PackedStringArray("inventory")]
 script = ExtResource("1_3crt5")
-layer = NodePath("UI Render/UI/Plant Layer")
 testNumberPlants = 9
+inventory = NodePath("Inventory")
+testItems = Array[Object]([SubResource("Resource_hy3bf"), SubResource("Resource_40ro3")])
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(960, 540)
@@ -69,7 +82,7 @@ script = ExtResource("3_1b3g6")
 positions = [NodePath("../../../Plant Spots/Spot"), NodePath("../../../Plant Spots/Spot1"), NodePath("../../../Plant Spots/Spot2"), NodePath("../../../Plant Spots/Spot3"), NodePath("../../../Plant Spots/Spot4"), NodePath("../../../Plant Spots/Spot5"), NodePath("../../../Plant Spots/Spot6"), NodePath("../../../Plant Spots/Spot7"), NodePath("../../../Plant Spots/Spot8"), NodePath("../../../Plant Spots/Spot9"), NodePath("../../../Plant Spots/Spot10"), NodePath("../../../Plant Spots/Spot11"), NodePath("../../../Plant Spots/Spot12"), NodePath("../../../Plant Spots/Spot13"), NodePath("../../../Plant Spots/Spot14")]
 plantScene = ExtResource("4_kigpy")
 
-[node name="View Virus Button" type="TextureButton" parent="UI Render/UI" node_paths=PackedStringArray("container")]
+[node name="View Virus Button" type="TextureButton" parent="UI Render/UI" node_paths=PackedStringArray("container", "inventory")]
 custom_minimum_size = Vector2(280, 65)
 layout_mode = 2
 offset_left = 48.0
@@ -85,36 +98,17 @@ ignore_texture_size = true
 stretch_mode = 0
 script = ExtResource("3_7cee1")
 container = NodePath("../Viruses")
+inventory = NodePath("../../../Inventory")
+syringeScene = ExtResource("7_wch7j")
 
 [node name="Viruses" type="VBoxContainer" parent="UI Render/UI"]
-visible = false
 layout_mode = 1
 offset_left = 50.0
 offset_top = 99.0
 offset_right = 610.0
-offset_bottom = 615.0
+offset_bottom = 99.0
 scale = Vector2(0.5, 0.5)
 alignment = 2
-
-[node name="Syringe" parent="UI Render/UI/Viruses" node_paths=PackedStringArray("parent", "parent1") instance=ExtResource("7_wch7j")]
-layout_mode = 2
-parent = NodePath("../../../..")
-parent1 = NodePath("..")
-
-[node name="Syringe2" parent="UI Render/UI/Viruses" node_paths=PackedStringArray("parent", "parent1") instance=ExtResource("7_wch7j")]
-layout_mode = 2
-parent = NodePath("../../../..")
-parent1 = NodePath("..")
-
-[node name="Syringe3" parent="UI Render/UI/Viruses" node_paths=PackedStringArray("parent", "parent1") instance=ExtResource("7_wch7j")]
-layout_mode = 2
-parent = NodePath("../../../..")
-parent1 = NodePath("..")
-
-[node name="Syringe4" parent="UI Render/UI/Viruses" node_paths=PackedStringArray("parent", "parent1") instance=ExtResource("7_wch7j")]
-layout_mode = 2
-parent = NodePath("../../../..")
-parent1 = NodePath("..")
 
 [node name="TextureButton" type="TextureButton" parent="UI Render/UI"]
 layout_mode = 2
@@ -191,6 +185,10 @@ scale = Vector2(0.5, 0.5)
 [node name="Spot14" type="Node2D" parent="Plant Spots"]
 position = Vector2(1776, 969)
 scale = Vector2(0.5, 0.5)
+
+[node name="Inventory" type="Node" parent="." node_paths=PackedStringArray("layer")]
+script = ExtResource("9_td2eh")
+layer = NodePath("../UI Render/UI/Plant Layer")
 
 [connection signal="pressed" from="UI Render/UI/View Virus Button" to="UI Render/UI/View Virus Button" method="ToggleMenu"]
 [connection signal="button_down" from="UI Render/UI/TextureButton" to="UI Render/UI/TextureButton" method="BeginMinigame"]

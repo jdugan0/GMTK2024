@@ -6,7 +6,7 @@
 
 [node name="Source" type="Node2D"]
 script = ExtResource("1_2dgor")
-sourceTime = 8.0
+sourceTime = 5.0
 range = 1.5
 difScaleTime = 0.001
 difScaleDist = 0.01

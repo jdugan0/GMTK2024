@@ -44,7 +44,7 @@ public partial class VirusBoid : RigidBody2D
 	[Export] public float abilityCooldown;
 	public float abilityCooldownTimer;
 
-	enum AbilityType{
+	public enum AbilityType{
 		None,
 		Dash
 	}

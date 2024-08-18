@@ -1,0 +1,7 @@
+[gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://0htg3irnm5x0"]
+
+[ext_resource type="Texture2D" uid="uid://c7vun7uok4t45" path="res://Art/injections icon.png" id="1_uirt6"]
+
+[resource]
+atlas = ExtResource("1_uirt6")
+region = Rect2(0, 0, 560, 127)

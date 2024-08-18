@@ -20,7 +20,6 @@ config/icon="res://icon.svg"
 Audiomanager="*res://Managers/Audio/Audiomanager.tscn"
 Sceneswitcher="*res://Managers/Scene/Sceneswitcher.tscn"
 VirusDataTransfer="*res://Prefabs/VirusDataTransfer.tscn"
-Inventory="*res://Prefabs/Inventory.tscn"
 
 [display]
 

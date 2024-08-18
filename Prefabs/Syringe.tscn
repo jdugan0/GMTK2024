@@ -1,11 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://bd5rsdavfktmu"]
+[gd_scene load_steps=3 format=3 uid="uid://n767njjh7i0v"]
 
-[ext_resource type="Texture2D" uid="uid://c7vun7uok4t45" path="res://Art/injections icon.png" id="1_13k2e"]
 [ext_resource type="Script" path="res://Scripts/SyringeDragging.cs" id="1_t0q2v"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_cy8lm"]
-atlas = ExtResource("1_13k2e")
-region = Rect2(0, 0, 560, 127)
+[ext_resource type="Texture2D" uid="uid://0htg3irnm5x0" path="res://Art/Syringe.tres" id="2_fpinp"]
 
 [node name="Syringe" type="Control"]
 custom_minimum_size = Vector2(560, 126)
@@ -17,8 +13,14 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_t0q2v")
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="TextureRect" type="TextureButton" parent="."]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
-texture = SubResource("AtlasTexture_cy8lm")
+texture_normal = ExtResource("2_fpinp")
+texture_pressed = ExtResource("2_fpinp")
+texture_hover = ExtResource("2_fpinp")
+texture_disabled = ExtResource("2_fpinp")
+texture_focused = ExtResource("2_fpinp")
+
+[connection signal="pressed" from="TextureRect" to="." method="Select"]

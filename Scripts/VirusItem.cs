@@ -1,7 +1,9 @@
 using Godot;
 using System;
 
-public class VirusItem : Item
+[GlobalClass]
+public partial class VirusItem : Resource
 {
-    
+    [Export] public String name;
+    [Export] public VirusBoid.AbilityType ability;
 }
