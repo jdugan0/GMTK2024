@@ -8,6 +8,7 @@ public partial class Inventory : Node
 	private List<VirusItem> viruses = new List<VirusItem>();
 	private static List<PlantInfo> plantInfos = new List<PlantInfo>();
 	[Export] VirusItem[] testItems;
+	public int money;
 	
 
     public override void _Ready()

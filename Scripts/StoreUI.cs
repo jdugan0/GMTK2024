@@ -13,7 +13,7 @@ public partial class StoreUI : Control
 
     public override void _Ready()
     {
-        StoreConfiguration config = RandomizeStore(2, 2);
+        StoreConfiguration config = RandomizeStore(5, 3);
         int amount = 0;
         foreach (VirusItem virus in config.GetVirusItems())
         {

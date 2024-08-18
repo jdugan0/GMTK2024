@@ -53,6 +53,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_7euqv")
 virusPresets = Array[Object]([SubResource("Resource_iw1dg"), SubResource("Resource_uw5r2")])
+plantPresets = Array[Object]([])
 buttons = NodePath("Panel/ScrollContainer/VBoxContainer")
 textures = Array[Texture2D]([SubResource("AtlasTexture_es8uq"), SubResource("AtlasTexture_8wvst")])
 

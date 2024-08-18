@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://btbbbehoaknia"]
+[gd_scene load_steps=34 format=3 uid="uid://btbbbehoaknia"]
 
 [ext_resource type="Script" path="res://Scripts/WorkspaceTest.cs" id="1_3crt5"]
 [ext_resource type="Texture2D" uid="uid://dnobjr7cssrwn" path="res://Art/greenhouse no pot.png" id="1_n5eej"]
@@ -8,7 +8,9 @@
 [ext_resource type="Script" path="res://Scripts/ViewVirusButton.cs" id="3_7cee1"]
 [ext_resource type="PackedScene" uid="uid://ccxvr07fwlf4r" path="res://Prefabs/Plant.tscn" id="4_kigpy"]
 [ext_resource type="PackedScene" uid="uid://n767njjh7i0v" path="res://Prefabs/Syringe.tscn" id="7_wch7j"]
+[ext_resource type="Texture2D" uid="uid://dtcwrqjbgp64b" path="res://Art/Button1.tres" id="8_do53u"]
 [ext_resource type="Texture2D" uid="uid://bu23v3t5kq6fq" path="res://Art/BEGIN BUTTON 507 x 134.png" id="9_otpgb"]
+[ext_resource type="Texture2D" uid="uid://dxltw0ibqh1xm" path="res://Art/Button2.tres" id="9_qghru"]
 [ext_resource type="Texture2D" uid="uid://cy51q8bxkmyhb" path="res://Art/PLANT STORE 1255 x 1021.png" id="12_gny0d"]
 [ext_resource type="PackedScene" uid="uid://cyojf6l1lvcyc" path="res://Prefabs/VirusButton.tscn" id="12_k5be1"]
 [ext_resource type="Script" path="res://Scripts/PlantInfo.cs" id="12_puiu7"]
@@ -94,6 +96,7 @@ layer = 128
 [node name="Store UI" parent="UI Store" instance=ExtResource("13_0m0l7")]
 visible = false
 plantPresets = Array[Object]([SubResource("Resource_fm7iq"), SubResource("Resource_ymlkx"), SubResource("Resource_13oak")])
+textures = Array[Texture2D]([ExtResource("8_do53u"), ExtResource("9_qghru")])
 purchaseVirusButton = ExtResource("12_k5be1")
 purchasePlantButton = ExtResource("13_mwvtp")
 
