@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://lyqc1fccxola"]
+[gd_scene load_steps=25 format=3 uid="uid://lyqc1fccxola"]
 
 [ext_resource type="Script" path="res://Scripts/StoreUI.cs" id="1_c44en"]
 [ext_resource type="Texture2D" uid="uid://dy2iq7vlikglo" path="res://Art/SHOP BG OPEN 3840 x 2160.png" id="1_igjtu"]
@@ -7,18 +7,58 @@
 [ext_resource type="Script" path="res://Scripts/VirusItem.cs" id="3_0dkkd"]
 [ext_resource type="Texture2D" uid="uid://dqwf7kp5fongh" path="res://Art/Shopkeeper quip bubble 1284 x 448.png" id="3_wymjs"]
 [ext_resource type="FontFile" uid="uid://dklw1r3w4l27s" path="res://Art/PoorRichardOpti.otf" id="4_e47b2"]
+[ext_resource type="Script" path="res://Scripts/PlantInfo.cs" id="4_oomc5"]
+[ext_resource type="Script" path="res://Scripts/Species.cs" id="5_uuavg"]
+[ext_resource type="Texture2D" uid="uid://cdwjppd7e4cbl" path="res://Art/yellow trout lily _test.png" id="6_t8dpe"]
+[ext_resource type="Texture2D" uid="uid://bswvcax21n3cv" path="res://Art/juniper berries _test.png" id="7_6umhy"]
+[ext_resource type="Texture2D" uid="uid://b24iakx6l648" path="res://Art/cinnamon fern _test.png" id="8_84cv3"]
 
 [sub_resource type="Resource" id="Resource_cy58o"]
 script = ExtResource("3_0dkkd")
 name = "Basic Genome"
 ability = 0
 scene = ExtResource("2_h1xfd")
+price = 0.0
 
 [sub_resource type="Resource" id="Resource_gycc8"]
 script = ExtResource("3_0dkkd")
 name = "Circulation-Enhanced Genome"
 ability = 1
 scene = ExtResource("2_h1xfd")
+price = 0.0
+
+[sub_resource type="Resource" id="Resource_41vqi"]
+script = ExtResource("5_uuavg")
+species = 0
+texture = ExtResource("6_t8dpe")
+
+[sub_resource type="Resource" id="Resource_jcd85"]
+script = ExtResource("4_oomc5")
+species = SubResource("Resource_41vqi")
+price = 0.0
+value = 0.0
+
+[sub_resource type="Resource" id="Resource_j6o5p"]
+script = ExtResource("5_uuavg")
+species = 1
+texture = ExtResource("7_6umhy")
+
+[sub_resource type="Resource" id="Resource_77gy6"]
+script = ExtResource("4_oomc5")
+species = SubResource("Resource_j6o5p")
+price = 0.0
+value = 0.0
+
+[sub_resource type="Resource" id="Resource_3gx8c"]
+script = ExtResource("5_uuavg")
+species = 2
+texture = ExtResource("8_84cv3")
+
+[sub_resource type="Resource" id="Resource_00cfa"]
+script = ExtResource("4_oomc5")
+species = SubResource("Resource_3gx8c")
+price = 0.0
+value = 0.0
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pfnsc"]
 texture = ExtResource("1_igjtu")
@@ -45,7 +85,9 @@ grow_vertical = 2
 scale = Vector2(2, 2)
 script = ExtResource("1_c44en")
 virusPresets = Array[Object]([SubResource("Resource_cy58o"), SubResource("Resource_gycc8")])
+plantPresets = Array[Object]([SubResource("Resource_jcd85"), SubResource("Resource_77gy6"), SubResource("Resource_00cfa")])
 buttons = NodePath("Panel/ScrollContainer/VBoxContainer")
+textures = Array[Texture2D]([])
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 1
