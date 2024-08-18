@@ -122,6 +122,7 @@ public partial class VirusBoid : RigidBody2D
 			
 			foreach (Location l in VirusGenerator.instance.locations){
 				if (l.Position.DistanceTo(Position) < 280.7){
+					AudioManager.instance.PlaySFX(this, "Root");
 					rooted = true;
 					selected = false;
 					generator.locationQualities[l.type] += health;
@@ -155,6 +156,7 @@ public partial class VirusBoid : RigidBody2D
 			if (validDamageTypes.Contains(col.name)){
 				time = damageTime;
 				col.health -= damage;
+				AudioManager.instance.PlaySFX(this,"Damage");
 			}
 		}
 	}

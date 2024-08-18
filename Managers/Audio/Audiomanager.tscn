@@ -1,7 +1,70 @@
-[gd_scene load_steps=2 format=3 uid="uid://d3df3pqxnto64"]
+[gd_scene load_steps=21 format=3 uid="uid://d3df3pqxnto64"]
 
 [ext_resource type="Script" path="res://Managers/Audio/AudioManager.cs" id="1_5pvfo"]
+[ext_resource type="Script" path="res://Managers/Audio/Sound.cs" id="2_cds50"]
+[ext_resource type="AudioStream" uid="uid://cqko7ecgdtsoe" path="res://SFX/Warehouse Music.wav" id="3_alyeg"]
+[ext_resource type="AudioStream" uid="uid://brbvb4rnwml2e" path="res://SFX/Virus Combat.wav" id="4_heq6i"]
+[ext_resource type="AudioStream" uid="uid://cva6wkxjdwjbr" path="res://SFX/Root 1.wav" id="5_p8vam"]
+[ext_resource type="AudioStream" uid="uid://cmabgri7vt62o" path="res://SFX/Root 2.wav" id="6_qybgf"]
+[ext_resource type="AudioStream" uid="uid://d1s4l2jvao6us" path="res://SFX/Root 3.wav" id="7_qjyuj"]
+[ext_resource type="AudioStream" uid="uid://dnehylsb0a7h3" path="res://SFX/Root 4.wav" id="8_1yxak"]
+[ext_resource type="AudioStream" uid="uid://ccv8jsaxgpgfg" path="res://SFX/Root 5.wav" id="9_4gsc1"]
+[ext_resource type="AudioStream" uid="uid://bnn7hgh7xmmdu" path="res://SFX/Damage 1.wav" id="10_4yxn8"]
+[ext_resource type="AudioStream" uid="uid://c13bvpkt1krs8" path="res://SFX/Damage 2.wav" id="11_ud165"]
+[ext_resource type="AudioStream" uid="uid://b07gbfshbly6d" path="res://SFX/Damage 3.wav" id="12_d0g5t"]
+[ext_resource type="AudioStream" uid="uid://by6lj8ymgwcl0" path="res://SFX/Damage 4.wav" id="13_jfs0g"]
+[ext_resource type="AudioStream" uid="uid://uml12pkehbvq" path="res://SFX/Damage 5.wav" id="14_a18su"]
+
+[sub_resource type="Resource" id="Resource_uigmi"]
+script = ExtResource("2_cds50")
+stream = ExtResource("3_alyeg")
+volume = 0.0
+name = "WorkspaceMusic"
+
+[sub_resource type="Resource" id="Resource_me2ls"]
+script = ExtResource("2_cds50")
+stream = ExtResource("4_heq6i")
+volume = 0.0
+name = "VirusMusic"
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_vsmvj"]
+streams_count = 5
+stream_0/stream = ExtResource("5_p8vam")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("6_qybgf")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("7_qjyuj")
+stream_2/weight = 1.0
+stream_3/stream = ExtResource("8_1yxak")
+stream_3/weight = 1.0
+stream_4/stream = ExtResource("9_4gsc1")
+stream_4/weight = 1.0
+
+[sub_resource type="Resource" id="Resource_girw2"]
+script = ExtResource("2_cds50")
+stream = SubResource("AudioStreamRandomizer_vsmvj")
+volume = 0.0
+name = "Root"
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_5qecd"]
+streams_count = 5
+stream_0/stream = ExtResource("10_4yxn8")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("11_ud165")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("12_d0g5t")
+stream_2/weight = 1.0
+stream_3/stream = ExtResource("13_jfs0g")
+stream_3/weight = 1.0
+stream_4/stream = ExtResource("14_a18su")
+stream_4/weight = 1.0
+
+[sub_resource type="Resource" id="Resource_yoh11"]
+script = ExtResource("2_cds50")
+stream = SubResource("AudioStreamRandomizer_5qecd")
+volume = 0.0
+name = "Damage"
 
 [node name="Audiomanager" type="Node"]
 script = ExtResource("1_5pvfo")
-sounds = Array[Object]([])
+sounds = Array[Object]([SubResource("Resource_uigmi"), SubResource("Resource_me2ls"), SubResource("Resource_girw2"), SubResource("Resource_yoh11")])

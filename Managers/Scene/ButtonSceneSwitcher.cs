@@ -16,6 +16,7 @@ public partial class ButtonSceneSwitcher : Node
 			{
 				VirusDataTransfer.AddViruses(virus);
 			}
+			PlantLayer.GetTableOccuplant().ClearViruses();
 			SceneSwitcher.instance.SwitchScene(1);
 		}
 	}

@@ -45,7 +45,7 @@ public partial class AudioManager : Node
 	{
 		return PlaySFX(from, sound, 0);
 	}
-	public void CancelSFX(string sound)
+	public float CancelSFX(string sound)
 	{
 		if (isPlaying(sound))
 		{
@@ -58,9 +58,13 @@ public partial class AudioManager : Node
 					break;
 				}
 			}
+			float time=p.Value.GetPlaybackPosition();
+			
 			playing.Remove(p);
 			p.Value.QueueFree();
+			return time;
 		}
+		return -1;
 	}
 	public bool isPlaying(string sound)
 	{

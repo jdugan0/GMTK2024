@@ -41,6 +41,10 @@ public partial class Plant : TextureButton
 		info.viruses.Remove(item);
 	}
 
+	public void ClearViruses(){
+		info.viruses.Clear();
+	}
+
 	private void ToTable()
 	{
 		if (!PlantLayer.GetTableOccupied() && PlantLayer.GetTableOccuplant() != this)

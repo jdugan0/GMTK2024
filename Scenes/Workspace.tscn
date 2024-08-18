@@ -8,7 +8,7 @@
 [ext_resource type="Script" path="res://Managers/Scene/ButtonSceneSwitcher.cs" id="2_mlrbl"]
 [ext_resource type="Script" path="res://Scripts/PlantLayer.cs" id="3_1b3g6"]
 [ext_resource type="Script" path="res://Scripts/ViewVirusButton.cs" id="3_7cee1"]
-[ext_resource type="PackedScene" path="res://Prefabs/Plant.tscn" id="4_kigpy"]
+[ext_resource type="PackedScene" uid="uid://ccxvr07fwlf4r" path="res://Prefabs/Plant.tscn" id="4_kigpy"]
 [ext_resource type="PackedScene" uid="uid://n767njjh7i0v" path="res://Prefabs/Syringe.tscn" id="7_wch7j"]
 [ext_resource type="Texture2D" uid="uid://bu23v3t5kq6fq" path="res://Art/BEGIN BUTTON 507 x 134.png" id="9_otpgb"]
 [ext_resource type="Script" path="res://Scripts/Inventory.cs" id="9_td2eh"]

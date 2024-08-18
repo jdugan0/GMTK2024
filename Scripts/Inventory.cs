@@ -7,6 +7,7 @@ public partial class Inventory : Node
 	public static Inventory instance;
 	private List<VirusItem> viruses = new List<VirusItem>();
 	private static List<PlantInfo> plantInfos = new List<PlantInfo>();
+	
 
     public override void _Ready()
     {
