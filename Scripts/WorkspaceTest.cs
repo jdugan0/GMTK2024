@@ -10,6 +10,6 @@ public partial class WorkspaceTest : Node2D
 	public override void _Ready()
 	{
 		Inventory.TestPlants(layer, testNumberPlants);
-		Inventory.TestViruses(dropdown);
+		// Inventory.TestViruses(dropdown);
 	}
 }

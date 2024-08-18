@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://bd5rsdavfktmu"]
+
+[ext_resource type="Texture2D" uid="uid://c7vun7uok4t45" path="res://Art/injections icon.png" id="1_13k2e"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cy8lm"]
+atlas = ExtResource("1_13k2e")
+region = Rect2(0, 0, 560, 127)
+
+[node name="Syringe" type="Control"]
+custom_minimum_size = Vector2(560, 126)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = SubResource("AtlasTexture_cy8lm")

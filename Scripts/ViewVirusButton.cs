@@ -3,10 +3,9 @@ using System;
 
 public partial class ViewVirusButton : TextureButton
 {
-	[Export] private VirusDropdown menu;
-
+	[Export] private Control container;
 	public void ToggleMenu()
 	{
-		menu.Toggle();
+		container.Visible = !container.Visible;
 	}
 }

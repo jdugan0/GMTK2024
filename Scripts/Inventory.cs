@@ -34,21 +34,21 @@ public partial class Inventory : Node
 		}
 	}
 
-	public static void AddVirus(VirusItem virus, VirusDropdown from)
-	{
-		viruses.Add(virus);
-		from.AddChild(new Syringe(virus, from));
-	}
+	// public static void AddVirus(VirusItem virus, Control from)
+	// {
+	// 	viruses.Add(virus);
+	// 	from.AddChild(new Syringe());
+	// }
 
 
 	// Test methods
-	public static void TestViruses(VirusDropdown from)
-	{
-		for (int i = 0; i < 3; i++)
-		{
-			AddVirus(new VirusItem(), from);
-		}
-	}
+	// public static void TestViruses(VirusDropdown from)
+	// {
+	// 	for (int i = 0; i < 3; i++)
+	// 	{
+	// 		AddVirus(new VirusItem(), from);
+	// 	}
+	// }
 
 	public static void TestPlants(PlantLayer layer, int number)
 	{
