@@ -8,6 +8,7 @@ public partial class Plant : TextureButton
 
     public override void _Ready()
     {
+		TextureNormal = info.species.texture;
 		if (!info.onTable)
 		{
 			ToShelfReset();

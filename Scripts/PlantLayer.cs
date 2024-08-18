@@ -4,10 +4,16 @@ using System.Diagnostics;
 
 public partial class PlantLayer : CanvasLayer
 {
+	public static PlantLayer instance;
 	[Export] public Node2D[] positions = new Node2D[15];
 	[Export] public PackedScene plantScene;
 	private static bool tableOccupied = false;
 	private static Plant tableOccupant;
+
+    public override void _Ready()
+    {
+        instance = this;
+    }
 
     public void AddPlant(PlantInfo info)
 	{

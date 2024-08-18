@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://8mobqpmpiiuu"]
+[gd_scene load_steps=18 format=3 uid="uid://8mobqpmpiiuu"]
 
 [ext_resource type="Script" path="res://Scripts/StoreUI.cs" id="1_7euqv"]
 [ext_resource type="Texture2D" uid="uid://dy2iq7vlikglo" path="res://Art/SHOP BG OPEN 3840 x 2160.png" id="1_igjtu"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://dqwf7kp5fongh" path="res://Art/Shopkeeper quip bubble 1284 x 448.png" id="3_wymjs"]
 [ext_resource type="FontFile" uid="uid://dklw1r3w4l27s" path="res://Art/PoorRichardOpti.otf" id="4_e47b2"]
 [ext_resource type="Texture2D" uid="uid://smrbafgukudu" path="res://Art/SHOP buttons 1666 x 298.png" id="4_hcoge"]
+[ext_resource type="Texture2D" uid="uid://cmb8t0m6ovqdt" path="res://Art/back button 500 x 225.png" id="9_pdv2t"]
 
 [sub_resource type="Resource" id="Resource_iw1dg"]
 script = ExtResource("2_605yr")
@@ -74,7 +75,7 @@ anchor_bottom = 0.5
 offset_left = 181.0
 offset_top = -503.0
 offset_right = 1059.0
-offset_bottom = 520.0
+offset_bottom = 334.0
 grow_vertical = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel/ScrollContainer"]
@@ -127,3 +128,19 @@ theme_override_font_sizes/font_size = 41
 text = "Plants, genomes, we've got it all!"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="TextureButton" type="TextureButton" parent="Panel"]
+layout_mode = 0
+offset_left = 192.0
+offset_top = 887.0
+offset_right = 525.333
+offset_bottom = 1037.0
+texture_normal = ExtResource("9_pdv2t")
+texture_pressed = ExtResource("9_pdv2t")
+texture_hover = ExtResource("9_pdv2t")
+texture_disabled = ExtResource("9_pdv2t")
+texture_focused = ExtResource("9_pdv2t")
+ignore_texture_size = true
+stretch_mode = 0
+
+[connection signal="pressed" from="Panel/TextureButton" to="." method="Toggle"]

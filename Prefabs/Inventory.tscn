@@ -1,27 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://nllnk078va50"]
+[gd_scene load_steps=2 format=3 uid="uid://nllnk078va50"]
 
 [ext_resource type="Script" path="res://Scripts/Inventory.cs" id="1_xoey4"]
-[ext_resource type="PackedScene" uid="uid://dowptv22ct3hh" path="res://Prefabs/Virus.tscn" id="2_2ij8r"]
-[ext_resource type="Script" path="res://Scripts/VirusItem.cs" id="3_rpv0j"]
-
-[sub_resource type="Resource" id="Resource_mn4wu"]
-script = ExtResource("3_rpv0j")
-name = ""
-ability = 0
-scene = ExtResource("2_2ij8r")
-
-[sub_resource type="Resource" id="Resource_qixps"]
-script = ExtResource("3_rpv0j")
-name = ""
-ability = 0
-scene = ExtResource("2_2ij8r")
-
-[sub_resource type="Resource" id="Resource_74sjb"]
-script = ExtResource("3_rpv0j")
-name = ""
-ability = 0
-scene = ExtResource("2_2ij8r")
 
 [node name="Inventory" type="Node"]
 script = ExtResource("1_xoey4")
-testItems = Array[Object]([SubResource("Resource_mn4wu"), SubResource("Resource_qixps"), SubResource("Resource_74sjb")])
+testItems = Array[Object]([])
+money = 100

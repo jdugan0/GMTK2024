@@ -9,10 +9,10 @@ public partial class WorkspaceTest : Node2D
 
 	public override void _Ready()
 	{
-		if (Inventory.instance.GetPlants().Count <= 0){
-			Inventory.instance.TestPlants(testNumberPlants, layer);
-		}
-		Inventory.instance.RefreshVisuals(layer);
+		// if (Inventory.instance.GetPlants().Count <= 0){
+		// 	Inventory.instance.TestPlants(testNumberPlants, layer);
+		// }
+		// Inventory.instance.RefreshVisuals(layer);
 		
 		// Inventory.TestViruses(dropdown);
 	}
