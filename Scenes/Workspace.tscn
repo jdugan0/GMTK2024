@@ -52,11 +52,11 @@ region = Rect2(0, 0, 507, 134)
 atlas = ExtResource("9_otpgb")
 region = Rect2(0, 134, 507, 134)
 
-[node name="Root" type="Node2D" node_paths=PackedStringArray("inventory")]
+[node name="Root" type="Node2D" node_paths=PackedStringArray("layer")]
 script = ExtResource("1_3crt5")
 testNumberPlants = 15
-inventory = NodePath("")
 testItems = Array[Object]([SubResource("Resource_hy3bf"), SubResource("Resource_40ro3")])
+layer = NodePath("UI Render/UI/Plant Layer")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(960, 540)
@@ -84,7 +84,7 @@ script = ExtResource("3_1b3g6")
 positions = [NodePath("../../../Plant Spots/Spot"), NodePath("../../../Plant Spots/Spot1"), NodePath("../../../Plant Spots/Spot2"), NodePath("../../../Plant Spots/Spot3"), NodePath("../../../Plant Spots/Spot4"), NodePath("../../../Plant Spots/Spot5"), NodePath("../../../Plant Spots/Spot6"), NodePath("../../../Plant Spots/Spot7"), NodePath("../../../Plant Spots/Spot8"), NodePath("../../../Plant Spots/Spot9"), NodePath("../../../Plant Spots/Spot10"), NodePath("../../../Plant Spots/Spot11"), NodePath("../../../Plant Spots/Spot12"), NodePath("../../../Plant Spots/Spot13"), NodePath("../../../Plant Spots/Spot14")]
 plantScene = ExtResource("4_kigpy")
 
-[node name="View Virus Button" type="TextureButton" parent="UI Render/UI" node_paths=PackedStringArray("container", "inventory")]
+[node name="View Virus Button" type="TextureButton" parent="UI Render/UI" node_paths=PackedStringArray("container")]
 custom_minimum_size = Vector2(280, 65)
 layout_mode = 2
 offset_left = 48.0
@@ -100,7 +100,6 @@ ignore_texture_size = true
 stretch_mode = 0
 script = ExtResource("3_7cee1")
 container = NodePath("../Viruses")
-inventory = NodePath("")
 syringeScene = ExtResource("7_wch7j")
 
 [node name="Viruses" type="VBoxContainer" parent="UI Render/UI"]

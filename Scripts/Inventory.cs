@@ -7,15 +7,10 @@ public partial class Inventory : Node
 	public static Inventory instance;
 	private List<VirusItem> viruses = new List<VirusItem>();
 	private static List<PlantInfo> plantInfos = new List<PlantInfo>();
-	[Export] private PlantLayer layer;
 
     public override void _Ready()
     {
 		instance = this;
-		foreach (PlantInfo info in plantInfos)
-		{
-			layer.AddPlant(info);
-		}
     }
 
     public List<VirusItem> GetViruses()
@@ -28,12 +23,12 @@ public partial class Inventory : Node
 		return plantInfos;
 	}
 
-	public void AddPlantInfo(PlantInfo plantInfo)
+	public void AddPlantInfo(PlantInfo plantInfo, PlantLayer from)
 	{
 		if (plantInfos.Count < 15)
 		{
 			plantInfos.Add(plantInfo);
-			layer.AddPlant(plantInfo);
+			from.AddPlant(plantInfo);
 		}
 	}
 
@@ -46,7 +41,7 @@ public partial class Inventory : Node
 	}
 
 
-	public void TestPlants(int number)
+	public void TestPlants(int number, PlantLayer from)
 	{
 		for (int i = 0; i < number; i++)
 		{
@@ -54,7 +49,7 @@ public partial class Inventory : Node
 			info.species = new Species();
 			info.species.species = Species.PlantSpecies.JuniperBerries;
 			info.species.texture = (Texture2D) GD.Load("res://Art/juniper berries _test.png");
-			AddPlantInfo(info);
+			AddPlantInfo(info, from);
 		}
 	}
 }
