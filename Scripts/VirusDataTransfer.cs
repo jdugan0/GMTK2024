@@ -21,7 +21,7 @@ public partial class VirusDataTransfer : Node
 
 	public static void ClearViruses()
 	{
-		VirusDataTransfer.viruses.Clear();
+		viruses.Clear();
 	}
 
 	public static List<VirusItem> GetViruses()

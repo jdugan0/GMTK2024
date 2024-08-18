@@ -1,11 +1,15 @@
-[gd_scene load_steps=12 format=3 uid="uid://bn30kdu7s07l5"]
+[gd_scene load_steps=18 format=3 uid="uid://bn30kdu7s07l5"]
 
+[ext_resource type="Script" path="res://Scripts/WorkspaceTest.cs" id="1_3crt5"]
 [ext_resource type="Texture2D" uid="uid://dnobjr7cssrwn" path="res://Art/greenhouse no pot.png" id="1_n5eej"]
 [ext_resource type="Texture2D" uid="uid://c7vun7uok4t45" path="res://Art/injections icon.png" id="2_l7cwa"]
 [ext_resource type="Script" path="res://Managers/Scene/ButtonSceneSwitcher.cs" id="2_mlrbl"]
+[ext_resource type="Script" path="res://Scripts/PlantLayer.cs" id="3_1b3g6"]
 [ext_resource type="Script" path="res://Scripts/ViewVirusButton.cs" id="3_7cee1"]
 [ext_resource type="Script" path="res://Scripts/VirusDropdown.cs" id="4_dxgb8"]
+[ext_resource type="PackedScene" uid="uid://ccxvr07fwlf4r" path="res://Prefabs/Plant.tscn" id="4_kigpy"]
 [ext_resource type="Script" path="res://Scripts/SyringeContainer.cs" id="5_d72nf"]
+[ext_resource type="Texture2D" uid="uid://bu23v3t5kq6fq" path="res://Art/BEGIN BUTTON 507 x 134.png" id="9_otpgb"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ju7te"]
 atlas = ExtResource("2_l7cwa")
@@ -27,7 +31,19 @@ region = Rect2(0, 648, 560, 115)
 atlas = ExtResource("2_l7cwa")
 region = Rect2(0, 648, 560, 115)
 
-[node name="Root" type="Node2D"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_g1h57"]
+atlas = ExtResource("9_otpgb")
+region = Rect2(0, 0, 507, 134)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q30pu"]
+atlas = ExtResource("9_otpgb")
+region = Rect2(0, 134, 507, 134)
+
+[node name="Root" type="Node2D" node_paths=PackedStringArray("dropdown", "layer")]
+script = ExtResource("1_3crt5")
+dropdown = NodePath("UI/Viruses/Syringe Layer")
+layer = NodePath("UI/Plants")
+testNumberPlants = 9
 
 [node name="UI" type="Control" parent="."]
 layout_mode = 3
@@ -40,8 +56,15 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("1_n5eej")
 expand_mode = 1
+
+[node name="Plants" type="CanvasLayer" parent="UI" node_paths=PackedStringArray("positions")]
+script = ExtResource("3_1b3g6")
+positions = [NodePath("../../Spot"), NodePath("../../Spot1"), NodePath("../../Spot2"), NodePath("../../Spot3"), NodePath("../../Spot4"), NodePath("../../Spot5"), NodePath("../../Spot6"), NodePath("../../Spot7"), NodePath("../../Spot8"), NodePath("../../Spot9"), NodePath("../../Spot10"), NodePath("../../Spot11"), NodePath("../../Spot12"), NodePath("../../Spot13"), NodePath("../../Spot14")]
+plantScene = ExtResource("4_kigpy")
 
 [node name="Viruses" type="VBoxContainer" parent="UI"]
 layout_mode = 2
@@ -71,22 +94,85 @@ script = ExtResource("4_dxgb8")
 offset_left = 48.0
 offset_top = 88.0
 offset_right = 328.0
-offset_bottom = 88.0
-grow_horizontal = 2
-grow_vertical = 2
+offset_bottom = 541.0
 
 [node name="Syringes" type="VBoxContainer" parent="UI/Viruses/Syringe Layer/ScrollContainer"]
 layout_mode = 2
 script = ExtResource("5_d72nf")
 
-[node name="TextureButton" type="Button" parent="UI"]
+[node name="TextureButton" type="TextureButton" parent="UI"]
 layout_mode = 2
-offset_left = 25.0
-offset_top = 971.0
-offset_right = 280.0
-offset_bottom = 1054.0
+offset_left = 30.0
+offset_top = 918.0
+offset_right = 537.0
+offset_bottom = 1052.0
 size_flags_horizontal = 0
+texture_normal = SubResource("AtlasTexture_g1h57")
+texture_pressed = SubResource("AtlasTexture_g1h57")
+texture_hover = SubResource("AtlasTexture_q30pu")
+texture_disabled = SubResource("AtlasTexture_g1h57")
+texture_focused = SubResource("AtlasTexture_g1h57")
 script = ExtResource("2_mlrbl")
 
+[node name="Spot" type="Node2D" parent="."]
+position = Vector2(871, 160)
+scale = Vector2(0.5, 0.5)
+
+[node name="Spot1" type="Node2D" parent="."]
+position = Vector2(1054, 159)
+scale = Vector2(0.5, 0.5)
+
+[node name="Spot2" type="Node2D" parent="."]
+position = Vector2(1235, 154)
+scale = Vector2(0.5, 0.5)
+
+[node name="Spot3" type="Node2D" parent="."]
+position = Vector2(1418, 154)
+scale = Vector2(0.5, 0.5)
+
+[node name="Spot4" type="Node2D" parent="."]
+position = Vector2(1600, 160)
+scale = Vector2(0.5, 0.5)
+
+[node name="Spot5" type="Node2D" parent="."]
+position = Vector2(1782, 159)
+scale = Vector2(0.5, 0.5)
+
+[node name="Spot6" type="Node2D" parent="."]
+position = Vector2(872, 428)
+scale = Vector2(0.5, 0.5)
+
+[node name="Spot7" type="Node2D" parent="."]
+position = Vector2(1054, 428)
+scale = Vector2(0.5, 0.5)
+
+[node name="Spot8" type="Node2D" parent="."]
+position = Vector2(1236, 423)
+scale = Vector2(0.5, 0.5)
+
+[node name="Spot9" type="Node2D" parent="."]
+position = Vector2(1418, 423)
+scale = Vector2(0.5, 0.5)
+
+[node name="Spot10" type="Node2D" parent="."]
+position = Vector2(1600, 428)
+scale = Vector2(0.5, 0.5)
+
+[node name="Spot11" type="Node2D" parent="."]
+position = Vector2(1782, 428)
+scale = Vector2(0.5, 0.5)
+
+[node name="Spot12" type="Node2D" parent="."]
+position = Vector2(1599, 712)
+scale = Vector2(0.5, 0.5)
+
+[node name="Spot13" type="Node2D" parent="."]
+position = Vector2(1782, 711)
+scale = Vector2(0.5, 0.5)
+
+[node name="Spot14" type="Node2D" parent="."]
+position = Vector2(1776, 969)
+scale = Vector2(0.5, 0.5)
+
 [connection signal="button_down" from="UI/Viruses/Syringe View" to="UI/Viruses/Syringe View" method="ToggleMenu"]
-[connection signal="button_down" from="UI/TextureButton" to="UI/TextureButton" method="Switch" binds= [1]]
+[connection signal="button_down" from="UI/TextureButton" to="UI/TextureButton" method="BeginMinigame"]
