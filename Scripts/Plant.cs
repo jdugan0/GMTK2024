@@ -9,11 +9,11 @@ public partial class Plant : TextureButton
     {
 		if (!info.onTable)
 		{
-			ToShelf();
+			ToShelfReset();
 		}
 		else
 		{
-			ToTable();
+			ToTableReset();
 		}
     }
 
@@ -56,6 +56,13 @@ public partial class Plant : TextureButton
 			PlantLayer.SetTableOccupied(this);
 		}
 	}
+	private void ToTableReset()
+	{
+		Position = PlantLayer.GetTablePosition();
+		info.onTable = true;
+		SetScale(new Vector2(1.5f, 1.5f));
+		ZIndex = 10;
+	}
 
 	private void ToShelf()
 	{
@@ -65,7 +72,13 @@ public partial class Plant : TextureButton
 		ZIndex = -1;
 		PlantLayer.SetTableFree();
 	}
-
+	private void ToShelfReset()
+	{
+		Position = info.posSlot;
+		info.onTable = false;
+		SetScale(new Vector2(0.5f, 0.5f));
+		ZIndex = -1;
+	}
 	public void OnClick()
 	{
 		if (info.onTable)

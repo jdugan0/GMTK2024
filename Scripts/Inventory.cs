@@ -35,8 +35,9 @@ public partial class Inventory : Node
 	public void RefreshVisuals(PlantLayer from){
 		foreach (PlantInfo info in plantInfos){
 			from.AddPlant(info);
-			GD.Print(info.plant);
+			GD.Print(PlantLayer.GetTableOccupied());
 			if (info.onTable){
+				
 				PlantLayer.SetTableOccupied(info.plant);
 			}
 		}

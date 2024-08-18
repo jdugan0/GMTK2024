@@ -1,0 +1,100 @@
+[gd_scene load_steps=9 format=3 uid="uid://8mobqpmpiiuu"]
+
+[ext_resource type="Texture2D" uid="uid://dy2iq7vlikglo" path="res://Art/SHOP BG OPEN 3840 x 2160.png" id="1_igjtu"]
+[ext_resource type="Texture2D" uid="uid://dwfo3807hpik" path="res://Art/shopkeeper 1334 x 1161.png" id="2_i83tn"]
+[ext_resource type="Texture2D" uid="uid://dqwf7kp5fongh" path="res://Art/Shopkeeper quip bubble 1284 x 448.png" id="3_wymjs"]
+[ext_resource type="FontFile" uid="uid://dklw1r3w4l27s" path="res://Art/PoorRichardOpti.otf" id="4_e47b2"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pfnsc"]
+texture = ExtResource("1_igjtu")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_thsqy"]
+atlas = ExtResource("2_i83tn")
+region = Rect2(0, 0, 1334, 1161)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_o3iru"]
+texture = SubResource("AtlasTexture_thsqy")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_krrw7"]
+texture = ExtResource("3_wymjs")
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -480.0
+offset_top = -270.0
+offset_right = 480.0
+offset_bottom = 270.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_pfnsc")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 107.0
+offset_top = -238.0
+offset_right = 507.0
+offset_bottom = 255.0
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/ScrollContainer"]
+layout_mode = 2
+
+[node name="Panel2" type="Panel" parent="Panel"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -411.0
+offset_top = -212.0
+offset_right = -78.0
+offset_bottom = 78.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_o3iru")
+
+[node name="Panel3" type="Panel" parent="Panel"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -404.0
+offset_top = 89.0
+offset_right = -83.0
+offset_bottom = 201.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_krrw7")
+
+[node name="Label" type="Label" parent="Panel/Panel3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 29.0
+offset_bottom = -28.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("4_e47b2")
+text = "Plants, genomes, we've got it all!"
+horizontal_alignment = 1
+vertical_alignment = 1
