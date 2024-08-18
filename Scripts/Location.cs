@@ -5,6 +5,13 @@ public partial class Location : Node2D
 {
 	// Called when the node enters the scene tree for the first time.
 	bool updated = false;
+	public enum LocationType{
+		Leaf,
+		Stem,
+		Root,
+		Flower
+	}
+	[Export] public LocationType type;
 	public override void _Ready()
 	{
 		
@@ -15,7 +22,7 @@ public partial class Location : Node2D
 	{
 		if (!updated && VirusGenerator.instance!=null){
 			VirusGenerator.instance.locations.Add(this);
-			VirusGenerator.instance.locationQualities.Add(this, 0);
+			VirusGenerator.instance.locationQualities.Add(type, 0);
 			updated = true;
 		}
 	}

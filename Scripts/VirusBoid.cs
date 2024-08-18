@@ -124,12 +124,13 @@ public partial class VirusBoid : RigidBody2D
 				if (l.Position.DistanceTo(Position) < 280.7){
 					rooted = true;
 					selected = false;
-					generator.locationQualities[l] += health;
+					generator.locationQualities[l.type] += health;
 					sprite2D.Texture = rootedTexture;
 					Modulate = Colors.White;
 					Freeze = true;
 					// ZIndex = -1;
 					generator.boids.Remove(this);
+					break;
 				}
 			}
 		}

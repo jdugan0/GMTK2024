@@ -15,7 +15,7 @@ public partial class VirusGenerator : Node
 	private Vector2 mousePos;
 	public List<Location> locations = new List<Location>();
 
-	public Dictionary<Location, float> locationQualities = new Dictionary<Location, float>();
+	public Dictionary<Location.LocationType, float> locationQualities = new Dictionary<Location.LocationType, float>();
 
 	
 	// Called when the node enters the scene tree for the first time.
