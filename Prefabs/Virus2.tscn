@@ -1,0 +1,86 @@
+[gd_scene load_steps=13 format=3 uid="uid://dgh1c3xap7xt2"]
+
+[ext_resource type="Script" path="res://Scripts/VirusBoid.cs" id="1_vnh10"]
+[ext_resource type="Script" path="res://Scripts/VirusParameter.cs" id="2_0jp88"]
+[ext_resource type="Texture2D" uid="uid://bhaiofs5yoxtb" path="res://Art/cells 302 x 290.png" id="3_l7r3l"]
+
+[sub_resource type="Resource" id="Resource_0vvou"]
+script = ExtResource("2_0jp88")
+value = 0.0
+name = "V1"
+
+[sub_resource type="Resource" id="Resource_fn70y"]
+script = ExtResource("2_0jp88")
+value = 0.0
+name = "V2"
+
+[sub_resource type="Resource" id="Resource_y6ds6"]
+script = ExtResource("2_0jp88")
+value = 0.0
+name = "V1"
+
+[sub_resource type="Resource" id="Resource_eehjr"]
+script = ExtResource("2_0jp88")
+value = 0.0
+name = "V2"
+
+[sub_resource type="Resource" id="Resource_sk2to"]
+script = ExtResource("2_0jp88")
+value = 50000.0
+name = "V2"
+
+[sub_resource type="Resource" id="Resource_g82rl"]
+script = ExtResource("2_0jp88")
+value = 0.0
+name = "V1"
+
+[sub_resource type="Resource" id="Resource_03tjy"]
+script = ExtResource("2_0jp88")
+value = 0.0
+name = "V2"
+
+[sub_resource type="Resource" id="Resource_pkvr0"]
+script = ExtResource("2_0jp88")
+value = 70.0
+name = "V1"
+
+[sub_resource type="Resource" id="Resource_k4udl"]
+script = ExtResource("2_0jp88")
+value = 0.0
+name = "V2"
+
+[node name="Virus" type="RigidBody2D"]
+scale = Vector2(0.994961, 1.01226)
+collision_layer = 2
+collision_mask = 3
+gravity_scale = 0.0
+can_sleep = false
+max_contacts_reported = 10
+contact_monitor = true
+script = ExtResource("1_vnh10")
+coherence = Array[Object]([SubResource("Resource_0vvou"), SubResource("Resource_fn70y")])
+seperation = Array[Object]([SubResource("Resource_y6ds6"), SubResource("Resource_eehjr")])
+seperationDistance = Array[Object]([SubResource("Resource_sk2to")])
+alignment = Array[Object]([SubResource("Resource_g82rl"), SubResource("Resource_03tjy")])
+targeting = Array[Object]([SubResource("Resource_pkvr0"), SubResource("Resource_k4udl")])
+validDamageTypes = PackedStringArray("V1")
+maxVelocity = 500.0
+viewRange = 1e+06
+maxAccel = 1e+06
+health = 3.0
+damage = 1.0
+name = "V2"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("3_l7r3l")
+region_enabled = true
+region_rect = Rect2(302, 0, 302, 290)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(-60.4, 0)
+scale = Vector2(0.4, 0.4)
+polygon = PackedVector2Array(192, -134, 196.7, -106, 197.4, -106, 207.4, -77, 230.8, -77, 271.9, -82, 302, -82, 302, -55.2, 261.2, -17.2, 288.1, 26, 288.9, 26, 302, 40.9, 302, 66, 301.2, 66, 273, 68.2, 273, 66.7, 246.6, 62.3, 238, 78.5, 238, 83.2, 224.1, 145, 190, 145, 181, 133.7, 181, 131.5, 167.9, 108, 167.3, 108, 110.4, 132, 81, 132, 81, 129, 78.8, 107, 80.3, 107, 84.3, 81, 85.6, 81, 88.2, 73, 86.8, 73, 61, 68.7, 61, 67.5, 2, 50.5, 2, 49.1, -4, 45.1, -4, 25, -2, 25, 1, 21, 3.5, 21, 39, 3.7, 39, 3.10001, 46.3, -3, 52, -3, 30, -46.5, 30, -50.6, 25, -64.7, 25, -84.5, 26.8, -88, 28, -88, 31, -92, 68, -92, 68, -90.6, 108.5, -81.4, 143, -128, 144.2, -128, 161, -144.8, 192, -145)
+
+[connection signal="body_entered" from="." to="." method="DealDamage"]
+[connection signal="body_exited" from="." to="." method="Exited"]
