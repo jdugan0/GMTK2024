@@ -1,8 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://nllnk078va50"]
+[gd_scene load_steps=3 format=3 uid="uid://nllnk078va50"]
 
 [ext_resource type="Script" path="res://Scripts/Inventory.cs" id="1_xoey4"]
+[ext_resource type="PackedScene" uid="uid://ccxvr07fwlf4r" path="res://Prefabs/Plant.tscn" id="2_yikch"]
 
 [node name="Inventory" type="Node"]
 script = ExtResource("1_xoey4")
 testItems = Array[Object]([])
 money = 100
+plantScene = ExtResource("2_yikch")

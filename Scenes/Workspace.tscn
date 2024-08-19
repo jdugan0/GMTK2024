@@ -1,12 +1,10 @@
-[gd_scene load_steps=34 format=3 uid="uid://btbbbehoaknia"]
+[gd_scene load_steps=32 format=3 uid="uid://btbbbehoaknia"]
 
-[ext_resource type="Script" path="res://Scripts/WorkspaceTest.cs" id="1_3crt5"]
+[ext_resource type="Script" path="res://Scripts/WorkspaceInit.cs" id="1_5a6te"]
 [ext_resource type="Texture2D" uid="uid://dnobjr7cssrwn" path="res://Art/greenhouse no pot.png" id="1_n5eej"]
 [ext_resource type="Texture2D" uid="uid://c7vun7uok4t45" path="res://Art/injections icon.png" id="2_l7cwa"]
 [ext_resource type="Script" path="res://Managers/Scene/ButtonSceneSwitcher.cs" id="2_mlrbl"]
-[ext_resource type="Script" path="res://Scripts/PlantLayer.cs" id="3_1b3g6"]
 [ext_resource type="Script" path="res://Scripts/ViewVirusButton.cs" id="3_7cee1"]
-[ext_resource type="PackedScene" uid="uid://ccxvr07fwlf4r" path="res://Prefabs/Plant.tscn" id="4_kigpy"]
 [ext_resource type="PackedScene" uid="uid://n767njjh7i0v" path="res://Prefabs/Syringe.tscn" id="7_wch7j"]
 [ext_resource type="Texture2D" uid="uid://dtcwrqjbgp64b" path="res://Art/Button1.tres" id="8_do53u"]
 [ext_resource type="Texture2D" uid="uid://bu23v3t5kq6fq" path="res://Art/BEGIN BUTTON 507 x 134.png" id="9_otpgb"]
@@ -82,8 +80,10 @@ region = Rect2(0, 0, 507, 134)
 atlas = ExtResource("9_otpgb")
 region = Rect2(0, 134, 507, 134)
 
-[node name="Root" type="Node2D"]
-script = ExtResource("1_3crt5")
+[node name="Root" type="Node2D" node_paths=PackedStringArray("layer", "plantPositions")]
+script = ExtResource("1_5a6te")
+layer = NodePath("UI Render/UI/Plant Layer")
+plantPositions = [NodePath("Plant Spots/Spot"), NodePath("Plant Spots/Spot1"), NodePath("Plant Spots/Spot2"), NodePath("Plant Spots/Spot3"), NodePath("Plant Spots/Spot4"), NodePath("Plant Spots/Spot5"), NodePath("Plant Spots/Spot6"), NodePath("Plant Spots/Spot7"), NodePath("Plant Spots/Spot8"), NodePath("Plant Spots/Spot9"), NodePath("Plant Spots/Spot10"), NodePath("Plant Spots/Spot11"), NodePath("Plant Spots/Spot12"), NodePath("Plant Spots/Spot13"), NodePath("Plant Spots/Spot14")]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(960, 540)
@@ -116,11 +116,8 @@ grow_vertical = 2
 texture = ExtResource("1_n5eej")
 expand_mode = 1
 
-[node name="Plant Layer" type="CanvasLayer" parent="UI Render/UI" node_paths=PackedStringArray("positions")]
+[node name="Plant Layer" type="CanvasLayer" parent="UI Render/UI"]
 layer = 100
-script = ExtResource("3_1b3g6")
-positions = [NodePath("../../../Plant Spots/Spot"), NodePath("../../../Plant Spots/Spot1"), NodePath("../../../Plant Spots/Spot2"), NodePath("../../../Plant Spots/Spot3"), NodePath("../../../Plant Spots/Spot4"), NodePath("../../../Plant Spots/Spot5"), NodePath("../../../Plant Spots/Spot6"), NodePath("../../../Plant Spots/Spot7"), NodePath("../../../Plant Spots/Spot8"), NodePath("../../../Plant Spots/Spot9"), NodePath("../../../Plant Spots/Spot10"), NodePath("../../../Plant Spots/Spot11"), NodePath("../../../Plant Spots/Spot12"), NodePath("../../../Plant Spots/Spot13"), NodePath("../../../Plant Spots/Spot14")]
-plantScene = ExtResource("4_kigpy")
 
 [node name="View Virus Button" type="TextureButton" parent="UI Render/UI" node_paths=PackedStringArray("container")]
 custom_minimum_size = Vector2(280, 65)

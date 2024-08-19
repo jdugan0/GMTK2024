@@ -10,16 +10,18 @@ public partial class PurchasePlantButton : TextureButton
     {
         Pressed += Purchase;
     }
+
     public void SetPlantInfo(PlantInfo plantInfo)
     {
         this.plantInfo= plantInfo;
         name.Text = plantInfo.species.species.ToString();
         price.Text = "$" + plantInfo.price;
     }
+
     public void Purchase(){
-        if (Inventory.instance.money >= plantInfo.price && Inventory.instance.GetPlants().Count < 15){
-            Inventory.instance.AddPlantInfo(new PlantInfo(plantInfo));
-            Inventory.instance.RefreshVisuals();
+        if (Inventory.instance.money >= plantInfo.price && Inventory.instance.GetPlantInfos().Count < 15){
+            Inventory.instance.AddPlant(plantInfo);
+            // Inventory.instance.RefreshVisuals();
         }
     }
 }
