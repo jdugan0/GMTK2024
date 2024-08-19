@@ -1,4 +1,5 @@
 using Godot;
+using Microsoft.VisualBasic;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -36,7 +37,7 @@ public partial class VirusBoid : RigidBody2D
 	[Export] public bool player;
 	[Export] public bool selected;
 	bool justEntered = false;
-	[Export] Sprite2D sprite2D;
+	[Export] public Sprite2D sprite2D;
 	[Export] float abilityTime;
 	float abilityTimer = 0;
 	[Export] Texture2D rootedTexture;

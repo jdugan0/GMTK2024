@@ -1,0 +1,7 @@
+[gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://cnj4c73qabc2k"]
+
+[ext_resource type="Texture2D" uid="uid://b6iurarfilrqj" path="res://Art/explode dash heal 302 x 290.png" id="1_pp3vb"]
+
+[resource]
+atlas = ExtResource("1_pp3vb")
+region = Rect2(0, 0, 302, 290)

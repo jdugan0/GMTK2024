@@ -27,6 +27,7 @@ public partial class VirusGenerator : Node
 		foreach (VirusItem item in VirusDataTransfer.GetViruses()){
 			VirusBoid b = CreateBoid(item.scene, new Vector2());
 			b.ability = item.ability;
+			b.sprite2D.Texture = item.texture;
 		}
 		
 		// CreateBoid(virusScene2, new Vector2(), virusAmount/2);

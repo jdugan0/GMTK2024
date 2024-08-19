@@ -8,6 +8,7 @@ public partial class VirusItem : Resource
     [Export] public VirusBoid.AbilityType ability;
     [Export] public PackedScene scene;
     [Export] public float price;
+    [Export] public Texture2D texture;
     public VirusItem(){
 
     }
@@ -16,6 +17,7 @@ public partial class VirusItem : Resource
         ability = item.ability;
         scene = item.scene;
         price = item.price;
+        texture = item.texture;
     }
 
     
