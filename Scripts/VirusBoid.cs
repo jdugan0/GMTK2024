@@ -136,6 +136,7 @@ public partial class VirusBoid : RigidBody2D
 					sprite2D.Texture = rootedTexture;
 					Modulate = Colors.White;
 					Freeze = true;
+					generator.boids.Remove(this);
 		}
 		if (time > 0){
 			time -= (float)delta;
