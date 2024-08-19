@@ -33,16 +33,20 @@ public partial class VirusDataTransfer : Node
 			AudioManager.instance.PlaySFX(this, "WorkspaceMusic", t);
 			AudioManager.instance.CancelSFX("Ambient");
 			AudioManager.instance.CancelSFX("MainMenu");
+			AudioManager.instance.CancelSFX("ShopMusic");
 		}
 		if (loadOrder == 1){
 			float t = AudioManager.instance.CancelSFX("WorkspaceMusic");
 			AudioManager.instance.PlaySFX(this, "VirusMusic", t);
 			AudioManager.instance.PlaySFX(this, "Ambient");
+			AudioManager.instance.CancelSFX("ShopMusic");
 		}
 		if (loadOrder == 2 && !AudioManager.instance.isPlaying("MainMenu")){
 			AudioManager.instance.CancelSFX("WorkspaceMusic");
 			AudioManager.instance.CancelSFX("VirusMusic");
 			AudioManager.instance.PlaySFX(this, "MainMenu");
+			AudioManager.instance.CancelSFX("ShopMusic");
+			AudioManager.instance.CancelSFX("Ambient");
 		}
 		if (loadOrder == 10){
 			AudioManager.instance.CancelSFX("WorkspaceMusic");

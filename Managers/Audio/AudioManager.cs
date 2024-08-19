@@ -28,6 +28,7 @@ public partial class AudioManager : Node
 	public AudioStreamPlayer PlaySFX(Node from, string sound, float time)
 	{
 		var player = new AudioStreamPlayer();
+		player.ProcessMode = Node.ProcessModeEnum.Always;
 		Sound s;
 		s = dict[sound];
 		player.Stream = s.stream;

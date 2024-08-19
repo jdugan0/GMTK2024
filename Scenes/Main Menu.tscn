@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://5nvu1c24ujep" path="res://Art/openning bg.png" id="1_mfqub"]
 [ext_resource type="Texture2D" uid="uid://bi4e200ethec" path="res://Art/play and quit 797 x 274.png" id="2_pg7px"]
-[ext_resource type="Script" path="res://Scripts/MenuButtonSceneSwitcher.cs" id="3_knb41"]
+[ext_resource type="Script" path="res://Managers/Scene/ButtonSceneSwitcher.cs" id="3_2o170"]
 [ext_resource type="Script" path="res://Scripts/QuitButton.cs" id="4_fbnn8"]
 [ext_resource type="Texture2D" uid="uid://dpooi8b7xbft7" path="res://Art/settings button 1037 x 274.png" id="5_ql7yr"]
 
@@ -71,7 +71,7 @@ texture_pressed = SubResource("AtlasTexture_sjyq1")
 texture_hover = SubResource("AtlasTexture_5uc22")
 texture_disabled = SubResource("AtlasTexture_5uc22")
 texture_focused = SubResource("AtlasTexture_sjyq1")
-script = ExtResource("3_knb41")
+script = ExtResource("3_2o170")
 
 [node name="Quit" type="TextureButton" parent="Buttons/Top Row"]
 layout_mode = 2
@@ -93,7 +93,8 @@ texture_pressed = SubResource("AtlasTexture_vg3ny")
 texture_hover = SubResource("AtlasTexture_bdpvu")
 texture_disabled = SubResource("AtlasTexture_bdpvu")
 texture_focused = SubResource("AtlasTexture_vg3ny")
-script = ExtResource("3_knb41")
+script = ExtResource("3_2o170")
 
 [connection signal="pressed" from="Buttons/Top Row/Play" to="Buttons/Top Row/Play" method="Switch" binds= [0]]
+[connection signal="pressed" from="Buttons/Top Row/Quit" to="Buttons/Top Row/Quit" method="Quit"]
 [connection signal="pressed" from="Buttons/Bottom Row/Settings" to="Buttons/Bottom Row/Settings" method="Switch" binds= [3]]
