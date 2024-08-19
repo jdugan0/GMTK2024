@@ -9,6 +9,7 @@ public partial class WorkspaceInit : Node2D
     public override void _Ready()
     {
         ConfigureInventory();
+        Inventory.RefreshVisuals();
     }
 
     public void ConfigureInventory()

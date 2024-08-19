@@ -9,10 +9,13 @@ public partial class VirusDataTransfer : Node
 	private static List<VirusItem> viruses;
 	public static float score;
 
+	private static List<PlantInfo> inventoryPlantInfo;
+
 	public VirusDataTransfer()
 	{
 		instance = this;
 		viruses = new List<VirusItem>();
+		inventoryPlantInfo = new List<PlantInfo>();
 	}
 
 	public static void AddViruses(VirusItem virus)
@@ -28,5 +31,15 @@ public partial class VirusDataTransfer : Node
 	public static List<VirusItem> GetViruses()
 	{
 		return viruses;
+	}
+
+	public static void AddPlantInfo(PlantInfo info)
+	{
+		inventoryPlantInfo.Add(info);
+	}
+
+	public static List<PlantInfo> GetPlantInfo()
+	{
+		return inventoryPlantInfo;
 	}
 }

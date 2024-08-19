@@ -33,6 +33,7 @@ public partial class ButtonSceneSwitcher : Control
 				Inventory.GetTableOccuplant().syringe.RemoveAt(i);
 			}
 			SceneSwitcher.instance.SwitchScene(1);
+			Inventory.TransferPlantInfo();
 		}
 	}
 }

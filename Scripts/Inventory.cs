@@ -1,6 +1,7 @@
 using Godot;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 
 public partial class Inventory : Node
 {
@@ -18,6 +19,18 @@ public partial class Inventory : Node
 	[Export] VirusItem starterVirusItem;
 	// TODO plants on a canvaslayer
 	bool start = false;
+
+
+	public static void TransferPlantInfo()
+	{
+		for (int i = 0; i < 15; i++)
+		{
+			if (plants[i] != null)
+			{
+				VirusDataTransfer.AddPlantInfo(plants[i].GetPlantInfo());
+			}
+		}
+	}
 
 	public static void ConfigurePlantData(Node2D[] plantPositions, CanvasLayer layer)
 	{
@@ -73,7 +86,17 @@ public partial class Inventory : Node
 			plantLayer.AddChild(plant);
 			plantNumber++;
 		}
-		
+	}
+
+	public void RefreshPlant(PlantInfo info)
+	{
+		Plant plant = (Plant) plantScene.Instantiate();
+		info.plant = plant;
+		plant.SetInfo(info);
+		plant.SetPositionPreset(plantPositions[info.inventoryIndex]);
+		plants[info.inventoryIndex] = plant;
+		plantLayer.AddChild(plant);
+		plantNumber++;
 	}
 
 	private int GetFreePlantIndex()
@@ -113,15 +136,19 @@ public partial class Inventory : Node
 		return plants[15];
 	}
 
-	// public void RefreshVisuals()
-	// {
-	// 	foreach (PlantInfo info in plantInfos){
-	// 		AddPlant(info);
-	// 		if (info.onTable){
-	// 			PlantLayer.SetTableOccupied(info.plant);
-	// 		}
-	// 	}
-	// }
+	public static void RefreshVisuals()
+	{
+		for (int i = 0; i < 16; i++)
+		{
+			plants[i] = null;
+		}
+		foreach (PlantInfo info in VirusDataTransfer.GetPlantInfo()){
+			instance.RefreshPlant(info);
+			if (info.onTable){
+				SetTableOccupied(info.plant);
+			}
+		}
+	}
 
 	public List<PlantInfo> GetPlantInfos()
 	{
