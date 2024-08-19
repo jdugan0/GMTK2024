@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://btbbbehoaknia"]
+[gd_scene load_steps=36 format=3 uid="uid://btbbbehoaknia"]
 
 [ext_resource type="Script" path="res://Scripts/WorkspaceInit.cs" id="1_5a6te"]
 [ext_resource type="Texture2D" uid="uid://dnobjr7cssrwn" path="res://Art/greenhouse no pot.png" id="1_n5eej"]
@@ -85,10 +85,14 @@ region = Rect2(0, 134, 507, 134)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_22bq6"]
 bg_color = Color(0, 0, 0, 1)
 
-[node name="Root" type="Node2D" node_paths=PackedStringArray("layer", "plantPositions")]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vnaqt"]
+bg_color = Color(0, 0, 0, 1)
+
+[node name="Root" type="Node2D" node_paths=PackedStringArray("layer", "plantPositions", "i")]
 script = ExtResource("1_5a6te")
 layer = NodePath("UI Render/UI/Plant Layer")
 plantPositions = [NodePath("Plant Spots/Spot"), NodePath("Plant Spots/Spot1"), NodePath("Plant Spots/Spot2"), NodePath("Plant Spots/Spot3"), NodePath("Plant Spots/Spot4"), NodePath("Plant Spots/Spot5"), NodePath("Plant Spots/Spot6"), NodePath("Plant Spots/Spot7"), NodePath("Plant Spots/Spot8"), NodePath("Plant Spots/Spot9"), NodePath("Plant Spots/Spot10"), NodePath("Plant Spots/Spot11"), NodePath("Plant Spots/Spot12"), NodePath("Plant Spots/Spot13"), NodePath("Plant Spots/Spot14")]
+i = NodePath("UI Render/UI/Label")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(960, 540)
@@ -218,6 +222,17 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
 alignment = 2
+
+[node name="Label" type="Label" parent="UI Render/UI"]
+visible = false
+offset_left = 586.0
+offset_top = 236.0
+offset_right = 787.0
+offset_bottom = 269.0
+theme_override_fonts/font = ExtResource("12_l6rb0")
+theme_override_font_sizes/font_size = 26
+theme_override_styles/normal = SubResource("StyleBoxFlat_vnaqt")
+text = "dadadasdasdadad"
 
 [node name="Plant Spots" type="Node" parent="."]
 
