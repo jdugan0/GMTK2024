@@ -33,7 +33,7 @@ price = 30.0
 
 [sub_resource type="Resource" id="Resource_22eud"]
 script = ExtResource("2_605yr")
-name = "Sacrafice Genome"
+name = "Sacrifice Genome"
 ability = 3
 scene = ExtResource("3_grkbb")
 price = 35.0

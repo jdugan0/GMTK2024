@@ -90,13 +90,14 @@ bg_color = Color(0, 0, 0, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vnaqt"]
 bg_color = Color(0, 0, 0, 1)
 
-[node name="Root" type="Node2D" node_paths=PackedStringArray("layer", "plantPositions", "i", "beginButton", "sellButton", "quota")]
+[node name="Root" type="Node2D" node_paths=PackedStringArray("layer", "plantPositions", "i", "beginButton", "sellButton", "quotasLeft", "quota")]
 script = ExtResource("1_5a6te")
 layer = NodePath("UI Render/UI/Control")
 plantPositions = [NodePath("Plant Spots/Spot"), NodePath("Plant Spots/Spot1"), NodePath("Plant Spots/Spot2"), NodePath("Plant Spots/Spot3"), NodePath("Plant Spots/Spot4"), NodePath("Plant Spots/Spot5"), NodePath("Plant Spots/Spot6"), NodePath("Plant Spots/Spot7"), NodePath("Plant Spots/Spot8"), NodePath("Plant Spots/Spot9"), NodePath("Plant Spots/Spot10"), NodePath("Plant Spots/Spot11"), NodePath("Plant Spots/Spot12"), NodePath("Plant Spots/Spot13"), NodePath("Plant Spots/Spot14")]
 i = NodePath("UI Render/UI/Label")
 beginButton = NodePath("UI Render/UI/Begin")
 sellButton = NodePath("UI Render/UI/Sell")
+quotasLeft = NodePath("UI Render/UI/Quota2")
 quota = NodePath("UI Render/UI/Quota")
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -173,7 +174,7 @@ script = ExtResource("3_7cee1")
 container = NodePath("../ScrollContainer/Viruses")
 syringeScene = ExtResource("7_wch7j")
 
-[node name="Begin" type="TextureButton" parent="UI Render/UI"]
+[node name="Begin" type="TextureButton" parent="UI Render/UI" node_paths=PackedStringArray("errorText")]
 layout_mode = 2
 offset_left = 1026.0
 offset_top = 938.0
@@ -186,6 +187,8 @@ texture_hover = SubResource("AtlasTexture_q30pu")
 texture_disabled = SubResource("AtlasTexture_g1h57")
 texture_focused = SubResource("AtlasTexture_g1h57")
 script = ExtResource("2_mlrbl")
+errorText = NodePath("../Error")
+errorTime = 2.5
 
 [node name="Sell" type="TextureButton" parent="UI Render/UI"]
 visible = false
@@ -277,6 +280,37 @@ theme_override_constants/outline_size = 15
 theme_override_fonts/font = ExtResource("12_l6rb0")
 theme_override_font_sizes/font_size = 41
 text = "QUOTA: $800"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Quota2" type="Label" parent="UI Render/UI"]
+layout_mode = 0
+offset_left = 335.0
+offset_top = 160.0
+offset_right = 709.0
+offset_bottom = 228.0
+theme_override_colors/font_color = Color(0.877671, 0.748875, 7.70092e-07, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 15
+theme_override_fonts/font = ExtResource("12_l6rb0")
+theme_override_font_sizes/font_size = 41
+text = "MUTATIONS LEFT: 4"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Error" type="Label" parent="UI Render/UI"]
+visible = false
+layout_mode = 0
+offset_left = 1014.0
+offset_top = 857.0
+offset_right = 1558.0
+offset_bottom = 925.0
+theme_override_colors/font_color = Color(0.792588, 0, 0.0885646, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 15
+theme_override_fonts/font = ExtResource("12_l6rb0")
+theme_override_font_sizes/font_size = 41
+text = "YOU MUST SELECT A PLANT"
 horizontal_alignment = 1
 vertical_alignment = 1
 

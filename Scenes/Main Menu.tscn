@@ -72,7 +72,6 @@ texture_hover = SubResource("AtlasTexture_5uc22")
 texture_disabled = SubResource("AtlasTexture_5uc22")
 texture_focused = SubResource("AtlasTexture_sjyq1")
 script = ExtResource("3_knb41")
-playMusic = true
 
 [node name="Quit" type="TextureButton" parent="Buttons/Top Row"]
 layout_mode = 2
