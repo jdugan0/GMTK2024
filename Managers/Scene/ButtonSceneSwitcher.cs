@@ -30,8 +30,9 @@ public partial class ButtonSceneSwitcher : TextureButton
 	{
 		time = errorTime;
 
-		if (Inventory.instance.GetTableOccuplant() != null)
+		if (Inventory.instance.GetTableOccuplant() != null && !Inventory.instance.GetTableOccuplant().info.mutated)
 		{
+			Inventory.instance.GetTableOccuplant().info.mutated = true;
 			if (Inventory.instance.GetTableOccuplant().GetViruses().Count == 0)
 			{
 				Inventory.instance.quotaCountCurrent++;
@@ -51,11 +52,16 @@ public partial class ButtonSceneSwitcher : TextureButton
 				Inventory.instance.GetViruses().Remove(Inventory.instance.GetTableOccuplant().syringe[i].virus);
 				Inventory.instance.GetTableOccuplant().syringe.RemoveAt(i);
 			}
+			
 			SceneSwitcher.instance.SwitchScene(1);
 		}
 		else
 		{
 			errorText.Visible = true;
+			errorText.Text = "SELECT A PLANT";
+			if (Inventory.instance.GetTableOccuplant() != null && Inventory.instance.GetTableOccuplant().info.mutated){
+				errorText.Text = "PLANT ALREADY MUTATED";
+			}
 		}
 	}
 

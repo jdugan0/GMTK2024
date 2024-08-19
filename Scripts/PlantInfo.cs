@@ -11,6 +11,7 @@ public partial class PlantInfo : Resource
     [Export] public float value;
     public bool onTable;
     public Vector2 slot;
+    public bool mutated = false;
 
     public PlantInfo(){
 
@@ -22,6 +23,7 @@ public partial class PlantInfo : Resource
         value = item.value;
         onTable = item.onTable;
         slot = item.slot;
+        mutated = item.mutated;
     }
 
 }
