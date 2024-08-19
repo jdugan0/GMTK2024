@@ -47,6 +47,7 @@ grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_is0w4")
 
 [node name="Panel2" type="Panel" parent="."]
+layout_mode = 0
 offset_left = 683.0
 offset_top = 161.0
 offset_right = 1196.0
