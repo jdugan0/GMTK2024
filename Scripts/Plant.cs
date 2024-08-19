@@ -81,6 +81,7 @@ public partial class Plant : TextureButton
 		ZIndex = -1;
 		Inventory.SetTableFree();
 	}
+
 	private void ToShelfReset()
 	{
 		Position = info.posSlot;
@@ -88,6 +89,7 @@ public partial class Plant : TextureButton
 		SetScale(new Vector2(0.5f, 0.5f));
 		ZIndex = -1;
 	}
+
 	public void OnClick()
 	{
 		if (info.onTable)

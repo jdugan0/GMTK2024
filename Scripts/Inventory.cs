@@ -12,7 +12,7 @@ public partial class Inventory : Node
 	public static Node2D[] plantPositions = new Node2D[15];
 	[Export] public PackedScene plantScene;
 	private static Plant[] plants = new Plant[16];
-	private int plantNumber;
+	private int plantNumber = 0;
 	private static CanvasLayer plantLayer;
 	// TODO plants on a canvaslayer
 
@@ -30,7 +30,24 @@ public partial class Inventory : Node
 		}
     }
 
-	public void AddPlant(PlantInfo info)
+	private List<Plant> GetPlantsPresent()
+	{
+		List<Plant> presentPlants = new List<Plant>();
+		for (int i = 0; i < 15; i++)
+		{
+			if (plants[i] != null)
+			{
+				presentPlants.Add(plants[i]);
+			}
+		}
+		foreach (Plant plant in presentPlants)
+		{
+			GD.Print(plant);
+		}
+		return presentPlants;
+	}
+
+    public void AddPlant(PlantInfo info)
 	{
 		int plantIndex = GetFreePlantIndex();
 		if (plantIndex != -1)
@@ -42,6 +59,7 @@ public partial class Inventory : Node
 			plant.SetPositionPreset(plantPositions[plantIndex]);
 			plants[plantIndex] = plant;
 			plantLayer.AddChild(plant);
+			plantNumber++;
 		}
 	}
 
@@ -105,13 +123,36 @@ public partial class Inventory : Node
 		return infos;
 	}
 
+	public int GetPlantNumber()
+	{
+		return plantNumber;
+	}
+
 	public void RemovePlant(int index)
 	{
-		foreach (Plant plant in plants)
+		foreach (Plant plant in GetPlantsPresent())
 		{
-			if (plant.GetPlantInfo().inventoryIndex == index && plants[index] != null)
+			if (plant.GetPlantInfo().inventoryIndex == index)
 			{
+				if (plants[15] != null)
+				{
+					if (plants[15] == plants[index])
+					{
+						plants[index].QueueFree();
+						plants[15].QueueFree();
+						plants[15] = null;
+					}
+					else
+					{
+						plants[index].QueueFree();
+					}
+				}
+				else
+				{
+					plants[index].QueueFree();
+				}
 				plants[index] = null;
+				break;
 			}
 		}
 	}
