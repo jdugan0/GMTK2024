@@ -22,6 +22,7 @@ public partial class Inventory : Node
 	public float torwardsQuota;
 	public int quotaCountCurrent;
 	[Export] public float quotaCap;
+	public int quotasReached;
 
 	// TODO plants on a canvaslayer
 	public bool start = false;
@@ -38,6 +39,8 @@ public partial class Inventory : Node
 		plantObj = new List<Plant>();
 		plants = new Dictionary<Vector2, PlantInfo>();
 		money = 100;
+		viruses = new List<VirusItem>();
+		quotasReached = 0;
 	}
 
 	public void ConfigurePlantData(Node2D[] plantPositions, Control layer)
@@ -59,8 +62,8 @@ public partial class Inventory : Node
     public override void _Process(double delta)
     {
 		if (!start && config){
-			AddPlant(starterPlant);
-			AddVirus(starterVirusItem);
+			AddPlant(new PlantInfo(starterPlant));
+			AddVirus(new VirusItem(starterVirusItem));
 			start = true;
 		}
     }

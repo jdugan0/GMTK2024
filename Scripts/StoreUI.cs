@@ -1,6 +1,7 @@
 using Godot;
 using System;
 using System.Collections;
+using System.Collections.Generic;
 
 public partial class StoreUI : Control
 {
@@ -10,9 +11,12 @@ public partial class StoreUI : Control
     [Export] private Texture2D[] textures;
     [Export] private PackedScene purchaseVirusButton;
     [Export] private PackedScene purchasePlantButton;
+    List<Node> buttons1 = new List<Node>();
+    public static StoreUI instance;
 
     public override void _Ready()
     {
+        instance = this;
         StoreConfiguration config = RandomizeStore(5, 3);
         int amount = 0;
         foreach (VirusItem virus in config.GetVirusItems())
@@ -25,6 +29,7 @@ public partial class StoreUI : Control
             button.TexturePressed = textures[amount % 2];
             button.SetVirusItem(virus);
             buttons.AddChild(button);
+            buttons1.Add(button);
             amount++;
         }
         foreach (PlantInfo plant in config.GetPlantInfos())
@@ -35,8 +40,10 @@ public partial class StoreUI : Control
             button.TextureHover = textures[amount % 2];
             button.TextureFocused = textures[amount % 2];
             button.TexturePressed = textures[amount % 2];
+            
             button.SetPlantInfo(plant);
             buttons.AddChild(button);
+            buttons1.Add(button);
             amount++;
         }
     }
@@ -44,6 +51,47 @@ public partial class StoreUI : Control
     public void Toggle()
     {
         Visible = !Visible;
+        if (Visible){
+            VirusDataTransfer.instance.PlayMusic(10);
+        }else{
+            VirusDataTransfer.instance.PlayMusic(11);
+        }
+    }
+
+    public void RefreshShop(){
+        for (int i = buttons1.Count - 1; i >= 0; i--){
+            buttons1[i].QueueFree();
+            buttons1.RemoveAt(i);
+        }
+        StoreConfiguration config = RandomizeStore(5, 3);
+        int amount = 0;
+        foreach (VirusItem virus in config.GetVirusItems())
+        {
+            PurchaseVirusButton button = (PurchaseVirusButton)(purchaseVirusButton.Instantiate());
+            button.TextureNormal = textures[amount % 2];
+            button.TextureDisabled = textures[amount % 2];
+            button.TextureHover = textures[amount % 2];
+            button.TextureFocused = textures[amount % 2];
+            button.TexturePressed = textures[amount % 2];
+            button.SetVirusItem(virus);
+            buttons.AddChild(button);
+            buttons1.Add(button);
+            amount++;
+        }
+        foreach (PlantInfo plant in config.GetPlantInfos())
+        {
+            PurchasePlantButton button = (PurchasePlantButton)(purchasePlantButton.Instantiate());
+            button.TextureNormal = textures[amount % 2];
+            button.TextureDisabled = textures[amount % 2];
+            button.TextureHover = textures[amount % 2];
+            button.TextureFocused = textures[amount % 2];
+            button.TexturePressed = textures[amount % 2];
+            
+            button.SetPlantInfo(plant);
+            buttons.AddChild(button);
+            buttons1.Add(button);
+            amount++;
+        }
     }
 
     private StoreConfiguration RandomizeStore(int numViruses, int numPlants)

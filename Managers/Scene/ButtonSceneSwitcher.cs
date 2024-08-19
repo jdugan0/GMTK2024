@@ -32,8 +32,10 @@ public partial class ButtonSceneSwitcher : TextureButton
 
 		if (Inventory.instance.GetTableOccuplant() != null)
 		{
-			if (Inventory.instance.GetTableOccuplant().GetViruses().Count == 0){
+			if (Inventory.instance.GetTableOccuplant().GetViruses().Count == 0)
+			{
 				Inventory.instance.quotaCountCurrent++;
+				StoreUI.instance.RefreshShop();
 				return;
 			}
 			Inventory.instance.quotaCountCurrent++;
@@ -59,16 +61,22 @@ public partial class ButtonSceneSwitcher : TextureButton
 
 	public void Sell()
 	{
+
+		
 		foreach (PlantInfo i in Inventory.instance.plants.Values)
 		{
 			Inventory.instance.money += i.value;
 			Inventory.instance.torwardsQuota += i.value;
+			GD.Print(i.value);
 		}
 		Inventory.instance.SellPlants();
 		if (Inventory.instance.torwardsQuota >= Inventory.instance.quotaCap)
 		{
+
 			Inventory.instance.torwardsQuota = 0;
 			Inventory.instance.quotaCap *= 1.5f;
+			Inventory.instance.quotasReached++;
+			AudioManager.instance.PlaySFX(this, "Sell");
 		}
 		else
 		{

@@ -44,6 +44,14 @@ public partial class VirusDataTransfer : Node
 			AudioManager.instance.CancelSFX("VirusMusic");
 			AudioManager.instance.PlaySFX(this, "MainMenu");
 		}
+		if (loadOrder == 10){
+			AudioManager.instance.CancelSFX("WorkspaceMusic");
+			AudioManager.instance.PlaySFX(this, "ShopMusic");
+		}
+		if (loadOrder == 11){
+			AudioManager.instance.CancelSFX("ShopMusic");
+			AudioManager.instance.PlaySFX(this, "WorkspaceMusic");
+		}
 	}
 
 	public static List<VirusItem> GetViruses()

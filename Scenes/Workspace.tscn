@@ -90,7 +90,7 @@ bg_color = Color(0, 0, 0, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vnaqt"]
 bg_color = Color(0, 0, 0, 1)
 
-[node name="Root" type="Node2D" node_paths=PackedStringArray("layer", "plantPositions", "i", "beginButton", "sellButton", "quotasLeft", "quota")]
+[node name="Root" type="Node2D" node_paths=PackedStringArray("layer", "plantPositions", "i", "beginButton", "sellButton", "quotasLeft", "quota", "quotasReached")]
 script = ExtResource("1_5a6te")
 layer = NodePath("UI Render/UI/Control")
 plantPositions = [NodePath("Plant Spots/Spot"), NodePath("Plant Spots/Spot1"), NodePath("Plant Spots/Spot2"), NodePath("Plant Spots/Spot3"), NodePath("Plant Spots/Spot4"), NodePath("Plant Spots/Spot5"), NodePath("Plant Spots/Spot6"), NodePath("Plant Spots/Spot7"), NodePath("Plant Spots/Spot8"), NodePath("Plant Spots/Spot9"), NodePath("Plant Spots/Spot10"), NodePath("Plant Spots/Spot11"), NodePath("Plant Spots/Spot12"), NodePath("Plant Spots/Spot13"), NodePath("Plant Spots/Spot14")]
@@ -99,6 +99,7 @@ beginButton = NodePath("UI Render/UI/Begin")
 sellButton = NodePath("UI Render/UI/Sell")
 quotasLeft = NodePath("UI Render/UI/Quota2")
 quota = NodePath("UI Render/UI/Quota")
+quotasReached = NodePath("UI Render/UI/Quota3")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(960, 540)
@@ -295,6 +296,21 @@ theme_override_constants/outline_size = 15
 theme_override_fonts/font = ExtResource("12_l6rb0")
 theme_override_font_sizes/font_size = 41
 text = "MUTATIONS LEFT: 4"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Quota3" type="Label" parent="UI Render/UI"]
+layout_mode = 0
+offset_left = 322.0
+offset_top = 221.0
+offset_right = 741.0
+offset_bottom = 289.0
+theme_override_colors/font_color = Color(0.877671, 0.748875, 7.70092e-07, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 15
+theme_override_fonts/font = ExtResource("12_l6rb0")
+theme_override_font_sizes/font_size = 41
+text = "QUOTAS REACHED: 5"
 horizontal_alignment = 1
 vertical_alignment = 1
 

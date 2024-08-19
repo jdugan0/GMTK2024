@@ -13,6 +13,7 @@ public partial class WorkspaceInit : Node2D
     [Export] TextureButton sellButton;
     [Export] Label quotasLeft;
     [Export] Label quota;
+    [Export] Label quotasReached;
 
     public override void _Ready()
     {
@@ -25,6 +26,7 @@ public partial class WorkspaceInit : Node2D
     {
         quotasLeft.Text = "MUTATIONS LEFT: " + (Inventory.instance.quotaCount - Inventory.instance.quotaCountCurrent);
         quota.Text = "QUOTA: " + Inventory.instance.quotaCap;
+        quotasReached.Text = "QUOTAS REACHED: " + Inventory.instance.quotasReached;
         if (Inventory.instance.quotaCountCurrent >= Inventory.instance.quotaCount){
             beginButton.Visible = false;
             beginButton.Disabled = true;
