@@ -25,9 +25,24 @@ public partial class Inventory : Node
 
 	// TODO plants on a canvaslayer
 	public bool start = false;
+	bool config;
+
+	public void Reset(){
+		config = false;
+		start = false;
+		quotaCap = 200;
+		quotaCountCurrent = 0;
+		torwardsQuota = 0;
+		positions = new List<Vector2>();
+		tableOccuplant = null;
+		plantObj = new List<Plant>();
+		plants = new Dictionary<Vector2, PlantInfo>();
+		money = 100;
+	}
 
 	public void ConfigurePlantData(Node2D[] plantPositions, Control layer)
 	{
+		config = true;
 		plantLayer = layer;
 		foreach (Node2D n in plantPositions){
 			positions.Add(n.Position - new Vector2(87, 131));
@@ -43,7 +58,7 @@ public partial class Inventory : Node
 
     public override void _Process(double delta)
     {
-		if (!start){
+		if (!start && config){
 			AddPlant(starterPlant);
 			AddVirus(starterVirusItem);
 			start = true;

@@ -3,6 +3,7 @@ using System;
 
 public partial class ButtonSceneSwitcher : TextureButton
 {
+	[Export] public bool playMusic = false; 
 	public void Switch(int id){
 		SceneSwitcher.instance.SwitchScene(id);
 	}
@@ -43,6 +44,7 @@ public partial class ButtonSceneSwitcher : TextureButton
 			Inventory.instance.quotaCap *= 1.5f;
 		}
 		else{
+			Inventory.instance.Reset();
 			SceneSwitcher.instance.SwitchScene(2);
 		}
 	}

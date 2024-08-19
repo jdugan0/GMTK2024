@@ -18,6 +18,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Panel" type="Panel" parent="."]
+layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 1080.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_elmcm")
@@ -58,4 +59,4 @@ texture_focused = ExtResource("2_qv1ew")
 script = ExtResource("3_t0pxe")
 
 [connection signal="value_changed" from="Volume Slider" to="Volume Slider" method="OnSliderChanged"]
-[connection signal="pressed" from="Back" to="Back" method="Switch" binds= [0]]
+[connection signal="pressed" from="Back" to="Back" method="Switch" binds= [2]]

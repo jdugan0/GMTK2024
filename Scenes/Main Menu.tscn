@@ -72,6 +72,7 @@ texture_hover = SubResource("AtlasTexture_5uc22")
 texture_disabled = SubResource("AtlasTexture_5uc22")
 texture_focused = SubResource("AtlasTexture_sjyq1")
 script = ExtResource("3_knb41")
+playMusic = true
 
 [node name="Quit" type="TextureButton" parent="Buttons/Top Row"]
 layout_mode = 2
@@ -95,5 +96,5 @@ texture_disabled = SubResource("AtlasTexture_bdpvu")
 texture_focused = SubResource("AtlasTexture_vg3ny")
 script = ExtResource("3_knb41")
 
-[connection signal="pressed" from="Buttons/Top Row/Play" to="Buttons/Top Row/Play" method="Switch" binds= [2]]
-[connection signal="pressed" from="Buttons/Bottom Row/Settings" to="Buttons/Bottom Row/Settings" method="Switch" binds= [1]]
+[connection signal="pressed" from="Buttons/Top Row/Play" to="Buttons/Top Row/Play" method="Switch" binds= [0]]
+[connection signal="pressed" from="Buttons/Bottom Row/Settings" to="Buttons/Bottom Row/Settings" method="Switch" binds= [3]]

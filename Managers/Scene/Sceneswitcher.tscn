@@ -8,4 +8,4 @@
 
 [node name="Sceneswitcher" type="Node"]
 script = ExtResource("1_xiohp")
-scenes = Array[PackedScene]([ExtResource("2_1pp0b"), ExtResource("3_py5vy"), ExtResource("2_oon3b"), ExtResource("3_ro5ob")])
+scenes = Array[PackedScene]([ExtResource("2_oon3b"), ExtResource("3_ro5ob"), ExtResource("2_1pp0b"), ExtResource("3_py5vy")])

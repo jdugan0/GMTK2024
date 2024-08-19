@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://43jdvq6c7idi"
+path="res://.godot/imported/Title Screen.wav-d7db3067d774055185f62ab6e7019077.sample"
+
+[deps]
+
+source_file="res://SFX/Title Screen.wav"
+dest_files=["res://.godot/imported/Title Screen.wav-d7db3067d774055185f62ab6e7019077.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

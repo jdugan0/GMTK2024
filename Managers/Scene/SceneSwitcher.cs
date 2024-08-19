@@ -17,16 +17,7 @@ public partial class SceneSwitcher : Node
 	public void SwitchScene(int loadOrder){
 		currentScene = loadOrder;
 		GetTree().ChangeSceneToPacked(scenes[loadOrder]);
-		if (loadOrder == 0){
-			float t = AudioManager.instance.CancelSFX("VirusMusic");
-			AudioManager.instance.PlaySFX(this, "WorkspaceMusic", t);
-			AudioManager.instance.CancelSFX("Ambient");
-		}
-		if (loadOrder == 1){
-			float t = AudioManager.instance.CancelSFX("WorkspaceMusic");
-			AudioManager.instance.PlaySFX(this, "VirusMusic", t);
-			AudioManager.instance.PlaySFX(this, "Ambient");
-		}
+		VirusDataTransfer.instance.PlayMusic(loadOrder);
 	}
 
 	public int GetCurrentSceneID()
