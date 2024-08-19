@@ -1,9 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://cmpg0wseyww2d"]
+[gd_scene load_steps=6 format=3 uid="uid://cmpg0wseyww2d"]
 
 [ext_resource type="Script" path="res://Managers/Scene/SceneSwitcher.cs" id="1_xiohp"]
+[ext_resource type="PackedScene" uid="uid://bs8w74sd8uj06" path="res://Scenes/Main Menu.tscn" id="2_1pp0b"]
 [ext_resource type="PackedScene" uid="uid://btbbbehoaknia" path="res://Scenes/Workspace.tscn" id="2_oon3b"]
+[ext_resource type="PackedScene" uid="uid://bdqy7j13qxbl5" path="res://Scenes/Options Menu.tscn" id="3_2janb"]
 [ext_resource type="PackedScene" uid="uid://2850ln454g3q" path="res://Scenes/VirusMinigame.tscn" id="3_ro5ob"]
 
 [node name="Sceneswitcher" type="Node"]
 script = ExtResource("1_xiohp")
-scenes = Array[PackedScene]([ExtResource("2_oon3b"), ExtResource("3_ro5ob")])
+scenes = Array[PackedScene]([ExtResource("2_1pp0b"), ExtResource("3_2janb"), ExtResource("2_oon3b"), ExtResource("3_ro5ob")])

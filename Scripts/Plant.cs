@@ -8,6 +8,14 @@ public partial class Plant : TextureButton
 	[Export] public Label hoverText;
 	public List<SyringeDragging> syringe = new List<SyringeDragging>();
 
+	public Plant FromPlant()
+	{
+		Plant plant = new Plant();
+		plant.info = new PlantInfo(info);
+		plant.info.plant = plant;
+		return plant;
+	}
+
     public override void _Ready()
     {
 		TextureNormal = info.species.texture;

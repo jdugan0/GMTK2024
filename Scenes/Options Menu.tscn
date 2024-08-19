@@ -1,0 +1,46 @@
+[gd_scene load_steps=4 format=3 uid="uid://bdqy7j13qxbl5"]
+
+[ext_resource type="Script" path="res://Scripts/VolumeSlider.cs" id="1_cm2ik"]
+[ext_resource type="Texture2D" uid="uid://cmb8t0m6ovqdt" path="res://Art/back button 500 x 225.png" id="2_qv1ew"]
+[ext_resource type="Script" path="res://Scripts/FrontendButtonSceneSwitcher.cs" id="3_tin26"]
+
+[node name="Options Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1920.0
+offset_bottom = -1080.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Controls" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 752.0
+offset_top = 400.0
+offset_right = 1179.0
+offset_bottom = 577.0
+
+[node name="Volume Slider" type="HSlider" parent="Controls"]
+layout_mode = 2
+max_value = 1.0
+step = 0.05
+value = 1.0
+script = ExtResource("1_cm2ik")
+
+[node name="TextureButton" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 93.0
+offset_top = 886.0
+offset_right = 593.0
+offset_bottom = 1111.0
+scale = Vector2(0.5, 0.5)
+texture_normal = ExtResource("2_qv1ew")
+texture_pressed = ExtResource("2_qv1ew")
+texture_hover = ExtResource("2_qv1ew")
+texture_disabled = ExtResource("2_qv1ew")
+texture_focused = ExtResource("2_qv1ew")
+script = ExtResource("3_tin26")
+
+[connection signal="value_changed" from="Controls/Volume Slider" to="Controls/Volume Slider" method="OnSliderChanged"]
+[connection signal="pressed" from="TextureButton" to="TextureButton" method="Switch" binds= [0]]

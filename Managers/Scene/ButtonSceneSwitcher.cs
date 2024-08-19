@@ -27,7 +27,8 @@ public partial class ButtonSceneSwitcher : Control
 				Inventory.instance.GetViruses().Remove(Inventory.instance.GetTableOccuplant().syringe[i].virus);
 				Inventory.instance.GetTableOccuplant().syringe.RemoveAt(i);
 			}
-			SceneSwitcher.instance.SwitchScene(1);
+			SceneSwitcher.instance.SwitchScene(3);
+			Inventory.TransferPlantInfo();
 		}
 	}
 }
