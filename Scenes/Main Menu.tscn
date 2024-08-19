@@ -1,0 +1,96 @@
+[gd_scene load_steps=13 format=3 uid="uid://bs8w74sd8uj06"]
+
+[ext_resource type="Texture2D" uid="uid://b1v4s3mwoxhv3" path="res://Art/openning bg.png" id="1_vpoae"]
+[ext_resource type="Texture2D" uid="uid://bi4e200ethec" path="res://Art/play and quit 797 x 274.png" id="2_pg7px"]
+[ext_resource type="Script" path="res://Scripts/FrontendButtonSceneSwitcher.cs" id="3_i611k"]
+[ext_resource type="Texture2D" uid="uid://bs888f3b1aplf" path="res://Art/settings button 1037 x 274.png" id="3_ntfde"]
+[ext_resource type="Script" path="res://Scripts/QuitButton.cs" id="4_exb76"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vh1m8"]
+texture = ExtResource("1_vpoae")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sjyq1"]
+atlas = ExtResource("2_pg7px")
+region = Rect2(0, 0, 797, 274)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5uc22"]
+atlas = ExtResource("2_pg7px")
+region = Rect2(797, 0, 797, 274)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yj62o"]
+atlas = ExtResource("2_pg7px")
+region = Rect2(0, 274, 797, 274)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s1qma"]
+atlas = ExtResource("2_pg7px")
+region = Rect2(797, 274, 797, 274)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vg3ny"]
+atlas = ExtResource("3_ntfde")
+region = Rect2(0, 0, 1037, 274)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bdpvu"]
+atlas = ExtResource("3_ntfde")
+region = Rect2(0, 274, 1037, 274)
+
+[node name="Main Menu" type="Control"]
+layout_mode = 3
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1920.0
+offset_bottom = -1080.0
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_vh1m8")
+
+[node name="Buttons" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 531.0
+offset_top = 538.0
+offset_right = 2250.0
+offset_bottom = 1186.0
+scale = Vector2(0.5, 0.5)
+theme_override_constants/separation = 100
+alignment = 1
+
+[node name="Top Row" type="HBoxContainer" parent="Buttons"]
+layout_mode = 2
+theme_override_constants/separation = 125
+alignment = 1
+
+[node name="Play" type="TextureButton" parent="Buttons/Top Row"]
+layout_mode = 2
+texture_normal = SubResource("AtlasTexture_sjyq1")
+texture_pressed = SubResource("AtlasTexture_sjyq1")
+texture_hover = SubResource("AtlasTexture_5uc22")
+texture_disabled = SubResource("AtlasTexture_5uc22")
+texture_focused = SubResource("AtlasTexture_sjyq1")
+script = ExtResource("3_i611k")
+
+[node name="Quit" type="TextureButton" parent="Buttons/Top Row"]
+layout_mode = 2
+texture_normal = SubResource("AtlasTexture_yj62o")
+texture_pressed = SubResource("AtlasTexture_yj62o")
+texture_hover = SubResource("AtlasTexture_s1qma")
+texture_disabled = SubResource("AtlasTexture_s1qma")
+texture_focused = SubResource("AtlasTexture_yj62o")
+script = ExtResource("4_exb76")
+
+[node name="Bottom Row" type="HBoxContainer" parent="Buttons"]
+layout_mode = 2
+alignment = 1
+
+[node name="Settings" type="TextureButton" parent="Buttons/Bottom Row"]
+layout_mode = 2
+texture_normal = SubResource("AtlasTexture_vg3ny")
+texture_pressed = SubResource("AtlasTexture_vg3ny")
+texture_hover = SubResource("AtlasTexture_bdpvu")
+texture_disabled = SubResource("AtlasTexture_bdpvu")
+texture_focused = SubResource("AtlasTexture_vg3ny")
+script = ExtResource("3_i611k")
+
+[connection signal="pressed" from="Buttons/Top Row/Play" to="Buttons/Top Row/Play" method="Switch" binds= [2]]
+[connection signal="pressed" from="Buttons/Bottom Row/Settings" to="Buttons/Bottom Row/Settings" method="Switch" binds= [1]]

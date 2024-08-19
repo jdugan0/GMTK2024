@@ -57,7 +57,7 @@ public partial class VirusGenerator : Node
 				totalVal += locationQualities[f] * ((int)f);
 			}
 			VirusDataTransfer.score = totalVal;
-			SceneSwitcher.instance.SwitchScene(0);
+			SceneSwitcher.instance.SwitchScene(2);
 		}
 
 		if (Input.IsActionPressed("Click")){

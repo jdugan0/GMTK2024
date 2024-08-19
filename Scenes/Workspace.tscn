@@ -225,6 +225,7 @@ alignment = 2
 
 [node name="Label" type="Label" parent="UI Render/UI"]
 visible = false
+layout_mode = 0
 offset_left = 586.0
 offset_top = 236.0
 offset_right = 787.0
