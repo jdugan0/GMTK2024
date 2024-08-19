@@ -56,7 +56,12 @@ public partial class VirusGenerator : Node
 			foreach (Location.LocationType f in locationQualities.Keys){
 				totalVal += locationQualities[f] * ((int)f);
 			}
-			VirusDataTransfer.score = totalVal;
+			foreach (PlantInfo i in Inventory.instance.plants.Values){
+				if (i.onTable){
+					i.value += totalVal;
+					break;
+				}
+			}
 			SceneSwitcher.instance.SwitchScene(0);
 		}
 

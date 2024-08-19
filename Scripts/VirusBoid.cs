@@ -90,11 +90,16 @@ public partial class VirusBoid : RigidBody2D
 				case AbilityType.Explode:
 					abilityCooldownTimer = abilityCooldown * 3;
 					abilityEnded = false;
+					List<VirusBoid> toRemove = new List<VirusBoid>();
 					foreach (VirusBoid b in generator.boids){
 						if (b.Position.DistanceTo(Position) <= 500 && b.name == "V2"){
-							generator.boids.Remove(b);
-							b.QueueFree();
+							toRemove.Add(b);
 						}
+					}
+					for (int i = toRemove.Count - 1; i >= 0; i--){
+						generator.boids[i].QueueFree();
+						generator.boids.RemoveAt(i);
+						
 					}
 				break;
 				case AbilityType.Sacrafice:
