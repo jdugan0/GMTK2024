@@ -68,6 +68,7 @@ theme_override_font_sizes/font_size = 120
 text = "Adjust Volume"
 
 [node name="Paused" type="Label" parent="."]
+layout_mode = 0
 offset_left = 780.75
 offset_top = 204.5
 offset_right = 1497.75
