@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://btbbbehoaknia"]
+[gd_scene load_steps=39 format=3 uid="uid://btbbbehoaknia"]
 
 [ext_resource type="Script" path="res://Scripts/WorkspaceInit.cs" id="1_5a6te"]
 [ext_resource type="Texture2D" uid="uid://dnobjr7cssrwn" path="res://Art/greenhouse no pot.png" id="1_n5eej"]
@@ -22,6 +22,7 @@
 [ext_resource type="Texture2D" uid="uid://b24iakx6l648" path="res://Art/cinnamon fern _test.png" id="16_kpxj1"]
 [ext_resource type="Texture2D" uid="uid://ci7y6rt6ojs2c" path="res://Art/Sell1.tres" id="20_dat4e"]
 [ext_resource type="Texture2D" uid="uid://bimpapsyhv4kv" path="res://Art/Sell2.tres" id="21_yn5xj"]
+[ext_resource type="PackedScene" uid="uid://bgllprtxam2rf" path="res://Prefabs/Pause Menu.tscn" id="23_dyusu"]
 
 [sub_resource type="Resource" id="Resource_gc4kc"]
 script = ExtResource("13_356q6")
@@ -91,6 +92,7 @@ bg_color = Color(0, 0, 0, 1)
 bg_color = Color(0, 0, 0, 1)
 
 [node name="Root" type="Node2D" node_paths=PackedStringArray("layer", "plantPositions", "i", "beginButton", "sellButton", "quota")]
+process_mode = 1
 script = ExtResource("1_5a6te")
 layer = NodePath("UI Render/UI/Control")
 plantPositions = [NodePath("Plant Spots/Spot"), NodePath("Plant Spots/Spot1"), NodePath("Plant Spots/Spot2"), NodePath("Plant Spots/Spot3"), NodePath("Plant Spots/Spot4"), NodePath("Plant Spots/Spot5"), NodePath("Plant Spots/Spot6"), NodePath("Plant Spots/Spot7"), NodePath("Plant Spots/Spot8"), NodePath("Plant Spots/Spot9"), NodePath("Plant Spots/Spot10"), NodePath("Plant Spots/Spot11"), NodePath("Plant Spots/Spot12"), NodePath("Plant Spots/Spot13"), NodePath("Plant Spots/Spot14")]
@@ -103,7 +105,7 @@ quota = NodePath("UI Render/UI/Quota")
 position = Vector2(960, 540)
 
 [node name="UI Store" type="CanvasLayer" parent="."]
-layer = 128
+layer = 127
 
 [node name="Store UI" parent="UI Store" instance=ExtResource("13_0m0l7")]
 visible = false
@@ -279,6 +281,12 @@ theme_override_font_sizes/font_size = 41
 text = "QUOTA: $800"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Pause" type="CanvasLayer" parent="."]
+layer = 128
+
+[node name="Pause Menu" parent="Pause" instance=ExtResource("23_dyusu")]
+visible = false
 
 [node name="Plant Spots" type="Node" parent="."]
 

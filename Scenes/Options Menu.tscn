@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://5nvu1c24ujep" path="res://Art/openning bg.png" id="1_nnlk7"]
 [ext_resource type="FontFile" uid="uid://dklw1r3w4l27s" path="res://Art/PoorRichardOpti.otf" id="2_8ajug"]
 [ext_resource type="Texture2D" uid="uid://cmb8t0m6ovqdt" path="res://Art/back button 500 x 225.png" id="2_qv1ew"]
-[ext_resource type="Script" path="res://Scripts/MenuButtonSceneSwitcher.cs" id="3_t0pxe"]
+[ext_resource type="Script" path="res://Managers/Scene/ButtonSceneSwitcher.cs" id="5_yy0ae"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_elmcm"]
 texture = ExtResource("1_nnlk7")
@@ -56,7 +56,7 @@ texture_pressed = ExtResource("2_qv1ew")
 texture_hover = ExtResource("2_qv1ew")
 texture_disabled = ExtResource("2_qv1ew")
 texture_focused = ExtResource("2_qv1ew")
-script = ExtResource("3_t0pxe")
+script = ExtResource("5_yy0ae")
 
 [connection signal="value_changed" from="Volume Slider" to="Volume Slider" method="OnSliderChanged"]
 [connection signal="pressed" from="Back" to="Back" method="Switch" binds= [2]]
