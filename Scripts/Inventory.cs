@@ -13,12 +13,13 @@ public partial class Inventory : Node
 	public static Node2D[] plantPositions = new Node2D[15];
 	[Export] public PackedScene plantScene;
 	private static Plant[] plants = new Plant[16];
-	private int plantNumber = 0;
+	public List<PlantInfo> plantInfos = new List<PlantInfo>();
+	public int plantNumber = 0;
 	private static CanvasLayer plantLayer;
-	[Export] PlantInfo starterPlant;
-	[Export] VirusItem starterVirusItem;
+	[Export] public PlantInfo starterPlant;
+	[Export] public VirusItem starterVirusItem;
 	// TODO plants on a canvaslayer
-	bool start = false;
+	public bool start = false;
 
 
 	public static void TransferPlantInfo()
@@ -65,14 +66,9 @@ public partial class Inventory : Node
 
     public override void _Process(double delta)
     {
-        if (!start){
-			start = true;
-			AddPlant(starterPlant);
-			AddVirus(starterVirusItem);
-		}
     }
 
-    public void AddPlant(PlantInfo info)
+    public void AddPlant(PlantInfo info, bool reset)
 	{
 		int plantIndex = GetFreePlantIndex();
 		if (plantIndex != -1)
@@ -81,10 +77,14 @@ public partial class Inventory : Node
 			info.plant = plant;
 			info.inventoryIndex = plantIndex;
 			plant.SetInfo(info);
+			GD.Print(plantPositions[plantIndex]);
 			plant.SetPositionPreset(plantPositions[plantIndex]);
 			plants[plantIndex] = plant;
 			plantLayer.AddChild(plant);
 			plantNumber++;
+			if (!reset){
+				plantInfos.Add(new PlantInfo(info));
+			}
 		}
 	}
 
@@ -168,6 +168,13 @@ public partial class Inventory : Node
 		return plantNumber;
 	}
 
+	public void UpdateVisuals(){
+		int x = plantInfos.Count;
+		for (int i = 0; i < x; i++){
+			AddPlant(new PlantInfo(plantInfos[i]), true);
+		}
+	}
+
 	public void RemovePlant(int index)
 	{
 		foreach (Plant plant in GetPlantsPresent())
@@ -176,15 +183,17 @@ public partial class Inventory : Node
 			{
 				if (plants[15] != null)
 				{
+					foreach (PlantInfo i in plantInfos){
+						if (i.value == plant.info.value && i.species == plant.info.species){
+							plantInfos.Remove(i);
+							break;
+						}
+					}
+					plants[index].QueueFree();
 					if (plants[15] == plants[index])
 					{
-						plants[index].QueueFree();
 						plants[15].QueueFree();
 						plants[15] = null;
-					}
-					else
-					{
-						plants[index].QueueFree();
 					}
 				}
 				else
