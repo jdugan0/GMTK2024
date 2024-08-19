@@ -1,13 +1,13 @@
 [gd_scene load_steps=7 format=3 uid="uid://ckug214kphn4u"]
 
+[ext_resource type="Texture2D" uid="uid://b7lv8ud4xi4wu" path="res://Art/options bg.png" id="1_1dy2m"]
 [ext_resource type="Script" path="res://Scripts/VolumeSlider.cs" id="1_bsibi"]
-[ext_resource type="Texture2D" uid="uid://5nvu1c24ujep" path="res://Art/openning bg.png" id="1_nnlk7"]
 [ext_resource type="FontFile" uid="uid://dklw1r3w4l27s" path="res://Art/PoorRichardOpti.otf" id="2_8ajug"]
 [ext_resource type="Texture2D" uid="uid://cmb8t0m6ovqdt" path="res://Art/back button 500 x 225.png" id="2_qv1ew"]
 [ext_resource type="Script" path="res://Managers/Scene/ButtonSceneSwitcher.cs" id="5_yy0ae"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_elmcm"]
-texture = ExtResource("1_nnlk7")
+texture = ExtResource("1_1dy2m")
 
 [node name="Options Menu" type="Control"]
 layout_mode = 3
@@ -25,20 +25,20 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_elmcm")
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 0
-offset_left = 713.0
-offset_top = 755.0
-offset_right = 1220.0
-offset_bottom = 854.0
+offset_left = 700.0
+offset_top = 557.0
+offset_right = 1207.0
+offset_bottom = 656.0
 theme_override_fonts/font = ExtResource("2_8ajug")
 theme_override_font_sizes/font_size = 80
 text = "Adjust Volume"
 
 [node name="Volume Slider" type="HSlider" parent="."]
 layout_mode = 2
-offset_left = 569.0
-offset_top = 698.0
-offset_right = 935.0
-offset_bottom = 714.0
+offset_left = 556.0
+offset_top = 500.0
+offset_right = 922.0
+offset_bottom = 516.0
 scale = Vector2(2, 2)
 max_value = 1.0
 step = 0.05
@@ -46,10 +46,10 @@ script = ExtResource("1_bsibi")
 
 [node name="Back" type="TextureButton" parent="."]
 layout_mode = 2
-offset_left = 61.0
-offset_top = 906.0
-offset_right = 561.0
-offset_bottom = 1131.0
+offset_left = 376.0
+offset_top = 915.0
+offset_right = 876.0
+offset_bottom = 1140.0
 scale = Vector2(0.5, 0.5)
 texture_normal = ExtResource("2_qv1ew")
 texture_pressed = ExtResource("2_qv1ew")

@@ -1,10 +1,12 @@
-[gd_scene load_steps=13 format=3 uid="uid://m2114m6trhxj"]
+[gd_scene load_steps=16 format=3 uid="uid://m2114m6trhxj"]
 
 [ext_resource type="Texture2D" uid="uid://5nvu1c24ujep" path="res://Art/openning bg.png" id="1_mfqub"]
 [ext_resource type="Texture2D" uid="uid://bi4e200ethec" path="res://Art/play and quit 797 x 274.png" id="2_pg7px"]
 [ext_resource type="Script" path="res://Managers/Scene/ButtonSceneSwitcher.cs" id="3_2o170"]
 [ext_resource type="Script" path="res://Scripts/QuitButton.cs" id="4_fbnn8"]
 [ext_resource type="Texture2D" uid="uid://dpooi8b7xbft7" path="res://Art/settings button 1037 x 274.png" id="5_ql7yr"]
+[ext_resource type="Texture2D" uid="uid://cytkkuyl5prkx" path="res://Art/Tutorial.tres" id="6_1ugub"]
+[ext_resource type="Texture2D" uid="uid://deyh3em3uqfb" path="res://Art/TUTORIAL BUTTON 1037 X 548.png" id="7_5k66l"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vh1m8"]
 texture = ExtResource("1_mfqub")
@@ -31,6 +33,10 @@ region = Rect2(0, 0, 1037, 274)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bdpvu"]
 atlas = ExtResource("5_ql7yr")
+region = Rect2(0, 274, 1037, 274)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4uq12"]
+atlas = ExtResource("7_5k66l")
 region = Rect2(0, 274, 1037, 274)
 
 [node name="Main Menu" type="Control"]
@@ -95,6 +101,20 @@ texture_disabled = SubResource("AtlasTexture_bdpvu")
 texture_focused = SubResource("AtlasTexture_vg3ny")
 script = ExtResource("3_2o170")
 
+[node name="HBoxContainer" type="HBoxContainer" parent="Buttons"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Settings2" type="TextureButton" parent="Buttons/HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("6_1ugub")
+texture_pressed = ExtResource("6_1ugub")
+texture_hover = SubResource("AtlasTexture_4uq12")
+texture_disabled = ExtResource("6_1ugub")
+texture_focused = ExtResource("6_1ugub")
+script = ExtResource("3_2o170")
+
 [connection signal="pressed" from="Buttons/Top Row/Play" to="Buttons/Top Row/Play" method="Switch" binds= [0]]
 [connection signal="pressed" from="Buttons/Top Row/Quit" to="Buttons/Top Row/Quit" method="Quit"]
 [connection signal="pressed" from="Buttons/Bottom Row/Settings" to="Buttons/Bottom Row/Settings" method="Switch" binds= [3]]
+[connection signal="pressed" from="Buttons/HBoxContainer/Settings2" to="Buttons/HBoxContainer/Settings2" method="Switch" binds= [3]]
