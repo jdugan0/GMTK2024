@@ -9,8 +9,10 @@ public partial class ButtonSceneSwitcher : TextureButton
 	public void Switch(int id)
 	{
 		SceneSwitcher.instance.SwitchScene(id);
+		if (id == 2){
+			Inventory.instance.Reset();
+		}
 	}
-
 	public override void _Process(double delta)
 	{
 		if (errorText != null)
@@ -32,13 +34,13 @@ public partial class ButtonSceneSwitcher : TextureButton
 
 		if (Inventory.instance.GetTableOccuplant() != null && !Inventory.instance.GetTableOccuplant().info.mutated)
 		{
-			Inventory.instance.GetTableOccuplant().info.mutated = true;
 			if (Inventory.instance.GetTableOccuplant().GetViruses().Count == 0)
 			{
 				Inventory.instance.quotaCountCurrent++;
 				StoreUI.instance.RefreshShop();
 				return;
 			}
+			Inventory.instance.GetTableOccuplant().info.mutated = true;
 			Inventory.instance.quotaCountCurrent++;
 			VirusDataTransfer.ClearViruses();
 			foreach (VirusItem virus in Inventory.instance.GetTableOccuplant().GetViruses())

@@ -258,19 +258,18 @@ layer_1/tile_data = PackedInt32Array(-2228172, 131072, 805306368, -2293709, 6553
 
 [node name="Location4" parent="." instance=ExtResource("6_xwnd0")]
 position = Vector2(-11729, 7205)
-type = 8
+type = 3
 
 [node name="Location5" parent="." instance=ExtResource("6_xwnd0")]
 position = Vector2(-7133, -4649)
-type = 4
+type = 2
 
 [node name="Location6" parent="." instance=ExtResource("6_xwnd0")]
 position = Vector2(6656, -1625)
-type = 1
 
 [node name="Location7" parent="." instance=ExtResource("6_xwnd0")]
 position = Vector2(8470, 5028)
-type = 2
+type = 1
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -496)

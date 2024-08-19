@@ -27,7 +27,7 @@ public partial class VirusGenerator : Node
 		foreach (VirusItem item in VirusDataTransfer.GetViruses()){
 			VirusBoid b = CreateBoid(item.scene, new Vector2());
 			b.ability = item.ability;
-			b.sprite2D.Texture = item.texture;
+			// b.sprite2D.Texture = item.texture;
 		}
 		
 		// CreateBoid(virusScene2, new Vector2(), virusAmount/2);
@@ -55,7 +55,8 @@ public partial class VirusGenerator : Node
 		if (boidCount <= 0){
 			float totalVal = 0;
 			foreach (Location.LocationType f in locationQualities.Keys){
-				totalVal += locationQualities[f] * Location.valueDict[f];
+				GD.Print(f.ToString());
+				totalVal += locationQualities[f];
 			}
 			foreach (PlantInfo i in Inventory.instance.plants.Values){
 				if (i.onTable){
@@ -67,7 +68,9 @@ public partial class VirusGenerator : Node
 		}
 
 		if (Input.IsActionPressed("Click")){
-			mousePos = GetViewport().GetCamera2D().GetGlobalMousePosition();
+			if (GetViewport() != null){
+				mousePos = GetViewport().GetCamera2D().GetGlobalMousePosition();
+			}
 		}
 		Vector2 comCamera = new Vector2();
 		int cCam = 0;
