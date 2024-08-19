@@ -1,10 +1,35 @@
-[gd_scene load_steps=3 format=3 uid="uid://nllnk078va50"]
+[gd_scene load_steps=11 format=3 uid="uid://nllnk078va50"]
 
 [ext_resource type="Script" path="res://Scripts/Inventory.cs" id="1_xoey4"]
 [ext_resource type="PackedScene" uid="uid://ccxvr07fwlf4r" path="res://Prefabs/Plant.tscn" id="2_yikch"]
+[ext_resource type="Script" path="res://Scripts/PlantInfo.cs" id="3_m1v1r"]
+[ext_resource type="Script" path="res://Scripts/Species.cs" id="4_xh2nd"]
+[ext_resource type="Texture2D" uid="uid://cdwjppd7e4cbl" path="res://Art/yellow trout lily _test.png" id="5_wxnjp"]
+[ext_resource type="Script" path="res://Scripts/VirusItem.cs" id="6_3fxc2"]
+[ext_resource type="PackedScene" uid="uid://dowptv22ct3hh" path="res://Prefabs/Virus.tscn" id="6_av3ow"]
+
+[sub_resource type="Resource" id="Resource_e7rfi"]
+script = ExtResource("4_xh2nd")
+species = 0
+texture = ExtResource("5_wxnjp")
+
+[sub_resource type="Resource" id="Resource_c51pr"]
+script = ExtResource("3_m1v1r")
+species = SubResource("Resource_e7rfi")
+price = 0.0
+value = 5.0
+
+[sub_resource type="Resource" id="Resource_7y23v"]
+script = ExtResource("6_3fxc2")
+name = "None Genome"
+ability = 0
+scene = ExtResource("6_av3ow")
+price = 0.0
 
 [node name="Inventory" type="Node"]
 script = ExtResource("1_xoey4")
 testItems = Array[Object]([])
 money = 100
 plantScene = ExtResource("2_yikch")
+starterPlant = SubResource("Resource_c51pr")
+starterVirusItem = SubResource("Resource_7y23v")

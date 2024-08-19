@@ -20,6 +20,7 @@ name = NodePath("Label")
 price = NodePath("Label2")
 
 [node name="Label" type="Label" parent="."]
+layout_mode = 0
 offset_left = 26.0
 offset_top = 43.0
 offset_right = 567.0
@@ -31,6 +32,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Label2" type="Label" parent="."]
+layout_mode = 0
 offset_left = 633.0
 offset_top = 47.0
 offset_right = 755.0

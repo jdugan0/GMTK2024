@@ -20,6 +20,7 @@ public partial class PurchaseVirusButton : TextureButton
     public void Purchase(){
         if (Inventory.instance.money >= virus.price){
             Inventory.instance.AddVirus(new VirusItem(virus));
+            Inventory.instance.money -= (int)virus.price;
         }
     }
 }
