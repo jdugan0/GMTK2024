@@ -1,11 +1,20 @@
 using Godot;
 using System;
 
-public partial class ButtonSceneSwitcher : Node
+public partial class ButtonSceneSwitcher : Control
 {
-	[Export] ViewVirusButton b;
 	public void Switch(int id){
 		SceneSwitcher.instance.SwitchScene(id);
+	}
+
+	public override void _Process(double delta)
+	{
+		if (Inventory.instance.GetViruses().Count > 0 && Inventory.instance.GetPlantInfos().Count > 0){
+			Visible = true;
+		}
+		else{
+			Visible = false;
+		}
 	}
 
 	public void BeginMinigame()

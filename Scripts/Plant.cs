@@ -75,6 +75,7 @@ public partial class Plant : TextureButton
 
 	private void ToShelf()
 	{
+		GD.Print(info.posSlot);
 		Position = info.posSlot;
 		info.onTable = false;
 		SetScale(new Vector2(0.5f, 0.5f));

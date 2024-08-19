@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://2850ln454g3q"]
+[gd_scene load_steps=16 format=3 uid="uid://2850ln454g3q"]
 
 [ext_resource type="Script" path="res://Scripts/VirusGenerator.cs" id="1_6w8dc"]
 [ext_resource type="PackedScene" uid="uid://dowptv22ct3hh" path="res://Prefabs/Virus.tscn" id="2_8jn3w"]
@@ -8,6 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://s184nc7dtjrr" path="res://Prefabs/source.tscn" id="6_xxyr4"]
 [ext_resource type="Texture2D" uid="uid://d2o63i8utd5hp" path="res://Art/tiles rev c 460 x 460.png" id="7_wb2ir"]
 [ext_resource type="FontFile" uid="uid://dklw1r3w4l27s" path="res://Art/PoorRichardOpti.otf" id="8_loiu0"]
+[ext_resource type="Texture2D" uid="uid://i6rguix07b17" path="res://Art/green arrow 307 x 142.png" id="9_qpsj2"]
+[ext_resource type="Script" path="res://Scripts/ArrowPoint.cs" id="10_xygkx"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lyq1q"]
 texture = ExtResource("6_f6dbi")
@@ -318,6 +320,12 @@ type = 3
 [node name="Source" parent="." instance=ExtResource("6_xxyr4")]
 position = Vector2(11183, 421)
 
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -496)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("9_qpsj2")
+script = ExtResource("10_xygkx")
+
 [node name="Source2" parent="." instance=ExtResource("6_xxyr4")]
 position = Vector2(-2654, 10180)
 
@@ -398,6 +406,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Label2" type="Label" parent="UI/Control"]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5

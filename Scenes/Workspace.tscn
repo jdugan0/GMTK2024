@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://btbbbehoaknia"]
+[gd_scene load_steps=35 format=3 uid="uid://btbbbehoaknia"]
 
 [ext_resource type="Script" path="res://Scripts/WorkspaceInit.cs" id="1_5a6te"]
 [ext_resource type="Texture2D" uid="uid://dnobjr7cssrwn" path="res://Art/greenhouse no pot.png" id="1_n5eej"]
@@ -11,9 +11,11 @@
 [ext_resource type="Texture2D" uid="uid://dxltw0ibqh1xm" path="res://Art/Button2.tres" id="9_qghru"]
 [ext_resource type="Texture2D" uid="uid://cy51q8bxkmyhb" path="res://Art/PLANT STORE 1255 x 1021.png" id="12_gny0d"]
 [ext_resource type="PackedScene" uid="uid://cyojf6l1lvcyc" path="res://Prefabs/VirusButton.tscn" id="12_k5be1"]
+[ext_resource type="FontFile" uid="uid://dklw1r3w4l27s" path="res://Art/PoorRichardOpti.otf" id="12_l6rb0"]
 [ext_resource type="Script" path="res://Scripts/PlantInfo.cs" id="12_puiu7"]
 [ext_resource type="PackedScene" uid="uid://8mobqpmpiiuu" path="res://Scenes/StoreUI.tscn" id="13_0m0l7"]
 [ext_resource type="Script" path="res://Scripts/Species.cs" id="13_356q6"]
+[ext_resource type="Script" path="res://Scripts/MoneyLabel.cs" id="13_dq5yc"]
 [ext_resource type="PackedScene" uid="uid://76pufbfaspsb" path="res://Prefabs/PlantButton.tscn" id="13_mwvtp"]
 [ext_resource type="Texture2D" uid="uid://cdwjppd7e4cbl" path="res://Art/yellow trout lily _test.png" id="14_wqb6j"]
 [ext_resource type="Texture2D" uid="uid://bswvcax21n3cv" path="res://Art/juniper berries _test.png" id="15_hc7su"]
@@ -80,6 +82,9 @@ region = Rect2(0, 0, 507, 134)
 atlas = ExtResource("9_otpgb")
 region = Rect2(0, 134, 507, 134)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_22bq6"]
+bg_color = Color(0, 0, 0, 1)
+
 [node name="Root" type="Node2D" node_paths=PackedStringArray("layer", "plantPositions")]
 script = ExtResource("1_5a6te")
 layer = NodePath("UI Render/UI/Plant Layer")
@@ -97,6 +102,21 @@ plantPresets = Array[Object]([SubResource("Resource_fm7iq"), SubResource("Resour
 textures = Array[Texture2D]([ExtResource("8_do53u"), ExtResource("9_qghru")])
 purchaseVirusButton = ExtResource("12_k5be1")
 purchasePlantButton = ExtResource("13_mwvtp")
+
+[node name="Label" type="Label" parent="UI Store"]
+offset_left = 353.0
+offset_top = 6.0
+offset_right = 658.0
+offset_bottom = 94.0
+theme_override_colors/font_color = Color(0.877671, 0.748875, 7.70092e-07, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 15
+theme_override_fonts/font = ExtResource("12_l6rb0")
+theme_override_font_sizes/font_size = 66
+text = "$100"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("13_dq5yc")
 
 [node name="UI Render" type="CanvasLayer" parent="."]
 
@@ -123,9 +143,9 @@ layer = 100
 custom_minimum_size = Vector2(280, 65)
 layout_mode = 2
 offset_left = 48.0
-offset_top = 19.0
+offset_top = 107.0
 offset_right = 328.0
-offset_bottom = 84.0
+offset_bottom = 172.0
 texture_normal = SubResource("AtlasTexture_ju7te")
 texture_pressed = SubResource("AtlasTexture_ccgl6")
 texture_hover = SubResource("AtlasTexture_tjhnx")
@@ -134,17 +154,8 @@ texture_focused = SubResource("AtlasTexture_mguhy")
 ignore_texture_size = true
 stretch_mode = 0
 script = ExtResource("3_7cee1")
-container = NodePath("../Viruses")
+container = NodePath("../ScrollContainer/Viruses")
 syringeScene = ExtResource("7_wch7j")
-
-[node name="Viruses" type="VBoxContainer" parent="UI Render/UI"]
-layout_mode = 1
-offset_left = 50.0
-offset_top = 99.0
-offset_right = 610.0
-offset_bottom = 99.0
-scale = Vector2(0.5, 0.5)
-alignment = 2
 
 [node name="TextureButton" type="TextureButton" parent="UI Render/UI"]
 layout_mode = 2
@@ -172,6 +183,41 @@ texture_pressed = ExtResource("12_gny0d")
 texture_hover = ExtResource("12_gny0d")
 texture_disabled = ExtResource("12_gny0d")
 texture_focused = ExtResource("12_gny0d")
+
+[node name="Label2" type="Label" parent="UI Render/UI"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -901.0
+offset_top = -531.0
+offset_right = -651.0
+offset_bottom = -442.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("12_l6rb0")
+theme_override_font_sizes/font_size = 26
+theme_override_styles/normal = SubResource("StyleBoxFlat_22bq6")
+text = "CLICK SYRINGE TO 
+SELECT GENOMES"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="UI Render/UI"]
+layout_mode = 1
+offset_left = 51.0
+offset_top = 183.0
+offset_right = 339.0
+offset_bottom = 555.0
+horizontal_scroll_mode = 0
+
+[node name="Viruses" type="VBoxContainer" parent="UI Render/UI/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+alignment = 2
 
 [node name="Plant Spots" type="Node" parent="."]
 

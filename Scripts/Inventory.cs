@@ -115,32 +115,6 @@ public partial class Inventory : Node
 			}
 		}
 	}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     public List<VirusItem> GetViruses()
 	{
 		return viruses;
