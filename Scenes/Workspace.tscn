@@ -90,7 +90,7 @@ bg_color = Color(0, 0, 0, 1)
 
 [node name="Root" type="Node2D" node_paths=PackedStringArray("layer", "plantPositions", "i")]
 script = ExtResource("1_5a6te")
-layer = NodePath("UI Render/UI/Plant Layer")
+layer = NodePath("UI Render/UI/Control")
 plantPositions = [NodePath("Plant Spots/Spot"), NodePath("Plant Spots/Spot1"), NodePath("Plant Spots/Spot2"), NodePath("Plant Spots/Spot3"), NodePath("Plant Spots/Spot4"), NodePath("Plant Spots/Spot5"), NodePath("Plant Spots/Spot6"), NodePath("Plant Spots/Spot7"), NodePath("Plant Spots/Spot8"), NodePath("Plant Spots/Spot9"), NodePath("Plant Spots/Spot10"), NodePath("Plant Spots/Spot11"), NodePath("Plant Spots/Spot12"), NodePath("Plant Spots/Spot13"), NodePath("Plant Spots/Spot14")]
 i = NodePath("UI Render/UI/Label")
 
@@ -140,8 +140,15 @@ grow_vertical = 2
 texture = ExtResource("1_n5eej")
 expand_mode = 1
 
-[node name="Plant Layer" type="CanvasLayer" parent="UI Render/UI"]
-layer = 100
+[node name="Control" type="Control" parent="UI Render/UI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1920.0
+offset_bottom = -1080.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="View Virus Button" type="TextureButton" parent="UI Render/UI" node_paths=PackedStringArray("container")]
 custom_minimum_size = Vector2(280, 65)
@@ -225,6 +232,7 @@ alignment = 2
 
 [node name="Label" type="Label" parent="UI Render/UI"]
 visible = false
+layout_mode = 0
 offset_left = 586.0
 offset_top = 236.0
 offset_right = 787.0

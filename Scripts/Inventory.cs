@@ -1,181 +1,99 @@
 using Godot;
 using System;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 
 public partial class Inventory : Node
 {
 	public static Inventory instance;
 	private List<VirusItem> viruses = new List<VirusItem>();
 	[Export] VirusItem[] testItems;
-	[Export] public int money;
+	[Export] public float money;
 
-	public static Node2D[] plantPositions = new Node2D[15];
 	[Export] public PackedScene plantScene;
-	private static Plant[] plants = new Plant[16];
-	public List<PlantInfo> plantInfos = new List<PlantInfo>();
-	public int plantNumber = 0;
-	private static CanvasLayer plantLayer;
+	public Dictionary<Vector2, PlantInfo> plants = new Dictionary<Vector2, PlantInfo>();
+	private Control plantLayer;
 	[Export] public PlantInfo starterPlant;
 	[Export] public VirusItem starterVirusItem;
+	public List<Plant> plantObj = new List<Plant>();
+	Plant tableOccuplant;
+	List<Vector2> positions = new List<Vector2>();
 	// TODO plants on a canvaslayer
 	public bool start = false;
 
-	public static void ConfigurePlantData(Node2D[] plantPositions, CanvasLayer layer)
+	public void ConfigurePlantData(Node2D[] plantPositions, Control layer)
 	{
-		Inventory.plantPositions = plantPositions;
 		plantLayer = layer;
+		foreach (Node2D n in plantPositions){
+			positions.Add(n.Position - new Vector2(87, 131));
+		}
+		
 	}
 
     public override void _Ready()
     {
 		instance = this;
-		for (int i = 0; i < testItems.Length; i++){
-			Inventory.instance.AddVirus(testItems[i]);
-		}
+		
     }
-
-	private List<Plant> GetPlantsPresent()
-	{
-		List<Plant> presentPlants = new List<Plant>();
-		for (int i = 0; i < 15; i++)
-		{
-			if (plants[i] != null)
-			{
-				presentPlants.Add(plants[i]);
-			}
-		}
-		foreach (Plant plant in presentPlants)
-		{
-			GD.Print(plant);
-		}
-		return presentPlants;
-	}
 
     public override void _Process(double delta)
     {
+		if (!start){
+			AddPlant(starterPlant);
+			AddVirus(starterVirusItem);
+			start = true;
+		}
     }
-
-    public void AddPlant(PlantInfo info, bool reset)
-	{
-		int plantIndex = GetFreePlantIndex();
-		if (plantIndex != -1)
-		{
-			Plant plant = (Plant) plantScene.Instantiate();
-			info.plant = plant;
-			info.inventoryIndex = plantIndex;
-			plant.SetInfo(info);
-			GD.Print(plantPositions[plantIndex]);
-			plant.SetPositionPreset(plantPositions[plantIndex]);
-			plants[plantIndex] = plant;
-			plantLayer.AddChild(plant);
-			plantNumber++;
-			if (!reset){
-				plantInfos.Add(new PlantInfo(info));
-			}
-		}
-		
+	public void SetTableOccupied(Plant plant){
+		tableOccuplant = plant;
 	}
-
-	private int GetFreePlantIndex()
-	{
-		for (int i = 0; i < 15; i++)
-		{
-			if (plants[i] == null)
-			{
-				return i;
-			}
-		}
-		return -1;
+	public int GetPlantNumber(){
+		return plants.Values.Count;
 	}
-
-	public static Vector2 GetTablePosition()
+	public Vector2 GetTablePosition()
 	{
 		return new Vector2(800, 310);
 	}
-
-	public static void SetTableOccupied(Plant occuplant)
-	{
-		plants[15] = occuplant;
+	public Plant GetTableOccuplant(){
+		return tableOccuplant;
 	}
-
-	public static void SetTableFree()
-	{
-		plants[15] = null;
-	}
-
-	public static bool GetTableOccupied()
-	{
-		return plants[15] != null;
-	}
-
-	public static Plant GetTableOccuplant()
-	{
-		return plants[15];
-	}
-
-	// public void RefreshVisuals()
-	// {
-	// 	foreach (PlantInfo info in plantInfos){
-	// 		AddPlant(info);
-	// 		if (info.onTable){
-	// 			PlantLayer.SetTableOccupied(info.plant);
-	// 		}
-	// 	}
-	// }
-
-	public List<PlantInfo> GetPlantInfos()
-	{
-		List<PlantInfo> infos = new List<PlantInfo>();
-		for (int i = 0; i < 15; i++)
-		{
-			if (plants[i] != null)
-			{
-				infos.Add(plants[i].GetPlantInfo());
+	public void AddPlant(PlantInfo info){
+		foreach (Vector2 p in positions){
+			if (!plants.ContainsKey(p)){
+				plants.Add(p, info);
+				ResetVisuals();
+				return;
 			}
 		}
-		return infos;
+		GD.PushError("PLANTS FULL");
 	}
-
-	public int GetPlantNumber()
-	{
-		return plantNumber;
-	}
-
-	public void UpdateVisuals(){
-		int x = plantInfos.Count;
-		for (int i = 0; i < x; i++){
-			AddPlant(new PlantInfo(plantInfos[i]), true);
+	public void SellPlants(PlantInfo info){
+		foreach (PlantInfo p in plants.Values){
+			money += p.value;
 		}
+		plants.Clear();
+		ResetVisuals();
 	}
-
-	public void RemovePlant(int index)
-	{
-		foreach (Plant plant in GetPlantsPresent())
-		{
-			if (plant.GetPlantInfo().inventoryIndex == index)
-			{
-				if (plants[15] != null)
-				{
-					foreach (PlantInfo i in plantInfos){
-						if (i.value == plant.info.value && i.species == plant.info.species){
-							plantInfos.Remove(i);
-							break;
-						}
-					}
-					plants[index].QueueFree();
-					if (plants[15] == plants[index])
-					{
-						plants[15].QueueFree();
-						plants[15] = null;
-					}
-				}
-				else
-				{
-					plants[index].QueueFree();
-				}
-				plants[index] = null;
-				break;
+	public void ResetVisuals(){
+		for (int i = plantObj.Count-1; i >= 0; i--){
+			if (IsInstanceValid(plantObj[i])){
+				plantObj[i].QueueFree();
 			}
+			plantObj.RemoveAt(i);
+		}
+		foreach (Vector2 p in plants.Keys){
+			Plant p1 = (Plant)plantScene.Instantiate();
+			p1.info = plants[p];
+			if (plants[p].onTable){
+				p1.Position = GetTablePosition();
+				p1.Scale = new Vector2(1.5f, 1.5f);
+			}
+			else{
+				p1.Position = p;
+				p1.Scale = new Vector2(.5f, .5f);
+			}
+			plantObj.Add(p1);
+			plantLayer.AddChild(p1);
 		}
 	}
     public List<VirusItem> GetViruses()

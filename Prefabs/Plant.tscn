@@ -29,11 +29,9 @@ value = 0.0
 bg_color = Color(0, 0, 0, 1)
 
 [node name="Plant" type="TextureButton" node_paths=PackedStringArray("hoverText")]
-z_index = -1
-offset_left = -90.75
-offset_top = -113.5
-offset_right = 272.25
-offset_bottom = 340.5
+z_index = 5
+offset_right = 363.0
+offset_bottom = 454.0
 scale = Vector2(0.5, 0.5)
 texture_normal = SubResource("AtlasTexture_iqy70")
 texture_pressed = SubResource("AtlasTexture_iqy70")
@@ -56,4 +54,4 @@ text = "wefwefwefwefwefwef"
 
 [connection signal="mouse_entered" from="." to="." method="Hover"]
 [connection signal="mouse_exited" from="." to="." method="HoverExit"]
-[connection signal="pressed" from="." to="." method="OnClick"]
+[connection signal="pressed" from="." to="." method="Press"]

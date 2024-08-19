@@ -9,30 +9,23 @@ public partial class ButtonSceneSwitcher : Control
 
 	public override void _Process(double delta)
 	{
-		if (Inventory.instance.GetViruses().Count > 0 && Inventory.instance.GetPlantInfos().Count > 0){
-			Visible = true;
-		}
-		else{
-			Visible = false;
-		}
+
 	}
 
 	public void BeginMinigame()
 	{
-		Inventory.plantPositions = new Node2D[15];
-		Inventory.instance.plantNumber = 0;
 		VirusDataTransfer.ClearViruses();
-		if (Inventory.GetTableOccuplant() != null)
+		if (Inventory.instance.GetTableOccuplant() != null)
 		{
-			foreach (VirusItem virus in Inventory.GetTableOccuplant().GetViruses())
+			foreach (VirusItem virus in Inventory.instance.GetTableOccuplant().GetViruses())
 			{
 				VirusDataTransfer.AddViruses(virus);
 			}
-			Inventory.GetTableOccuplant().ClearViruses();
-			for (int i = Inventory.GetTableOccuplant().syringe.Count - 1; i >= 0; i--){
-				Inventory.GetTableOccuplant().syringe[i].QueueFree();
-				Inventory.instance.GetViruses().Remove(Inventory.GetTableOccuplant().syringe[i].virus);
-				Inventory.GetTableOccuplant().syringe.RemoveAt(i);
+			Inventory.instance.GetTableOccuplant().ClearViruses();
+			for (int i = Inventory.instance.GetTableOccuplant().syringe.Count - 1; i >= 0; i--){
+				Inventory.instance.GetTableOccuplant().syringe[i].QueueFree();
+				Inventory.instance.GetViruses().Remove(Inventory.instance.GetTableOccuplant().syringe[i].virus);
+				Inventory.instance.GetTableOccuplant().syringe.RemoveAt(i);
 			}
 			SceneSwitcher.instance.SwitchScene(1);
 		}

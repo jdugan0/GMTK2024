@@ -15,14 +15,6 @@ public partial class Plant : TextureButton
 		TextureHover = info.species.texture;
 		TextureDisabled = info.species.texture;
 		TexturePressed = info.species.texture;
-		if (!info.onTable)
-		{
-			ToShelfReset();
-		}
-		else
-		{
-			ToTableReset();
-		}
     }
 
     public override void _Process(double delta)
@@ -32,19 +24,13 @@ public partial class Plant : TextureButton
 		}
     }
 
-    public void SetInfo(PlantInfo info)
-	{
-		this.info = info;
-	}
-
-    public void SetPositionPreset(Node2D position)
-	{
-		Vector2 coordinates = new Vector2(position.Position.X - 90.75f,
-											   position.Position.Y - 113.5f);
-		info.posSlot = coordinates;
-		if (!info.onTable)
-		{
-			Position = info.posSlot;
+	public void Press(){
+		GD.Print("ww");
+		if (info.onTable){
+			ToShelf();
+		}
+		else{
+			ToTable();
 		}
 	}
 
@@ -62,55 +48,43 @@ public partial class Plant : TextureButton
 		info.viruses.Clear();
 	}
 
-	private void ToTable()
-	{
-		if (!Inventory.GetTableOccupied() && Inventory.GetTableOccuplant() != this)
-		{
-			Position = Inventory.GetTablePosition();
+	public void ToTable(){
+		if (Inventory.instance.GetTableOccuplant() == null){
+			info.slot = Position;
+			Position = Inventory.instance.GetTablePosition();
 			info.onTable = true;
 			SetScale(new Vector2(1.5f, 1.5f));
-			ZIndex = 10;
-			Inventory.SetTableOccupied(this);
+			Inventory.instance.SetTableOccupied(this);
 		}
 	}
-	private void ToTableReset()
-	{
-		Position = Inventory.GetTablePosition();
-		info.onTable = true;
-		SetScale(new Vector2(1.5f, 1.5f));
-		ZIndex = 10;
-		info.value += VirusDataTransfer.score;
-	}
-
-	private void ToShelf()
-	{
-		GD.Print(info.posSlot);
-		Position = info.posSlot;
+	public void ToShelf(){
+		Position = info.slot;
 		info.onTable = false;
 		SetScale(new Vector2(0.5f, 0.5f));
-		ZIndex = -1;
-		Inventory.SetTableFree();
+		Inventory.instance.SetTableOccupied(null);
 	}
 
-	private void ToShelfReset()
-	{
-		Position = info.posSlot;
-		info.onTable = false;
-		SetScale(new Vector2(0.5f, 0.5f));
-		ZIndex = -1;
-	}
+	// private void ToTable()
+	// {
+	// 	if (!Inventory.GetTableOccupied() && Inventory.GetTableOccuplant() != this)
+	// 	{
+	// 		Position = Inventory.GetTablePosition();
+	// 		info.onTable = true;
+	// 		SetScale(new Vector2(1.5f, 1.5f));
+	// 		ZIndex = 10;
+	// 		Inventory.SetTableOccupied(this);
+	// 	}
+	// }
 
-	public void OnClick()
-	{
-		if (info.onTable)
-		{
-			ToShelf();
-		}
-		else
-		{
-			ToTable();
-		}
-	}
+	// private void ToShelf()
+	// {
+	// 	Position = info.posSlot;
+	// 	info.onTable = false;
+	// 	SetScale(new Vector2(0.5f, 0.5f));
+	// 	ZIndex = -1;
+	// 	Inventory.SetTableFree();
+	// }
+
 
 	public List<VirusItem> GetViruses()
 	{
@@ -120,11 +94,6 @@ public partial class Plant : TextureButton
 	private void SetScale(Vector2 scale)
 	{
 		Scale = scale;
-	}
-
-	public PlantInfo GetPlantInfo()
-	{
-		return info;
 	}
 
 	public void Hover(){

@@ -34,21 +34,21 @@ public partial class SyringeDragging : Control
 	}
 
 	public void Select(){
-		if (Inventory.GetTableOccuplant() != null){
+		if (Inventory.instance.GetTableOccuplant() != null){
 			selected = !selected;
 			if (selected){
-				Inventory.GetTableOccuplant().AddVirus(virus);
-				Inventory.GetTableOccuplant().syringe.Add(this);
+				Inventory.instance.GetTableOccuplant().AddVirus(virus);
+				Inventory.instance.GetTableOccuplant().syringe.Add(this);
 			}
 			else{
-				Inventory.GetTableOccuplant().RemoveVirus(virus);
-				Inventory.GetTableOccuplant().syringe.Remove(this);
+				Inventory.instance.GetTableOccuplant().RemoveVirus(virus);
+				Inventory.instance.GetTableOccuplant().syringe.Remove(this);
 			}
 		}
 		else{
 			if (selected){
-				Inventory.GetTableOccuplant().RemoveVirus(virus);
-				Inventory.GetTableOccuplant().syringe.Remove(this);
+				Inventory.instance.GetTableOccuplant().RemoveVirus(virus);
+				Inventory.instance.GetTableOccuplant().syringe.Remove(this);
 			}
 			selected = false;
 		}
