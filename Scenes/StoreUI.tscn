@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://8mobqpmpiiuu"]
+[gd_scene load_steps=20 format=3 uid="uid://8mobqpmpiiuu"]
 
 [ext_resource type="Script" path="res://Scripts/StoreUI.cs" id="1_7euqv"]
 [ext_resource type="Texture2D" uid="uid://dy2iq7vlikglo" path="res://Art/SHOP BG OPEN 3840 x 2160.png" id="1_igjtu"]
@@ -12,17 +12,31 @@
 
 [sub_resource type="Resource" id="Resource_iw1dg"]
 script = ExtResource("2_605yr")
-name = "Normal Virus"
+name = "Normal Genome"
 ability = 0
 scene = ExtResource("3_grkbb")
 price = 5.0
 
 [sub_resource type="Resource" id="Resource_uw5r2"]
 script = ExtResource("2_605yr")
-name = "Dash Virus"
+name = "Dash Genome"
 ability = 1
 scene = ExtResource("3_grkbb")
 price = 20.0
+
+[sub_resource type="Resource" id="Resource_h38xn"]
+script = ExtResource("2_605yr")
+name = "Explosion Genome"
+ability = 2
+scene = ExtResource("3_grkbb")
+price = 30.0
+
+[sub_resource type="Resource" id="Resource_22eud"]
+script = ExtResource("2_605yr")
+name = "Sacrafice Genome"
+ability = 3
+scene = ExtResource("3_grkbb")
+price = 35.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_es8uq"]
 atlas = ExtResource("4_hcoge")
@@ -53,7 +67,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_7euqv")
-virusPresets = Array[Object]([SubResource("Resource_iw1dg"), SubResource("Resource_uw5r2")])
+virusPresets = Array[Object]([SubResource("Resource_iw1dg"), SubResource("Resource_uw5r2"), SubResource("Resource_h38xn"), SubResource("Resource_22eud")])
 plantPresets = Array[Object]([])
 buttons = NodePath("Panel/ScrollContainer/VBoxContainer")
 textures = Array[Texture2D]([SubResource("AtlasTexture_es8uq"), SubResource("AtlasTexture_8wvst")])

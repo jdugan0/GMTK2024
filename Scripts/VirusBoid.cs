@@ -46,7 +46,9 @@ public partial class VirusBoid : RigidBody2D
 
 	public enum AbilityType{
 		None,
-		Dash
+		Dash,
+		Explode,
+		Sacrafice
 	}
 	[Export] public AbilityType ability = AbilityType.None;
 	public Location rootable;
@@ -77,14 +79,35 @@ public partial class VirusBoid : RigidBody2D
 		if (selected && Input.IsActionJustPressed("Ability") && abilityCooldownTimer <= 0){
 			switch (ability){
 				case AbilityType.None:
-				 break;
+				 	break;
 				case AbilityType.Dash:
-				 maxVelocity*=2;
-				 mouseForce *=2;
-				 abilityTimer = abilityTime;
-				 abilityEnded = false;
-				 abilityCooldownTimer = abilityCooldown;
-				 break;
+					maxVelocity*=2;
+					mouseForce *=2;
+					abilityTimer = abilityTime;
+					abilityEnded = false;
+					abilityCooldownTimer = abilityCooldown;
+				    break;
+				case AbilityType.Explode:
+					abilityCooldownTimer = abilityCooldown * 3;
+					abilityEnded = false;
+					foreach (VirusBoid b in generator.boids){
+						if (b.Position.DistanceTo(Position) <= 500 && b.name == "V2"){
+							generator.boids.Remove(b);
+							b.QueueFree();
+						}
+					}
+				break;
+				case AbilityType.Sacrafice:
+					abilityCooldownTimer = abilityCooldown * 3;
+					abilityEnded = false;
+					foreach (VirusBoid b in generator.boids){
+						if (b.Position.DistanceTo(Position) <= 500 && b.name == "V1"){
+							generator.boids.Remove(this);
+							QueueFree();
+							b.health += 3;
+						}
+					}
+				break;
 			}
 		}
 		if (abilityCooldownTimer > 0){

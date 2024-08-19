@@ -14,7 +14,10 @@ public partial class Inventory : Node
 	private static Plant[] plants = new Plant[16];
 	private int plantNumber;
 	private static CanvasLayer plantLayer;
+	[Export] PlantInfo starterPlant;
+	[Export] VirusItem starterVirusItem;
 	// TODO plants on a canvaslayer
+	bool start = false;
 
 	public static void ConfigurePlantData(Node2D[] plantPositions, CanvasLayer layer)
 	{
@@ -30,7 +33,16 @@ public partial class Inventory : Node
 		}
     }
 
-	public void AddPlant(PlantInfo info)
+    public override void _Process(double delta)
+    {
+        if (!start){
+			start = true;
+			AddPlant(starterPlant);
+			AddVirus(starterVirusItem);
+		}
+    }
+
+    public void AddPlant(PlantInfo info)
 	{
 		int plantIndex = GetFreePlantIndex();
 		if (plantIndex != -1)
@@ -43,6 +55,7 @@ public partial class Inventory : Node
 			plants[plantIndex] = plant;
 			plantLayer.AddChild(plant);
 		}
+		
 	}
 
 	private int GetFreePlantIndex()
