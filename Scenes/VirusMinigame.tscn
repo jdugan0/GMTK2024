@@ -406,10 +406,6 @@ text = "RIGHT CLICK TO SELECT"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Pause" type="CanvasLayer" parent="."]
-
-[node name="Pause Menu" parent="Pause" instance=ExtResource("11_gnqrd")]
-
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 128
 
