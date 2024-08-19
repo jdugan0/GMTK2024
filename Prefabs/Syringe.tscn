@@ -1,29 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://n767njjh7i0v"]
+[gd_scene load_steps=3 format=3 uid="uid://n767njjh7i0v"]
 
 [ext_resource type="Script" path="res://Scripts/SyringeDragging.cs" id="1_t0q2v"]
-[ext_resource type="Texture2D" path="res://Art/Syringe.tres" id="2_fpinp"]
-[ext_resource type="PackedScene" uid="uid://dowptv22ct3hh" path="res://Prefabs/Virus.tscn" id="2_mr2cj"]
-[ext_resource type="Script" path="res://Scripts/VirusItem.cs" id="3_vg56m"]
+[ext_resource type="Texture2D" uid="uid://0htg3irnm5x0" path="res://Art/Syringe.tres" id="2_fpinp"]
 
-[sub_resource type="Resource" id="Resource_8plm5"]
-script = ExtResource("3_vg56m")
-name = "TestVirus"
-ability = 1
-scene = ExtResource("2_mr2cj")
-
-[node name="Syringe" type="Control"]
-custom_minimum_size = Vector2(560, 126)
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("1_t0q2v")
-virus = SubResource("Resource_8plm5")
-
-[node name="TextureRect" type="TextureButton" parent="."]
-layout_mode = 0
+[node name="TextureRect" type="TextureButton"]
+custom_minimum_size = Vector2(280, 63)
 offset_right = 40.0
 offset_bottom = 40.0
 texture_normal = ExtResource("2_fpinp")
@@ -31,5 +12,10 @@ texture_pressed = ExtResource("2_fpinp")
 texture_hover = ExtResource("2_fpinp")
 texture_disabled = ExtResource("2_fpinp")
 texture_focused = ExtResource("2_fpinp")
+ignore_texture_size = true
+stretch_mode = 0
+script = ExtResource("1_t0q2v")
 
-[connection signal="pressed" from="TextureRect" to="." method="Select"]
+[connection signal="mouse_entered" from="." to="." method="Hover"]
+[connection signal="mouse_exited" from="." to="." method="HoverExit"]
+[connection signal="pressed" from="." to="." method="Select"]

@@ -1,13 +1,28 @@
 using Godot;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 
 public partial class Plant : TextureButton
 {
-	[Export] private PlantInfo info;
+	[Export] public PlantInfo info;
+	[Export] public Label hoverText;
 	public List<SyringeDragging> syringe = new List<SyringeDragging>();
+
+	public Plant FromPlant()
+	{
+		Plant plant = new Plant();
+		plant.info = new PlantInfo(info);
+		plant.info.plant = plant;
+		return plant;
+	}
 
     public override void _Ready()
     {
+		TextureNormal = info.species.texture;
+		TextureFocused = info.species.texture;
+		TextureHover = info.species.texture;
+		TextureDisabled = info.species.texture;
+		TexturePressed = info.species.texture;
 		if (!info.onTable)
 		{
 			ToShelfReset();
@@ -18,14 +33,23 @@ public partial class Plant : TextureButton
 		}
     }
 
-	public void SetInfo(PlantInfo info)
+    public override void _Process(double delta)
+    {
+        if (hoverText.Visible){
+			hoverText.Position = GetLocalMousePosition() + new Vector2(30,0);
+		}
+    }
+
+    public void SetInfo(PlantInfo info)
 	{
 		this.info = info;
 	}
 
-    public void SetPositionPreset(Vector2 position)
+    public void SetPositionPreset(Node2D position)
 	{
-		info.posSlot = position;
+		Vector2 coordinates = new Vector2(position.Position.X - 90.75f,
+											   position.Position.Y - 113.5f);
+		info.posSlot = coordinates;
 		if (!info.onTable)
 		{
 			Position = info.posSlot;
@@ -48,18 +72,18 @@ public partial class Plant : TextureButton
 
 	private void ToTable()
 	{
-		if (!PlantLayer.GetTableOccupied() && PlantLayer.GetTableOccuplant() != this)
+		if (!Inventory.GetTableOccupied() && Inventory.GetTableOccuplant() != this)
 		{
-			Position = PlantLayer.GetTablePosition();
+			Position = Inventory.GetTablePosition();
 			info.onTable = true;
 			SetScale(new Vector2(1.5f, 1.5f));
 			ZIndex = 10;
-			PlantLayer.SetTableOccupied(this);
+			Inventory.SetTableOccupied(this);
 		}
 	}
 	private void ToTableReset()
 	{
-		Position = PlantLayer.GetTablePosition();
+		Position = Inventory.GetTablePosition();
 		info.onTable = true;
 		SetScale(new Vector2(1.5f, 1.5f));
 		ZIndex = 10;
@@ -68,12 +92,14 @@ public partial class Plant : TextureButton
 
 	private void ToShelf()
 	{
+		GD.Print(info.posSlot);
 		Position = info.posSlot;
 		info.onTable = false;
 		SetScale(new Vector2(0.5f, 0.5f));
 		ZIndex = -1;
-		PlantLayer.SetTableFree();
+		Inventory.SetTableFree();
 	}
+
 	private void ToShelfReset()
 	{
 		Position = info.posSlot;
@@ -81,6 +107,7 @@ public partial class Plant : TextureButton
 		SetScale(new Vector2(0.5f, 0.5f));
 		ZIndex = -1;
 	}
+
 	public void OnClick()
 	{
 		if (info.onTable)
@@ -101,5 +128,19 @@ public partial class Plant : TextureButton
 	private void SetScale(Vector2 scale)
 	{
 		Scale = scale;
+	}
+
+	public PlantInfo GetPlantInfo()
+	{
+		return info;
+	}
+
+	public void Hover(){
+		hoverText.Text = "Value: " + info.value;
+		hoverText.Visible = true;
+		
+	}
+	public void HoverExit(){
+		hoverText.Visible = false;
 	}
 }

@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://lyqc1fccxola"]
+[gd_scene load_steps=20 format=3 uid="uid://8mobqpmpiiuu"]
 
 [ext_resource type="Script" path="res://Scripts/StoreUI.cs" id="1_c44en"]
 [ext_resource type="Texture2D" uid="uid://dy2iq7vlikglo" path="res://Art/SHOP BG OPEN 3840 x 2160.png" id="1_igjtu"]
@@ -7,25 +7,36 @@
 [ext_resource type="Script" path="res://Scripts/VirusItem.cs" id="3_0dkkd"]
 [ext_resource type="Texture2D" uid="uid://dqwf7kp5fongh" path="res://Art/Shopkeeper quip bubble 1284 x 448.png" id="3_wymjs"]
 [ext_resource type="FontFile" uid="uid://dklw1r3w4l27s" path="res://Art/PoorRichardOpti.otf" id="4_e47b2"]
-[ext_resource type="Script" path="res://Scripts/PlantInfo.cs" id="4_oomc5"]
-[ext_resource type="Script" path="res://Scripts/Species.cs" id="5_uuavg"]
-[ext_resource type="Texture2D" uid="uid://cdwjppd7e4cbl" path="res://Art/yellow trout lily _test.png" id="6_t8dpe"]
-[ext_resource type="Texture2D" uid="uid://bswvcax21n3cv" path="res://Art/juniper berries _test.png" id="7_6umhy"]
-[ext_resource type="Texture2D" uid="uid://b24iakx6l648" path="res://Art/cinnamon fern _test.png" id="8_84cv3"]
+[ext_resource type="Texture2D" uid="uid://smrbafgukudu" path="res://Art/SHOP buttons 1666 x 298.png" id="4_hcoge"]
+[ext_resource type="Texture2D" uid="uid://cmb8t0m6ovqdt" path="res://Art/back button 500 x 225.png" id="9_pdv2t"]
 
-[sub_resource type="Resource" id="Resource_cy58o"]
-script = ExtResource("3_0dkkd")
-name = "Basic Genome"
+[sub_resource type="Resource" id="Resource_iw1dg"]
+script = ExtResource("2_605yr")
+name = "Normal Genome"
 ability = 0
 scene = ExtResource("2_h1xfd")
 price = 0.0
 
-[sub_resource type="Resource" id="Resource_gycc8"]
-script = ExtResource("3_0dkkd")
-name = "Circulation-Enhanced Genome"
+[sub_resource type="Resource" id="Resource_uw5r2"]
+script = ExtResource("2_605yr")
+name = "Dash Genome"
 ability = 1
-scene = ExtResource("2_h1xfd")
-price = 0.0
+scene = ExtResource("3_grkbb")
+price = 20.0
+
+[sub_resource type="Resource" id="Resource_h38xn"]
+script = ExtResource("2_605yr")
+name = "Explosion Genome"
+ability = 2
+scene = ExtResource("3_grkbb")
+price = 30.0
+
+[sub_resource type="Resource" id="Resource_22eud"]
+script = ExtResource("2_605yr")
+name = "Sacrafice Genome"
+ability = 3
+scene = ExtResource("3_grkbb")
+price = 35.0
 
 [sub_resource type="Resource" id="Resource_41vqi"]
 script = ExtResource("5_uuavg")
@@ -82,10 +93,9 @@ offset_right = -960.0
 offset_bottom = -540.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(2, 2)
-script = ExtResource("1_c44en")
-virusPresets = Array[Object]([SubResource("Resource_cy58o"), SubResource("Resource_gycc8")])
-plantPresets = Array[Object]([SubResource("Resource_jcd85"), SubResource("Resource_77gy6"), SubResource("Resource_00cfa")])
+script = ExtResource("1_7euqv")
+virusPresets = Array[Object]([SubResource("Resource_iw1dg"), SubResource("Resource_uw5r2"), SubResource("Resource_h38xn"), SubResource("Resource_22eud")])
+plantPresets = Array[Object]([])
 buttons = NodePath("Panel/ScrollContainer/VBoxContainer")
 textures = Array[Texture2D]([])
 
@@ -109,10 +119,10 @@ layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_left = 107.0
-offset_top = -238.0
-offset_right = 507.0
-offset_bottom = 255.0
+offset_left = 181.0
+offset_top = -503.0
+offset_right = 1059.0
+offset_bottom = 334.0
 grow_vertical = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel/ScrollContainer"]
@@ -161,3 +171,19 @@ theme_override_fonts/font = ExtResource("4_e47b2")
 text = "Plants, genomes, we've got it all!"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="TextureButton" type="TextureButton" parent="Panel"]
+layout_mode = 0
+offset_left = 192.0
+offset_top = 887.0
+offset_right = 525.333
+offset_bottom = 1037.0
+texture_normal = ExtResource("9_pdv2t")
+texture_pressed = ExtResource("9_pdv2t")
+texture_hover = ExtResource("9_pdv2t")
+texture_disabled = ExtResource("9_pdv2t")
+texture_focused = ExtResource("9_pdv2t")
+ignore_texture_size = true
+stretch_mode = 0
+
+[connection signal="pressed" from="Panel/TextureButton" to="." method="Toggle"]

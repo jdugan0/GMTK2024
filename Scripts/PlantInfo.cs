@@ -12,6 +12,8 @@ public partial class PlantInfo : Resource
     public Plant plant;
     [Export] public float price;
     [Export] public float value;
+    public int inventoryIndex;
+
     public PlantInfo(){
 
     }
@@ -23,6 +25,7 @@ public partial class PlantInfo : Resource
         plant = item.plant;
         price = item.price;
         value = item.value;
+        inventoryIndex = item.inventoryIndex;
     }
 
 }
