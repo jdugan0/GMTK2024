@@ -21,6 +21,8 @@ public partial class PurchaseVirusButton : TextureButton
         if (Inventory.instance.money >= virus.price){
             Inventory.instance.AddVirus(new VirusItem(virus));
             Inventory.instance.money -= (int)virus.price;
+            StoreUI.instance.config.GetVirusItems().Remove(virus);
+            StoreUI.instance.RefreshShopWithConfig();
         }
     }
 }

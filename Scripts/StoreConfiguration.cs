@@ -4,20 +4,20 @@ using System.Collections.Generic;
 
 public class StoreConfiguration
 {
-    private VirusItem[] viruses;
-    private PlantInfo[] plants;
-    public StoreConfiguration(VirusItem[] viruses, PlantInfo[] plants)
+    private List<VirusItem> viruses;
+    private List<PlantInfo> plants;
+    public StoreConfiguration(List<VirusItem>  viruses, List<PlantInfo> plants)
     {
         this.viruses = viruses;
         this.plants = plants;
     }
 
-    public VirusItem[] GetVirusItems()
+    public List<VirusItem> GetVirusItems()
     {
         return viruses;
     }
 
-    public PlantInfo[] GetPlantInfos()
+    public List<PlantInfo> GetPlantInfos()
     {
         return plants;
     }

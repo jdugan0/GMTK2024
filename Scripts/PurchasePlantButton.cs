@@ -22,6 +22,8 @@ public partial class PurchasePlantButton : TextureButton
         if (Inventory.instance.money >= plantInfo.price && Inventory.instance.GetPlantNumber() < 15){
             Inventory.instance.money -= (int)plantInfo.price;
             Inventory.instance.AddPlant(new PlantInfo(plantInfo));
+            StoreUI.instance.config.GetPlantInfos().Remove(plantInfo);
+            StoreUI.instance.RefreshShopWithConfig();
             // Inventory.instance.RefreshVisuals();
         }
     }
