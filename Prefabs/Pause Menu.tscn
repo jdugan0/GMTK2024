@@ -1,31 +1,33 @@
-[gd_scene load_steps=12 format=3 uid="uid://bgllprtxam2rf"]
+[gd_scene load_steps=13 format=3 uid="uid://bgllprtxam2rf"]
 
 [ext_resource type="FontFile" uid="uid://dklw1r3w4l27s" path="res://Art/PoorRichardOpti.otf" id="1_7l0qd"]
 [ext_resource type="Script" path="res://Scripts/VolumeSlider.cs" id="1_dwadm"]
 [ext_resource type="Script" path="res://Scripts/PauseMenu.cs" id="1_iim3e"]
-[ext_resource type="Texture2D" uid="uid://bi4e200ethec" path="res://Art/play and quit 797 x 274.png" id="3_3v47w"]
+[ext_resource type="Texture2D" uid="uid://b7lv8ud4xi4wu" path="res://Art/options bg.png" id="2_yby40"]
+[ext_resource type="Texture2D" uid="uid://cayw3s1ur6yj5" path="res://Art/PAUSE BUTTONS 1054 X 274.png" id="4_4ftvr"]
 [ext_resource type="Script" path="res://Managers/Scene/ButtonSceneSwitcher.cs" id="5_13a1n"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_is0w4"]
 bg_color = Color(0, 0, 0, 0.701961)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7vr74"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_tmvh3"]
+texture = ExtResource("2_yby40")
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_1mrk5"]
-atlas = ExtResource("3_3v47w")
-region = Rect2(0, 0, 797, 274)
+[sub_resource type="AtlasTexture" id="AtlasTexture_oushc"]
+atlas = ExtResource("4_4ftvr")
+region = Rect2(0, 274, 1054, 274)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_svoy0"]
-atlas = ExtResource("3_3v47w")
-region = Rect2(797, 0, 797, 274)
+[sub_resource type="AtlasTexture" id="AtlasTexture_rnrfi"]
+atlas = ExtResource("4_4ftvr")
+region = Rect2(1054, 274, 1054, 274)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ev5so"]
-atlas = ExtResource("3_3v47w")
-region = Rect2(0, 274, 797, 274)
+atlas = ExtResource("4_4ftvr")
+region = Rect2(0, 0, 1054, 274)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_bw7cb"]
-atlas = ExtResource("3_3v47w")
-region = Rect2(797, 274, 797, 274)
+[sub_resource type="AtlasTexture" id="AtlasTexture_cj8ah"]
+atlas = ExtResource("4_4ftvr")
+region = Rect2(1054, 0, 1054, 274)
 
 [node name="Pause Menu" type="Control"]
 process_mode = 3
@@ -37,7 +39,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_iim3e")
 
-[node name="Panel" type="Panel" parent="."]
+[node name="Shading" type="Panel" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -46,31 +48,41 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_is0w4")
 
-[node name="Panel2" type="Panel" parent="."]
-offset_left = 683.0
-offset_top = 161.0
-offset_right = 1196.0
-offset_bottom = 861.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_7vr74")
+[node name="Box" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 460.0
+offset_top = 162.5
+offset_right = 1460.0
+offset_bottom = 917.5
+theme_override_styles/panel = SubResource("StyleBoxTexture_tmvh3")
 
-[node name="Label" type="Label" parent="."]
+[node name="Adjust Volume" type="Label" parent="."]
 layout_mode = 2
-offset_left = 747.0
-offset_top = 255.0
-offset_right = 1544.0
-offset_bottom = 404.0
+offset_left = 765.0
+offset_top = 371.5
+offset_right = 1562.0
+offset_bottom = 520.5
 scale = Vector2(0.5, 0.5)
-theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("1_7l0qd")
 theme_override_font_sizes/font_size = 120
 text = "Adjust Volume"
 
+[node name="Paused" type="Label" parent="."]
+offset_left = 780.75
+offset_top = 204.5
+offset_right = 1497.75
+offset_bottom = 435.5
+scale = Vector2(0.5, 0.5)
+theme_override_fonts/font = ExtResource("1_7l0qd")
+theme_override_font_sizes/font_size = 186
+text = "PAUSED"
+
 [node name="Volume Slider" type="HSlider" parent="."]
 layout_mode = 2
-offset_left = 742.0
-offset_top = 346.0
-offset_right = 871.0
-offset_bottom = 362.0
+offset_left = 696.0
+offset_top = 458.5
+offset_right = 872.0
+offset_bottom = 474.5
 scale = Vector2(3, 3)
 max_value = 1.0
 step = 0.05
@@ -81,10 +93,10 @@ layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 742.0
-offset_top = 461.0
-offset_right = -381.0
-offset_bottom = 23.0
+offset_left = 696.5
+offset_top = 548.5
+offset_right = -169.5
+offset_bottom = 110.5
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.5, 0.5)
@@ -92,18 +104,18 @@ theme_override_constants/separation = 94
 
 [node name="Resume" type="TextureButton" parent="Options"]
 layout_mode = 2
-texture_normal = SubResource("AtlasTexture_1mrk5")
-texture_pressed = SubResource("AtlasTexture_1mrk5")
-texture_hover = SubResource("AtlasTexture_svoy0")
-texture_disabled = SubResource("AtlasTexture_svoy0")
-texture_focused = SubResource("AtlasTexture_1mrk5")
+texture_normal = SubResource("AtlasTexture_oushc")
+texture_pressed = SubResource("AtlasTexture_oushc")
+texture_hover = SubResource("AtlasTexture_rnrfi")
+texture_disabled = SubResource("AtlasTexture_rnrfi")
+texture_focused = SubResource("AtlasTexture_oushc")
 
 [node name="Quit" type="TextureButton" parent="Options"]
 layout_mode = 2
 texture_normal = SubResource("AtlasTexture_ev5so")
 texture_pressed = SubResource("AtlasTexture_ev5so")
-texture_hover = SubResource("AtlasTexture_bw7cb")
-texture_disabled = SubResource("AtlasTexture_bw7cb")
+texture_hover = SubResource("AtlasTexture_cj8ah")
+texture_disabled = SubResource("AtlasTexture_cj8ah")
 texture_focused = SubResource("AtlasTexture_ev5so")
 script = ExtResource("5_13a1n")
 

@@ -5,7 +5,7 @@
 [ext_resource type="Script" path="res://Managers/Scene/ButtonSceneSwitcher.cs" id="3_2o170"]
 [ext_resource type="Script" path="res://Scripts/QuitButton.cs" id="4_fbnn8"]
 [ext_resource type="Texture2D" uid="uid://dpooi8b7xbft7" path="res://Art/settings button 1037 x 274.png" id="5_ql7yr"]
-[ext_resource type="Texture2D" uid="uid://cytkkuyl5prkx" path="res://Art/Tutorial.tres" id="6_1ugub"]
+[ext_resource type="Texture2D" path="res://Art/Tutorial.tres" id="6_1ugub"]
 [ext_resource type="Texture2D" uid="uid://deyh3em3uqfb" path="res://Art/TUTORIAL BUTTON 1037 X 548.png" id="7_5k66l"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vh1m8"]
