@@ -33,6 +33,7 @@ public partial class ButtonSceneSwitcher : TextureButton
 		if (Inventory.instance.GetTableOccuplant() != null && !Inventory.instance.GetTableOccuplant().info.mutated)
 		{
 			Inventory.instance.GetTableOccuplant().info.mutated = true;
+			Inventory.instance.GetTableOccuplant().sprite.Texture = Inventory.instance.GetTableOccuplant().info.mutatedSprite;
 			if (Inventory.instance.GetTableOccuplant().GetViruses().Count == 0)
 			{
 				Inventory.instance.quotaCountCurrent++;

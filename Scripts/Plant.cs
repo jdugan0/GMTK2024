@@ -4,6 +4,7 @@ using System.Security.Cryptography;
 
 public partial class Plant : TextureButton
 {
+	[Export] public Sprite2D sprite;
 	[Export] public PlantInfo info;
 	[Export] public Label hoverText;
 	public List<SyringeDragging> syringe = new List<SyringeDragging>();

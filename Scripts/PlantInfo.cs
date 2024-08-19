@@ -12,6 +12,7 @@ public partial class PlantInfo : Resource
     public bool onTable;
     public Vector2 slot;
     public bool mutated = false;
+    [Export] public Texture2D mutatedSprite;
 
     public PlantInfo(){
 
