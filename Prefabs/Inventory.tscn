@@ -33,3 +33,5 @@ money = 100.0
 plantScene = ExtResource("2_yikch")
 starterPlant = SubResource("Resource_c51pr")
 starterVirusItem = SubResource("Resource_7y23v")
+quotaCount = 3
+quotaCap = 200.0

@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class ButtonSceneSwitcher : Control
+public partial class ButtonSceneSwitcher : TextureButton
 {
 	public void Switch(int id){
 		SceneSwitcher.instance.SwitchScene(id);

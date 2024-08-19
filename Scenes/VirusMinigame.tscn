@@ -326,27 +326,38 @@ script = ExtResource("10_xygkx")
 
 [node name="Source3" parent="." instance=ExtResource("6_xxyr4")]
 position = Vector2(-4320, 1711)
+sourceTime = 9.0
+amount = 3
 
 [node name="Source8" parent="." instance=ExtResource("6_xxyr4")]
 position = Vector2(-9330, 4108)
+sourceTime = 6.0
 
 [node name="Source13" parent="." instance=ExtResource("6_xxyr4")]
 position = Vector2(-4416, 3748)
+sourceTime = 9.0
+amount = 3
 
 [node name="Source14" parent="." instance=ExtResource("6_xxyr4")]
 position = Vector2(-389, 2118)
+sourceTime = 8.0
+amount = 2
 
 [node name="Source9" parent="." instance=ExtResource("6_xxyr4")]
 position = Vector2(-12446, 4228)
+sourceTime = 6.0
 
 [node name="Source12" parent="." instance=ExtResource("6_xxyr4")]
 position = Vector2(-10169, 5930)
+sourceTime = 6.0
 
 [node name="Source10" parent="." instance=ExtResource("6_xxyr4")]
 position = Vector2(-13165, -399)
+sourceTime = 6.0
 
 [node name="Source11" parent="." instance=ExtResource("6_xxyr4")]
 position = Vector2(-8490, -519)
+sourceTime = 6.0
 
 [node name="Source4" parent="." instance=ExtResource("6_xxyr4")]
 position = Vector2(1567, -1797)
@@ -354,12 +365,15 @@ amount = 2
 
 [node name="Source5" parent="." instance=ExtResource("6_xxyr4")]
 position = Vector2(-10609, 3122)
+sourceTime = 6.0
 
 [node name="Source6" parent="." instance=ExtResource("6_xxyr4")]
 position = Vector2(-10488, -2563)
+sourceTime = 6.0
 
 [node name="Source7" parent="." instance=ExtResource("6_xxyr4")]
 position = Vector2(5391, 5064)
+sourceTime = 8.0
 amount = 3
 
 [node name="UI" type="CanvasLayer" parent="."]
