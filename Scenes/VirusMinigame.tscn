@@ -304,18 +304,19 @@ layer_1/tile_data = PackedInt32Array(-2228172, 65536, 1, -2293709, 65536, 1, -22
 
 [node name="Location4" parent="." instance=ExtResource("6_xwnd0")]
 position = Vector2(-11729, 7205)
+type = 8
 
 [node name="Location5" parent="." instance=ExtResource("6_xwnd0")]
 position = Vector2(-7133, -4649)
-type = 1
+type = 4
 
 [node name="Location6" parent="." instance=ExtResource("6_xwnd0")]
 position = Vector2(6656, -1625)
-type = 2
+type = 1
 
 [node name="Location7" parent="." instance=ExtResource("6_xwnd0")]
 position = Vector2(8470, 5028)
-type = 3
+type = 2
 
 [node name="Source" parent="." instance=ExtResource("6_xxyr4")]
 position = Vector2(11183, 421)
