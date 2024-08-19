@@ -15,28 +15,28 @@ script = ExtResource("2_605yr")
 name = "Normal Genome"
 ability = 0
 scene = ExtResource("3_grkbb")
-price = 5.0
+price = 10.0
 
 [sub_resource type="Resource" id="Resource_uw5r2"]
 script = ExtResource("2_605yr")
 name = "Dash Genome"
 ability = 1
 scene = ExtResource("3_grkbb")
-price = 20.0
+price = 25.0
 
 [sub_resource type="Resource" id="Resource_h38xn"]
 script = ExtResource("2_605yr")
 name = "Explosion Genome"
 ability = 2
 scene = ExtResource("3_grkbb")
-price = 30.0
+price = 35.0
 
 [sub_resource type="Resource" id="Resource_22eud"]
 script = ExtResource("2_605yr")
 name = "Sacrifice Genome"
 ability = 3
 scene = ExtResource("3_grkbb")
-price = 35.0
+price = 40.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_es8uq"]
 atlas = ExtResource("4_hcoge")

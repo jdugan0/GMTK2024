@@ -68,7 +68,7 @@ maxVelocity = 650.0
 viewRange = 3500.0
 maxAccel = 1e+06
 damageTime = 1.0
-health = 10.0
+health = 5.0
 damage = 1.0
 name = "V2"
 

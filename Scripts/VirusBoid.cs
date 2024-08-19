@@ -107,7 +107,7 @@ public partial class VirusBoid : RigidBody2D
 					foreach (VirusBoid b in generator.boids){
 						if (b.Position.DistanceTo(Position) <= 500 && b.name == "V1"){
 							generator.boids.Remove(this);
-							b.health += 3;
+							b.health += 4;
 						}
 					}
 					QueueFree();
