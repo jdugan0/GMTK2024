@@ -14,6 +14,7 @@ public partial class ButtonSceneSwitcher : Control
 
 	public void BeginMinigame()
 	{
+		Inventory.instance.quotaCountCurrent++;
 		VirusDataTransfer.ClearViruses();
 		if (Inventory.instance.GetTableOccuplant() != null)
 		{
@@ -28,6 +29,21 @@ public partial class ButtonSceneSwitcher : Control
 				Inventory.instance.GetTableOccuplant().syringe.RemoveAt(i);
 			}
 			SceneSwitcher.instance.SwitchScene(1);
+		}
+	}
+
+	public void Sell(){
+		foreach (PlantInfo i in Inventory.instance.plants.Values){
+			Inventory.instance.money += i.value;
+			Inventory.instance.torwardsQuota += i.value;
+		}
+		Inventory.instance.SellPlants();
+		if (Inventory.instance.torwardsQuota >= Inventory.instance.quotaCap){
+			Inventory.instance.torwardsQuota = 0;
+			Inventory.instance.quotaCap *= 1.5f;
+		}
+		else{
+			SceneSwitcher.instance.SwitchScene(2);
 		}
 	}
 }

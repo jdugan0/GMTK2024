@@ -18,6 +18,11 @@ public partial class Inventory : Node
 	public List<Plant> plantObj = new List<Plant>();
 	Plant tableOccuplant;
 	List<Vector2> positions = new List<Vector2>();
+	[Export] public int quotaCount;
+	public float torwardsQuota;
+	public int quotaCountCurrent;
+	[Export] public float quotaCap;
+
 	// TODO plants on a canvaslayer
 	public bool start = false;
 
@@ -67,10 +72,7 @@ public partial class Inventory : Node
 		}
 		GD.PushError("PLANTS FULL");
 	}
-	public void SellPlants(PlantInfo info){
-		foreach (PlantInfo p in plants.Values){
-			money += p.value;
-		}
+	public void SellPlants(){
 		plants.Clear();
 		ResetVisuals();
 	}
