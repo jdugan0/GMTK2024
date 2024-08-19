@@ -22,7 +22,7 @@ public partial class WorkspaceInit : Node2D
         }
         run = true;
         if (!Inventory.instance.start){
-                Inventory.instance.AddPlant(Inventory.instance.starterPlant);
+                Inventory.instance.AddPlant(Inventory.instance.starterPlant, false);
 			    Inventory.instance.AddVirus(Inventory.instance.starterVirusItem);
                 Inventory.instance.start = true;
         }

@@ -1,7 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://n767njjh7i0v"]
+[gd_scene load_steps=5 format=3 uid="uid://n767njjh7i0v"]
 
 [ext_resource type="Script" path="res://Scripts/SyringeDragging.cs" id="1_t0q2v"]
 [ext_resource type="Texture2D" uid="uid://0htg3irnm5x0" path="res://Art/Syringe.tres" id="2_fpinp"]
+[ext_resource type="FontFile" uid="uid://dklw1r3w4l27s" path="res://Art/PoorRichardOpti.otf" id="3_k2m2i"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j8cub"]
+bg_color = Color(0, 0, 0, 1)
 
 [node name="TextureRect" type="TextureButton"]
 custom_minimum_size = Vector2(280, 63)
@@ -16,4 +20,17 @@ ignore_texture_size = true
 stretch_mode = 0
 script = ExtResource("1_t0q2v")
 
+[node name="Label" type="Label" parent="."]
+visible = false
+offset_left = 213.0
+offset_top = 41.0
+offset_right = 372.0
+offset_bottom = 68.0
+theme_override_fonts/font = ExtResource("3_k2m2i")
+theme_override_font_sizes/font_size = 21
+theme_override_styles/normal = SubResource("StyleBoxFlat_j8cub")
+text = "adsdasdadadsada"
+
 [connection signal="pressed" from="." to="." method="Select"]
+[connection signal="mouse_entered" from="Label" to="." method="Hover"]
+[connection signal="mouse_exited" from="Label" to="." method="HoverExit"]

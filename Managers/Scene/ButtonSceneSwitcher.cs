@@ -19,6 +19,8 @@ public partial class ButtonSceneSwitcher : Control
 
 	public void BeginMinigame()
 	{
+		Inventory.plantPositions = new Node2D[15];
+		Inventory.instance.plantNumber = 0;
 		VirusDataTransfer.ClearViruses();
 		if (Inventory.GetTableOccuplant() != null)
 		{

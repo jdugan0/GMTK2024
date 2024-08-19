@@ -13,7 +13,7 @@ public partial class Inventory : Node
 	[Export] public PackedScene plantScene;
 	private static Plant[] plants = new Plant[16];
 	public List<PlantInfo> plantInfos = new List<PlantInfo>();
-	private int plantNumber = 0;
+	public int plantNumber = 0;
 	private static CanvasLayer plantLayer;
 	[Export] public PlantInfo starterPlant;
 	[Export] public VirusItem starterVirusItem;
@@ -55,7 +55,7 @@ public partial class Inventory : Node
     {
     }
 
-    public void AddPlant(PlantInfo info)
+    public void AddPlant(PlantInfo info, bool reset)
 	{
 		int plantIndex = GetFreePlantIndex();
 		if (plantIndex != -1)
@@ -69,7 +69,9 @@ public partial class Inventory : Node
 			plants[plantIndex] = plant;
 			plantLayer.AddChild(plant);
 			plantNumber++;
-			plantInfos.Add(new PlantInfo(info));
+			if (!reset){
+				plantInfos.Add(new PlantInfo(info));
+			}
 		}
 		
 	}
@@ -142,7 +144,7 @@ public partial class Inventory : Node
 	public void UpdateVisuals(){
 		int x = plantInfos.Count;
 		for (int i = 0; i < x; i++){
-			AddPlant(new PlantInfo(plantInfos[i]));
+			AddPlant(new PlantInfo(plantInfos[i]), true);
 		}
 	}
 
