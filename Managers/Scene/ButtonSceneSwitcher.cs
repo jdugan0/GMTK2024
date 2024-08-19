@@ -11,17 +11,17 @@ public partial class ButtonSceneSwitcher : Node
 	public void BeginMinigame()
 	{
 		VirusDataTransfer.ClearViruses();
-		if (PlantLayer.GetTableOccuplant() != null)
+		if (Inventory.GetTableOccuplant() != null)
 		{
-			foreach (VirusItem virus in PlantLayer.GetTableOccuplant().GetViruses())
+			foreach (VirusItem virus in Inventory.GetTableOccuplant().GetViruses())
 			{
 				VirusDataTransfer.AddViruses(virus);
 			}
-			PlantLayer.GetTableOccuplant().ClearViruses();
-			for (int i = PlantLayer.GetTableOccuplant().syringe.Count - 1; i >= 0; i--){
-				PlantLayer.GetTableOccuplant().syringe[i].QueueFree();
-				Inventory.instance.GetViruses().Remove(PlantLayer.GetTableOccuplant().syringe[i].virus);
-				PlantLayer.GetTableOccuplant().syringe.RemoveAt(i);
+			Inventory.GetTableOccuplant().ClearViruses();
+			for (int i = Inventory.GetTableOccuplant().syringe.Count - 1; i >= 0; i--){
+				Inventory.GetTableOccuplant().syringe[i].QueueFree();
+				Inventory.instance.GetViruses().Remove(Inventory.GetTableOccuplant().syringe[i].virus);
+				Inventory.GetTableOccuplant().syringe.RemoveAt(i);
 			}
 			SceneSwitcher.instance.SwitchScene(1);
 		}

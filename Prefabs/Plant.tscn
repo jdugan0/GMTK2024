@@ -21,6 +21,8 @@ texture = SubResource("AtlasTexture_moh1f")
 [sub_resource type="Resource" id="Resource_o4y4g"]
 script = ExtResource("3_q02cr")
 species = SubResource("Resource_io3dd")
+price = 0.0
+value = 0.0
 
 [node name="Plant" type="TextureButton"]
 z_index = -1
