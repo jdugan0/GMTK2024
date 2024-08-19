@@ -1,16 +1,23 @@
 using Godot;
 using System;
+using System.Collections.Generic;
 
 public partial class Location : Node2D
 {
 	// Called when the node enters the scene tree for the first time.
 	bool updated = false;
 	public enum LocationType{
-		Leaf = 1,
-		Stem = 2,
-		Root = 4,
-		Flower = 8
+		Leaf,
+		Stem,
+		Root,
+		Flower
 	}
+	public static Dictionary<LocationType, float> valueDict = new Dictionary<LocationType, float>(){
+		{LocationType.Leaf, 1},
+		{LocationType.Stem, 1.5f},
+		{LocationType.Root, 2f},
+		{LocationType.Flower, 3f}
+	};
 	[Export] public LocationType type;
 	public override void _Ready()
 	{

@@ -54,7 +54,7 @@ public partial class VirusGenerator : Node
 		if (boidCount <= 0){
 			float totalVal = 0;
 			foreach (Location.LocationType f in locationQualities.Keys){
-				totalVal += locationQualities[f] * ((int)f);
+				totalVal += locationQualities[f] * Location.valueDict[f];
 			}
 			foreach (PlantInfo i in Inventory.instance.plants.Values){
 				if (i.onTable){
