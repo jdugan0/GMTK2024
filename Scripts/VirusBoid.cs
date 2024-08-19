@@ -96,10 +96,9 @@ public partial class VirusBoid : RigidBody2D
 							toRemove.Add(b);
 						}
 					}
-					for (int i = toRemove.Count - 1; i >= 0; i--){
-						generator.boids[i].QueueFree();
-						generator.boids.RemoveAt(i);
-						
+					foreach (VirusBoid boid in toRemove){
+						generator.boids.Remove(boid);
+						boid.QueueFree();
 					}
 				break;
 				case AbilityType.Sacrafice:

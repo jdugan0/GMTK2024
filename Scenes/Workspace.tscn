@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://btbbbehoaknia"]
+[gd_scene load_steps=38 format=3 uid="uid://btbbbehoaknia"]
 
 [ext_resource type="Script" path="res://Scripts/WorkspaceInit.cs" id="1_5a6te"]
 [ext_resource type="Texture2D" uid="uid://dnobjr7cssrwn" path="res://Art/greenhouse no pot.png" id="1_n5eej"]
@@ -20,6 +20,8 @@
 [ext_resource type="Texture2D" uid="uid://cdwjppd7e4cbl" path="res://Art/yellow trout lily _test.png" id="14_wqb6j"]
 [ext_resource type="Texture2D" uid="uid://bswvcax21n3cv" path="res://Art/juniper berries _test.png" id="15_hc7su"]
 [ext_resource type="Texture2D" uid="uid://b24iakx6l648" path="res://Art/cinnamon fern _test.png" id="16_kpxj1"]
+[ext_resource type="Texture2D" uid="uid://ci7y6rt6ojs2c" path="res://Art/Sell1.tres" id="20_dat4e"]
+[ext_resource type="Texture2D" uid="uid://bimpapsyhv4kv" path="res://Art/Sell2.tres" id="21_yn5xj"]
 
 [sub_resource type="Resource" id="Resource_gc4kc"]
 script = ExtResource("13_356q6")
@@ -88,11 +90,14 @@ bg_color = Color(0, 0, 0, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vnaqt"]
 bg_color = Color(0, 0, 0, 1)
 
-[node name="Root" type="Node2D" node_paths=PackedStringArray("layer", "plantPositions", "i")]
+[node name="Root" type="Node2D" node_paths=PackedStringArray("layer", "plantPositions", "i", "beginButton", "sellButton", "quota")]
 script = ExtResource("1_5a6te")
 layer = NodePath("UI Render/UI/Plant Layer")
 plantPositions = [NodePath("Plant Spots/Spot"), NodePath("Plant Spots/Spot1"), NodePath("Plant Spots/Spot2"), NodePath("Plant Spots/Spot3"), NodePath("Plant Spots/Spot4"), NodePath("Plant Spots/Spot5"), NodePath("Plant Spots/Spot6"), NodePath("Plant Spots/Spot7"), NodePath("Plant Spots/Spot8"), NodePath("Plant Spots/Spot9"), NodePath("Plant Spots/Spot10"), NodePath("Plant Spots/Spot11"), NodePath("Plant Spots/Spot12"), NodePath("Plant Spots/Spot13"), NodePath("Plant Spots/Spot14")]
 i = NodePath("UI Render/UI/Label")
+beginButton = NodePath("UI Render/UI/Begin")
+sellButton = NodePath("UI Render/UI/Sell")
+quota = NodePath("UI Render/UI/Quota")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(960, 540)
@@ -161,7 +166,7 @@ script = ExtResource("3_7cee1")
 container = NodePath("../ScrollContainer/Viruses")
 syringeScene = ExtResource("7_wch7j")
 
-[node name="TextureButton" type="TextureButton" parent="UI Render/UI"]
+[node name="Begin" type="TextureButton" parent="UI Render/UI"]
 layout_mode = 2
 offset_left = 1026.0
 offset_top = 938.0
@@ -173,6 +178,24 @@ texture_pressed = SubResource("AtlasTexture_g1h57")
 texture_hover = SubResource("AtlasTexture_q30pu")
 texture_disabled = SubResource("AtlasTexture_g1h57")
 texture_focused = SubResource("AtlasTexture_g1h57")
+script = ExtResource("2_mlrbl")
+
+[node name="Sell" type="TextureButton" parent="UI Render/UI"]
+visible = false
+layout_mode = 2
+offset_left = 1033.0
+offset_top = 844.0
+offset_right = 1486.0
+offset_bottom = 1074.0
+size_flags_horizontal = 0
+disabled = true
+texture_normal = ExtResource("20_dat4e")
+texture_pressed = ExtResource("21_yn5xj")
+texture_hover = ExtResource("20_dat4e")
+texture_disabled = ExtResource("20_dat4e")
+texture_focused = ExtResource("20_dat4e")
+ignore_texture_size = true
+stretch_mode = 0
 script = ExtResource("2_mlrbl")
 
 [node name="StoreButton" type="TextureButton" parent="UI Render/UI"]
@@ -234,6 +257,21 @@ theme_override_fonts/font = ExtResource("12_l6rb0")
 theme_override_font_sizes/font_size = 26
 theme_override_styles/normal = SubResource("StyleBoxFlat_vnaqt")
 text = "dadadasdasdadad"
+
+[node name="Quota" type="Label" parent="UI Render/UI"]
+layout_mode = 0
+offset_left = 375.0
+offset_top = 97.0
+offset_right = 639.0
+offset_bottom = 165.0
+theme_override_colors/font_color = Color(0.877671, 0.748875, 7.70092e-07, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 15
+theme_override_fonts/font = ExtResource("12_l6rb0")
+theme_override_font_sizes/font_size = 41
+text = "QUOTA: $800"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Plant Spots" type="Node" parent="."]
 
@@ -298,5 +336,6 @@ position = Vector2(1776, 969)
 scale = Vector2(0.5, 0.5)
 
 [connection signal="pressed" from="UI Render/UI/View Virus Button" to="UI Render/UI/View Virus Button" method="ToggleMenu"]
-[connection signal="button_down" from="UI Render/UI/TextureButton" to="UI Render/UI/TextureButton" method="BeginMinigame"]
+[connection signal="button_down" from="UI Render/UI/Begin" to="UI Render/UI/Begin" method="BeginMinigame"]
+[connection signal="pressed" from="UI Render/UI/Sell" to="UI Render/UI/Sell" method="Sell"]
 [connection signal="pressed" from="UI Render/UI/StoreButton" to="UI Store/Store UI" method="Toggle"]
