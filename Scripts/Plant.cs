@@ -1,9 +1,11 @@
 using Godot;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 
 public partial class Plant : TextureButton
 {
 	[Export] private PlantInfo info;
+	[Export] public Label hoverText;
 	public List<SyringeDragging> syringe = new List<SyringeDragging>();
 
     public override void _Ready()
@@ -23,7 +25,14 @@ public partial class Plant : TextureButton
 		}
     }
 
-	public void SetInfo(PlantInfo info)
+    public override void _Process(double delta)
+    {
+        if (hoverText.Visible){
+			hoverText.Position = GetLocalMousePosition() + new Vector2(30,0);
+		}
+    }
+
+    public void SetInfo(PlantInfo info)
 	{
 		this.info = info;
 	}
@@ -116,5 +125,14 @@ public partial class Plant : TextureButton
 	public PlantInfo GetPlantInfo()
 	{
 		return info;
+	}
+
+	public void Hover(){
+		hoverText.Text = "Value: " + info.value;
+		hoverText.Visible = true;
+		
+	}
+	public void HoverExit(){
+		hoverText.Visible = false;
 	}
 }

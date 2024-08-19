@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://ccxvr07fwlf4r"]
+[gd_scene load_steps=11 format=3 uid="uid://ccxvr07fwlf4r"]
 
 [ext_resource type="Texture2D" uid="uid://c84bnfq0rtlot" path="res://Art/juniper berries.png" id="1_yk0cn"]
 [ext_resource type="Script" path="res://Scripts/Plant.cs" id="2_g440g"]
 [ext_resource type="Script" path="res://Scripts/Species.cs" id="3_huk36"]
 [ext_resource type="Script" path="res://Scripts/PlantInfo.cs" id="3_q02cr"]
+[ext_resource type="FontFile" uid="uid://dklw1r3w4l27s" path="res://Art/PoorRichardOpti.otf" id="5_yjtwi"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_iqy70"]
 atlas = ExtResource("1_yk0cn")
@@ -24,7 +25,10 @@ species = SubResource("Resource_io3dd")
 price = 0.0
 value = 0.0
 
-[node name="Plant" type="TextureButton"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6jnhk"]
+bg_color = Color(0, 0, 0, 1)
+
+[node name="Plant" type="TextureButton" node_paths=PackedStringArray("hoverText")]
 z_index = -1
 offset_left = -90.75
 offset_top = -113.5
@@ -38,5 +42,18 @@ texture_disabled = SubResource("AtlasTexture_iqy70")
 texture_focused = SubResource("AtlasTexture_iqy70")
 script = ExtResource("2_g440g")
 info = SubResource("Resource_o4y4g")
+hoverText = NodePath("Label")
 
+[node name="Label" type="Label" parent="."]
+visible = false
+layout_mode = 0
+offset_right = 360.0
+offset_bottom = 52.0
+theme_override_fonts/font = ExtResource("5_yjtwi")
+theme_override_font_sizes/font_size = 41
+theme_override_styles/normal = SubResource("StyleBoxFlat_6jnhk")
+text = "wefwefwefwefwefwef"
+
+[connection signal="mouse_entered" from="." to="." method="Hover"]
+[connection signal="mouse_exited" from="." to="." method="HoverExit"]
 [connection signal="pressed" from="." to="." method="OnClick"]
