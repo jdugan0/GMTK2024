@@ -31,14 +31,14 @@ public partial class Inventory : Node
 	public void Reset(){
 		config = false;
 		start = false;
-		quotaCap = 200;
+		quotaCap = 10;
 		quotaCountCurrent = 0;
 		torwardsQuota = 0;
 		positions = new List<Vector2>();
 		tableOccuplant = null;
 		plantObj = new List<Plant>();
 		plants = new Dictionary<Vector2, PlantInfo>();
-		money = 100;
+		money = 200;
 		viruses = new List<VirusItem>();
 		quotasReached = 0;
 	}
