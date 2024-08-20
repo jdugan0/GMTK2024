@@ -1,12 +1,15 @@
-[gd_scene load_steps=41 format=3 uid="uid://btbbbehoaknia"]
+[gd_scene load_steps=47 format=3 uid="uid://btbbbehoaknia"]
 
 [ext_resource type="Script" path="res://Scripts/WorkspaceInit.cs" id="1_5a6te"]
 [ext_resource type="Texture2D" uid="uid://dnobjr7cssrwn" path="res://Art/greenhouse no pot.png" id="1_n5eej"]
 [ext_resource type="Texture2D" uid="uid://c7vun7uok4t45" path="res://Art/injections icon.png" id="2_l7cwa"]
 [ext_resource type="Script" path="res://Managers/Scene/ButtonSceneSwitcher.cs" id="2_mlrbl"]
 [ext_resource type="Script" path="res://Scripts/ViewVirusButton.cs" id="3_7cee1"]
+[ext_resource type="Texture2D" uid="uid://dy6bid7pqfh7m" path="res://Art/yellow trout lily.png" id="4_dae7y"]
+[ext_resource type="Texture2D" uid="uid://c84bnfq0rtlot" path="res://Art/juniper berries.png" id="7_g4y1u"]
 [ext_resource type="PackedScene" uid="uid://n767njjh7i0v" path="res://Prefabs/Syringe.tscn" id="7_wch7j"]
 [ext_resource type="Texture2D" uid="uid://dtcwrqjbgp64b" path="res://Art/Button1.tres" id="8_do53u"]
+[ext_resource type="Texture2D" uid="uid://bhwnusri6jrhw" path="res://Art/cinnamon fern 363x454 (1).png" id="9_23sde"]
 [ext_resource type="Texture2D" uid="uid://bu23v3t5kq6fq" path="res://Art/BEGIN BUTTON 507 x 134.png" id="9_otpgb"]
 [ext_resource type="Texture2D" uid="uid://dxltw0ibqh1xm" path="res://Art/Button2.tres" id="9_qghru"]
 [ext_resource type="Texture2D" uid="uid://cy51q8bxkmyhb" path="res://Art/PLANT STORE 1255 x 1021.png" id="12_gny0d"]
@@ -26,10 +29,15 @@
 [ext_resource type="Script" path="res://Scripts/ErrorLabel.cs" id="23_g1gdn"]
 [ext_resource type="PackedScene" uid="uid://bgllprtxam2rf" path="res://Prefabs/Pause Menu.tscn" id="23_hnbb6"]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_1dml4"]
+atlas = ExtResource("4_dae7y")
+region = Rect2(1452, 0, 363, 454)
+
 [sub_resource type="Resource" id="Resource_gc4kc"]
 script = ExtResource("13_356q6")
 species = 0
 texture = ExtResource("14_wqb6j")
+mutatedTexture = SubResource("AtlasTexture_1dml4")
 
 [sub_resource type="Resource" id="Resource_fm7iq"]
 script = ExtResource("12_puiu7")
@@ -37,10 +45,15 @@ species = SubResource("Resource_gc4kc")
 price = 10.0
 value = 0.0
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_4xo4x"]
+atlas = ExtResource("7_g4y1u")
+region = Rect2(1452, 0, 363, 454)
+
 [sub_resource type="Resource" id="Resource_u7sti"]
 script = ExtResource("13_356q6")
 species = 1
 texture = ExtResource("15_hc7su")
+mutatedTexture = SubResource("AtlasTexture_4xo4x")
 
 [sub_resource type="Resource" id="Resource_ymlkx"]
 script = ExtResource("12_puiu7")
@@ -48,10 +61,15 @@ species = SubResource("Resource_u7sti")
 price = 10.0
 value = 0.0
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_7b4ir"]
+atlas = ExtResource("9_23sde")
+region = Rect2(1452, 0, 363, 454)
+
 [sub_resource type="Resource" id="Resource_agma1"]
 script = ExtResource("13_356q6")
 species = 2
 texture = ExtResource("16_kpxj1")
+mutatedTexture = SubResource("AtlasTexture_7b4ir")
 
 [sub_resource type="Resource" id="Resource_13oak"]
 script = ExtResource("12_puiu7")
@@ -348,7 +366,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_22bq6")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Error" type="Label" parent="UI Render/UI" node_paths=PackedStringArray("view")]
+[node name="Error" type="Label" parent="UI Render/UI"]
 visible = false
 layout_mode = 0
 offset_left = 60.0
@@ -364,7 +382,6 @@ text = "YOU MUST SELECT A PLANT"
 horizontal_alignment = 1
 vertical_alignment = 1
 script = ExtResource("23_g1gdn")
-view = NodePath("../View Virus Button")
 
 [node name="Plant Spots" type="Node" parent="."]
 

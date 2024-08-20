@@ -9,21 +9,6 @@ public partial class SyringeDragging : TextureButton
 	[Export] public float errorTime;
 	private bool justAttempted;
 
-	public void JustAttempted()
-	{
-		justAttempted = true;
-	}
-
-	public void NoAttempt()
-	{
-		justAttempted = false;
-	}
-
-	public bool GetJustAttempted()
-	{
-		return justAttempted;
-	}
-
 	public void Hover(){
 		WorkspaceInit.hoverText.Text =virus.name;
 		WorkspaceInit.hoverText.Visible = true;
@@ -69,6 +54,8 @@ public partial class SyringeDragging : TextureButton
 				Inventory.instance.GetTableOccuplant().syringe.Remove(this);
 			}
 			selected = false;
+			ErrorLabel.instance.SetErrorMessageNoPlantInjection();
+			GD.Print("gheigjrgkhle");
 		}
 	}
 

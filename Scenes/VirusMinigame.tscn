@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://2850ln454g3q"]
+[gd_scene load_steps=25 format=3 uid="uid://2850ln454g3q"]
 
 [ext_resource type="Script" path="res://Scripts/VirusGenerator.cs" id="1_6w8dc"]
 [ext_resource type="PackedScene" uid="uid://dowptv22ct3hh" path="res://Prefabs/Virus.tscn" id="2_8jn3w"]
@@ -239,18 +239,59 @@ bg_color = Color(0, 0, 0, 1)
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_m8pbc"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ebofy"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.230315, 0.230315, 0.230315, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+corner_detail = 6
+expand_margin_left = 10.0
+expand_margin_top = 10.0
+expand_margin_right = 10.0
+expand_margin_bottom = 10.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yflev"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(1, 1, 1, 0.75)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+corner_detail = 6
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8bm2s"]
 content_margin_left = 4.0
 content_margin_top = 4.0
 content_margin_right = 4.0
 content_margin_bottom = 4.0
-bg_color = Color(0.172549, 0.678431, 0.682353, 1)
+bg_color = Color(0, 0, 0, 1)
+expand_margin_left = 10.0
+expand_margin_top = 10.0
+expand_margin_right = 10.0
+expand_margin_bottom = 10.0
 
 [sub_resource type="Theme" id="Theme_vsueu"]
+HSlider/constants/center_grabber = 0
+HSlider/constants/grabber_offset = 0
 HSlider/icons/grabber = SubResource("CanvasTexture_kay50")
 HSlider/icons/grabber_disabled = SubResource("CanvasTexture_eu6jp")
 HSlider/icons/grabber_highlight = SubResource("CanvasTexture_f4eda")
 HSlider/icons/tick = SubResource("CanvasTexture_m8pbc")
+HSlider/styles/grabber_area = SubResource("StyleBoxFlat_ebofy")
+HSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_yflev")
 HSlider/styles/slider = SubResource("StyleBoxFlat_8bm2s")
 
 [node name="VirusMinigame" type="Node2D" node_paths=PackedStringArray("rootLabel", "coolDownSlider")]
@@ -410,11 +451,14 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="HSlider" type="HSlider" parent="UI"]
-offset_right = 459.0
-offset_bottom = 16.0
+offset_left = 45.0
+offset_top = 16.0
+offset_right = 365.0
+offset_bottom = 58.0
 scale = Vector2(1.52, 1.52)
 theme = SubResource("Theme_vsueu")
 step = 0.001
+value = 50.0
 editable = false
 scrollable = false
 

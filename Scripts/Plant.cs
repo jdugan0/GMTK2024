@@ -10,13 +10,27 @@ public partial class Plant : TextureButton
 
     public override void _Ready()
     {
+		ZIndex = 10;
+		if (info.mutated)
+		{
+			Mutate();
+			return;
+		}
 		TextureNormal = info.species.texture;
 		TextureFocused = info.species.texture;
 		TextureHover = info.species.texture;
 		TextureDisabled = info.species.texture;
 		TexturePressed = info.species.texture;
-		ZIndex = 10;
     }
+
+	public void Mutate()
+	{
+		TextureNormal = info.species.mutatedTexture;
+		TextureFocused = info.species.mutatedTexture;
+		TextureHover = info.species.mutatedTexture;
+		TextureDisabled = info.species.mutatedTexture;
+		TexturePressed = info.species.mutatedTexture;
+	}
 
     public override void _Process(double delta)
     {

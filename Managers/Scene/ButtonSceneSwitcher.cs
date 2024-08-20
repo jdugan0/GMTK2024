@@ -39,15 +39,7 @@ public partial class ButtonSceneSwitcher : TextureButton
 		}
 		else
 		{
-			errorText.Visible = true;
-			errorText.Text = "SELECT A PLANT";
-			if (Inventory.instance.GetTableOccuplant() != null && Inventory.instance.GetTableOccuplant().info.mutated){
-				errorText.Text = "PLANT ALREADY MUTATED";
-				return;
-			}
-			if (Inventory.instance.GetTableOccuplant() != null && Inventory.instance.GetTableOccuplant().GetViruses().Count == 0){
-				errorText.Text = "SELECT A GENOME";
-			}
+			errorText.UpdateErrorMessage();
 		}
 	}
 
