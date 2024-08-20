@@ -75,7 +75,7 @@ public partial class Inventory : Node
 	}
 	public Vector2 GetTablePosition()
 	{
-		return new Vector2(800, 310);
+		return new Vector2(800, 230);
 	}
 	public Plant GetTableOccuplant(){
 		return tableOccuplant;

@@ -212,11 +212,12 @@ script = ExtResource("2_mlrbl")
 
 [node name="StoreButton" type="TextureButton" parent="UI Render/UI"]
 layout_mode = 0
-offset_left = 14.0
-offset_top = 436.0
-offset_right = 1269.0
-offset_bottom = 1457.0
-scale = Vector2(0.63, 0.63)
+offset_left = -299.75
+offset_top = 180.75
+offset_right = 955.25
+offset_bottom = 1201.75
+scale = Vector2(0.5, 0.5)
+pivot_offset = Vector2(627.5, 510.5)
 texture_normal = ExtResource("12_gny0d")
 texture_pressed = ExtResource("12_gny0d")
 texture_hover = ExtResource("12_gny0d")
@@ -402,4 +403,6 @@ visible = false
 [connection signal="pressed" from="UI Render/UI/View Virus Button" to="UI Render/UI/View Virus Button" method="ToggleMenu"]
 [connection signal="button_down" from="UI Render/UI/Begin" to="UI Render/UI/Begin" method="BeginMinigame"]
 [connection signal="pressed" from="UI Render/UI/Sell" to="UI Render/UI/Sell" method="Sell"]
+[connection signal="mouse_entered" from="UI Render/UI/StoreButton" to="UI Render/UI/StoreButton" method="set_scale" binds= [Vector2(0.52, 0.52)]]
+[connection signal="mouse_exited" from="UI Render/UI/StoreButton" to="UI Render/UI/StoreButton" method="set_scale" binds= [Vector2(0.5, 0.5)]]
 [connection signal="pressed" from="UI Render/UI/StoreButton" to="UI Store/Store UI" method="Toggle"]

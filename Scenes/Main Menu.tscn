@@ -88,11 +88,11 @@ texture_disabled = SubResource("AtlasTexture_s1qma")
 texture_focused = SubResource("AtlasTexture_yj62o")
 script = ExtResource("4_fbnn8")
 
-[node name="Bottom Row" type="HBoxContainer" parent="Buttons"]
+[node name="Middle Row" type="HBoxContainer" parent="Buttons"]
 layout_mode = 2
 alignment = 1
 
-[node name="Settings" type="TextureButton" parent="Buttons/Bottom Row"]
+[node name="Settings" type="TextureButton" parent="Buttons/Middle Row"]
 layout_mode = 2
 texture_normal = SubResource("AtlasTexture_vg3ny")
 texture_pressed = SubResource("AtlasTexture_vg3ny")
@@ -101,11 +101,11 @@ texture_disabled = SubResource("AtlasTexture_bdpvu")
 texture_focused = SubResource("AtlasTexture_vg3ny")
 script = ExtResource("3_2o170")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Buttons"]
+[node name="Bottom Row" type="HBoxContainer" parent="Buttons"]
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="Settings2" type="TextureButton" parent="Buttons/HBoxContainer"]
+[node name="Tutorial" type="TextureButton" parent="Buttons/Bottom Row"]
 layout_mode = 2
 texture_normal = ExtResource("6_1ugub")
 texture_pressed = ExtResource("6_1ugub")
@@ -116,5 +116,5 @@ script = ExtResource("3_2o170")
 
 [connection signal="pressed" from="Buttons/Top Row/Play" to="Buttons/Top Row/Play" method="Switch" binds= [0]]
 [connection signal="pressed" from="Buttons/Top Row/Quit" to="Buttons/Top Row/Quit" method="Quit"]
-[connection signal="pressed" from="Buttons/Bottom Row/Settings" to="Buttons/Bottom Row/Settings" method="Switch" binds= [3]]
-[connection signal="pressed" from="Buttons/HBoxContainer/Settings2" to="Buttons/HBoxContainer/Settings2" method="Switch" binds= [3]]
+[connection signal="pressed" from="Buttons/Middle Row/Settings" to="Buttons/Middle Row/Settings" method="Switch" binds= [3]]
+[connection signal="pressed" from="Buttons/Bottom Row/Tutorial" to="Buttons/Bottom Row/Tutorial" method="Switch" binds= [4]]
