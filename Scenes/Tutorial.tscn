@@ -28,12 +28,13 @@ offset_right = 1920.0
 offset_bottom = 1080.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_vupbe")
 
-[node name="Information" type="Label" parent="."]
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
 layout_mode = 0
-offset_left = 404.0
-offset_top = 311.0
-offset_right = 1537.0
-offset_bottom = 692.0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Information" type="Label" parent="ScrollContainer"]
+layout_mode = 2
 theme_override_fonts/font = ExtResource("2_2smfl")
 text = "Welcome to Garden Genome!
 OVERVIEW:

@@ -53,5 +53,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_6jnhk")
 text = "wefwefwefwefwefwef"
 
 [connection signal="mouse_entered" from="." to="." method="Hover"]
+[connection signal="mouse_entered" from="." to="." method="Enlarge"]
 [connection signal="mouse_exited" from="." to="." method="HoverExit"]
+[connection signal="mouse_exited" from="." to="." method="Reduce"]
 [connection signal="pressed" from="." to="." method="Press"]

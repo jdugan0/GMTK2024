@@ -48,6 +48,30 @@ public partial class Plant : TextureButton
 		info.viruses.Clear();
 	}
 
+	public void Enlarge()
+	{
+		if (info.onTable)
+		{
+			SetScale(new Vector2(1.65f, 1.65f));
+		}
+		else
+		{
+			SetScale(new Vector2(0.52f, 0.52f));
+		}
+	}
+
+	public void Reduce()
+	{
+		if (info.onTable)
+		{
+			SetScale(new Vector2(1.5f, 1.5f));
+		}
+		else
+		{
+			SetScale(new Vector2(0.5f, 0.5f));
+		}
+	}
+
 	public void ToTable(){
 		if (Inventory.instance.GetTableOccuplant() == null){
 			info.slot = Position;
