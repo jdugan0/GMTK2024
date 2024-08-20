@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://btbbbehoaknia"]
+[gd_scene load_steps=41 format=3 uid="uid://btbbbehoaknia"]
 
 [ext_resource type="Script" path="res://Scripts/WorkspaceInit.cs" id="1_5a6te"]
 [ext_resource type="Texture2D" uid="uid://dnobjr7cssrwn" path="res://Art/greenhouse no pot.png" id="1_n5eej"]
@@ -22,6 +22,7 @@
 [ext_resource type="Texture2D" uid="uid://b24iakx6l648" path="res://Art/cinnamon fern _test.png" id="16_kpxj1"]
 [ext_resource type="Texture2D" uid="uid://ci7y6rt6ojs2c" path="res://Art/Sell1.tres" id="20_dat4e"]
 [ext_resource type="Texture2D" uid="uid://bimpapsyhv4kv" path="res://Art/Sell2.tres" id="21_yn5xj"]
+[ext_resource type="Script" path="res://Scripts/PlantStoreButton.cs" id="23_3iv11"]
 [ext_resource type="Script" path="res://Scripts/ErrorLabel.cs" id="23_g1gdn"]
 [ext_resource type="PackedScene" uid="uid://bgllprtxam2rf" path="res://Prefabs/Pause Menu.tscn" id="23_hnbb6"]
 
@@ -216,7 +217,7 @@ ignore_texture_size = true
 stretch_mode = 0
 script = ExtResource("2_mlrbl")
 
-[node name="StoreButton" type="TextureButton" parent="UI Render/UI"]
+[node name="StoreButton" type="TextureButton" parent="UI Render/UI" node_paths=PackedStringArray("hover")]
 layout_mode = 0
 offset_left = -299.75
 offset_top = 180.75
@@ -229,6 +230,8 @@ texture_pressed = ExtResource("12_gny0d")
 texture_hover = ExtResource("12_gny0d")
 texture_disabled = ExtResource("12_gny0d")
 texture_focused = ExtResource("12_gny0d")
+script = ExtResource("23_3iv11")
+hover = NodePath("../Label3")
 
 [node name="ScrollContainer" type="ScrollContainer" parent="UI Render/UI"]
 layout_mode = 1
@@ -291,6 +294,7 @@ vertical_alignment = 1
 
 [node name="Label" type="Label" parent="UI Render/UI"]
 visible = false
+z_index = 60
 layout_mode = 0
 offset_left = 586.0
 offset_top = 236.0
@@ -314,6 +318,27 @@ offset_left = -901.0
 offset_top = -531.0
 offset_right = -651.0
 offset_bottom = -487.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("12_l6rb0")
+theme_override_font_sizes/font_size = 26
+theme_override_styles/normal = SubResource("StyleBoxFlat_22bq6")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="UI Render/UI"]
+visible = false
+z_index = 127
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -492.0
+offset_top = -1.0
+offset_right = -242.0
+offset_bottom = 43.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("12_l6rb0")
@@ -417,6 +442,8 @@ visible = false
 [connection signal="mouse_entered" from="UI Render/UI/Begin" to="UI Render/UI/Begin" method="set_scale" binds= [Vector2(0.52, 0.52)]]
 [connection signal="mouse_exited" from="UI Render/UI/Begin" to="UI Render/UI/Begin" method="set_scale" binds= [Vector2(0.5, 0.5)]]
 [connection signal="pressed" from="UI Render/UI/Sell" to="UI Render/UI/Sell" method="Sell"]
+[connection signal="mouse_entered" from="UI Render/UI/StoreButton" to="UI Render/UI/StoreButton" method="Hover"]
 [connection signal="mouse_entered" from="UI Render/UI/StoreButton" to="UI Render/UI/StoreButton" method="set_scale" binds= [Vector2(0.52, 0.52)]]
+[connection signal="mouse_exited" from="UI Render/UI/StoreButton" to="UI Render/UI/StoreButton" method="HoverExit"]
 [connection signal="mouse_exited" from="UI Render/UI/StoreButton" to="UI Render/UI/StoreButton" method="set_scale" binds= [Vector2(0.5, 0.5)]]
 [connection signal="pressed" from="UI Render/UI/StoreButton" to="UI Store/Store UI" method="Toggle"]

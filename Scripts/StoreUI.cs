@@ -145,4 +145,9 @@ public partial class StoreUI : Control
         }
         return new StoreConfiguration(viruses, plants);
     }
+
+    public bool GetShopEmpty()
+    {
+        return config.GetStoreEmpty();
+    }
 }

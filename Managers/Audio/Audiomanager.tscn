@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://d3df3pqxnto64"]
+[gd_scene load_steps=34 format=3 uid="uid://d3df3pqxnto64"]
 
 [ext_resource type="Script" path="res://Managers/Audio/AudioManager.cs" id="1_5pvfo"]
 [ext_resource type="Script" path="res://Managers/Audio/Sound.cs" id="2_cds50"]
@@ -18,6 +18,9 @@
 [ext_resource type="AudioStream" uid="uid://43jdvq6c7idi" path="res://SFX/Title Screen.wav" id="16_hxvfj"]
 [ext_resource type="AudioStream" uid="uid://b5etlc0o6i3wl" path="res://SFX/Shop Theme.wav" id="17_wunlc"]
 [ext_resource type="AudioStream" uid="uid://d4kx2iyhffwcn" path="res://SFX/Sell Plant.wav" id="18_ildis"]
+[ext_resource type="AudioStream" uid="uid://ck4hcrxeffiaa" path="res://SFX/Buy 1.wav" id="19_ay84p"]
+[ext_resource type="AudioStream" uid="uid://iw4abjwc55nt" path="res://SFX/Buy 2.wav" id="20_mcvvp"]
+[ext_resource type="AudioStream" uid="uid://d1w0hc5l4g4pq" path="res://SFX/Buy 3.wav" id="21_pbkoo"]
 
 [sub_resource type="Resource" id="Resource_uigmi"]
 script = ExtResource("2_cds50")
@@ -93,6 +96,21 @@ stream = ExtResource("18_ildis")
 volume = 0.0
 name = "Sell"
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_hqc1g"]
+streams_count = 3
+stream_0/stream = ExtResource("19_ay84p")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("20_mcvvp")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("21_pbkoo")
+stream_2/weight = 1.0
+
+[sub_resource type="Resource" id="Resource_yfkh2"]
+script = ExtResource("2_cds50")
+stream = SubResource("AudioStreamRandomizer_hqc1g")
+volume = 20.0
+name = "Buy"
+
 [node name="Audiomanager" type="Node"]
 script = ExtResource("1_5pvfo")
-sounds = Array[Object]([SubResource("Resource_uigmi"), SubResource("Resource_me2ls"), SubResource("Resource_girw2"), SubResource("Resource_yoh11"), SubResource("Resource_mgw0d"), SubResource("Resource_jdkox"), SubResource("Resource_wooyv"), SubResource("Resource_63bkh")])
+sounds = Array[Object]([SubResource("Resource_uigmi"), SubResource("Resource_me2ls"), SubResource("Resource_girw2"), SubResource("Resource_yoh11"), SubResource("Resource_mgw0d"), SubResource("Resource_jdkox"), SubResource("Resource_wooyv"), SubResource("Resource_63bkh"), SubResource("Resource_yfkh2")])

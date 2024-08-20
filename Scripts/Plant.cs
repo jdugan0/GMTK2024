@@ -15,6 +15,7 @@ public partial class Plant : TextureButton
 		TextureHover = info.species.texture;
 		TextureDisabled = info.species.texture;
 		TexturePressed = info.species.texture;
+		ZIndex = 10;
     }
 
     public override void _Process(double delta)
@@ -121,7 +122,7 @@ public partial class Plant : TextureButton
 	}
 
 	public void Hover(){
-		hoverText.Text = "Value: " + info.value;
+		hoverText.Text = info.species.species.ToString() + ", Value: " + info.value;
 		hoverText.Visible = true;
 		
 	}

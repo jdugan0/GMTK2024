@@ -21,4 +21,9 @@ public class StoreConfiguration
     {
         return plants;
     }
+
+    public bool GetStoreEmpty()
+    {
+        return viruses.Count == 0 && plants.Count == 0;
+    }
 }

@@ -23,6 +23,7 @@ public partial class PurchaseVirusButton : TextureButton
             Inventory.instance.money -= (int)virus.price;
             StoreUI.instance.config.GetVirusItems().Remove(virus);
             StoreUI.instance.RefreshShopWithConfig();
+            AudioManager.instance.PlaySFX(AudioManager.instance, "Buy");
         }
     }
 }
