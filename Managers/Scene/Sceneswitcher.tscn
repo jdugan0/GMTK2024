@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://btbbbehoaknia" path="res://Scenes/Workspace.tscn" id="2_oon3b"]
 [ext_resource type="PackedScene" uid="uid://ckug214kphn4u" path="res://Scenes/Options Menu.tscn" id="3_py5vy"]
 [ext_resource type="PackedScene" uid="uid://2850ln454g3q" path="res://Scenes/VirusMinigame.tscn" id="3_ro5ob"]
-[ext_resource type="PackedScene" uid="uid://csbi6si6l5mwf" path="res://Scenes/Tutorial.tscn" id="6_2b0bg"]
+[ext_resource type="PackedScene" uid="uid://c46oyiuofquad" path="res://Scenes/Tutorial.tscn" id="6_2b0bg"]
 
 [node name="Sceneswitcher" type="Node"]
 script = ExtResource("1_xiohp")

@@ -13,4 +13,5 @@ public partial class Species : Resource
 
     [Export] public PlantSpecies species;
     [Export] public Texture2D texture;
+	[Export] public Texture2D mutatedTexture;
 }
