@@ -114,6 +114,7 @@ public partial class Inventory : Node
 			}
 			plantObj.Add(p1);
 			plantLayer.AddChild(p1);
+			p1.ZIndex = 30 - plantObj.IndexOf(p1);
 		}
 	}
     public List<VirusItem> GetViruses()
