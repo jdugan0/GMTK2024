@@ -15,8 +15,6 @@ public partial class StoreUI : Control
     public static StoreUI instance;
     public StoreConfiguration config;
 
-    public bool opened;
-
     public override void _Ready()
     {
         instance = this;
@@ -53,7 +51,6 @@ public partial class StoreUI : Control
 
     public void Toggle()
     {
-        opened = true;
         Visible = !Visible;
         if (Visible){
             VirusDataTransfer.instance.PlayMusic(10);

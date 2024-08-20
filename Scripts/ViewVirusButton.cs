@@ -25,9 +25,6 @@ public partial class ViewVirusButton : TextureButton
 		else
 		{
 			for (int i = syringes.Count - 1; i >= 0; i--){
-				if (Inventory.instance.GetTableOccuplant() != null){
-					Inventory.instance.GetTableOccuplant().ClearViruses();
-				}
 				syringes[i].QueueFree();
 				syringes.RemoveAt(i);
 			}

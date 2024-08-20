@@ -35,6 +35,7 @@ public partial class VirusBoid : RigidBody2D
 	[Export] public String name;
 	VirusBoid col;
 	[Export] public bool player;
+	[Export] public bool selected;
 	bool justEntered = false;
 	[Export] public Sprite2D sprite2D;
 	[Export] float abilityTime;
@@ -76,6 +77,12 @@ public partial class VirusBoid : RigidBody2D
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
+		if (Input.IsActionJustPressed("X")){
+			SelectBoid(true);
+		}
+		if (Input.IsActionJustReleased("X")){
+			SelectBoid(false);
+		}
 		if (Position.DistanceTo(new Vector2()) > 30000){
 			generator.boids.Remove(this);
 			QueueFree();
@@ -83,12 +90,9 @@ public partial class VirusBoid : RigidBody2D
 		if (Mathf.Abs(LinearVelocity.Length()) > maxVelocity){
 			LinearVelocity = LinearVelocity.Normalized() * maxVelocity;
 		}
-		if (Input.IsActionJustPressed("Ability") && abilityCooldownTimer <= 0){
+		if (selected && Input.IsActionJustPressed("Ability") && abilityCooldownTimer <= 0){
 			switch (ability){
 				case AbilityType.None:
-					abilityTimer = abilityTime;
-					abilityEnded = false;
-					abilityCooldownTimer = abilityCooldown;
 				 	break;
 				case AbilityType.Dash:
 					maxVelocity*=2;
@@ -146,6 +150,16 @@ public partial class VirusBoid : RigidBody2D
 			}
 			}
 		}
+		if (Input.IsActionPressed("RightClick") && justEntered && !rooted){
+			selected = !selected;
+			justEntered = false;
+			if (selected){
+				Modulate = Colors.Blue;
+			}
+			else{
+				Modulate = Colors.White;
+			}
+		}
 		rootable = null;
 		foreach (Location l in VirusGenerator.instance.locations){
 				if (l.Position.DistanceTo(Position) < 280.7){
@@ -154,10 +168,11 @@ public partial class VirusBoid : RigidBody2D
 				}
 		}
 		
-		if (Input.IsActionJustPressed("Root") && !rooted && rootable != null){
+		if (Input.IsActionJustPressed("Root") && selected && !rooted && rootable != null){
 		
 					AudioManager.instance.PlaySFX(this, "Root");
 					rooted = true;
+					selected = false;
 					generator.locationQualities[rootable.type] += health;
 					sprite2D.Texture = rootedTexture;
 					Modulate = Colors.White;
@@ -203,8 +218,34 @@ public partial class VirusBoid : RigidBody2D
 		// GD.Print("qwefd");
 		// generator.rightClickLabel.Visible = true;
 		// generator.rightClickLabel.Position = generator.rightClickLabel.GetLocalMousePosition();
+		if (player && !justEntered && !rooted){
+			justEntered = true;
+			Modulate = new Color(Colors.Blue.R, Colors.Blue.G, Colors.Blue.B, 0.5f);
+			// GD.Print(selected);
+			// selected = !selected;
+		}
 	}
 	public void MouseExitedLogic(){
 		// generator.rightClickLabel.Visible = false;
+		if (player){
+			justEntered = false;
+			if (selected){
+				Modulate = Colors.Blue;
+			}
+			else{
+				Modulate = Colors.White;
+			}
+		}
+	}
+	public void SelectBoid(bool value){
+		if (!rooted && name == "V1"){
+			selected = value;
+			if (selected){
+				Modulate = Colors.Blue;
+			}
+			else{
+				Modulate = Colors.White;
+			}
+		}
 	}
 }

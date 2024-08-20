@@ -31,7 +31,7 @@ public partial class Inventory : Node
 	public void Reset(){
 		config = false;
 		start = false;
-		quotaCap = 35;
+		quotaCap = 10;
 		quotaCountCurrent = 0;
 		torwardsQuota = 0;
 		positions = new List<Vector2>();
