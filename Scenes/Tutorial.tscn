@@ -29,6 +29,17 @@ offset_right = 1920.0
 offset_bottom = 1081.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_vupbe")
 
+[node name="Information" type="Label" parent="."]
+layout_mode = 2
+offset_left = 652.0
+offset_top = 299.0
+offset_right = 1289.0
+offset_bottom = 378.0
+theme_override_fonts/font = ExtResource("2_2smfl")
+theme_override_font_sizes/font_size = 30
+text = "To keep up with your ever-growing rent, you make
+a living selling DNA-enhanced plant speciments."
+
 [node name="ScrollContainer" type="ScrollContainer" parent="."]
 layout_mode = 0
 offset_left = 360.0
@@ -36,46 +47,18 @@ offset_top = 337.0
 offset_right = 1560.0
 offset_bottom = 906.0
 
-[node name="Information" type="Label" parent="ScrollContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("2_2smfl")
-text = "Welcome to Garden Genome!
 
-OVERVIEW:
-You are a geneticist who makes a living selling DNA-enhanced plant speciments. To keep up with your ever-growing rent, you must meet a dollar quota by selling your plants.
-
-
-click on the computer to go to the store and buy genomes/plants!
-once you select a plant and 1+ genomes, click begin to go to the level!
-here you must try your best to get as many healthy genomes as possible to one of the sources. further sources give you more value.
-after you do this a few times, the begin button will change to a sell button. (if you run out of viruses + money, you can select begin without any viruses to get to this point.)
-sell all your plants to make quota. if you are under quota, you go back to the main menu. if you are above, it increases more. 
-
-
-r to root
-left click to move
-right click OR E to select genome (new control just for you emma)
-space to ability
-
-
-
-
-
-What the genomes are and what they look like
-what the enemies are (what they look like, how to attack them, and how to win fights (just have more genomes))
-what the goal is (show a root node)
-abilities, the different types, what they look like, and what they do 
-keep everything really short, players hate reading.
-fun pictures will help
-explain that further locations mean more point
-selling/quotas"
+[node name="HBoxContainer" type="HBoxContainer" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
 
 [node name="Back" type="TextureButton" parent="."]
 layout_mode = 0
-offset_left = 416.0
-offset_top = 99.0
-offset_right = 916.0
-offset_bottom = 324.0
+offset_left = 401.0
+offset_top = 917.0
+offset_right = 901.0
+offset_bottom = 1142.0
 scale = Vector2(0.5, 0.5)
 texture_normal = ExtResource("3_kpb7g")
 texture_pressed = ExtResource("3_kpb7g")
@@ -86,9 +69,9 @@ script = ExtResource("4_deqlr")
 
 [node name="Logo" type="Panel" parent="."]
 layout_mode = 0
-offset_left = 735.75
+offset_left = 559.75
 offset_top = 39.0
-offset_right = 4017.75
+offset_right = 3841.75
 offset_bottom = 996.0
 scale = Vector2(0.25, 0.25)
 theme_override_styles/panel = SubResource("StyleBoxTexture_428gw")
