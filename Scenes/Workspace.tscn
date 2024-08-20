@@ -29,15 +29,15 @@
 [ext_resource type="Script" path="res://Scripts/ErrorLabel.cs" id="23_g1gdn"]
 [ext_resource type="PackedScene" uid="uid://bgllprtxam2rf" path="res://Prefabs/Pause Menu.tscn" id="23_hnbb6"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_1dml4"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_fg1t6"]
 atlas = ExtResource("4_dae7y")
-region = Rect2(1452, 0, 363, 454)
+region = Rect2(1452, 0, 363, 455)
 
 [sub_resource type="Resource" id="Resource_gc4kc"]
 script = ExtResource("13_356q6")
 species = 0
 texture = ExtResource("14_wqb6j")
-mutatedTexture = SubResource("AtlasTexture_1dml4")
+mutatedTexture = SubResource("AtlasTexture_fg1t6")
 
 [sub_resource type="Resource" id="Resource_fm7iq"]
 script = ExtResource("12_puiu7")
@@ -45,15 +45,15 @@ species = SubResource("Resource_gc4kc")
 price = 10.0
 value = 0.0
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_4xo4x"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_g8xeu"]
 atlas = ExtResource("7_g4y1u")
-region = Rect2(1452, 0, 363, 454)
+region = Rect2(1452, 0, 363, 455)
 
 [sub_resource type="Resource" id="Resource_u7sti"]
 script = ExtResource("13_356q6")
 species = 1
 texture = ExtResource("15_hc7su")
-mutatedTexture = SubResource("AtlasTexture_4xo4x")
+mutatedTexture = SubResource("AtlasTexture_g8xeu")
 
 [sub_resource type="Resource" id="Resource_ymlkx"]
 script = ExtResource("12_puiu7")
@@ -61,15 +61,15 @@ species = SubResource("Resource_u7sti")
 price = 10.0
 value = 0.0
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_7b4ir"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_nfnan"]
 atlas = ExtResource("9_23sde")
-region = Rect2(1452, 0, 363, 454)
+region = Rect2(1452, 0, 363, 455)
 
 [sub_resource type="Resource" id="Resource_agma1"]
 script = ExtResource("13_356q6")
 species = 2
 texture = ExtResource("16_kpxj1")
-mutatedTexture = SubResource("AtlasTexture_7b4ir")
+mutatedTexture = SubResource("AtlasTexture_nfnan")
 
 [sub_resource type="Resource" id="Resource_13oak"]
 script = ExtResource("12_puiu7")
