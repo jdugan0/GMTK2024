@@ -32,14 +32,8 @@ public partial class ButtonSceneSwitcher : TextureButton
 	{
 		time = errorTime;
 
-		if (Inventory.instance.GetTableOccuplant() != null && !Inventory.instance.GetTableOccuplant().info.mutated)
+		if (Inventory.instance.GetTableOccuplant() != null && !Inventory.instance.GetTableOccuplant().info.mutated && Inventory.instance.GetTableOccuplant().GetViruses().Count != 0)
 		{
-			if (Inventory.instance.GetTableOccuplant().GetViruses().Count == 0)
-			{
-				Inventory.instance.quotaCountCurrent++;
-				StoreUI.instance.RefreshShop();
-				return;
-			}
 			Inventory.instance.GetTableOccuplant().info.mutated = true;
 			Inventory.instance.quotaCountCurrent++;
 			VirusDataTransfer.ClearViruses();
@@ -63,6 +57,10 @@ public partial class ButtonSceneSwitcher : TextureButton
 			errorText.Text = "SELECT A PLANT";
 			if (Inventory.instance.GetTableOccuplant() != null && Inventory.instance.GetTableOccuplant().info.mutated){
 				errorText.Text = "PLANT ALREADY MUTATED";
+				return;
+			}
+			if (Inventory.instance.GetTableOccuplant().GetViruses().Count == 0 && Inventory.instance.GetTableOccuplant() != null){
+				errorText.Text = "SELECT A GENOME";
 			}
 		}
 	}

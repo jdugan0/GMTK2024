@@ -77,6 +77,19 @@ public partial class VirusBoid : RigidBody2D
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
+		if (Input.IsActionJustPressed("X")){
+			SelectBoid(true);
+		}
+		if (Input.IsActionJustReleased("X")){
+			SelectBoid(false);
+		}
+		if (Position.DistanceTo(new Vector2()) > 30000){
+			generator.boids.Remove(this);
+			QueueFree();
+		}
+		if (Mathf.Abs(LinearVelocity.Length()) > maxVelocity){
+			LinearVelocity = LinearVelocity.Normalized() * maxVelocity;
+		}
 		if (selected && Input.IsActionJustPressed("Ability") && abilityCooldownTimer <= 0){
 			switch (ability){
 				case AbilityType.None:
@@ -89,7 +102,7 @@ public partial class VirusBoid : RigidBody2D
 					abilityCooldownTimer = abilityCooldown;
 				    break;
 				case AbilityType.Explode:
-					abilityCooldownTimer = abilityCooldown * 3;
+					abilityCooldownTimer = abilityCooldown;
 					abilityEnded = false;
 					List<VirusBoid> toRemove = new List<VirusBoid>();
 					foreach (VirusBoid b in generator.boids){
@@ -171,6 +184,7 @@ public partial class VirusBoid : RigidBody2D
 		}
 		if (!rooted){
 			LinearVelocity = velocity;
+			
 		}
 		else{
 			LinearVelocity = new Vector2();
@@ -223,5 +237,15 @@ public partial class VirusBoid : RigidBody2D
 			}
 		}
 	}
-	
+	public void SelectBoid(bool value){
+		if (!rooted && name == "V1"){
+			selected = value;
+			if (selected){
+				Modulate = Colors.Blue;
+			}
+			else{
+				Modulate = Colors.White;
+			}
+		}
+	}
 }

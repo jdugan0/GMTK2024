@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://ct7cttliw78kx"]
+[gd_scene load_steps=14 format=3 uid="uid://ct7cttliw78kx"]
 
 [ext_resource type="Script" path="res://Scripts/VirusBoid.cs" id="1_k6ahf"]
 [ext_resource type="Script" path="res://Scripts/VirusParameter.cs" id="2_qcj6g"]
@@ -17,7 +17,7 @@ name = "V2"
 
 [sub_resource type="Resource" id="Resource_y6ds6"]
 script = ExtResource("2_qcj6g")
-value = 4.0
+value = 20.0
 name = "V1"
 
 [sub_resource type="Resource" id="Resource_eehjr"]
@@ -27,7 +27,7 @@ name = "V2"
 
 [sub_resource type="Resource" id="Resource_sk2to"]
 script = ExtResource("2_qcj6g")
-value = 32.0
+value = 200.0
 name = "V1"
 
 [sub_resource type="Resource" id="Resource_g82rl"]
@@ -44,6 +44,10 @@ name = "V2"
 script = ExtResource("2_qcj6g")
 value = 0.0
 name = "V1"
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kvwnd"]
+radius = 20.0
+height = 88.0
 
 [node name="Virus" type="RigidBody2D" node_paths=PackedStringArray("sprite2D")]
 collision_layer = 2
@@ -62,9 +66,9 @@ targeting = Array[Object]([SubResource("Resource_5yi7f")])
 validDamageTypes = PackedStringArray("V2")
 mouseForce = 16.0
 velocityRange = 5.0
-maxVelocity = 600.0
+maxVelocity = 650.0
 viewRange = 1500.0
-maxAccel = 10000.0
+maxAccel = 650.0
 damageTime = 0.5
 health = 6.0
 damage = 1.0
@@ -82,9 +86,9 @@ texture = ExtResource("4_a5cyx")
 region_enabled = true
 region_rect = Rect2(0, 0, 302, 290)
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-scale = Vector2(0.4, 0.4)
-polygon = PackedVector2Array(33, -50.9, 62, -47.9, 62, -46.9, 72, -45.9, 72, -44.8, 83, -41.8, 83, -40.6, 95, -34.6, 95, -33.5, 102, -27.5, 102, -25.4, 103.4, -24, 106, -24, 106, -20.4, 108, -18.4, 108, -15.1, 111, -7.2, 111, 14, 109.8, 14, 107.8, 24, 106.4, 24, 94.4, 37, 91.2, 37, 80.3, 44, 77.2, 44, 73.2, 46, 67, 46, 67, 46.7, 63.2, 48, 56.2, 48, 35.1, 52, -35, 52, -35, 50.9, -51, 49.9, -51, 48.9, -64, 47.9, -64, 46.9, -81, 43.8, -81, 42.6, -96, 35.6, -96, 34.5, -103, 28.5, -103, 26.4, -104.4, 25, -107, 25, -107, 22.4, -109, 20.4, -109, 17.3, -112, 6.10001, -112, -12.1, -109.8, -21, -108.8, -21, -107.8, -25, -106.4, -25, -95.4, -37, -92.3, -37, -83.3, -43, -80.2, -43, -74.2, -46, -67.3, -46, -64.3, -48, -57.2, -48, -44.1, -51, -37, -51, -37, -52, 33, -52)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_kvwnd")
 
 [connection signal="body_entered" from="." to="." method="DealDamage"]
 [connection signal="body_exited" from="." to="." method="Exited"]

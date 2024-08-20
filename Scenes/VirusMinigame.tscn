@@ -300,6 +300,9 @@ amount = 2
 position = Vector2(-11967, 4480)
 sourceTime = 6.0
 
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(-17480, -6624)
+
 [node name="Source12" parent="." instance=ExtResource("6_xxyr4")]
 position = Vector2(-10169, 5930)
 sourceTime = 6.0

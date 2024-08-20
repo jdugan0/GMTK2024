@@ -25,8 +25,10 @@ public partial class VirusGenerator : Node
 	{
 		instance = this;
 		foreach (VirusItem item in VirusDataTransfer.GetViruses()){
-			VirusBoid b = CreateBoid(item.scene, new Vector2());
-			b.ability = item.ability;
+			for (int i = 0; i < 6; i++){
+				VirusBoid b = CreateBoid(item.scene, new Vector2());
+				b.ability = item.ability;
+			}
 			// b.sprite2D.Texture = item.texture;
 		}
 		
@@ -153,9 +155,9 @@ public partial class VirusGenerator : Node
 			accel += (mousePos - boid.Position) * boid.mouseForce;
 
 			// clamp acceleration
-			// if (Math.Abs(accel.Length()) > boid.maxAccel){
-			// 	accel = accel.Normalized() * boid.maxAccel;
-			// }
+			if (Math.Abs(accel.Length()) > boid.maxAccel){
+				accel = accel.Normalized() * boid.maxAccel;
+			}
 
 			// set velocity
 			boid.velocity += accel * (float)delta;
