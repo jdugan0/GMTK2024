@@ -366,7 +366,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_22bq6")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Error" type="Label" parent="UI Render/UI" node_paths=PackedStringArray("view")]
+[node name="Error" type="Label" parent="UI Render/UI"]
 visible = false
 layout_mode = 0
 offset_left = 60.0
@@ -382,7 +382,6 @@ text = "YOU MUST SELECT A PLANT"
 horizontal_alignment = 1
 vertical_alignment = 1
 script = ExtResource("23_g1gdn")
-view = NodePath("../View Virus Button")
 
 [node name="Plant Spots" type="Node" parent="."]
 

@@ -54,18 +54,4 @@ public partial class ViewVirusButton : TextureButton
 			hoverLabel.Position = GetLocalMousePosition() + new Vector2(30,0);
 		}
     }
-
-	public bool GetInjectionAttempted()
-	{
-		bool boolean = false;
-		foreach (SyringeDragging syringe in syringes)
-		{
-			boolean = syringe.GetJustAttempted();
-			if (boolean)
-			{
-				return boolean;
-			}
-		}
-		return boolean;
-	}
 }

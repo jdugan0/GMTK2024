@@ -4,36 +4,48 @@ using System.Collections.Generic;
 
 public partial class ErrorLabel : Label
 {
-    [Export] private float errorTime;
+	public static ErrorLabel instance;
+    private float errorTime = 2;
+	private float errorClock;
     public List<SyringeDragging> syringes;
-	[Export] private ViewVirusButton view;
+
+    public override void _Ready()
+    {
+        instance = this;
+    }
 
     public override void _Process(double delta)
 	{
-		if (Visible && errorTime > 0)
+		if (Visible && errorClock > 0)
 		{
-			errorTime -= (float) delta;
+			errorClock -= (float) delta;
 		}
-		if (errorTime <= 0)
+		if (errorClock <= 0)
 		{
 			Visible = false;
+			errorClock = errorTime;
 		}
 	}
 
     public void SetErrorTime(float time)
     {
-        errorTime = time;
+        errorClock = time;
+		errorTime = time;
     }
+
+	public void SetErrorMessageNoPlantInjection()
+	{
+		errorClock = errorTime;
+		Visible = true;
+        Text = "SELECT A PLANT";
+		GD.Print("eghesklg");
+	}
 
     public void UpdateErrorMessage()
     {
+		errorClock = errorTime;
         Visible = true;
 		Text = "SELECT A PLANT";
-        if (Inventory.instance.GetTableOccuplant() == null && view.GetInjectionAttempted())
-        {
-            Text = "SELECT A PLANT";
-			return;
-        }
 		if (Inventory.instance.GetTableOccuplant() != null && Inventory.instance.GetTableOccuplant().info.mutated){
             Text = "PLANT ALREADY MUTATED";
 			return;
