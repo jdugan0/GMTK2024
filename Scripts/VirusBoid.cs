@@ -93,6 +93,9 @@ public partial class VirusBoid : RigidBody2D
 		if (selected && Input.IsActionJustPressed("Ability") && abilityCooldownTimer <= 0){
 			switch (ability){
 				case AbilityType.None:
+					abilityTimer = abilityTime;
+					abilityEnded = false;
+					abilityCooldownTimer = abilityCooldown;
 				 	break;
 				case AbilityType.Dash:
 					maxVelocity*=2;
