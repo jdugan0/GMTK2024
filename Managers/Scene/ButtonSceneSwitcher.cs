@@ -59,7 +59,7 @@ public partial class ButtonSceneSwitcher : TextureButton
 				errorText.Text = "PLANT ALREADY MUTATED";
 				return;
 			}
-			if (Inventory.instance.GetTableOccuplant().GetViruses().Count == 0 && Inventory.instance.GetTableOccuplant() != null){
+			if (Inventory.instance.GetTableOccuplant() != null && Inventory.instance.GetTableOccuplant().GetViruses().Count == 0){
 				errorText.Text = "SELECT A GENOME";
 			}
 		}
