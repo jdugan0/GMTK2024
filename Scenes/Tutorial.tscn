@@ -1,17 +1,17 @@
-[gd_scene load_steps=8 format=3 uid="uid://c46oyiuofquad"]
+[gd_scene load_steps=11 format=3 uid="uid://c46oyiuofquad"]
 
 [ext_resource type="Texture2D" uid="uid://b7lv8ud4xi4wu" path="res://Art/options bg.png" id="1_p80hq"]
 [ext_resource type="FontFile" uid="uid://dklw1r3w4l27s" path="res://Art/PoorRichardOpti.otf" id="2_2smfl"]
 [ext_resource type="Texture2D" uid="uid://cy51q8bxkmyhb" path="res://Art/PLANT STORE 1255 x 1021.png" id="3_d3f3i"]
 [ext_resource type="Texture2D" uid="uid://cmb8t0m6ovqdt" path="res://Art/back button 500 x 225.png" id="3_kpb7g"]
+[ext_resource type="Texture2D" uid="uid://dke8fxqog4rax" path="res://Art/logo.png" id="4_7c5k5"]
 [ext_resource type="Script" path="res://Managers/Scene/ButtonSceneSwitcher.cs" id="4_deqlr"]
+[ext_resource type="Texture2D" uid="uid://i6rguix07b17" path="res://Art/green arrow 307 x 142.png" id="6_my0gn"]
+[ext_resource type="Texture2D" uid="uid://c4vialte7jcew" path="res://Screenshots/plant.PNG" id="8_qr5mx"]
+[ext_resource type="Texture2D" uid="uid://c6yk3x5fs2u3s" path="res://Screenshots/genomes.PNG" id="9_y8yot"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vupbe"]
 texture = ExtResource("1_p80hq")
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_0fah5"]
-atlas = ExtResource("3_d3f3i")
-region = Rect2(508, 185, 747, 836)
 
 [node name="Tutorial" type="Control"]
 layout_mode = 3
@@ -30,71 +30,189 @@ offset_right = 1920.0
 offset_bottom = 1081.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_vupbe")
 
-[node name="Information" type="Label" parent="."]
-layout_mode = 2
-offset_left = 707.0
-offset_top = 36.0
-offset_right = 1384.0
-offset_bottom = 115.0
-theme_override_fonts/font = ExtResource("2_2smfl")
-theme_override_font_sizes/font_size = 30
-text = "To keep up with your ever-growing rent, you make
-a living selling genetically-enhanced plant speciments."
-
-[node name="Information2" type="Label" parent="."]
-layout_mode = 2
-offset_left = 285.0
-offset_top = 158.0
-offset_right = 1637.0
-offset_bottom = 278.0
-theme_override_fonts/font = ExtResource("2_2smfl")
-theme_override_font_sizes/font_size = 30
-text = "THE WORKSPACE
-The workspace is where you can buy both new plants and genomes which you can use to modify your plants.
-"
-
-[node name="Information3" type="Label" parent="."]
-layout_mode = 2
-offset_left = 302.0
-offset_top = 285.0
-offset_right = 794.0
-offset_bottom = 364.0
-theme_override_fonts/font = ExtResource("2_2smfl")
-theme_override_font_sizes/font_size = 30
-text = "The Plant Store: Click on the computer
-to enter the plant store and buy items."
-
-[node name="Panel2" type="TextureRect" parent="."]
-layout_mode = 2
-offset_left = 825.0
-offset_top = 273.0
-offset_right = 1421.0
-offset_bottom = 941.0
-scale = Vector2(0.2, 0.2)
-texture = SubResource("AtlasTexture_0fah5")
-expand_mode = 1
-
-[node name="Information4" type="Label" parent="."]
-layout_mode = 2
-offset_left = 1027.0
-offset_top = 290.0
-offset_right = 1537.0
-offset_bottom = 369.0
-theme_override_fonts/font = ExtResource("2_2smfl")
-theme_override_font_sizes/font_size = 30
-
 [node name="Back" type="TextureButton" parent="."]
 layout_mode = 0
-offset_left = 467.0
-offset_top = 39.0
-offset_right = 967.0
-offset_bottom = 264.0
+offset_left = 408.0
+offset_top = 940.0
+offset_right = 1158.0
+offset_bottom = 1277.5
 scale = Vector2(0.3, 0.3)
 texture_normal = ExtResource("3_kpb7g")
 texture_pressed = ExtResource("3_kpb7g")
 texture_hover = ExtResource("3_kpb7g")
 texture_disabled = ExtResource("3_kpb7g")
 texture_focused = ExtResource("3_kpb7g")
+ignore_texture_size = true
+stretch_mode = 0
 script = ExtResource("4_deqlr")
 
+[node name="Back2" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 1491.0
+offset_top = 1040.0
+offset_right = 2241.0
+offset_bottom = 1377.5
+rotation = 3.14159
+scale = Vector2(0.3, 0.3)
+texture_normal = ExtResource("3_kpb7g")
+texture_pressed = ExtResource("3_kpb7g")
+texture_hover = ExtResource("3_kpb7g")
+texture_disabled = ExtResource("3_kpb7g")
+texture_focused = ExtResource("3_kpb7g")
+ignore_texture_size = true
+stretch_mode = 0
+script = ExtResource("4_deqlr")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 519.0
+offset_right = 1339.0
+offset_bottom = 239.0
+texture = ExtResource("4_7c5k5")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 420.0
+offset_top = 258.0
+offset_right = 1439.0
+offset_bottom = 310.0
+theme_override_fonts/font = ExtResource("2_2smfl")
+theme_override_font_sizes/font_size = 41
+text = "To keep up with your rent, sell your heavily mutated plants!"
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 0
+offset_left = 267.0
+offset_top = 377.0
+offset_right = 734.0
+offset_bottom = 429.0
+theme_override_fonts/font = ExtResource("2_2smfl")
+theme_override_font_sizes/font_size = 41
+text = "In the workspace, you can..."
+
+[node name="Label3" type="Label" parent="."]
+layout_mode = 0
+offset_left = 263.0
+offset_top = 445.0
+offset_right = 730.0
+offset_bottom = 497.0
+theme_override_fonts/font = ExtResource("2_2smfl")
+theme_override_font_sizes/font_size = 41
+text = "buy plants/genomes..."
+
+[node name="Label4" type="Label" parent="."]
+layout_mode = 0
+offset_left = 1052.0
+offset_top = 381.0
+offset_right = 1519.0
+offset_bottom = 433.0
+theme_override_fonts/font = ExtResource("2_2smfl")
+theme_override_font_sizes/font_size = 41
+text = "Select genomes..."
+
+[node name="Label5" type="Label" parent="."]
+layout_mode = 0
+offset_left = 335.0
+offset_top = 685.0
+offset_right = 802.0
+offset_bottom = 737.0
+theme_override_fonts/font = ExtResource("2_2smfl")
+theme_override_font_sizes/font_size = 41
+text = "And select your bought plants..."
+
+[node name="Label6" type="Label" parent="."]
+layout_mode = 0
+offset_left = 1005.0
+offset_top = 680.0
+offset_right = 1647.0
+offset_bottom = 842.0
+theme_override_fonts/font = ExtResource("2_2smfl")
+theme_override_font_sizes/font_size = 41
+text = "Once you've selected a plant 
+and AS MANY genomes as you want,
+click begin to inject genomes!"
+
+[node name="Label7" type="Label" parent="."]
+layout_mode = 0
+offset_left = 1322.0
+offset_top = 872.0
+offset_right = 1424.0
+offset_bottom = 924.0
+theme_override_colors/font_outline_color = Color(0.330829, 0.558761, 0.320427, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("2_2smfl")
+theme_override_font_sizes/font_size = 41
+text = "NEXT"
+
+[node name="Label8" type="Label" parent="."]
+layout_mode = 0
+offset_left = 459.0
+offset_top = 882.0
+offset_right = 579.0
+offset_bottom = 934.0
+theme_override_colors/font_outline_color = Color(0.713726, 0.133333, 0.117647, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("2_2smfl")
+theme_override_font_sizes/font_size = 41
+text = "BACK"
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 781.0
+offset_top = 592.0
+offset_right = 934.0
+offset_bottom = 663.0
+rotation = 3.60061
+texture = ExtResource("6_my0gn")
+expand_mode = 1
+
+[node name="TextureRect5" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 758.0
+offset_top = 877.0
+offset_right = 911.0
+offset_bottom = 948.0
+rotation = 3.67392
+texture = ExtResource("6_my0gn")
+expand_mode = 1
+
+[node name="TextureRect4" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 1318.0
+offset_top = 579.0
+offset_right = 1471.0
+offset_bottom = 650.0
+rotation = 3.60061
+texture = ExtResource("6_my0gn")
+expand_mode = 1
+
+[node name="TextureRect3" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 822.0
+offset_top = 438.0
+offset_right = 1056.0
+offset_bottom = 628.5
+texture = ExtResource("3_d3f3i")
+expand_mode = 1
+
+[node name="TextureRect6" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 778.0
+offset_top = 854.0
+offset_right = 1093.0
+offset_bottom = 1111.0
+scale = Vector2(0.65, 0.65)
+texture = ExtResource("8_qr5mx")
+
+[node name="TextureRect7" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 1368.0
+offset_top = 400.0
+offset_right = 1683.0
+offset_bottom = 783.0
+scale = Vector2(0.65, 0.65)
+texture = ExtResource("9_y8yot")
+
 [connection signal="pressed" from="Back" to="Back" method="Switch" binds= [2]]
+[connection signal="pressed" from="Back2" to="Back2" method="Switch" binds= [5]]

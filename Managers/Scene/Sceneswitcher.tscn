@@ -1,12 +1,15 @@
-[gd_scene load_steps=7 format=3 uid="uid://cmpg0wseyww2d"]
+[gd_scene load_steps=10 format=3 uid="uid://cmpg0wseyww2d"]
 
 [ext_resource type="Script" path="res://Managers/Scene/SceneSwitcher.cs" id="1_xiohp"]
 [ext_resource type="PackedScene" uid="uid://m2114m6trhxj" path="res://Scenes/Main Menu.tscn" id="2_1pp0b"]
 [ext_resource type="PackedScene" uid="uid://btbbbehoaknia" path="res://Scenes/Workspace.tscn" id="2_oon3b"]
 [ext_resource type="PackedScene" uid="uid://ckug214kphn4u" path="res://Scenes/Options Menu.tscn" id="3_py5vy"]
 [ext_resource type="PackedScene" uid="uid://2850ln454g3q" path="res://Scenes/VirusMinigame.tscn" id="3_ro5ob"]
-[ext_resource type="PackedScene" uid="uid://csbi6si6l5mwf" path="res://Scenes/Tutorial.tscn" id="6_2b0bg"]
+[ext_resource type="PackedScene" uid="uid://c46oyiuofquad" path="res://Scenes/Tutorial.tscn" id="6_2b0bg"]
+[ext_resource type="PackedScene" uid="uid://dn6o2h5txl66r" path="res://Scenes/Tutorial2.tscn" id="7_8dkkc"]
+[ext_resource type="PackedScene" uid="uid://dp0m7huexai6j" path="res://Scenes/Tutorial3.tscn" id="8_e7mpk"]
+[ext_resource type="PackedScene" uid="uid://5pwb8to2evks" path="res://Scenes/TutorialGenome.tscn" id="9_dia2f"]
 
 [node name="Sceneswitcher" type="Node"]
 script = ExtResource("1_xiohp")
-scenes = Array[PackedScene]([ExtResource("2_oon3b"), ExtResource("3_ro5ob"), ExtResource("2_1pp0b"), ExtResource("3_py5vy"), ExtResource("6_2b0bg")])
+scenes = Array[PackedScene]([ExtResource("2_oon3b"), ExtResource("3_ro5ob"), ExtResource("2_1pp0b"), ExtResource("3_py5vy"), ExtResource("6_2b0bg"), ExtResource("7_8dkkc"), ExtResource("8_e7mpk"), ExtResource("9_dia2f")])

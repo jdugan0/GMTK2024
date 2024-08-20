@@ -8,13 +8,13 @@
 [ext_resource type="PackedScene" uid="uid://dowptv22ct3hh" path="res://Prefabs/Virus.tscn" id="3_grkbb"]
 [ext_resource type="Texture2D" uid="uid://dqwf7kp5fongh" path="res://Art/Shopkeeper quip bubble 1284 x 448.png" id="3_wymjs"]
 [ext_resource type="FontFile" uid="uid://dklw1r3w4l27s" path="res://Art/PoorRichardOpti.otf" id="4_e47b2"]
-[ext_resource type="Texture2D" path="res://Art/Normal.tres" id="4_ghtqh"]
+[ext_resource type="Texture2D" uid="uid://dkpbjfug5eyt0" path="res://Art/Normal.tres" id="4_ghtqh"]
 [ext_resource type="Texture2D" uid="uid://smrbafgukudu" path="res://Art/SHOP buttons 1666 x 298.png" id="4_hcoge"]
-[ext_resource type="Texture2D" path="res://Art/Dash.tres" id="5_68qw4"]
+[ext_resource type="Texture2D" uid="uid://dl8p6aqfs7r8k" path="res://Art/Dash.tres" id="5_68qw4"]
 [ext_resource type="PackedScene" uid="uid://ct7cttliw78kx" path="res://Prefabs/VirusDash.tscn" id="5_ge7l1"]
 [ext_resource type="Texture2D" uid="uid://c7vun7uok4t45" path="res://Art/injections icon.png" id="5_hfwsk"]
-[ext_resource type="Texture2D" path="res://Art/Explode.tres" id="6_agy2y"]
-[ext_resource type="Texture2D" path="res://Art/Heal.tres" id="7_bcjww"]
+[ext_resource type="Texture2D" uid="uid://cnj4c73qabc2k" path="res://Art/Explode.tres" id="6_agy2y"]
+[ext_resource type="Texture2D" uid="uid://dxovq2v1a2it" path="res://Art/Heal.tres" id="7_bcjww"]
 [ext_resource type="PackedScene" uid="uid://cqiisdywahomn" path="res://Prefabs/VirusExplosion.tscn" id="7_f3583"]
 [ext_resource type="PackedScene" uid="uid://cfyc5shdjwty8" path="res://Prefabs/VirusHEal.tscn" id="7_rr56f"]
 [ext_resource type="Texture2D" uid="uid://cmb8t0m6ovqdt" path="res://Art/back button 500 x 225.png" id="9_pdv2t"]
@@ -83,7 +83,7 @@ region = Rect2(0, 260, 560, 130)
 
 [sub_resource type="Resource" id="Resource_22eud"]
 script = ExtResource("2_605yr")
-name = "Sacrifice Genome"
+name = "Heal Genome"
 ability = 3
 scene = ExtResource("7_rr56f")
 price = 40.0
