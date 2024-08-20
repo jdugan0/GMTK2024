@@ -5,6 +5,24 @@ public partial class SyringeDragging : TextureButton
 {
 	public bool selected = false;
 	[Export] public VirusItem virus;
+	[Export] public Label errorText;
+	[Export] public float errorTime;
+	private bool justAttempted;
+
+	public void JustAttempted()
+	{
+		justAttempted = true;
+	}
+
+	public void NoAttempt()
+	{
+		justAttempted = false;
+	}
+
+	public bool GetJustAttempted()
+	{
+		return justAttempted;
+	}
 
 	public void Hover(){
 		WorkspaceInit.hoverText.Text =virus.name;

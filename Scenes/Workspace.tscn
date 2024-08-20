@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://btbbbehoaknia"]
+[gd_scene load_steps=40 format=3 uid="uid://btbbbehoaknia"]
 
 [ext_resource type="Script" path="res://Scripts/WorkspaceInit.cs" id="1_5a6te"]
 [ext_resource type="Texture2D" uid="uid://dnobjr7cssrwn" path="res://Art/greenhouse no pot.png" id="1_n5eej"]
@@ -22,6 +22,7 @@
 [ext_resource type="Texture2D" uid="uid://b24iakx6l648" path="res://Art/cinnamon fern _test.png" id="16_kpxj1"]
 [ext_resource type="Texture2D" uid="uid://ci7y6rt6ojs2c" path="res://Art/Sell1.tres" id="20_dat4e"]
 [ext_resource type="Texture2D" uid="uid://bimpapsyhv4kv" path="res://Art/Sell2.tres" id="21_yn5xj"]
+[ext_resource type="Script" path="res://Scripts/ErrorLabel.cs" id="23_g1gdn"]
 [ext_resource type="PackedScene" uid="uid://bgllprtxam2rf" path="res://Prefabs/Pause Menu.tscn" id="23_hnbb6"]
 
 [sub_resource type="Resource" id="Resource_gc4kc"]
@@ -85,10 +86,10 @@ region = Rect2(0, 0, 507, 134)
 atlas = ExtResource("9_otpgb")
 region = Rect2(0, 134, 507, 134)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_22bq6"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vnaqt"]
 bg_color = Color(0, 0, 0, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vnaqt"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_22bq6"]
 bg_color = Color(0, 0, 0, 1)
 
 [node name="Root" type="Node2D" node_paths=PackedStringArray("layer", "plantPositions", "i", "beginButton", "sellButton", "quotasLeft", "quota", "quotasReached")]
@@ -106,7 +107,7 @@ quotasReached = NodePath("UI Render/UI/Quota3")
 position = Vector2(960, 540)
 
 [node name="UI Store" type="CanvasLayer" parent="."]
-layer = 127
+layer = 123
 
 [node name="Store UI" parent="UI Store" instance=ExtResource("13_0m0l7")]
 visible = false
@@ -158,13 +159,14 @@ offset_bottom = -1080.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="View Virus Button" type="TextureButton" parent="UI Render/UI" node_paths=PackedStringArray("container")]
+[node name="View Virus Button" type="TextureButton" parent="UI Render/UI" node_paths=PackedStringArray("container", "hoverLabel")]
 custom_minimum_size = Vector2(280, 65)
 layout_mode = 2
-offset_left = 48.0
-offset_top = 107.0
-offset_right = 328.0
-offset_bottom = 172.0
+offset_left = 28.0
+offset_top = 23.0
+offset_right = 308.0
+offset_bottom = 88.0
+pivot_offset = Vector2(140, 32.5)
 texture_normal = SubResource("AtlasTexture_ju7te")
 texture_pressed = SubResource("AtlasTexture_ccgl6")
 texture_hover = SubResource("AtlasTexture_tjhnx")
@@ -175,6 +177,7 @@ stretch_mode = 0
 script = ExtResource("3_7cee1")
 container = NodePath("../ScrollContainer/Viruses")
 syringeScene = ExtResource("7_wch7j")
+hoverLabel = NodePath("../Label2")
 
 [node name="Begin" type="TextureButton" parent="UI Render/UI" node_paths=PackedStringArray("errorText")]
 layout_mode = 2
@@ -197,10 +200,11 @@ errorTime = 2.5
 [node name="Sell" type="TextureButton" parent="UI Render/UI"]
 visible = false
 layout_mode = 2
-offset_left = 1033.0
-offset_top = 844.0
-offset_right = 1486.0
-offset_bottom = 1074.0
+offset_left = 1030.0
+offset_top = 931.0
+offset_right = 1483.0
+offset_bottom = 1161.0
+scale = Vector2(0.5, 0.5)
 size_flags_horizontal = 0
 disabled = true
 texture_normal = ExtResource("20_dat4e")
@@ -226,33 +230,12 @@ texture_hover = ExtResource("12_gny0d")
 texture_disabled = ExtResource("12_gny0d")
 texture_focused = ExtResource("12_gny0d")
 
-[node name="Label2" type="Label" parent="UI Render/UI"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -901.0
-offset_top = -531.0
-offset_right = -651.0
-offset_bottom = -442.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_fonts/font = ExtResource("12_l6rb0")
-theme_override_font_sizes/font_size = 26
-theme_override_styles/normal = SubResource("StyleBoxFlat_22bq6")
-text = "CLICK SYRINGE TO 
-SELECT GENOMES"
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [node name="ScrollContainer" type="ScrollContainer" parent="UI Render/UI"]
 layout_mode = 1
-offset_left = 51.0
-offset_top = 183.0
-offset_right = 339.0
-offset_bottom = 555.0
+offset_left = 22.0
+offset_top = 103.0
+offset_right = 310.0
+offset_bottom = 475.0
 horizontal_scroll_mode = 0
 
 [node name="Viruses" type="VBoxContainer" parent="UI Render/UI/ScrollContainer"]
@@ -318,13 +301,34 @@ theme_override_font_sizes/font_size = 26
 theme_override_styles/normal = SubResource("StyleBoxFlat_vnaqt")
 text = "dadadasdasdadad"
 
-[node name="Error" type="Label" parent="UI Render/UI"]
+[node name="Label2" type="Label" parent="UI Render/UI"]
+visible = false
+z_index = 127
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -901.0
+offset_top = -531.0
+offset_right = -651.0
+offset_bottom = -487.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("12_l6rb0")
+theme_override_font_sizes/font_size = 26
+theme_override_styles/normal = SubResource("StyleBoxFlat_22bq6")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Error" type="Label" parent="UI Render/UI" node_paths=PackedStringArray("view")]
 visible = false
 layout_mode = 0
-offset_left = 1014.0
-offset_top = 857.0
-offset_right = 1558.0
-offset_bottom = 925.0
+offset_left = 60.0
+offset_top = 985.0
+offset_right = 604.0
+offset_bottom = 1053.0
 theme_override_colors/font_color = Color(0.792588, 0, 0.0885646, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 15
@@ -333,6 +337,8 @@ theme_override_font_sizes/font_size = 41
 text = "YOU MUST SELECT A PLANT"
 horizontal_alignment = 1
 vertical_alignment = 1
+script = ExtResource("23_g1gdn")
+view = NodePath("../View Virus Button")
 
 [node name="Plant Spots" type="Node" parent="."]
 
@@ -402,6 +408,10 @@ layer = 128
 [node name="Pause Menu" parent="CanvasLayer" instance=ExtResource("23_hnbb6")]
 visible = false
 
+[connection signal="mouse_entered" from="UI Render/UI/View Virus Button" to="UI Render/UI/View Virus Button" method="Hover"]
+[connection signal="mouse_entered" from="UI Render/UI/View Virus Button" to="UI Render/UI/View Virus Button" method="set_scale" binds= [Vector2(1.1, 1.1)]]
+[connection signal="mouse_exited" from="UI Render/UI/View Virus Button" to="UI Render/UI/View Virus Button" method="HoverExit"]
+[connection signal="mouse_exited" from="UI Render/UI/View Virus Button" to="UI Render/UI/View Virus Button" method="set_scale" binds= [Vector2(1, 1)]]
 [connection signal="pressed" from="UI Render/UI/View Virus Button" to="UI Render/UI/View Virus Button" method="ToggleMenu"]
 [connection signal="button_down" from="UI Render/UI/Begin" to="UI Render/UI/Begin" method="BeginMinigame"]
 [connection signal="mouse_entered" from="UI Render/UI/Begin" to="UI Render/UI/Begin" method="set_scale" binds= [Vector2(0.52, 0.52)]]

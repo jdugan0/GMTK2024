@@ -3,7 +3,7 @@ using System;
 
 public partial class ButtonSceneSwitcher : TextureButton
 {
-	[Export] public Label errorText;
+	[Export] public ErrorLabel errorText;
 	[Export] public float errorTime;
 	float time;
 	public void Switch(int id)
@@ -13,24 +13,10 @@ public partial class ButtonSceneSwitcher : TextureButton
 			Inventory.instance.Reset();
 		}
 	}
-	public override void _Process(double delta)
-	{
-		if (errorText != null)
-		{
-			if (errorText.Visible && time > 0)
-			{
-				time -= (float)delta;
-			}
-			if (time <= 0)
-			{
-				errorText.Visible = false;
-			}
-		}
-	}
 
 	public void BeginMinigame()
 	{
-		time = errorTime;
+		errorText.SetErrorTime(errorTime);
 
 		if (Inventory.instance.GetTableOccuplant() != null && !Inventory.instance.GetTableOccuplant().info.mutated && Inventory.instance.GetTableOccuplant().GetViruses().Count != 0)
 		{
@@ -53,15 +39,7 @@ public partial class ButtonSceneSwitcher : TextureButton
 		}
 		else
 		{
-			errorText.Visible = true;
-			errorText.Text = "SELECT A PLANT";
-			if (Inventory.instance.GetTableOccuplant() != null && Inventory.instance.GetTableOccuplant().info.mutated){
-				errorText.Text = "PLANT ALREADY MUTATED";
-				return;
-			}
-			if (Inventory.instance.GetTableOccuplant().GetViruses().Count == 0 && Inventory.instance.GetTableOccuplant() != null){
-				errorText.Text = "SELECT A GENOME";
-			}
+			errorText.UpdateErrorMessage();
 		}
 	}
 
