@@ -273,7 +273,7 @@ type = 1
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -496)
-scale = Vector2(0.25, 0.25)
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("9_qpsj2")
 script = ExtResource("10_xygkx")
 
@@ -301,7 +301,7 @@ position = Vector2(-11967, 4480)
 sourceTime = 6.0
 
 [node name="Node2D" type="Node2D" parent="."]
-position = Vector2(-17480, -6624)
+position = Vector2(-17482, -6624)
 
 [node name="Source12" parent="." instance=ExtResource("6_xxyr4")]
 position = Vector2(-10169, 5930)
