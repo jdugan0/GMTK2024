@@ -14,8 +14,9 @@ public partial class ViewVirusButton : TextureButton
 		{
 			foreach (VirusItem item in Inventory.instance.GetViruses())
 			{
-				SyringeDragging syringeDragging = (SyringeDragging)syringeScene.Instantiate();
+				SyringeDragging syringeDragging = (SyringeDragging) syringeScene.Instantiate();
 				syringeDragging.virus = item;
+				syringeDragging.SetTextures();
 				syringes.Add(syringeDragging);
 				container.AddChild(syringeDragging);
 			}
@@ -33,5 +34,4 @@ public partial class ViewVirusButton : TextureButton
 	public void RemoveViruses(List<VirusItem> toRemove){
 		
 	}
-
 }

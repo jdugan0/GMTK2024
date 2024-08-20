@@ -9,6 +9,8 @@ public partial class VirusItem : Resource
     [Export] public PackedScene scene;
     [Export] public float price;
     [Export] public Texture2D texture;
+    [Export] public Texture2D hoverTexture;
+    [Export] public Texture2D syringeTexture;
     public VirusItem(){
 
     }
@@ -18,6 +20,8 @@ public partial class VirusItem : Resource
         scene = item.scene;
         price = item.price;
         texture = item.texture;
+        hoverTexture = item.hoverTexture;
+        syringeTexture = item.syringeTexture;
     }
 
     

@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class SyringeDragging : Control
+public partial class SyringeDragging : TextureButton
 {
 	public bool selected = false;
 	[Export] public VirusItem virus;
@@ -54,4 +54,12 @@ public partial class SyringeDragging : Control
 		}
 	}
 
+	public void SetTextures()
+	{
+		TextureNormal = virus.syringeTexture;
+		TexturePressed = virus.syringeTexture;
+		TextureHover = virus.hoverTexture;
+		TextureDisabled = virus.hoverTexture;
+		TextureFocused = virus.syringeTexture;
+	}
 }
