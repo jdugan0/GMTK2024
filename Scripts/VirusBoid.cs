@@ -43,6 +43,7 @@ public partial class VirusBoid : RigidBody2D
 	bool abilityEnded = true;
 	[Export] public float abilityCooldown;
 	public float abilityCooldownTimer;
+	[Export] public float maxHealth;
 
 	public enum AbilityType{
 		None,
@@ -56,6 +57,7 @@ public partial class VirusBoid : RigidBody2D
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
+		maxHealth = health + 3;
 		foreach (VirusParameter p in coherence){
 			coherenceDict.Add(p.name, p.value);
 		}
@@ -76,6 +78,9 @@ public partial class VirusBoid : RigidBody2D
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
+		if (health > maxHealth){
+			health = maxHealth;
+		}
 		if (Position.DistanceTo(new Vector2()) > 30000){
 			generator.boids.Remove(this);
 			QueueFree();

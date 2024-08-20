@@ -30,7 +30,7 @@ public partial class VirusGenerator : Node
 	{
 		instance = this;
 		foreach (VirusItem item in VirusDataTransfer.GetViruses()){
-			for (int i = 0; i < 6; i++){
+			for (int i = 0; i < 3; i++){
 				VirusBoid b = CreateBoid(item.scene, new Vector2());
 				b.ability = item.ability;
 			}

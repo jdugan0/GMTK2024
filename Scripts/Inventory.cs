@@ -31,7 +31,7 @@ public partial class Inventory : Node
 	public void Reset(){
 		config = false;
 		start = false;
-		quotaCap = 10;
+		quotaCap = 30;
 		quotaCountCurrent = 0;
 		torwardsQuota = 0;
 		positions = new List<Vector2>();
@@ -62,6 +62,8 @@ public partial class Inventory : Node
     public override void _Process(double delta)
     {
 		if (!start && config){
+			AddPlant(new PlantInfo(starterPlant));
+			AddPlant(new PlantInfo(starterPlant));
 			AddPlant(new PlantInfo(starterPlant));
 			AddVirus(new VirusItem(starterVirusItem));
 			start = true;
