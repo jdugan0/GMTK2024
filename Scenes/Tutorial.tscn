@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://csbi6si6l5mwf"]
+[gd_scene load_steps=8 format=3 uid="uid://c46oyiuofquad"]
 
 [ext_resource type="Texture2D" uid="uid://b7lv8ud4xi4wu" path="res://Art/options bg.png" id="1_p80hq"]
 [ext_resource type="FontFile" uid="uid://dklw1r3w4l27s" path="res://Art/PoorRichardOpti.otf" id="2_2smfl"]
@@ -30,8 +30,10 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_vupbe")
 
 [node name="ScrollContainer" type="ScrollContainer" parent="."]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 345.0
+offset_top = 295.0
+offset_right = 1645.0
+offset_bottom = 990.0
 
 [node name="Information" type="Label" parent="ScrollContainer"]
 layout_mode = 2
@@ -54,6 +56,7 @@ right click OR E to select genome (new control just for you emma)
 space to ability"
 
 [node name="Back" type="TextureButton" parent="."]
+layout_mode = 0
 offset_left = 416.0
 offset_top = 99.0
 offset_right = 916.0

@@ -15,9 +15,14 @@ public partial class VirusGenerator : Node
 
 	private Vector2 mousePos;
 	public List<Location> locations = new List<Location>();
-	[Export] public Label rightClickLabel;
+	// [Export] public Label rightClickLabel;
 
 	public Dictionary<Location.LocationType, float> locationQualities = new Dictionary<Location.LocationType, float>();
+
+	[Export] public Slider coolDownSlider;
+
+	public float abilityCoolDown;
+	public float abilityCooldownTimer;
 
 	
 	// Called when the node enters the scene tree for the first time.
@@ -31,19 +36,29 @@ public partial class VirusGenerator : Node
 			}
 			// b.sprite2D.Texture = item.texture;
 		}
-		
+		coolDownSlider.MaxValue = boids[0].abilityCooldown;
+		coolDownSlider.MinValue = 0;
+		abilityCoolDown = boids[0].abilityCooldown;
+		abilityCooldownTimer = 0;
 		// CreateBoid(virusScene2, new Vector2(), virusAmount/2);
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
+		if (Input.IsActionJustPressed("Ability") && abilityCooldownTimer <= 0){
+			abilityCooldownTimer = abilityCoolDown;
+		}
+		if (abilityCooldownTimer > 0){
+			abilityCooldownTimer -= (float)delta;
+		}
+		coolDownSlider.Value = abilityCooldownTimer;
 		rootLabel.Visible = false;
-		rightClickLabel.Visible = false;
+		// rightClickLabel.Visible = false;
 		foreach (VirusBoid b in boids){
 			if (b.rootable != null){
 				rootLabel.Visible = true;
-				rightClickLabel.Visible = true;
+				// rightClickLabel.Visible = true;
 				break;
 			}
 		}

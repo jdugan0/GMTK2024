@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://2850ln454g3q"]
+[gd_scene load_steps=23 format=3 uid="uid://2850ln454g3q"]
 
 [ext_resource type="Script" path="res://Scripts/VirusGenerator.cs" id="1_6w8dc"]
 [ext_resource type="PackedScene" uid="uid://dowptv22ct3hh" path="res://Prefabs/Virus.tscn" id="2_8jn3w"]
@@ -231,7 +231,29 @@ bg_color = Color(0.0807833, 0.0807834, 0.0807833, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lunp5"]
 bg_color = Color(0, 0, 0, 1)
 
-[node name="VirusMinigame" type="Node2D" node_paths=PackedStringArray("rootLabel", "rightClickLabel")]
+[sub_resource type="CanvasTexture" id="CanvasTexture_kay50"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_eu6jp"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_f4eda"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_m8pbc"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8bm2s"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.172549, 0.678431, 0.682353, 1)
+
+[sub_resource type="Theme" id="Theme_vsueu"]
+HSlider/icons/grabber = SubResource("CanvasTexture_kay50")
+HSlider/icons/grabber_disabled = SubResource("CanvasTexture_eu6jp")
+HSlider/icons/grabber_highlight = SubResource("CanvasTexture_f4eda")
+HSlider/icons/tick = SubResource("CanvasTexture_m8pbc")
+HSlider/styles/slider = SubResource("StyleBoxFlat_8bm2s")
+
+[node name="VirusMinigame" type="Node2D" node_paths=PackedStringArray("rootLabel", "coolDownSlider")]
 process_mode = 1
 script = ExtResource("1_6w8dc")
 virusAmount = 25
@@ -239,7 +261,7 @@ virusScene = ExtResource("2_8jn3w")
 virusScene2 = ExtResource("3_schds")
 size = 400.0
 rootLabel = NodePath("UI/Control/Label")
-rightClickLabel = NodePath("UI/Control/Label2")
+coolDownSlider = NodePath("UI/HSlider")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(0.4, 0.4)
@@ -387,26 +409,14 @@ text = "PRESS R TO ROOT SELECTED GENOME AND MUTATE PLANT"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Label2" type="Label" parent="UI/Control"]
-visible = false
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -179.0
-offset_top = -219.5
-offset_right = 179.0
-offset_bottom = -170.5
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_fonts/font = ExtResource("8_loiu0")
-theme_override_font_sizes/font_size = 26
-theme_override_styles/normal = SubResource("StyleBoxFlat_lunp5")
-text = "RIGHT CLICK TO SELECT"
-horizontal_alignment = 1
-vertical_alignment = 1
+[node name="HSlider" type="HSlider" parent="UI"]
+offset_right = 459.0
+offset_bottom = 16.0
+scale = Vector2(1.52, 1.52)
+theme = SubResource("Theme_vsueu")
+step = 0.001
+editable = false
+scrollable = false
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 128
