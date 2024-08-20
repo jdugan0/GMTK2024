@@ -24,6 +24,7 @@ public partial class PurchasePlantButton : TextureButton
             Inventory.instance.AddPlant(new PlantInfo(plantInfo));
             StoreUI.instance.config.GetPlantInfos().Remove(plantInfo);
             StoreUI.instance.RefreshShopWithConfig();
+            AudioManager.instance.PlaySFX(AudioManager.instance, "Buy");
             // Inventory.instance.RefreshVisuals();
         }
     }

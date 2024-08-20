@@ -15,8 +15,6 @@ public partial class StoreUI : Control
     public static StoreUI instance;
     public StoreConfiguration config;
 
-    public bool opened;
-
     public override void _Ready()
     {
         instance = this;
@@ -53,7 +51,6 @@ public partial class StoreUI : Control
 
     public void Toggle()
     {
-        opened = true;
         Visible = !Visible;
         if (Visible){
             VirusDataTransfer.instance.PlayMusic(10);
@@ -147,5 +144,10 @@ public partial class StoreUI : Control
             plants.Add(new PlantInfo(p));
         }
         return new StoreConfiguration(viruses, plants);
+    }
+
+    public bool GetShopEmpty()
+    {
+        return config.GetStoreEmpty();
     }
 }

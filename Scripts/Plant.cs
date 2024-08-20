@@ -15,6 +15,7 @@ public partial class Plant : TextureButton
 		TextureHover = info.species.texture;
 		TextureDisabled = info.species.texture;
 		TexturePressed = info.species.texture;
+		ZIndex = 10;
     }
 
     public override void _Process(double delta)

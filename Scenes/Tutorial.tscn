@@ -2,15 +2,16 @@
 
 [ext_resource type="Texture2D" uid="uid://b7lv8ud4xi4wu" path="res://Art/options bg.png" id="1_p80hq"]
 [ext_resource type="FontFile" uid="uid://dklw1r3w4l27s" path="res://Art/PoorRichardOpti.otf" id="2_2smfl"]
+[ext_resource type="Texture2D" uid="uid://cy51q8bxkmyhb" path="res://Art/PLANT STORE 1255 x 1021.png" id="3_d3f3i"]
 [ext_resource type="Texture2D" uid="uid://cmb8t0m6ovqdt" path="res://Art/back button 500 x 225.png" id="3_kpb7g"]
 [ext_resource type="Script" path="res://Managers/Scene/ButtonSceneSwitcher.cs" id="4_deqlr"]
-[ext_resource type="Texture2D" uid="uid://dke8fxqog4rax" path="res://Art/logo.png" id="5_n2b4s"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vupbe"]
 texture = ExtResource("1_p80hq")
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_428gw"]
-texture = ExtResource("5_n2b4s")
+[sub_resource type="AtlasTexture" id="AtlasTexture_0fah5"]
+atlas = ExtResource("3_d3f3i")
+region = Rect2(508, 185, 747, 836)
 
 [node name="Tutorial" type="Control"]
 layout_mode = 3
@@ -24,58 +25,76 @@ grow_vertical = 2
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 0
+offset_top = 1.0
 offset_right = 1920.0
-offset_bottom = 1080.0
+offset_bottom = 1081.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_vupbe")
 
-[node name="ScrollContainer" type="ScrollContainer" parent="."]
-layout_mode = 0
-offset_left = 345.0
-offset_top = 295.0
-offset_right = 1645.0
-offset_bottom = 990.0
-
-[node name="Information" type="Label" parent="ScrollContainer"]
+[node name="Information" type="Label" parent="."]
 layout_mode = 2
+offset_left = 707.0
+offset_top = 36.0
+offset_right = 1384.0
+offset_bottom = 115.0
 theme_override_fonts/font = ExtResource("2_2smfl")
-text = "Welcome to Garden Genome!
-OVERVIEW:
+theme_override_font_sizes/font_size = 30
+text = "To keep up with your ever-growing rent, you make
+a living selling genetically-enhanced plant speciments."
 
+[node name="Information2" type="Label" parent="."]
+layout_mode = 2
+offset_left = 285.0
+offset_top = 158.0
+offset_right = 1637.0
+offset_bottom = 278.0
+theme_override_fonts/font = ExtResource("2_2smfl")
+theme_override_font_sizes/font_size = 30
+text = "THE WORKSPACE
+The workspace is where you can buy both new plants and genomes which you can use to modify your plants.
+"
 
+[node name="Information3" type="Label" parent="."]
+layout_mode = 2
+offset_left = 302.0
+offset_top = 285.0
+offset_right = 794.0
+offset_bottom = 364.0
+theme_override_fonts/font = ExtResource("2_2smfl")
+theme_override_font_sizes/font_size = 30
+text = "The Plant Store: Click on the computer
+to enter the plant store and buy items."
 
-click on the computer to go to the store and buy genomes/plants!
-once you select a plant and 1+ genomes, click begin to go to the level!
-here you must try your best to get as many healthy genomes as possible to one of the sources. further sources give you more value.
-after you do this a few times, the begin button will change to a sell button. (if you run out of viruses + money, you can select begin without any viruses to get to this point.)
-sell all your plants to make quota. if you are under quota, you go back to the main menu. if you are above, it increases more. 
+[node name="Panel2" type="TextureRect" parent="."]
+layout_mode = 2
+offset_left = 825.0
+offset_top = 273.0
+offset_right = 1421.0
+offset_bottom = 941.0
+scale = Vector2(0.2, 0.2)
+texture = SubResource("AtlasTexture_0fah5")
+expand_mode = 1
 
-
-r to root
-left click to move
-right click OR E to select genome (new control just for you emma)
-space to ability"
+[node name="Information4" type="Label" parent="."]
+layout_mode = 2
+offset_left = 1027.0
+offset_top = 290.0
+offset_right = 1537.0
+offset_bottom = 369.0
+theme_override_fonts/font = ExtResource("2_2smfl")
+theme_override_font_sizes/font_size = 30
 
 [node name="Back" type="TextureButton" parent="."]
 layout_mode = 0
-offset_left = 416.0
-offset_top = 99.0
-offset_right = 916.0
-offset_bottom = 324.0
-scale = Vector2(0.5, 0.5)
+offset_left = 467.0
+offset_top = 39.0
+offset_right = 967.0
+offset_bottom = 264.0
+scale = Vector2(0.3, 0.3)
 texture_normal = ExtResource("3_kpb7g")
 texture_pressed = ExtResource("3_kpb7g")
 texture_hover = ExtResource("3_kpb7g")
 texture_disabled = ExtResource("3_kpb7g")
 texture_focused = ExtResource("3_kpb7g")
 script = ExtResource("4_deqlr")
-
-[node name="Logo" type="Panel" parent="."]
-layout_mode = 0
-offset_left = 735.75
-offset_top = 39.0
-offset_right = 4017.75
-offset_bottom = 996.0
-scale = Vector2(0.25, 0.25)
-theme_override_styles/panel = SubResource("StyleBoxTexture_428gw")
 
 [connection signal="pressed" from="Back" to="Back" method="Switch" binds= [2]]

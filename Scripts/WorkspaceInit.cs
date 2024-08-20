@@ -15,8 +15,6 @@ public partial class WorkspaceInit : Node2D
     [Export] Label quota;
     [Export] Label quotasReached;
 
-    [Export] Label tutorialText;
-
     public override void _Ready()
     {
         hoverText = i;
@@ -43,14 +41,10 @@ public partial class WorkspaceInit : Node2D
             sellButton.Visible = false;
             sellButton.Disabled = true;
         }
-        DetermineTutorialText();
     }
 
     public void ConfigureInventory()
 	{
 		Inventory.instance.ConfigurePlantData(plantPositions, layer);
 	}
-    public void DetermineTutorialText(){
-        
-    }
 }
