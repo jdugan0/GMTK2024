@@ -97,10 +97,13 @@ public partial class Plant : TextureButton
 		}
 	}
 	public void ToShelf(){
+		syringe.Clear();
 		Position = info.slot;
 		info.onTable = false;
 		SetScale(new Vector2(0.5f, 0.5f));
 		Inventory.instance.SetTableOccupied(null);
+		ViewVirusButton.instance.ToggleMenu();
+		info.viruses.Clear();
 	}
 
 	// private void ToTable()

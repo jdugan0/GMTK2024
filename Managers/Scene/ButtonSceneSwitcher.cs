@@ -60,6 +60,7 @@ public partial class ButtonSceneSwitcher : TextureButton
 			Inventory.instance.torwardsQuota = 0;
 			Inventory.instance.quotaCap *= 1.5f;
 			Inventory.instance.quotasReached++;
+			Inventory.instance.quotaCountCurrent = 0;
 			AudioManager.instance.PlaySFX(this, "Sell");
 		}
 		else

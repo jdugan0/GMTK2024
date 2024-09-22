@@ -50,8 +50,8 @@ public partial class SyringeDragging : TextureButton
 		}
 		else{
 			if (selected){
-				Inventory.instance.GetTableOccuplant().RemoveVirus(virus);
-				Inventory.instance.GetTableOccuplant().syringe.Remove(this);
+				// Inventory.instance.GetTableOccuplant().RemoveVirus(virus);
+				// Inventory.instance.GetTableOccuplant().syringe.Remove(this);
 			}
 			selected = false;
 			ErrorLabel.instance.SetErrorMessageNoPlantInjection();

@@ -345,6 +345,11 @@ position = Vector2(-4320, 1711)
 sourceTime = 9.0
 amount = 3
 
+[node name="Source16" parent="." instance=ExtResource("6_xxyr4")]
+position = Vector2(-4910, -534)
+sourceTime = 9.0
+amount = 3
+
 [node name="Source8" parent="." instance=ExtResource("6_xxyr4")]
 position = Vector2(-9330, 4108)
 sourceTime = 6.0
@@ -359,8 +364,17 @@ position = Vector2(-389, 2118)
 sourceTime = 8.0
 amount = 2
 
+[node name="Source18" parent="." instance=ExtResource("6_xxyr4")]
+position = Vector2(2538, 2782)
+sourceTime = 8.0
+amount = 2
+
 [node name="Source9" parent="." instance=ExtResource("6_xxyr4")]
 position = Vector2(-11967, 4480)
+sourceTime = 6.0
+
+[node name="Source15" parent="." instance=ExtResource("6_xxyr4")]
+position = Vector2(-13103, 5870)
 sourceTime = 6.0
 
 [node name="Node2D" type="Node2D" parent="."]
@@ -376,10 +390,11 @@ sourceTime = 6.0
 
 [node name="Source11" parent="." instance=ExtResource("6_xxyr4")]
 position = Vector2(-8490, -519)
-sourceTime = 6.0
+sourceTime = 4.0
 
 [node name="Source4" parent="." instance=ExtResource("6_xxyr4")]
-position = Vector2(1567, -1797)
+position = Vector2(3943, -2793)
+sourceTime = 8.0
 amount = 2
 
 [node name="Source5" parent="." instance=ExtResource("6_xxyr4")]
@@ -388,7 +403,7 @@ sourceTime = 6.0
 
 [node name="Source6" parent="." instance=ExtResource("6_xxyr4")]
 position = Vector2(-10488, -2563)
-sourceTime = 6.0
+sourceTime = 4.0
 
 [node name="Source7" parent="." instance=ExtResource("6_xxyr4")]
 position = Vector2(5391, 5064)

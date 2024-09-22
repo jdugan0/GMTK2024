@@ -67,12 +67,12 @@ seperationDistance = Array[Object]([SubResource("Resource_sk2to")])
 alignment = Array[Object]([SubResource("Resource_g82rl"), SubResource("Resource_03tjy")])
 targeting = Array[Object]([SubResource("Resource_pkvr0"), SubResource("Resource_k4udl")])
 validDamageTypes = PackedStringArray("V1")
-maxVelocity = 650.0
+maxVelocity = 675.0
 viewRange = 3500.0
 maxAccel = 3000.0
-damageTime = 1.0
+damageTime = 0.75
 health = 5.0
-damage = 1.0
+damage = 2.0
 name = "V2"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

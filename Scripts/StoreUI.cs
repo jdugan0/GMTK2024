@@ -143,6 +143,7 @@ public partial class StoreUI : Control
             PlantInfo p = plantPresets[GD.RandRange(0, plantPresets.Length - 1)];
             plants.Add(new PlantInfo(p));
         }
+        viruses.Add(new VirusItem(virusPresets[0]));
         return new StoreConfiguration(viruses, plants);
     }
 

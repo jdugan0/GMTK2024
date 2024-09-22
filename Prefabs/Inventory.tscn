@@ -47,9 +47,9 @@ syringeTexture = SubResource("AtlasTexture_08a2k")
 [node name="Inventory" type="Node"]
 script = ExtResource("1_xoey4")
 testItems = Array[Object]([])
-money = 200.0
+money = 150.0
 plantScene = ExtResource("2_yikch")
 starterPlant = SubResource("Resource_c51pr")
 starterVirusItem = SubResource("Resource_7y23v")
 quotaCount = 3
-quotaCap = 30.0
+quotaCap = 40.0

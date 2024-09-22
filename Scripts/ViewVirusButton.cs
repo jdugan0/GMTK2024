@@ -8,7 +8,12 @@ public partial class ViewVirusButton : TextureButton
 	[Export] PackedScene syringeScene;
 	[Export] private Label hoverLabel;
 	public List<SyringeDragging> syringes = new List<SyringeDragging>();
-	public void ToggleMenu()
+	public static ViewVirusButton instance;
+    public override void _Ready()
+    {
+        instance = this;
+    }
+    public void ToggleMenu()
 	{
 		container.Visible = !container.Visible;
 		if (container.Visible)
@@ -25,8 +30,11 @@ public partial class ViewVirusButton : TextureButton
 
 		else
 		{
-			Inventory.instance.GetTableOccuplant().ClearViruses();
-			Inventory.instance.GetTableOccuplant().syringe.Clear();
+			if (Inventory.instance.GetTableOccuplant() != null){
+				Inventory.instance.GetTableOccuplant().ClearViruses();
+				Inventory.instance.GetTableOccuplant().syringe.Clear();
+			}
+			
 			for (int i = syringes.Count - 1; i >= 0; i--){
 				syringes[i].QueueFree();
 				syringes.RemoveAt(i);

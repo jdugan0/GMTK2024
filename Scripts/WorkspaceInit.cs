@@ -27,7 +27,7 @@ public partial class WorkspaceInit : Node2D
         quotasLeft.Text = "MUTATIONS LEFT: " + (Inventory.instance.quotaCount - Inventory.instance.quotaCountCurrent);
         quota.Text = "QUOTA: " + Inventory.instance.quotaCap;
         quotasReached.Text = "QUOTAS REACHED: " + Inventory.instance.quotasReached;
-        if (Inventory.instance.quotaCountCurrent >= Inventory.instance.quotaCount){
+        if (Inventory.instance.quotaCountCurrent >= Inventory.instance.quotaCount || (Inventory.instance.money <= 10 && Inventory.instance.GetViruses().Count <= 0) ){
             beginButton.Visible = false;
             beginButton.Disabled = true;
 
