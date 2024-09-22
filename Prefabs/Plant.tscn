@@ -1,0 +1,59 @@
+[gd_scene load_steps=11 format=3 uid="uid://ccxvr07fwlf4r"]
+
+[ext_resource type="Texture2D" uid="uid://c84bnfq0rtlot" path="res://Art/juniper berries.png" id="1_yk0cn"]
+[ext_resource type="Script" path="res://Scripts/Plant.cs" id="2_g440g"]
+[ext_resource type="Script" path="res://Scripts/Species.cs" id="3_huk36"]
+[ext_resource type="Script" path="res://Scripts/PlantInfo.cs" id="3_q02cr"]
+[ext_resource type="FontFile" uid="uid://dklw1r3w4l27s" path="res://Art/PoorRichardOpti.otf" id="5_yjtwi"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iqy70"]
+atlas = ExtResource("1_yk0cn")
+region = Rect2(363, 0, 363, 454)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_moh1f"]
+atlas = ExtResource("1_yk0cn")
+region = Rect2(363, 0, 363, 454)
+
+[sub_resource type="Resource" id="Resource_io3dd"]
+script = ExtResource("3_huk36")
+species = 1
+texture = SubResource("AtlasTexture_moh1f")
+
+[sub_resource type="Resource" id="Resource_o4y4g"]
+script = ExtResource("3_q02cr")
+species = SubResource("Resource_io3dd")
+price = 0.0
+value = 0.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6jnhk"]
+bg_color = Color(0, 0, 0, 1)
+
+[node name="Plant" type="TextureButton" node_paths=PackedStringArray("hoverText")]
+z_index = 5
+offset_right = 363.0
+offset_bottom = 454.0
+scale = Vector2(0.5, 0.5)
+texture_normal = SubResource("AtlasTexture_iqy70")
+texture_pressed = SubResource("AtlasTexture_iqy70")
+texture_hover = SubResource("AtlasTexture_iqy70")
+texture_disabled = SubResource("AtlasTexture_iqy70")
+texture_focused = SubResource("AtlasTexture_iqy70")
+script = ExtResource("2_g440g")
+info = SubResource("Resource_o4y4g")
+hoverText = NodePath("Label")
+
+[node name="Label" type="Label" parent="."]
+visible = false
+layout_mode = 0
+offset_right = 360.0
+offset_bottom = 52.0
+theme_override_fonts/font = ExtResource("5_yjtwi")
+theme_override_font_sizes/font_size = 41
+theme_override_styles/normal = SubResource("StyleBoxFlat_6jnhk")
+text = "wefwefwefwefwefwef"
+
+[connection signal="mouse_entered" from="." to="." method="Hover"]
+[connection signal="mouse_entered" from="." to="." method="Enlarge"]
+[connection signal="mouse_exited" from="." to="." method="HoverExit"]
+[connection signal="mouse_exited" from="." to="." method="Reduce"]
+[connection signal="pressed" from="." to="." method="Press"]

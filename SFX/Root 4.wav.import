@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dnehylsb0a7h3"
+path="res://.godot/imported/Root 4.wav-4ab4b4da056f64907f5a2c0091771e8b.sample"
+
+[deps]
+
+source_file="res://SFX/Root 4.wav"
+dest_files=["res://.godot/imported/Root 4.wav-4ab4b4da056f64907f5a2c0091771e8b.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

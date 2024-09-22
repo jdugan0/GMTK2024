@@ -1,0 +1,96 @@
+[gd_scene load_steps=14 format=3 uid="uid://ct7cttliw78kx"]
+
+[ext_resource type="Script" path="res://Scripts/VirusBoid.cs" id="1_k6ahf"]
+[ext_resource type="Script" path="res://Scripts/VirusParameter.cs" id="2_qcj6g"]
+[ext_resource type="Texture2D" uid="uid://dw8iv1255eqon" path="res://Art/rooted virus.png" id="3_wiouc"]
+[ext_resource type="Texture2D" uid="uid://dl8p6aqfs7r8k" path="res://Art/Dash.tres" id="4_a5cyx"]
+
+[sub_resource type="Resource" id="Resource_0vvou"]
+script = ExtResource("2_qcj6g")
+value = 1.0
+name = "V1"
+
+[sub_resource type="Resource" id="Resource_fn70y"]
+script = ExtResource("2_qcj6g")
+value = 0.0
+name = "V2"
+
+[sub_resource type="Resource" id="Resource_y6ds6"]
+script = ExtResource("2_qcj6g")
+value = 0.0
+name = "V1"
+
+[sub_resource type="Resource" id="Resource_eehjr"]
+script = ExtResource("2_qcj6g")
+value = 0.0
+name = "V2"
+
+[sub_resource type="Resource" id="Resource_sk2to"]
+script = ExtResource("2_qcj6g")
+value = 200.0
+name = "V1"
+
+[sub_resource type="Resource" id="Resource_g82rl"]
+script = ExtResource("2_qcj6g")
+value = 4.0
+name = "V1"
+
+[sub_resource type="Resource" id="Resource_03tjy"]
+script = ExtResource("2_qcj6g")
+value = 0.0
+name = "V2"
+
+[sub_resource type="Resource" id="Resource_5yi7f"]
+script = ExtResource("2_qcj6g")
+value = 0.0
+name = "V1"
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kvwnd"]
+radius = 20.0
+height = 88.0
+
+[node name="Virus" type="RigidBody2D" node_paths=PackedStringArray("sprite2D")]
+collision_layer = 2
+collision_mask = 3
+input_pickable = true
+gravity_scale = 0.0
+can_sleep = false
+max_contacts_reported = 10
+contact_monitor = true
+script = ExtResource("1_k6ahf")
+coherence = Array[Object]([SubResource("Resource_0vvou"), SubResource("Resource_fn70y")])
+seperation = Array[Object]([SubResource("Resource_y6ds6"), SubResource("Resource_eehjr")])
+seperationDistance = Array[Object]([SubResource("Resource_sk2to")])
+alignment = Array[Object]([SubResource("Resource_g82rl"), SubResource("Resource_03tjy")])
+targeting = Array[Object]([SubResource("Resource_5yi7f")])
+validDamageTypes = PackedStringArray("V2")
+mouseForce = 100.0
+velocityRange = 5.0
+maxVelocity = 650.0
+viewRange = 1500.0
+maxAccel = 4500.0
+damageTime = 0.5
+health = 6.0
+damage = 1.0
+name = "V1"
+player = true
+sprite2D = NodePath("Sprite2D")
+abilityTime = 5.0
+rootedTexture = ExtResource("3_wiouc")
+abilityCooldown = 10.0
+ability = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("4_a5cyx")
+region_enabled = true
+region_rect = Rect2(0, 0, 302, 290)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_kvwnd")
+
+[connection signal="body_entered" from="." to="." method="DealDamage"]
+[connection signal="body_exited" from="." to="." method="Exited"]
+[connection signal="mouse_entered" from="." to="." method="MouseEnteredLogic"]
+[connection signal="mouse_exited" from="." to="." method="MouseExitedLogic"]

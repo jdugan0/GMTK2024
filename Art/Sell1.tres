@@ -1,0 +1,7 @@
+[gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://ci7y6rt6ojs2c"]
+
+[ext_resource type="Texture2D" uid="uid://bm47j3p5nynd0" path="res://Art/buy and sell buttons 906x460.png" id="1_acqti"]
+
+[resource]
+atlas = ExtResource("1_acqti")
+region = Rect2(906, 460, 906, 460)

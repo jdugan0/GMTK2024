@@ -7,7 +7,7 @@
 
 [sub_resource type="Resource" id="Resource_0vvou"]
 script = ExtResource("2_wlc2m")
-value = 0.01
+value = 1.0
 name = "V1"
 
 [sub_resource type="Resource" id="Resource_fn70y"]
@@ -17,7 +17,7 @@ name = "V2"
 
 [sub_resource type="Resource" id="Resource_y6ds6"]
 script = ExtResource("2_wlc2m")
-value = 0.5
+value = 0.0
 name = "V1"
 
 [sub_resource type="Resource" id="Resource_eehjr"]
@@ -27,12 +27,12 @@ name = "V2"
 
 [sub_resource type="Resource" id="Resource_sk2to"]
 script = ExtResource("2_wlc2m")
-value = 32.0
+value = 200.0
 name = "V1"
 
 [sub_resource type="Resource" id="Resource_g82rl"]
 script = ExtResource("2_wlc2m")
-value = 0.05
+value = 4.0
 name = "V1"
 
 [sub_resource type="Resource" id="Resource_03tjy"]
@@ -45,7 +45,7 @@ script = ExtResource("2_wlc2m")
 value = 0.0
 name = "V1"
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_n4yvc"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qrgmf"]
 radius = 23.0
 height = 52.0
 
@@ -64,12 +64,13 @@ seperationDistance = Array[Object]([SubResource("Resource_sk2to")])
 alignment = Array[Object]([SubResource("Resource_g82rl"), SubResource("Resource_03tjy")])
 targeting = Array[Object]([SubResource("Resource_5yi7f")])
 validDamageTypes = PackedStringArray("V2")
-mouseForce = 8.0
+mouseForce = 100.0
 velocityRange = 5.0
-maxVelocity = 300.0
+maxVelocity = 650.0
 viewRange = 1500.0
-maxAccel = 10000.0
-health = 5.0
+maxAccel = 4500.0
+damageTime = 0.5
+health = 6.0
 damage = 1.0
 name = "V1"
 player = true
@@ -79,16 +80,15 @@ rootedTexture = ExtResource("3_aagdk")
 abilityCooldown = 10.0
 ability = 1
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-z_index = 60
-rotation = 1.5708
-shape = SubResource("CapsuleShape2D_n4yvc")
-
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("3_p2ftv")
 region_enabled = true
 region_rect = Rect2(0, 0, 302, 290)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_qrgmf")
 
 [connection signal="body_entered" from="." to="." method="DealDamage"]
 [connection signal="body_exited" from="." to="." method="Exited"]

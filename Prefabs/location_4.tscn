@@ -4,7 +4,6 @@
 [ext_resource type="Script" path="res://Scripts/Location.cs" id="2_ro583"]
 
 [node name="Location4" type="Sprite2D"]
-position = Vector2(-10480, 3304)
 scale = Vector2(3, 3)
 texture = ExtResource("1_yugxf")
 region_enabled = true

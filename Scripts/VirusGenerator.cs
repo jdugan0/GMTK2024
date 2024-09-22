@@ -1,6 +1,7 @@
 using Godot;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 public partial class VirusGenerator : Node
 {
@@ -9,32 +10,84 @@ public partial class VirusGenerator : Node
 	[Export] private PackedScene virusScene2;
 	public List<VirusBoid> boids = new List<VirusBoid>();
 	[Export] float size;
-
+	[Export] public Label rootLabel;
 	public static VirusGenerator instance;
 
 	private Vector2 mousePos;
 	public List<Location> locations = new List<Location>();
+	// [Export] public Label rightClickLabel;
 
-	public Dictionary<Location, float> locationQualities = new Dictionary<Location, float>();
+	public Dictionary<Location.LocationType, float> locationQualities = new Dictionary<Location.LocationType, float>();
+
+	[Export] public Slider coolDownSlider;
+
+	public float abilityCoolDown;
+	public float abilityCooldownTimer;
 
 	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
 		instance = this;
-		CreateBoid(virusScene, new Vector2(), virusAmount);
+		foreach (VirusItem item in VirusDataTransfer.GetViruses()){
+			for (int i = 0; i < 3; i++){
+				VirusBoid b = CreateBoid(item.scene, new Vector2());
+				b.ability = item.ability;
+			}
+			// b.sprite2D.Texture = item.texture;
+		}
+		coolDownSlider.MaxValue = boids[0].abilityCooldown;
+		coolDownSlider.MinValue = 0;
+		abilityCoolDown = boids[0].abilityCooldown;
+		abilityCooldownTimer = 0;
 		// CreateBoid(virusScene2, new Vector2(), virusAmount/2);
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-		if (boids.Count <=0){
+		if (Input.IsActionJustPressed("Ability") && abilityCooldownTimer <= 0){
+			abilityCooldownTimer = abilityCoolDown;
+		}
+		if (abilityCooldownTimer > 0){
+			abilityCooldownTimer -= (float)delta;
+		}
+		coolDownSlider.Value = abilityCooldownTimer;
+		rootLabel.Visible = false;
+		// rightClickLabel.Visible = false;
+		foreach (VirusBoid b in boids){
+			if (b.rootable != null){
+				rootLabel.Visible = true;
+				// rightClickLabel.Visible = true;
+				break;
+			}
+		}
+		// GD.Print(boids.Count);
+		int boidCount = 0;
+		foreach(VirusBoid b in boids){
+			if (b.name == "V1"){
+				boidCount++;
+			}
+		}
+		if (boidCount <= 0){
+			float totalVal = 0;
+			foreach (Location.LocationType f in locationQualities.Keys){
+				GD.Print(f.ToString());
+				totalVal += locationQualities[f];
+			}
+			foreach (PlantInfo i in Inventory.instance.plants.Values){
+				if (i.onTable){
+					i.value += totalVal;
+					break;
+				}
+			}
 			SceneSwitcher.instance.SwitchScene(0);
 		}
 
 		if (Input.IsActionPressed("Click")){
-			mousePos = GetViewport().GetCamera2D().GetGlobalMousePosition();
+			if (GetViewport() != null){
+				mousePos = GetViewport().GetCamera2D().GetGlobalMousePosition();
+			}
 		}
 		Vector2 comCamera = new Vector2();
 		int cCam = 0;
@@ -117,9 +170,9 @@ public partial class VirusGenerator : Node
 			accel += (mousePos - boid.Position) * boid.mouseForce;
 
 			// clamp acceleration
-			// if (Math.Abs(accel.Length()) > boid.maxAccel){
-			// 	accel = accel.Normalized() * boid.maxAccel;
-			// }
+			if (Math.Abs(accel.Length()) > boid.maxAccel){
+				accel = accel.Normalized() * boid.maxAccel;
+			}
 
 			// set velocity
 			boid.velocity += accel * (float)delta;
@@ -140,8 +193,10 @@ public partial class VirusGenerator : Node
 
 
 		}
-		comCamera = comCamera / cCam;
-		GetViewport().GetCamera2D().Position = comCamera;
+		if (cCam > 0){
+			comCamera = comCamera / cCam;
+			GetViewport().GetCamera2D().Position = comCamera;
+		}
 	}
 	public void CreateBoid(PackedScene boidType, Vector2 pos, int amount){
 		for (int i = 0; i < amount; i++){
@@ -158,6 +213,20 @@ public partial class VirusGenerator : Node
 			virus.generator = this;
 			AddChild(virus);
 		}
+	}
+	public VirusBoid CreateBoid(PackedScene boidType, Vector2 pos){
+		VirusBoid virus = (VirusBoid)boidType.Instantiate();
+		virus.Position = new Vector2((float)GD.RandRange(-size/2, size/2),(float)GD.RandRange(-size/2, size/2)) + pos;
+		boids.Add(virus);
+		virus.velocity = new Vector2();
+		
+		Vector2 velocity = new Vector2((float)GD.RandRange(-1f,1f),(float)GD.RandRange(-1f,1f));
+		velocity = velocity.Normalized();
+		velocity = velocity * (float)GD.RandRange(-virus.velocityRange/2, virus.velocityRange/2);
+		virus.velocity = velocity;
+		virus.generator = this;
+		AddChild(virus);
+		return virus;
 	}
 	public float getValueFromParam(Dictionary<String, float> dict, String key, String def){
 		if (dict.ContainsKey(key)){

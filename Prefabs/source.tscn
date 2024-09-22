@@ -5,13 +5,12 @@
 [ext_resource type="Texture2D" uid="uid://bhaiofs5yoxtb" path="res://Art/cells 302 x 290.png" id="3_6468l"]
 
 [node name="Source" type="Node2D"]
-position = Vector2(4826, -1679)
 script = ExtResource("1_2dgor")
-sourceTime = 8.0
+sourceTime = 10.0
 range = 1.5
 difScaleTime = 0.001
 difScaleDist = 0.01
-amount = 3
+amount = 5
 virusType = ExtResource("2_u2fhv")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

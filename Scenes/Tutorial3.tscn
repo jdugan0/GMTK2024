@@ -1,0 +1,193 @@
+[gd_scene load_steps=13 format=3 uid="uid://dp0m7huexai6j"]
+
+[ext_resource type="Texture2D" uid="uid://b7lv8ud4xi4wu" path="res://Art/options bg.png" id="1_e1kd6"]
+[ext_resource type="Texture2D" uid="uid://cmb8t0m6ovqdt" path="res://Art/back button 500 x 225.png" id="2_ckch2"]
+[ext_resource type="Script" path="res://Managers/Scene/ButtonSceneSwitcher.cs" id="3_durr2"]
+[ext_resource type="Texture2D" uid="uid://dke8fxqog4rax" path="res://Art/logo.png" id="4_gadhi"]
+[ext_resource type="FontFile" uid="uid://dklw1r3w4l27s" path="res://Art/PoorRichardOpti.otf" id="5_l0pvt"]
+[ext_resource type="Texture2D" uid="uid://i6rguix07b17" path="res://Art/green arrow 307 x 142.png" id="6_8nva4"]
+[ext_resource type="Texture2D" uid="uid://ci7y6rt6ojs2c" path="res://Art/Sell1.tres" id="7_5p7n7"]
+[ext_resource type="Texture2D" uid="uid://cayw3s1ur6yj5" path="res://Art/PAUSE BUTTONS 1054 X 274.png" id="8_veo6j"]
+[ext_resource type="Texture2D" uid="uid://b1fgcoyh7sq08" path="res://Screenshots/mutationsleft.png" id="9_3w1kn"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vupbe"]
+texture = ExtResource("1_e1kd6")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rqqkr"]
+atlas = ExtResource("8_veo6j")
+region = Rect2(0, 0, 1054, 274)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0s0lu"]
+atlas = ExtResource("8_veo6j")
+region = Rect2(1054, 0, 1054, 274)
+
+[node name="Tutorial" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1920.0
+offset_bottom = -1080.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_top = 1.0
+offset_right = 1920.0
+offset_bottom = 1081.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_vupbe")
+
+[node name="Back" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 408.0
+offset_top = 940.0
+offset_right = 1158.0
+offset_bottom = 1277.5
+scale = Vector2(0.3, 0.3)
+texture_normal = ExtResource("2_ckch2")
+texture_pressed = ExtResource("2_ckch2")
+texture_hover = ExtResource("2_ckch2")
+texture_disabled = ExtResource("2_ckch2")
+texture_focused = ExtResource("2_ckch2")
+ignore_texture_size = true
+stretch_mode = 0
+script = ExtResource("3_durr2")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 519.0
+offset_right = 1339.0
+offset_bottom = 239.0
+texture = ExtResource("4_gadhi")
+expand_mode = 1
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 0
+offset_left = 327.0
+offset_top = 429.0
+offset_right = 794.0
+offset_bottom = 481.0
+theme_override_fonts/font = ExtResource("5_l0pvt")
+theme_override_font_sizes/font_size = 41
+text = "After you do this 3 times..."
+
+[node name="Label4" type="Label" parent="."]
+layout_mode = 0
+offset_left = 930.0
+offset_top = 449.0
+offset_right = 1397.0
+offset_bottom = 501.0
+theme_override_fonts/font = ExtResource("5_l0pvt")
+theme_override_font_sizes/font_size = 41
+text = "You sell your plants!"
+
+[node name="Label5" type="Label" parent="."]
+layout_mode = 0
+offset_left = 351.0
+offset_top = 758.0
+offset_right = 1020.0
+offset_bottom = 810.0
+theme_override_fonts/font = ExtResource("5_l0pvt")
+theme_override_font_sizes/font_size = 41
+text = "If you don't meet the ever rising quota..."
+
+[node name="Label9" type="Label" parent="."]
+layout_mode = 0
+offset_left = 607.0
+offset_top = 851.0
+offset_right = 1276.0
+offset_bottom = 934.0
+theme_override_fonts/font = ExtResource("5_l0pvt")
+theme_override_font_sizes/font_size = 66
+text = "See how far you can go!"
+
+[node name="Label6" type="Label" parent="."]
+layout_mode = 0
+offset_left = 1113.0
+offset_top = 762.0
+offset_right = 1318.0
+offset_bottom = 827.0
+theme_override_colors/font_outline_color = Color(1, 0, 0, 1)
+theme_override_constants/outline_size = 15
+theme_override_fonts/font = ExtResource("5_l0pvt")
+theme_override_font_sizes/font_size = 41
+text = "YOU LOSE"
+
+[node name="Label8" type="Label" parent="."]
+layout_mode = 0
+offset_left = 459.0
+offset_top = 882.0
+offset_right = 579.0
+offset_bottom = 934.0
+theme_override_colors/font_outline_color = Color(0.713726, 0.133333, 0.117647, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("5_l0pvt")
+theme_override_font_sizes/font_size = 41
+text = "BACK"
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 533.0
+offset_top = 614.0
+offset_right = 686.0
+offset_bottom = 685.0
+rotation = 3.60061
+texture = ExtResource("6_8nva4")
+expand_mode = 1
+
+[node name="TextureRect3" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 1150.0
+offset_top = 632.0
+offset_right = 1303.0
+offset_bottom = 703.0
+rotation = 3.60061
+texture = ExtResource("6_8nva4")
+expand_mode = 1
+
+[node name="TextureRect4" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 1210.0
+offset_top = 531.0
+offset_right = 1436.0
+offset_bottom = 646.0
+texture = ExtResource("7_5p7n7")
+expand_mode = 1
+
+[node name="Quit" type="TextureButton" parent="."]
+offset_left = 1137.0
+offset_top = 932.0
+offset_right = 2191.0
+offset_bottom = 1206.0
+scale = Vector2(0.38, 0.38)
+texture_normal = SubResource("AtlasTexture_rqqkr")
+texture_pressed = SubResource("AtlasTexture_rqqkr")
+texture_hover = SubResource("AtlasTexture_0s0lu")
+texture_disabled = SubResource("AtlasTexture_0s0lu")
+texture_focused = SubResource("AtlasTexture_rqqkr")
+script = ExtResource("3_durr2")
+
+[node name="TextureRect7" type="TextureRect" parent="."]
+offset_left = 569.0
+offset_top = 486.0
+offset_right = 1456.0
+offset_bottom = 1165.0
+scale = Vector2(0.355, 0.355)
+texture = ExtResource("9_3w1kn")
+
+[node name="Label10" type="Label" parent="."]
+offset_left = 649.0
+offset_top = 239.0
+offset_right = 1112.0
+offset_bottom = 401.0
+theme_override_colors/font_outline_color = Color(0.670548, 0.476752, 0.34085, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("5_l0pvt")
+theme_override_font_sizes/font_size = 41
+text = "Explore the map to find 
+far away nodes. The further 
+away, the more the points!"
+
+[connection signal="pressed" from="Back" to="Back" method="Switch" binds= [7]]
+[connection signal="pressed" from="Quit" to="Quit" method="Switch" binds= [2]]

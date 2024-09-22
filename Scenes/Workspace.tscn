@@ -1,3 +1,467 @@
-[gd_scene format=3 uid="uid://btbbbehoaknia"]
+[gd_scene load_steps=47 format=3 uid="uid://btbbbehoaknia"]
 
-[node name="Node2D" type="Node2D"]
+[ext_resource type="Script" path="res://Scripts/WorkspaceInit.cs" id="1_5a6te"]
+[ext_resource type="Texture2D" uid="uid://dnobjr7cssrwn" path="res://Art/greenhouse no pot.png" id="1_n5eej"]
+[ext_resource type="Texture2D" uid="uid://c7vun7uok4t45" path="res://Art/injections icon.png" id="2_l7cwa"]
+[ext_resource type="Script" path="res://Managers/Scene/ButtonSceneSwitcher.cs" id="2_mlrbl"]
+[ext_resource type="Script" path="res://Scripts/ViewVirusButton.cs" id="3_7cee1"]
+[ext_resource type="Texture2D" uid="uid://dy6bid7pqfh7m" path="res://Art/yellow trout lily.png" id="4_dae7y"]
+[ext_resource type="Texture2D" uid="uid://c84bnfq0rtlot" path="res://Art/juniper berries.png" id="7_g4y1u"]
+[ext_resource type="PackedScene" uid="uid://n767njjh7i0v" path="res://Prefabs/Syringe.tscn" id="7_wch7j"]
+[ext_resource type="Texture2D" uid="uid://dtcwrqjbgp64b" path="res://Art/Button1.tres" id="8_do53u"]
+[ext_resource type="Texture2D" uid="uid://bhwnusri6jrhw" path="res://Art/cinnamon fern 363x454 (1).png" id="9_23sde"]
+[ext_resource type="Texture2D" uid="uid://bu23v3t5kq6fq" path="res://Art/BEGIN BUTTON 507 x 134.png" id="9_otpgb"]
+[ext_resource type="Texture2D" uid="uid://dxltw0ibqh1xm" path="res://Art/Button2.tres" id="9_qghru"]
+[ext_resource type="Texture2D" uid="uid://cy51q8bxkmyhb" path="res://Art/PLANT STORE 1255 x 1021.png" id="12_gny0d"]
+[ext_resource type="PackedScene" uid="uid://cyojf6l1lvcyc" path="res://Prefabs/VirusButton.tscn" id="12_k5be1"]
+[ext_resource type="FontFile" uid="uid://dklw1r3w4l27s" path="res://Art/PoorRichardOpti.otf" id="12_l6rb0"]
+[ext_resource type="Script" path="res://Scripts/PlantInfo.cs" id="12_puiu7"]
+[ext_resource type="PackedScene" uid="uid://8mobqpmpiiuu" path="res://Scenes/StoreUI.tscn" id="13_0m0l7"]
+[ext_resource type="Script" path="res://Scripts/Species.cs" id="13_356q6"]
+[ext_resource type="Script" path="res://Scripts/MoneyLabel.cs" id="13_dq5yc"]
+[ext_resource type="PackedScene" uid="uid://76pufbfaspsb" path="res://Prefabs/PlantButton.tscn" id="13_mwvtp"]
+[ext_resource type="Texture2D" uid="uid://cdwjppd7e4cbl" path="res://Art/yellow trout lily _test.png" id="14_wqb6j"]
+[ext_resource type="Texture2D" uid="uid://bswvcax21n3cv" path="res://Art/juniper berries _test.png" id="15_hc7su"]
+[ext_resource type="Texture2D" uid="uid://b24iakx6l648" path="res://Art/cinnamon fern _test.png" id="16_kpxj1"]
+[ext_resource type="Texture2D" uid="uid://ci7y6rt6ojs2c" path="res://Art/Sell1.tres" id="20_dat4e"]
+[ext_resource type="Texture2D" uid="uid://bimpapsyhv4kv" path="res://Art/Sell2.tres" id="21_yn5xj"]
+[ext_resource type="Script" path="res://Scripts/PlantStoreButton.cs" id="23_3iv11"]
+[ext_resource type="Script" path="res://Scripts/ErrorLabel.cs" id="23_g1gdn"]
+[ext_resource type="PackedScene" uid="uid://bgllprtxam2rf" path="res://Prefabs/Pause Menu.tscn" id="23_hnbb6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fg1t6"]
+atlas = ExtResource("4_dae7y")
+region = Rect2(1452, 0, 363, 455)
+
+[sub_resource type="Resource" id="Resource_gc4kc"]
+script = ExtResource("13_356q6")
+species = 0
+texture = ExtResource("14_wqb6j")
+mutatedTexture = SubResource("AtlasTexture_fg1t6")
+
+[sub_resource type="Resource" id="Resource_fm7iq"]
+script = ExtResource("12_puiu7")
+species = SubResource("Resource_gc4kc")
+price = 10.0
+value = 0.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g8xeu"]
+atlas = ExtResource("7_g4y1u")
+region = Rect2(1452, 0, 363, 455)
+
+[sub_resource type="Resource" id="Resource_u7sti"]
+script = ExtResource("13_356q6")
+species = 1
+texture = ExtResource("15_hc7su")
+mutatedTexture = SubResource("AtlasTexture_g8xeu")
+
+[sub_resource type="Resource" id="Resource_ymlkx"]
+script = ExtResource("12_puiu7")
+species = SubResource("Resource_u7sti")
+price = 10.0
+value = 0.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nfnan"]
+atlas = ExtResource("9_23sde")
+region = Rect2(1452, 0, 363, 455)
+
+[sub_resource type="Resource" id="Resource_agma1"]
+script = ExtResource("13_356q6")
+species = 2
+texture = ExtResource("16_kpxj1")
+mutatedTexture = SubResource("AtlasTexture_nfnan")
+
+[sub_resource type="Resource" id="Resource_13oak"]
+script = ExtResource("12_puiu7")
+species = SubResource("Resource_agma1")
+price = 10.0
+value = 0.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ju7te"]
+atlas = ExtResource("2_l7cwa")
+region = Rect2(0, 648, 560, 115)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ccgl6"]
+atlas = ExtResource("2_l7cwa")
+region = Rect2(0, 648, 560, 115)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tjhnx"]
+atlas = ExtResource("2_l7cwa")
+region = Rect2(0, 648, 560, 115)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wwgoc"]
+atlas = ExtResource("2_l7cwa")
+region = Rect2(0, 648, 560, 115)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mguhy"]
+atlas = ExtResource("2_l7cwa")
+region = Rect2(0, 648, 560, 115)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g1h57"]
+atlas = ExtResource("9_otpgb")
+region = Rect2(0, 0, 507, 134)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q30pu"]
+atlas = ExtResource("9_otpgb")
+region = Rect2(0, 134, 507, 134)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vnaqt"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_22bq6"]
+bg_color = Color(0, 0, 0, 1)
+
+[node name="Root" type="Node2D" node_paths=PackedStringArray("layer", "plantPositions", "i", "beginButton", "sellButton", "quotasLeft", "quota", "quotasReached")]
+script = ExtResource("1_5a6te")
+layer = NodePath("UI Render/UI/Control")
+plantPositions = [NodePath("Plant Spots/Spot"), NodePath("Plant Spots/Spot1"), NodePath("Plant Spots/Spot2"), NodePath("Plant Spots/Spot3"), NodePath("Plant Spots/Spot4"), NodePath("Plant Spots/Spot5"), NodePath("Plant Spots/Spot6"), NodePath("Plant Spots/Spot7"), NodePath("Plant Spots/Spot8"), NodePath("Plant Spots/Spot9"), NodePath("Plant Spots/Spot10"), NodePath("Plant Spots/Spot11"), NodePath("Plant Spots/Spot12"), NodePath("Plant Spots/Spot13"), NodePath("Plant Spots/Spot14")]
+i = NodePath("UI Render/UI/Label")
+beginButton = NodePath("UI Render/UI/Begin")
+sellButton = NodePath("UI Render/UI/Sell")
+quotasLeft = NodePath("UI Render/UI/Quota2")
+quota = NodePath("UI Render/UI/Quota")
+quotasReached = NodePath("UI Render/UI/Quota3")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(960, 540)
+
+[node name="UI Store" type="CanvasLayer" parent="."]
+layer = 123
+
+[node name="Store UI" parent="UI Store" instance=ExtResource("13_0m0l7")]
+visible = false
+plantPresets = Array[Object]([SubResource("Resource_fm7iq"), SubResource("Resource_ymlkx"), SubResource("Resource_13oak")])
+textures = Array[Texture2D]([ExtResource("8_do53u"), ExtResource("9_qghru")])
+purchaseVirusButton = ExtResource("12_k5be1")
+purchasePlantButton = ExtResource("13_mwvtp")
+
+[node name="Label" type="Label" parent="UI Store"]
+offset_left = 353.0
+offset_top = 6.0
+offset_right = 658.0
+offset_bottom = 94.0
+theme_override_colors/font_color = Color(0.877671, 0.748875, 7.70092e-07, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 15
+theme_override_fonts/font = ExtResource("12_l6rb0")
+theme_override_font_sizes/font_size = 66
+text = "$100"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("13_dq5yc")
+
+[node name="UI Render" type="CanvasLayer" parent="."]
+
+[node name="UI" type="Control" parent="UI Render"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+
+[node name="Background" type="TextureRect" parent="UI Render/UI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_n5eej")
+expand_mode = 1
+
+[node name="Control" type="Control" parent="UI Render/UI"]
+z_index = 10
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1920.0
+offset_bottom = -1080.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="View Virus Button" type="TextureButton" parent="UI Render/UI" node_paths=PackedStringArray("container", "hoverLabel")]
+custom_minimum_size = Vector2(280, 65)
+layout_mode = 2
+offset_left = 28.0
+offset_top = 23.0
+offset_right = 308.0
+offset_bottom = 88.0
+pivot_offset = Vector2(140, 32.5)
+texture_normal = SubResource("AtlasTexture_ju7te")
+texture_pressed = SubResource("AtlasTexture_ccgl6")
+texture_hover = SubResource("AtlasTexture_tjhnx")
+texture_disabled = SubResource("AtlasTexture_wwgoc")
+texture_focused = SubResource("AtlasTexture_mguhy")
+ignore_texture_size = true
+stretch_mode = 0
+script = ExtResource("3_7cee1")
+container = NodePath("../ScrollContainer/Viruses")
+syringeScene = ExtResource("7_wch7j")
+hoverLabel = NodePath("../Label2")
+
+[node name="Begin" type="TextureButton" parent="UI Render/UI" node_paths=PackedStringArray("errorText")]
+layout_mode = 2
+offset_left = 1156.25
+offset_top = 945.0
+offset_right = 1663.25
+offset_bottom = 1079.0
+scale = Vector2(0.5, 0.5)
+pivot_offset = Vector2(253.5, 67)
+size_flags_horizontal = 0
+texture_normal = SubResource("AtlasTexture_g1h57")
+texture_pressed = SubResource("AtlasTexture_g1h57")
+texture_hover = SubResource("AtlasTexture_q30pu")
+texture_disabled = SubResource("AtlasTexture_g1h57")
+texture_focused = SubResource("AtlasTexture_g1h57")
+script = ExtResource("2_mlrbl")
+errorText = NodePath("../Error")
+errorTime = 2.5
+
+[node name="Sell" type="TextureButton" parent="UI Render/UI"]
+visible = false
+layout_mode = 2
+offset_left = 1030.0
+offset_top = 931.0
+offset_right = 1483.0
+offset_bottom = 1161.0
+scale = Vector2(0.5, 0.5)
+size_flags_horizontal = 0
+disabled = true
+texture_normal = ExtResource("20_dat4e")
+texture_pressed = ExtResource("21_yn5xj")
+texture_hover = ExtResource("20_dat4e")
+texture_disabled = ExtResource("20_dat4e")
+texture_focused = ExtResource("20_dat4e")
+ignore_texture_size = true
+stretch_mode = 0
+script = ExtResource("2_mlrbl")
+
+[node name="StoreButton" type="TextureButton" parent="UI Render/UI" node_paths=PackedStringArray("hover")]
+layout_mode = 0
+offset_left = -299.75
+offset_top = 180.75
+offset_right = 955.25
+offset_bottom = 1201.75
+scale = Vector2(0.5, 0.5)
+pivot_offset = Vector2(627.5, 510.5)
+texture_normal = ExtResource("12_gny0d")
+texture_pressed = ExtResource("12_gny0d")
+texture_hover = ExtResource("12_gny0d")
+texture_disabled = ExtResource("12_gny0d")
+texture_focused = ExtResource("12_gny0d")
+script = ExtResource("23_3iv11")
+hover = NodePath("../Label3")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="UI Render/UI"]
+layout_mode = 1
+offset_left = 22.0
+offset_top = 103.0
+offset_right = 310.0
+offset_bottom = 475.0
+horizontal_scroll_mode = 0
+
+[node name="Viruses" type="VBoxContainer" parent="UI Render/UI/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+alignment = 2
+
+[node name="Quota" type="Label" parent="UI Render/UI"]
+layout_mode = 0
+offset_left = 375.0
+offset_top = 97.0
+offset_right = 639.0
+offset_bottom = 165.0
+theme_override_colors/font_color = Color(0.877671, 0.748875, 7.70092e-07, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 15
+theme_override_fonts/font = ExtResource("12_l6rb0")
+theme_override_font_sizes/font_size = 41
+text = "QUOTA: $800"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Quota2" type="Label" parent="UI Render/UI"]
+layout_mode = 0
+offset_left = 335.0
+offset_top = 160.0
+offset_right = 709.0
+offset_bottom = 228.0
+theme_override_colors/font_color = Color(0.877671, 0.748875, 7.70092e-07, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 15
+theme_override_fonts/font = ExtResource("12_l6rb0")
+theme_override_font_sizes/font_size = 41
+text = "MUTATIONS LEFT: 4"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Quota3" type="Label" parent="UI Render/UI"]
+layout_mode = 0
+offset_left = 322.0
+offset_top = 221.0
+offset_right = 741.0
+offset_bottom = 289.0
+theme_override_colors/font_color = Color(0.877671, 0.748875, 7.70092e-07, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 15
+theme_override_fonts/font = ExtResource("12_l6rb0")
+theme_override_font_sizes/font_size = 41
+text = "QUOTAS REACHED: 5"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="UI Render/UI"]
+visible = false
+z_index = 60
+layout_mode = 0
+offset_left = 586.0
+offset_top = 236.0
+offset_right = 787.0
+offset_bottom = 269.0
+theme_override_fonts/font = ExtResource("12_l6rb0")
+theme_override_font_sizes/font_size = 26
+theme_override_styles/normal = SubResource("StyleBoxFlat_vnaqt")
+text = "dadadasdasdadad"
+
+[node name="Label2" type="Label" parent="UI Render/UI"]
+visible = false
+z_index = 127
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -901.0
+offset_top = -531.0
+offset_right = -651.0
+offset_bottom = -487.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("12_l6rb0")
+theme_override_font_sizes/font_size = 26
+theme_override_styles/normal = SubResource("StyleBoxFlat_22bq6")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="UI Render/UI"]
+visible = false
+z_index = 127
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -492.0
+offset_top = -1.0
+offset_right = -242.0
+offset_bottom = 43.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("12_l6rb0")
+theme_override_font_sizes/font_size = 26
+theme_override_styles/normal = SubResource("StyleBoxFlat_22bq6")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Error" type="Label" parent="UI Render/UI"]
+visible = false
+layout_mode = 0
+offset_left = 60.0
+offset_top = 985.0
+offset_right = 604.0
+offset_bottom = 1053.0
+theme_override_colors/font_color = Color(0.792588, 0, 0.0885646, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 15
+theme_override_fonts/font = ExtResource("12_l6rb0")
+theme_override_font_sizes/font_size = 41
+text = "YOU MUST SELECT A PLANT"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("23_g1gdn")
+
+[node name="Plant Spots" type="Node" parent="."]
+
+[node name="Spot" type="Node2D" parent="Plant Spots"]
+position = Vector2(871, 160)
+scale = Vector2(0.5, 0.5)
+
+[node name="Spot1" type="Node2D" parent="Plant Spots"]
+position = Vector2(1054, 159)
+scale = Vector2(0.5, 0.5)
+
+[node name="Spot2" type="Node2D" parent="Plant Spots"]
+position = Vector2(1235, 154)
+scale = Vector2(0.5, 0.5)
+
+[node name="Spot3" type="Node2D" parent="Plant Spots"]
+position = Vector2(1418, 154)
+scale = Vector2(0.5, 0.5)
+
+[node name="Spot4" type="Node2D" parent="Plant Spots"]
+position = Vector2(1600, 160)
+scale = Vector2(0.5, 0.5)
+
+[node name="Spot5" type="Node2D" parent="Plant Spots"]
+position = Vector2(1782, 159)
+scale = Vector2(0.5, 0.5)
+
+[node name="Spot6" type="Node2D" parent="Plant Spots"]
+position = Vector2(872, 428)
+scale = Vector2(0.5, 0.5)
+
+[node name="Spot7" type="Node2D" parent="Plant Spots"]
+position = Vector2(1054, 428)
+scale = Vector2(0.5, 0.5)
+
+[node name="Spot8" type="Node2D" parent="Plant Spots"]
+position = Vector2(1236, 423)
+scale = Vector2(0.5, 0.5)
+
+[node name="Spot9" type="Node2D" parent="Plant Spots"]
+position = Vector2(1418, 423)
+scale = Vector2(0.5, 0.5)
+
+[node name="Spot10" type="Node2D" parent="Plant Spots"]
+position = Vector2(1600, 428)
+scale = Vector2(0.5, 0.5)
+
+[node name="Spot11" type="Node2D" parent="Plant Spots"]
+position = Vector2(1782, 428)
+scale = Vector2(0.5, 0.5)
+
+[node name="Spot12" type="Node2D" parent="Plant Spots"]
+position = Vector2(1599, 712)
+scale = Vector2(0.5, 0.5)
+
+[node name="Spot13" type="Node2D" parent="Plant Spots"]
+position = Vector2(1782, 711)
+scale = Vector2(0.5, 0.5)
+
+[node name="Spot14" type="Node2D" parent="Plant Spots"]
+position = Vector2(1776, 969)
+scale = Vector2(0.5, 0.5)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 128
+
+[node name="Pause Menu" parent="CanvasLayer" instance=ExtResource("23_hnbb6")]
+visible = false
+
+[connection signal="mouse_entered" from="UI Render/UI/View Virus Button" to="UI Render/UI/View Virus Button" method="Hover"]
+[connection signal="mouse_entered" from="UI Render/UI/View Virus Button" to="UI Render/UI/View Virus Button" method="set_scale" binds= [Vector2(1.1, 1.1)]]
+[connection signal="mouse_exited" from="UI Render/UI/View Virus Button" to="UI Render/UI/View Virus Button" method="HoverExit"]
+[connection signal="mouse_exited" from="UI Render/UI/View Virus Button" to="UI Render/UI/View Virus Button" method="set_scale" binds= [Vector2(1, 1)]]
+[connection signal="pressed" from="UI Render/UI/View Virus Button" to="UI Render/UI/View Virus Button" method="ToggleMenu"]
+[connection signal="button_down" from="UI Render/UI/Begin" to="UI Render/UI/Begin" method="BeginMinigame"]
+[connection signal="mouse_entered" from="UI Render/UI/Begin" to="UI Render/UI/Begin" method="set_scale" binds= [Vector2(0.52, 0.52)]]
+[connection signal="mouse_exited" from="UI Render/UI/Begin" to="UI Render/UI/Begin" method="set_scale" binds= [Vector2(0.5, 0.5)]]
+[connection signal="pressed" from="UI Render/UI/Sell" to="UI Render/UI/Sell" method="Sell"]
+[connection signal="mouse_entered" from="UI Render/UI/StoreButton" to="UI Render/UI/StoreButton" method="Hover"]
+[connection signal="mouse_entered" from="UI Render/UI/StoreButton" to="UI Render/UI/StoreButton" method="set_scale" binds= [Vector2(0.52, 0.52)]]
+[connection signal="mouse_exited" from="UI Render/UI/StoreButton" to="UI Render/UI/StoreButton" method="HoverExit"]
+[connection signal="mouse_exited" from="UI Render/UI/StoreButton" to="UI Render/UI/StoreButton" method="set_scale" binds= [Vector2(0.5, 0.5)]]
+[connection signal="pressed" from="UI Render/UI/StoreButton" to="UI Store/Store UI" method="Toggle"]

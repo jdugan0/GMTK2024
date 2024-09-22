@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://n767njjh7i0v"]
+
+[ext_resource type="Script" path="res://Scripts/SyringeDragging.cs" id="1_t0q2v"]
+[ext_resource type="Texture2D" path="res://Art/Syringe.tres" id="2_fpinp"]
+
+[node name="TextureRect" type="TextureButton"]
+custom_minimum_size = Vector2(280, 63)
+offset_right = 40.0
+offset_bottom = 40.0
+texture_normal = ExtResource("2_fpinp")
+texture_pressed = ExtResource("2_fpinp")
+texture_hover = ExtResource("2_fpinp")
+texture_disabled = ExtResource("2_fpinp")
+texture_focused = ExtResource("2_fpinp")
+ignore_texture_size = true
+stretch_mode = 0
+script = ExtResource("1_t0q2v")
+
+[connection signal="button_up" from="." to="." method="NoAttempt"]
+[connection signal="mouse_entered" from="." to="." method="Hover"]
+[connection signal="mouse_exited" from="." to="." method="HoverExit"]
+[connection signal="pressed" from="." to="." method="Select"]
+[connection signal="pressed" from="." to="." method="JustAttempted"]
